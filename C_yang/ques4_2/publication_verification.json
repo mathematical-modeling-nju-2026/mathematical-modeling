@@ -1,0 +1,12 @@
+{
+  "primary_variant": "joint_price",
+  "physical_verification_passed": true,
+  "information_verification_passed": true,
+  "published_files_identical": true,
+  "sha256": {
+    "result4-2.xlsx": "4b8f8cb9ac21cd22db974dfb43a083dd233899ce8941fa96acc33591353ae5cd",
+    "daily_summary.csv": "2d2a3a64353fd6a443c887e6fcc1d2c7843395c3d6bd2aaedc2b0780b4d10585",
+    "schedule_detail.csv.gz": "2530fc31316f89c43950de582f20e03bb0c3a154ea775531e093cd02d5d129c2"
+  },
+  "pass_check": true
+}
