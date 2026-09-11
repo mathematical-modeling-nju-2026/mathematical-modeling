@@ -1,0 +1,15 @@
+all          2025-02-01 cost=2.62 wan; 0.2s
+all          2025-03-03 cost=136.95 wan; 10.3s
+all          2025-04-02 cost=249.00 wan; 22.8s
+all          2025-05-02 cost=344.36 wan; 33.8s
+all          2025-06-01 cost=446.37 wan; 46.4s
+all          2025-07-01 cost=585.52 wan; 57.6s
+all          2025-07-31 cost=733.73 wan; 69.2s
+all          2025-08-30 cost=861.40 wan; 80.4s
+all          2025-09-29 cost=978.78 wan; 91.3s
+all          2025-10-29 cost=1093.12 wan; 103.4s
+all          2025-11-28 cost=1222.32 wan; 114.6s
+all          2025-12-28 cost=1383.26 wan; 126.9s
+all          2025-12-31 cost=1402.24 wan; 128.0s
+mode  total_cost_yuan  emergency_kwh
+ all     1.402240e+07  175369.946106
