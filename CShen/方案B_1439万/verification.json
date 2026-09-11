@@ -1,0 +1,15 @@
+{
+  "report_days": 334,
+  "energy_min_kwh": 1200.0,
+  "energy_max_kwh": 10800.0,
+  "charge_max_kwh_per_slot": 833.3333333333333,
+  "discharge_max_kwh_per_slot": 833.3333333333333,
+  "flow_cap_kwh_per_slot": 833.3333333333333,
+  "grid_nonneg": true,
+  "simultaneous_charge_discharge_periods": 0,
+  "plan_supply_ge_forecast_min_margin": 7.434918469387753,
+  "emergency_equals_deficit_max_dev": 0.0,
+  "cross_day_continuity_max_dev": 0.0,
+  "year_end_energy_kwh": 6000.0,
+  "pass": true
+}
