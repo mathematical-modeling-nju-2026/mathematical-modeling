@@ -1,0 +1,12 @@
+{
+  "power_flow_cap_charge": 833.3333333333353,
+  "power_flow_cap_discharge": 833.3333333333335,
+  "simultaneous_cd_periods": 0,
+  "grid_nonneg": true,
+  "E_min": 1199.9999999999945,
+  "E_max": 10800.000000000007,
+  "cross_day_max_dev": 3.637978807091713e-12,
+  "emergency_equals_deficit_max_dev": 0.0,
+  "u_nonneg": true,
+  "pass": true
+}
