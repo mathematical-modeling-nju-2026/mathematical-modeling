@@ -1,0 +1,36 @@
+[
+  {
+    "date": "2025-02-01",
+    "candidate": "half_life7",
+    "score_cutoff_day": 30,
+    "candidate_names": [
+      "uniform56",
+      "half_life7",
+      "half_life14",
+      "half_life28"
+    ],
+    "mean_past_pinball_scores": [
+      2487.0170064304657,
+      1912.328172849722,
+      2116.1323581036772,
+      2265.789830742181
+    ]
+  },
+  {
+    "date": "2025-02-02",
+    "candidate": "half_life7",
+    "score_cutoff_day": 30,
+    "candidate_names": [
+      "uniform56",
+      "half_life7",
+      "half_life14",
+      "half_life28"
+    ],
+    "mean_past_pinball_scores": [
+      2487.0170064304657,
+      1912.328172849722,
+      2116.1323581036772,
+      2265.789830742181
+    ]
+  }
+]

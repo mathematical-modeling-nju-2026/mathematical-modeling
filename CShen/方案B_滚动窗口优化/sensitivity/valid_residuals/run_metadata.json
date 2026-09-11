@@ -1,0 +1,34 @@
+{
+  "source_file": "E:\\math_model\\mathematical-modeling\\CShen\\方案B_1439万\\run_1439.py",
+  "source_sha256": "3d7db74afe1334973d4461048153291cd041d1eb575d619bc4b30fb8edcb14e9",
+  "first_residual": 7,
+  "initial_soc": 8550.0,
+  "terminal_soc": 6000.0,
+  "horizon_days": 2,
+  "candidates": [
+    {
+      "name": "uniform56",
+      "window": 56,
+      "half_life": null
+    },
+    {
+      "name": "half_life7",
+      "window": 56,
+      "half_life": 7
+    },
+    {
+      "name": "half_life14",
+      "window": 56,
+      "half_life": 14
+    },
+    {
+      "name": "half_life28",
+      "window": 56,
+      "half_life": 28
+    }
+  ],
+  "online_rule": "Every 7 days, select minimum mean 0.8-pinball loss over previous 28 completed days; min14 valid days; uniform56 tie/fallback.",
+  "fixed_parameter_comparison": "Exploratory retrospective comparison, not an untouched out-of-sample winner claim.",
+  "inherited_forecaster": "Original sw4/drift5 + t7/drift28 without changes, including early attachment1 fallback and negative PV predictions.",
+  "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]"
+}

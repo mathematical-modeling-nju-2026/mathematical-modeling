@@ -1,0 +1,18 @@
+{
+  "name": "online_primary",
+  "days": 2,
+  "initial_energy_kwh": 8550.0,
+  "final_energy_kwh": 8550.0,
+  "first_residual_index": 0,
+  "seconds": 0.14403319358825684,
+  "planned_cost_yuan": 82721.8067837258,
+  "emergency_cost_yuan": 785.7023740335272,
+  "total_cost_yuan": 83507.50915775931,
+  "g_kwh": 139411.70568977852,
+  "c_kwh": 45484.90070141624,
+  "d_kwh": 36842.76956814715,
+  "emergency_kwh": 190.17829282487773,
+  "dump_kwh": 18225.298966000977,
+  "h1_cost_yuan": 83507.50915775931,
+  "h2_cost_yuan": 0.0
+}

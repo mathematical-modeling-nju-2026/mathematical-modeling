@@ -1,0 +1,26 @@
+[
+  {
+    "date": "2025-02-01",
+    "candidate": "half_life14",
+    "score_cutoff_day": 30,
+    "candidate_names": [
+      "uniform56",
+      "half_life7",
+      "half_life14",
+      "half_life28"
+    ],
+    "mean_past_pinball_scores": []
+  },
+  {
+    "date": "2025-02-02",
+    "candidate": "half_life14",
+    "score_cutoff_day": 31,
+    "candidate_names": [
+      "uniform56",
+      "half_life7",
+      "half_life14",
+      "half_life28"
+    ],
+    "mean_past_pinball_scores": []
+  }
+]
