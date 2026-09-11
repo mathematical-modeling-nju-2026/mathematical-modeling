@@ -1,0 +1,251 @@
+{
+  "selected_method": "stochastic_48h",
+  "method_selected_before_test_costs": true,
+  "evaluation_dates": [
+    "2025-02-01",
+    "2025-12-31"
+  ],
+  "evaluation_days": 334,
+  "evaluation_periods": 48096,
+  "parameters": {
+    "dt_hours": 0.16666666666666666,
+    "eta_charge": 0.9,
+    "eta_discharge": 0.9,
+    "power_max_kw": 5000.0,
+    "energy_min_kwh": 1200.0,
+    "energy_max_kwh": 10800.0,
+    "initial_energy_kwh": 6000.0,
+    "reference_terminal_kwh": 6000.0,
+    "emergency_multiplier": 5.0,
+    "scenario_lookback": 28
+  },
+  "forecast_methods": {
+    "load": "weekday_mean4",
+    "pv": "trend14"
+  },
+  "january_state_policy": "Battery idle January 1-31: E=6000 continuously. January is calibration; costs before February are not scored.",
+  "terminal_policy": "Daily rolling 48h reference terminal E=6000, execute first 24h, carry actual E to next day. Dec31 horizon=24h and final E=6000.",
+  "benchmark_definitions": {
+    "stochastic_48h": "selected fixed day-ahead g,c,d; finite-scenario expected planned+emergency fee minimization",
+    "deterministic_48h": "same point forecasts and horizon, ignore uncertainty at planning time; settle true emergency costs",
+    "no_storage": "same historical scenarios; empirical inverse-CDF 80% quantile purchases, battery idle",
+    "stochastic_24h": "terminal/horizon sensitivity: same first-day scenario marginals, daily E returns to 6000"
+  },
+  "method_totals": {
+    "stochastic_48h": {
+      "grid_plan_kwh": 22198142.482437376,
+      "charge_kwh": 6900429.822837108,
+      "discharge_kwh": 5589348.156498058,
+      "emergency_kwh": 301177.8850424899,
+      "surplus_kwh": 3249049.206174151,
+      "planned_cost_yuan": 13535272.03298667,
+      "emergency_cost_yuan": 1117591.2365091185,
+      "total_cost_yuan": 14652863.26949579,
+      "emergency_days": 323,
+      "emergency_periods": 9983,
+      "emergency_period_fraction": 0.2075640385894877,
+      "energy_initial_kwh": 6000.0,
+      "energy_final_kwh": 6000.000000000002
+    },
+    "deterministic_48h": {
+      "grid_plan_kwh": 20181773.3728536,
+      "charge_kwh": 6615707.5936225895,
+      "discharge_kwh": 5358723.150834298,
+      "emergency_kwh": 1051080.2206912048,
+      "surplus_kwh": 2036679.6557898445,
+      "planned_cost_yuan": 12225958.023515623,
+      "emergency_cost_yuan": 4087477.1682675574,
+      "total_cost_yuan": 16313435.191783179,
+      "emergency_days": 334,
+      "emergency_periods": 22215,
+      "emergency_period_fraction": 0.4618887225548902,
+      "energy_initial_kwh": 6000.0,
+      "energy_final_kwh": 5999.999999999998
+    },
+    "no_storage": {
+      "grid_plan_kwh": 22343051.58056087,
+      "charge_kwh": 0.0,
+      "discharge_kwh": 0.0,
+      "emergency_kwh": 254731.16717384232,
+      "surplus_kwh": 4658593.252768044,
+      "planned_cost_yuan": 17488489.224883825,
+      "emergency_cost_yuan": 1004770.6994237428,
+      "total_cost_yuan": 18493259.924307566,
+      "emergency_days": 323,
+      "emergency_periods": 9397,
+      "emergency_period_fraction": 0.1953800731869594,
+      "energy_initial_kwh": 6000.0,
+      "energy_final_kwh": 6000.0
+    },
+    "stochastic_24h": {
+      "grid_plan_kwh": 22219913.728908967,
+      "charge_kwh": 7000557.628044443,
+      "discharge_kwh": 5670451.678715999,
+      "emergency_kwh": 300854.65241593315,
+      "surplus_kwh": 3251472.9370297906,
+      "planned_cost_yuan": 13547231.718656585,
+      "emergency_cost_yuan": 1116261.2152223089,
+      "total_cost_yuan": 14663492.933878895,
+      "emergency_days": 322,
+      "emergency_periods": 9971,
+      "emergency_period_fraction": 0.2073145375914837,
+      "energy_initial_kwh": 6000.0,
+      "energy_final_kwh": 6000.000000000002
+    }
+  },
+  "comparisons_to_selected": {
+    "deterministic_48h": {
+      "saving_yuan": 1660571.9222873878,
+      "saving_percent": 10.179167678453107
+    },
+    "no_storage": {
+      "saving_yuan": 3840396.6548117753,
+      "saving_percent": 20.766466650717174
+    },
+    "stochastic_24h": {
+      "saving_yuan": 10629.664383104071,
+      "saving_percent": 0.07249067074970271
+    }
+  },
+  "specified_days": [
+    {
+      "date": "2025-03-20",
+      "method": "stochastic_48h",
+      "grid_plan_kwh": 65361.24423502578,
+      "charge_kwh": 17702.71362559354,
+      "discharge_kwh": 17771.11346300366,
+      "emergency_kwh": 850.8454846611723,
+      "surplus_kwh": 4071.5277404304,
+      "planned_cost_yuan": 40324.63080367283,
+      "emergency_cost_yuan": 3130.617012715295,
+      "total_cost_yuan": 43455.247816388124,
+      "energy_start_kwh": 8550.000000000004,
+      "energy_end_kwh": 4736.76063747457,
+      "emergency_periods": 41,
+      "energy_min_kwh": 1200.0000000000073,
+      "energy_max_kwh": 10800.000000000007
+    },
+    {
+      "date": "2025-06-21",
+      "method": "stochastic_48h",
+      "grid_plan_kwh": 43805.231943298626,
+      "charge_kwh": 18111.607067520243,
+      "discharge_kwh": 10881.921706089743,
+      "emergency_kwh": 35.279205494505334,
+      "surplus_kwh": 17276.085387362633,
+      "planned_cost_yuan": 24610.48352037918,
+      "emergency_cost_yuan": 110.73456752772378,
+      "total_cost_yuan": 24721.218087906906,
+      "energy_start_kwh": 4340.577757109277,
+      "energy_end_kwh": 8550.000000000002,
+      "emergency_periods": 7,
+      "energy_min_kwh": 1200.0000000000014,
+      "energy_max_kwh": 10800.000000000002
+    },
+    {
+      "date": "2025-09-23",
+      "method": "stochastic_48h",
+      "grid_plan_kwh": 69689.43825844016,
+      "charge_kwh": 21511.808692002443,
+      "discharge_kwh": 17424.56504052198,
+      "emergency_kwh": 1568.4265021978044,
+      "surplus_kwh": 5054.005525824174,
+      "planned_cost_yuan": 43097.07668678816,
+      "emergency_cost_yuan": 6406.772535662762,
+      "total_cost_yuan": 49503.849222450925,
+      "energy_start_kwh": 8550.000000000004,
+      "energy_end_kwh": 8550.000000000005,
+      "emergency_periods": 52,
+      "energy_min_kwh": 1200.0000000000055,
+      "energy_max_kwh": 10800.000000000007
+    },
+    {
+      "date": "2025-12-21",
+      "method": "stochastic_48h",
+      "grid_plan_kwh": 99036.58992448331,
+      "charge_kwh": 25410.95945891556,
+      "discharge_kwh": 20582.87716172161,
+      "emergency_kwh": 569.7563908424914,
+      "surplus_kwh": 5740.4821514652,
+      "planned_cost_yuan": 63676.274419648296,
+      "emergency_cost_yuan": 1921.5620091025185,
+      "total_cost_yuan": 65597.83642875083,
+      "energy_start_kwh": 8550.000000000005,
+      "energy_end_kwh": 8550.0,
+      "emergency_periods": 17,
+      "energy_min_kwh": 1199.999999999999,
+      "energy_max_kwh": 10800.0
+    }
+  ],
+  "conditional_perfect_information_bounds": [
+    {
+      "date": "2025-03-20",
+      "energy_initial_kwh": 8550.000000000004,
+      "energy_final_kwh": 4736.76063747457,
+      "actual_policy_cost_yuan": 43455.247816388124,
+      "perfect_information_cost_yuan": 38140.41314928228,
+      "gap_yuan": 5314.834667105846,
+      "label": "conditional single-day perfect-information lower bound, not deployable"
+    },
+    {
+      "date": "2025-06-21",
+      "energy_initial_kwh": 4340.577757109277,
+      "energy_final_kwh": 8550.000000000002,
+      "actual_policy_cost_yuan": 24721.218087906906,
+      "perfect_information_cost_yuan": 19671.776793556586,
+      "gap_yuan": 5049.441294350319,
+      "label": "conditional single-day perfect-information lower bound, not deployable"
+    },
+    {
+      "date": "2025-09-23",
+      "energy_initial_kwh": 8550.000000000004,
+      "energy_final_kwh": 8550.000000000005,
+      "actual_policy_cost_yuan": 49503.849222450925,
+      "perfect_information_cost_yuan": 41311.88255747086,
+      "gap_yuan": 8191.966664980064,
+      "label": "conditional single-day perfect-information lower bound, not deployable"
+    },
+    {
+      "date": "2025-12-21",
+      "energy_initial_kwh": 8550.000000000005,
+      "energy_final_kwh": 8550.0,
+      "actual_policy_cost_yuan": 65597.83642875083,
+      "perfect_information_cost_yuan": 59664.19678037063,
+      "gap_yuan": 5933.639648380202,
+      "label": "conditional single-day perfect-information lower bound, not deployable"
+    }
+  ],
+  "net_q80_observed_coverage": 0.7655106453759148,
+  "selected_emergency_events": 3608,
+  "optimizer_audit": {
+    "lp_solves": 1002,
+    "all_status_zero": true,
+    "max_absolute_cleanup_cost_difference_yuan": 5.238689482212067e-10,
+    "max_cleanup_state_difference_kwh": 2.4556356947869062e-11,
+    "simultaneous_before_cleanup_total": 0,
+    "simultaneous_after_cleanup_total": 0
+  },
+  "template": {
+    "original_first_interval": "0:10-0:20",
+    "original_last_interval": "0:00-0:10+1",
+    "output_first_interval": "0:00-0:10",
+    "output_last_interval": "23:50-24:00",
+    "grid_sheet_daily_cost_definition": "planned purchases only: sum(price * grid_plan_kwh); emergency and total actual costs are separate in daily_summary.csv",
+    "emergency_aggregation": "merge adjacent within-day ten-minute intervals with emergency_kwh > 1e-6; no events => 无,0",
+    "all_dates_expanded": true,
+    "original_template_sha256": "1c26494cfc6d754e0bd9bff7e13e1126a73d2d2da6c5336eb251d89b9a1a1a47"
+  },
+  "source_sha256": {
+    "附件\\附件1.xlsx": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
+    "附件\\附件2.xlsx": "2e95fd446bfafa0d8c59577b5c2e2ea8b3f1def20dde54a3062556f4da9b4c72",
+    "附件\\附件5\\result2.xlsx": "1c26494cfc6d754e0bd9bff7e13e1126a73d2d2da6c5336eb251d89b9a1a1a47"
+  },
+  "environment": {
+    "python": "3.11.6",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "scipy": "1.17.1",
+    "openpyxl": "3.1.5"
+  },
+  "runtime_seconds": 47.46905250000418
+}

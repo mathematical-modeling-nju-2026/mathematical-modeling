@@ -1,0 +1,80 @@
+{
+  "inputs": {
+    "附件\\附件1.xlsx": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
+    "附件\\附件2.xlsx": "2e95fd446bfafa0d8c59577b5c2e2ea8b3f1def20dde54a3062556f4da9b4c72"
+  },
+  "sheet_names": [
+    "小区负载",
+    "光伏发电实际功率"
+  ],
+  "dates": [
+    "2025-01-01",
+    "2025-12-31"
+  ],
+  "number_of_days": 365,
+  "slots_per_day": 144,
+  "time_convention": "Each power value is a ten-minute mean; 00:10 labels 00:00-00:10 and 0:00+1 labels 23:50-24:00.",
+  "dt_hours": 0.16666666666666666,
+  "load": {
+    "shape": [
+      365,
+      144
+    ],
+    "missing_or_nonfinite_count": 0,
+    "negative_count": 0,
+    "zero_count": 0,
+    "duplicate_entire_days": 0,
+    "minimum_kw": 1995.7176,
+    "maximum_kw": 7978.8849,
+    "mean_kw": 4626.033670125571,
+    "monthly_mean_kw": {
+      "1": 4725.773469153226,
+      "2": 4516.8965253224205,
+      "3": 4355.698995407706,
+      "4": 4392.976799050925,
+      "5": 4401.6777526881715,
+      "6": 4800.372629444444,
+      "7": 5337.258656070789,
+      "8": 5045.177050336021,
+      "9": 4535.910432824075,
+      "10": 4347.019491330645,
+      "11": 4337.6713466898145,
+      "12": 4691.305896191756
+    }
+  },
+  "pv": {
+    "shape": [
+      365,
+      144
+    ],
+    "missing_or_nonfinite_count": 0,
+    "negative_count": 0,
+    "zero_count": 23540,
+    "duplicate_entire_days": 0,
+    "minimum_kw": 0.0,
+    "maximum_kw": 10216.2,
+    "mean_kw": 2311.7857090962707,
+    "monthly_mean_kw": {
+      "1": 1589.1838943548387,
+      "2": 1966.4803466517858,
+      "3": 2304.1967555331544,
+      "4": 2701.685689328704,
+      "5": 2806.502396550179,
+      "6": 2369.8265653009257,
+      "7": 2723.254275,
+      "8": 2915.9930929883517,
+      "9": 2607.5995060879627,
+      "10": 2364.313051769713,
+      "11": 1854.376335601852,
+      "12": 1513.8368958781361
+    }
+  },
+  "price": {
+    "source": "attachment 1, repeated every day",
+    "minimum_yuan_per_kwh": 0.3713,
+    "maximum_yuan_per_kwh": 1.3952
+  },
+  "data_modifications": "None; only kW to kWh conversion for optimization.",
+  "calendar_note": "Do not impose Saturday/Sunday low load: January observations exhibit a seven-day cycle with lower demand on Friday/Saturday.",
+  "use_of_annual_summaries": "Descriptive audit only; future monthly statistics are never forecasting inputs."
+}
