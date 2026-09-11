@@ -1,0 +1,192 @@
+{
+  "parameters": {
+    "dt_hours": 0.16666666666666666,
+    "eta_charge": 0.9,
+    "eta_discharge": 0.9,
+    "capacity_kwh": 12000.0,
+    "energy_min_kwh": 1200.0,
+    "energy_max_kwh": 10800.0,
+    "energy_initial_kwh": 6000.0,
+    "power_max_kw": 5000.0
+  },
+  "data_audit": {
+    "row_count": 144,
+    "step_minutes": 10,
+    "time_order_continuous_unique": true,
+    "missing_numeric_count": 0,
+    "nonfinite_numeric_count": 0,
+    "negative_numeric_count": 0,
+    "price_range_yuan_per_kwh": [
+      0.3713,
+      1.3952
+    ],
+    "load_range_kw": [
+      3309.3934,
+      5958.9696
+    ],
+    "pv_range_kw": [
+      0.0,
+      7612.316
+    ],
+    "time_convention": "row timestamp is interval end; mean power over preceding 10 minutes",
+    "source_sha256": {
+      "附件\\附件1.xlsx": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
+      "附件\\附件5\\result1.xlsx": "28360e0974e7d6065394a8aba4e14a86773ae0036cc7d3ea1b211b515b03d688",
+      "C题.pdf": "2c098f6ae9dd47ae965aebdec3b9facf3de6c173f999783c1012c08fc5fb9d2d"
+    }
+  },
+  "solver": {
+    "selected_schedule": "LP",
+    "lp": {
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "objective_yuan": 35126.94858928963,
+      "seconds": 0.02033310000115307,
+      "simultaneous_charge_discharge_periods": 0,
+      "dual_objective_yuan": 35126.94858928963,
+      "primal_dual_gap_yuan": 0.0,
+      "stationarity_max_abs": 0.0
+    },
+    "milp": {
+      "status": 0,
+      "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
+      "objective_yuan": 35126.94858928963,
+      "seconds": 0.08111859999917215,
+      "dual_bound_yuan": 35126.94858928963,
+      "relative_gap": 0.0,
+      "node_count": 1,
+      "binary_max_deviation": 7.549516567451064e-15
+    },
+    "lp_milp_objective_difference_yuan": 0.0
+  },
+  "physical_verification": {
+    "energy_balance_max_abs_kwh": 2.2737367544323206e-13,
+    "state_recursion_max_abs_kwh": 8.313350008393172e-13,
+    "state_cumulative_max_abs_kwh": 7.275957614183426e-12,
+    "terminal_error_kwh": 0.0,
+    "bound_violation_max_kwh": 0.0,
+    "simultaneous_charge_discharge_periods": 0,
+    "cyclic_charge_discharge_error_kwh": 3.637978807091713e-12,
+    "passed": true,
+    "tolerance_kwh": 1e-06
+  },
+  "totals": {
+    "cost_yuan": 35126.948589289634,
+    "grid_kwh": 59482.69899835391,
+    "load_kwh": 111024.8081,
+    "pv_kwh": 55482.835666666666,
+    "charge_kwh": 20740.66613168725,
+    "discharge_kwh": 16799.939566666668,
+    "curtailment_kwh": 0.0,
+    "storage_loss_kwh": 3940.726565020581,
+    "energy_min_kwh": 1200.0,
+    "energy_max_kwh": 10800.0,
+    "energy_final_kwh": 6000.0,
+    "baseline_cost_yuan": 48052.046590846665,
+    "baseline_grid_kwh": 61789.9354,
+    "baseline_curtailment_kwh": 6247.962966666666,
+    "saving_yuan": 12925.098001557031,
+    "saving_percent": 26.898121762870154,
+    "pv_utilization_percent": 100.0,
+    "baseline_pv_utilization_percent": 88.73892638760647,
+    "charge_periods": 45,
+    "discharge_periods": 37,
+    "idle_periods": 62
+  },
+  "four_hour_blocks": [
+    {
+      "interval": "0:00-4:00",
+      "grid_kwh": 18487.10618333333,
+      "charge_kwh": 4499.999999999999,
+      "discharge_kwh": 0.0,
+      "curtailment_kwh": 0.0,
+      "cost_yuan": 7959.524770111666,
+      "energy_end_kwh": 10050.0
+    },
+    {
+      "interval": "4:00-8:00",
+      "grid_kwh": 7302.749566666666,
+      "charge_kwh": 833.3333333333333,
+      "discharge_kwh": 6365.8412,
+      "curtailment_kwh": 0.0,
+      "cost_yuan": 3185.959886978333,
+      "energy_end_kwh": 3726.8431111111104
+    },
+    {
+      "interval": "8:00-12:00",
+      "grid_kwh": 1760.9755047325157,
+      "charge_kwh": 4787.964288065848,
+      "discharge_kwh": 1702.9969833333334,
+      "curtailment_kwh": 0.0,
+      "cost_yuan": 811.9846228145087,
+      "energy_end_kwh": 6143.792100000004
+    },
+    {
+      "interval": "12:00-16:00",
+      "grid_kwh": 3809.9938602880657,
+      "charge_kwh": 5286.0351769547315,
+      "discharge_kwh": 91.1013833333335,
+      "curtailment_kwh": 0.0,
+      "cost_yuan": 2239.5881838851233,
+      "energy_end_kwh": 10800.0
+    },
+    {
+      "interval": "16:00-20:00",
+      "grid_kwh": 10419.526716666667,
+      "charge_kwh": 0.0,
+      "discharge_kwh": 5780.1318833333335,
+      "curtailment_kwh": 0.0,
+      "cost_yuan": 10811.772808703332,
+      "energy_end_kwh": 4377.631240740741
+    },
+    {
+      "interval": "20:00-24:00",
+      "grid_kwh": 17702.347166666666,
+      "charge_kwh": 5333.333333333333,
+      "discharge_kwh": 2859.8681166666665,
+      "curtailment_kwh": 0.0,
+      "cost_yuan": 10118.118316796666,
+      "energy_end_kwh": 6000.0
+    }
+  ],
+  "specified_grid": [
+    {
+      "interval": "10:00-10:10",
+      "grid_kwh": 0.0
+    },
+    {
+      "interval": "12:00-12:10",
+      "grid_kwh": 480.4124499999999
+    },
+    {
+      "interval": "14:00-14:10",
+      "grid_kwh": 0.0
+    },
+    {
+      "interval": "16:00-16:10",
+      "grid_kwh": 445.4316500000001
+    },
+    {
+      "interval": "18:00-18:10",
+      "grid_kwh": 531.8940499999999
+    },
+    {
+      "interval": "20:00-20:10",
+      "grid_kwh": 0.0
+    }
+  ],
+  "template_time_label_adjustment": {
+    "original_first_label": "0:10-0:20",
+    "original_last_label": "0:00+1-0:10+1",
+    "output_first_label": "0:00-0:10",
+    "output_last_label": "23:50-24:00",
+    "reason": "align template labels with the selected interval-end convention and the 00:00--24:00 horizon"
+  },
+  "environment": {
+    "python": "3.11.6",
+    "numpy": "2.4.6",
+    "pandas": "3.0.5",
+    "scipy": "1.17.1",
+    "openpyxl": "3.1.5"
+  }
+}
