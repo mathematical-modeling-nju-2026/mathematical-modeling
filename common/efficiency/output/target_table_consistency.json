@@ -1,0 +1,43 @@
+{
+  "问题二 / def1_side90": {
+    "checked": 80,
+    "mismatches": 0,
+    "pass_check": true
+  },
+  "问题三 / def1_side90": {
+    "checked": 80,
+    "mismatches": 0,
+    "pass_check": true
+  },
+  "问题四-2 / def1_side90": {
+    "checked": 80,
+    "mismatches": 0,
+    "pass_check": true
+  },
+  "问题四-3 / def1_side90": {
+    "checked": 80,
+    "mismatches": 0,
+    "pass_check": true
+  },
+  "问题二 / def2_roundtrip90": {
+    "checked": 80,
+    "mismatches": 0,
+    "pass_check": true
+  },
+  "问题三 / def2_roundtrip90": {
+    "checked": 80,
+    "mismatches": 0,
+    "pass_check": true
+  },
+  "问题四-2 / def2_roundtrip90": {
+    "checked": 80,
+    "mismatches": 0,
+    "pass_check": true
+  },
+  "问题四-3 / def2_roundtrip90": {
+    "checked": 80,
+    "mismatches": 0,
+    "pass_check": true
+  },
+  "pass_check": true
+}

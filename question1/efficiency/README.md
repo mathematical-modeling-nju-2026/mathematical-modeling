@@ -20,28 +20,36 @@
 ## 2. 目录结构
 
 ```
-question1/efficiency/
-├── README.md                        本说明
-├── comparison.txt                   两种口径的完整对照输出
-├── code/
-│   ├── q1_model_eff.py              参数化模型（η_c / η_d 可切换）
-│   ├── run_q1_eff.py                主流程，--eff 选择口径
-│   └── compare_eff.py               两口径对照脚本
-├── def1_side90/results/             定义一：充/放各 90%（往返 0.81）＝ 仓库原口径
-└── def2_roundtrip90/results/        定义二：放电/充电 = 90%（往返 0.90，国标）
+question1/
+├── code/                        原模型（未改动，定义一的真身）
+├── results/                     ← 定义一的结果（就是这里，不另存副本）
+└── efficiency/
+    ├── README.md                本说明
+    ├── comparison.txt           两种口径的完整对照输出
+    ├── verification_def1.txt    def1 与库原结果的一致性校验
+    ├── code/
+    │   ├── q1_model_eff.py      参数化模型（η_c / η_d 可切换）
+    │   ├── run_q1_eff.py        主流程，--eff 选择口径
+    │   ├── compare_eff.py       两口径对照脚本
+    │   └── verify_def1.py       def1 等价性校验
+    └── results/                 ← 定义二的结果（往返 0.90，国标）
 ```
 
-**原有代码与结果保持不变**：`question1/code/`、`question1/results/` 未做任何改动。
+**定义一不需要副本**：它与 `question1/results/` 逐值相同
+（160 个数值单元格差异 `0.00e+00`），因此 `run_q1_eff.py --eff def1_side90`
+直接写回 `question1/results/`。路径统一由 `eta_common.results_dir()` 解析。
+
+**原有代码与结果保持不变**：`question1/code/` 未做任何改动。
 
 ## 3. 复现方法
 
 ```bash
 cd question1/efficiency/code
 
-# 定义一（应复现仓库原有结果 35,126.95 元）
+# 定义一（写回 question1/results/，应复现 35,126.95 元）
 python -X utf8 run_q1_eff.py --eff def1_side90
 
-# 定义二（新口径）
+# 定义二（新口径，写入 efficiency/results/）
 python -X utf8 run_q1_eff.py --eff def2_roundtrip90
 
 # 生成两口径对照

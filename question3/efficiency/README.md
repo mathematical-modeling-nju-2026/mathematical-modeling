@@ -1,53 +1,125 @@
-# 效率口径说明（问题 3）
+# 问题3：两种「90% 效率」口径的结果对照
 
-## 现状
+## 1. 口径定义
 
-鉴于问题 1 已完成两种「90% 效率」口径的对照实现并给出定量差异
-（见 `question1/efficiency/`），本目录为问题 3 预留分类骨架，**当前尚未实现**。
+题目附录 1 只写「储能设备的充放电效率为 90%」，存在两种合理解读：
 
-## 两种口径（与问题 1 一致）
-
-| | 定义一（储能侧口径） | 定义二（国标往返口径） |
+| | `def1_side90`（储能侧口径，仓库原口径） | `def2_roundtrip90`（GB/T 34131 系国标口径） |
 |---|---|---|
-| 递推式 | $E_t=E_{t-1}+0.9c_t-d_t/0.9$ | $E_t=E_{t-1}+\eta c_t-d_t/\eta$，$\eta=\sqrt{0.9}$ |
-| 单向效率 | $\eta_c=\eta_d=0.9$ | $\eta_c=\eta_d=0.948683$ |
-| 往返效率 | **0.81** | **0.90** |
-| 对应结果 | 现有 `results/`（原口径，1402.24 万元） | 待生成 |
+| 含义 | 充电效率 90%、放电效率 90% | **放电量 / 充电量 = 90%** |
+| 参数 | $\eta_c=\eta_d=0.900000$ | $\eta_c=\eta_d=0.948683$ |
+| **往返效率** | $0.9\times0.9=\mathbf{0.81}$ | $\eta_c\eta_d=\mathbf{0.90}$ |
 
-## 待改造的具体位置
+`def2` 采用**对称拆分** $\eta=\sqrt{0.9}$。之所以能直接复用现有代码：
+`q3_model.py` 用 `ETA ** 2` 表示往返效率来清理同时充放电，
+对称拆分下 `ETA**2 == η_c·η_d == 往返效率`，该逻辑自动正确，
+因此只需覆盖 `ETA` 一个量。
 
-问题 3 的代码位于 `question3/code/`，效率参数集中在 `q3_model.py`：
+> **def1 与仓库原有结果逐值相同**（明细 48,096 行差异 `0.00e+00`），
+> 因此**不另存副本**——def1 的结果目录就是 `question3/results/` 本身。
 
-| 行号 | 现有实现 | 改造要点 |
-|---|---|---|
-| 12 | `ETA = 0.9` | 拆为 `ETA_C` / `ETA_D` |
-| 149 | `terms = [(node.e[j], 1), (node.c[j], -ETA), (node.d[j], 1 / ETA)]` | 充电项用 `-ETA_C`，放电项用 `1/ETA_D` |
-| 171 | `lp.eq([(e[t], 1), (c[t], -ETA), (d[t], 1 / ETA), ...])` | 同上 |
-| 180–181 | `remove = np.minimum(c, d / ETA**2)`；`c -= remove; d -= ETA**2 * remove` | **同时充放电清理逻辑**，需改为 `ETA_C*ETA_D` |
-
-> 第 180–181 行的互斥清理用到了 `ETA**2`（即往返效率的倒数关系）。
-> 在两个单向效率对称时 `ETA**2 = ETA_C*ETA_D`，但显式改写更安全：
-> 应以 `np.minimum(c, d / (ETA_C * ETA_D))` 与 `d -= (ETA_C * ETA_D) * remove` 表达。
-
-## 校验脚本需同步
-
-`question3/code/verify_q3.py` 中若含效率硬编码（检查 `0.9` / `ETA`），
-须改为读取当前口径的参数，否则校验会误报。
-
-## 建议的落地方式
+## 2. 目录结构
 
 ```
-question3/efficiency/
-├── def1_side90/results/         定义一（往返 0.81）＝ 现有结果
-└── def2_roundtrip90/results/    定义二（往返 0.90）
+question3/
+├── code/                        原模型（未改动，def1 的真身）
+├── research/                    探索性实验（与本对照无关）
+├── results/                     ← def1（往返 0.81）的结果
+└── efficiency/
+    ├── README.md                本说明
+    ├── run_log.txt              运行日志
+    ├── code/
+    │   └── run_q3_eff.py        主驱动（--eff 选口径）
+    └── results/                 ← def2（往返 0.90）的结果
+        ├── result3.xlsx         交付表（计划购电量/调整购电量/充放电量/紧急购电量）
+        ├── schedule_detail.csv  48,096 行逐段明细
+        ├── comparison.csv       五个更新频率方案对照
+        ├── target_table{1,2,3}.csv  题目指定日期表
+        ├── target_daily.csv     指定日期日汇总
+        ├── verification.json    独立校验
+        ├── efficiency_summary.json / efficiency_verification.json
+        ├── figures/             成本对照、预测融合、指定日期调度
+        └── comparisons/         各更新频率的对照运行
 ```
 
-运行方式与问题 1 对齐（命令行参数选择口径），
-结果写入对应子目录，**不覆盖现有 `results/`**。
+路径统一由 `eta_common.results_dir()` 解析，脚本不硬编码目录名。
 
-> 提示：问题 3 单次运行约 2 分钟（`--mode all`，334 天）。
-> 若只需主方案，可用 `--mode all` 而非 `suite` 以节省时间。
+## 3. 实现方式（不修改任何原始文件）
 
-## 参考
+原代码把效率写为**模块级全局常量** `q3_model.ETA`，且在函数体内读取，
+因此可在运行期覆盖：
 
-问题 1 的完整实现与对照结论见 `question1/efficiency/README.md`。
+```python
+q3_model = load_module(Q3_CODE / "q3_model.py", "q3_model")
+apply_to_q3_model(q3_model, args.eff)      # ← 覆盖 ETA（要求对称拆分）
+```
+
+另需把 `verify_q3.check_schedule` 换成参数化效率版本（原版把 0.9 写死）：
+
+```python
+q3_model.check_schedule = patch_verify_q3(verify_q3, eta_c, eta_d)
+```
+
+`question4/efficiency/code/run_q43_eff.py` 另需在**导入 `q3_data` 之前**
+设置环境变量 `CUMCM_C_ATTACHMENT_DIR`，因为 `q3_data.attachment_dir()`
+按 `parents[2]` 推断路径，在 `efficiency/` 深度下会失效。
+
+## 4. 复现方法
+
+```powershell
+cd question3/efficiency/code
+
+# def1：写回 question3/results/（应复现 14,022,396.98 元）
+python -X utf8 run_q3_eff.py --eff def1_side90 --mode suite
+
+# def2：写入 efficiency/results/
+python -X utf8 run_q3_eff.py --eff def2_roundtrip90 --mode suite
+```
+
+`--mode suite` 跑五个更新频率方案（B_aligned / only_0 / at_0_6 /
+at_0_6_12 / all），约 5 分钟。
+
+四问汇总统一用：`python common/efficiency/compare.py`
+
+## 5. 结果对照
+
+### 5.1 全年总费用（元，334 天）
+
+| 更新频率方案 | def1（往返 0.81） | def2（往返 0.90） |
+|---|---:|---:|
+| B_aligned（无融合，仅 0 点） | 14,389,892.50 | 13,910,630.69 |
+| only_0（融合预报，仅 0 点） | 14,181,445.03 | 13,709,320.63 |
+| at_0_6 | 14,101,371.47 | 13,634,446.05 |
+| at_0_6_12 | 14,022,358.10 | 13,557,942.80 |
+| **all（主方案，0/6/12/18 点）** | **14,022,396.98** | **13,558,297.17** |
+
+**主方案总费用下降 464,099.81 元（−3.31%）。**
+
+### 5.2 调整机制的价值
+
+固定电价下「多时点调整」的收益（B_aligned → 主方案）：
+- def1：36.75 万元
+- def2：35.23 万元
+
+## 6. 校验
+
+`results/verification.json` 记录独立校验结果，pass = **True**。
+校验内容（由 `verify_q3.check_schedule` 执行，已参数化效率）：
+
+- 逐段 SOC 递推（用实际 $\eta_c/\eta_d$ 复算）
+- 跨时段 SOC 连续性、日内首末状态、年末回到 6000 kWh
+- SOC ∈ [1200, 10800] kWh
+- 同一时段不同时充放电
+- 逐段能量平衡、紧急购电、弃置电量
+- 分项结算：原计划费、增购费（1.5 倍）、退款、违约费（50%）、紧急费（5 倍）
+- 实际净负载与电价取自附件独立复算
+
+## 7. 与其他问的关系
+
+`question3/code/` 与 `question4/part3/code/` 是两份**独立**的 q3 实现，
+差异在于电价口径：Q3 用固定电价 `data['price']`，4-3 用实时电价
+`data['price_rt']`。因此两者的 `verify_q3.py` 也不通用——
+`eta_common.load_verify_with_eta()` 采用**最小源码文本替换**而非重写，
+以保留各自特有的结算逻辑（此处曾踩过坑）。
+
+问题 4-3 的同口径结果见 `question4/efficiency/part3/`。

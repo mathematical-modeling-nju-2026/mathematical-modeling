@@ -1,0 +1,20 @@
+{
+  "primary_variant": "joint_price",
+  "physical_verification_passed": true,
+  "information_verification_passed": true,
+  "published_files_identical": true,
+  "sha256": {
+    "result4-2.xlsx": "1c3d396730aae4591a93855a9cb8ef3b2690509e9cdeee711e3247c04b1f6bcf",
+    "daily_summary.csv": "3594743f73bc96b8a2b6d7a9d76f36389a2b58ff97b45edccd25c5bc5b84d9c0",
+    "schedule_detail.csv.gz": "ab556193f0ca79c49654e5cf452363ed22cbea48f415b080c68968533dfbfaf3"
+  },
+  "pass_check": true,
+  "efficiency": {
+    "efficiency_key": "def2_roundtrip90",
+    "efficiency_label": "定义二：放电量/充电量 = 90%（国标往返口径）",
+    "efficiency_note": "E_t = E_{t-1} + η·c_t − d_t/η, η=√0.9≈0.948683；往返 0.90",
+    "eta_charge": 0.9486832980505138,
+    "eta_discharge": 0.9486832980505138,
+    "eta_roundtrip": 0.9
+  }
+}

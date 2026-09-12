@@ -65,13 +65,22 @@ def decompose(sol, price, load, pv, base_cost, obj):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--eff", default="def1_side90", choices=list(M.EFF_DEFS),
-                    help="效率口径：def1_side90（往返0.81）或 def2_roundtrip90（往返0.90）")
-    ap.add_argument("--out", default=None, help="输出目录；默认 efficiency/<eff>/results")
+                    help="效率口径：def1_side90（往返0.81，=仓库原结果）"
+                         "或 def2_roundtrip90（往返0.90）")
+    ap.add_argument("--out", default=None,
+                    help="输出目录；默认 def1→question1/results，def2→efficiency/results")
     args = ap.parse_args()
 
     eta_c, eta_d, eta_rt = M.set_efficiency(args.eff)
-    out = Path(args.out) if args.out else (EFF_ROOT / args.eff / "results")
+    if args.out:
+        out = Path(args.out)
+    else:
+        # def1 等价于仓库原结果，不另存副本
+        out = (EFF_ROOT.parent / "results") if args.eff == "def1_side90" \
+            else (EFF_ROOT / "results")
     out.mkdir(parents=True, exist_ok=True)
+    if args.eff == "def1_side90" and not args.out:
+        print("[提示] def1 与原定义逐值相同，直接写仓库 results/，不生成副本")
 
     labels, price, load, pv = M.load_attachment1(ATT1)
 

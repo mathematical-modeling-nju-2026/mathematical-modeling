@@ -1,0 +1,59 @@
+{
+  "eta_charge": 0.9486832980505138,
+  "eta_discharge": 0.9486832980505138,
+  "eta_roundtrip": 0.8999999999999999,
+  "checks": {
+    "primary_uniform56": {
+      "errors": {
+        "periods": 48096,
+        "energy_recursion_max_error": 4.561684363579843e-12,
+        "continuity_max_error": 0.0,
+        "soc_min_kwh": 1200.0,
+        "soc_max_kwh": 10800.0,
+        "max_charge_kwh": 833.3333333333335,
+        "max_discharge_kwh": 833.3333333333333,
+        "min_flow_kwh": 0.0,
+        "simultaneous_periods": 0,
+        "emergency_max_error": 3.410605131648481e-13,
+        "cost_max_error": 4.547473508864641e-13
+      },
+      "checks": {
+        "energy_recursion_ok": true,
+        "continuity_ok": true,
+        "soc_bounds_ok": true,
+        "power_limits_ok": true,
+        "nonnegative_ok": true,
+        "no_simultaneous": true,
+        "emergency_ok": true,
+        "cost_ok": true
+      },
+      "pass_check": true
+    },
+    "valid_residuals_uniform56": {
+      "errors": {
+        "periods": 48096,
+        "energy_recursion_max_error": 4.561684363579843e-12,
+        "continuity_max_error": 0.0,
+        "soc_min_kwh": 1200.0,
+        "soc_max_kwh": 10800.0,
+        "max_charge_kwh": 833.3333333333335,
+        "max_discharge_kwh": 833.3333333333333,
+        "min_flow_kwh": 0.0,
+        "simultaneous_periods": 0,
+        "emergency_max_error": 3.410605131648481e-13,
+        "cost_max_error": 4.547473508864641e-13
+      },
+      "checks": {
+        "energy_recursion_ok": true,
+        "continuity_ok": true,
+        "soc_bounds_ok": true,
+        "power_limits_ok": true,
+        "nonnegative_ok": true,
+        "no_simultaneous": true,
+        "emergency_ok": true,
+        "cost_ok": true
+      },
+      "pass_check": true
+    }
+  }
+}

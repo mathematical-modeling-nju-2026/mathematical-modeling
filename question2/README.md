@@ -29,3 +29,12 @@ python -X utf8 question2/code/report_experiment.py
 ```
 
 `--root` 是显式CLI路径，相对当前工作目录；上面按仓库根目录书写。最后一步依赖完整对照并发布推荐文件。单独运行推荐候选不会覆盖 `results/result2.xlsx`，新文件在 `results/recommended_only/variants/uniform56/`。原基础程序及其历史基准输出在 `common/q2_base/`，是活动依赖，不是另一个主结果。
+
+## 「90% 效率」两口径对照
+
+题目只写「充放电效率为 90%」，存在两种解读（往返 0.81 vs 0.90）。
+本问已在两口径下重跑，总费用 14,389,135.08 → 13,910,066.83 元（−3.33%）。
+详见 [efficiency/README.md](efficiency/README.md)；总说明见根目录 [EFFICIENCY.md](../EFFICIENCY.md)。
+
+> `efficiency/results/` 是**定义二**（往返 0.90）的结果；
+> **定义一**（往返 0.81）与本目录 `results/` 逐值相同，不另存副本。

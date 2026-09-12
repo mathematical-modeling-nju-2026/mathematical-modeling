@@ -1,0 +1,19 @@
+{
+  "name": "known_today_price",
+  "days": 334,
+  "report_start": "2025-02-01",
+  "report_end": "2025-12-31",
+  "initial_energy_kwh": 8315.124735378853,
+  "final_energy_kwh": 6000.0,
+  "planned_cost_yuan": 13541704.11792086,
+  "emergency_cost_yuan": 969681.0074198844,
+  "total_cost_yuan": 14511385.125340745,
+  "g_kwh": 21703260.811110534,
+  "c_kwh": 8350090.280172265,
+  "d_kwh": 7517277.572324396,
+  "emergency_kwh": 237823.03970536063,
+  "dump_kwh": 3169081.6480013593,
+  "emergency_slots": 8308,
+  "emergency_days": 332,
+  "objective_assumption": "Current-day prices available at 00:00; tomorrow prices forecast from history"
+}

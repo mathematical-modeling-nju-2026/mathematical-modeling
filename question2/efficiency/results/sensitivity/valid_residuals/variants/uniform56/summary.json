@@ -1,0 +1,18 @@
+{
+  "name": "uniform56",
+  "days": 334,
+  "initial_energy_kwh": 8315.124735378853,
+  "final_energy_kwh": 6000.0,
+  "first_residual_index": 7,
+  "seconds": 37.11374592781067,
+  "planned_cost_yuan": 13011914.129412714,
+  "emergency_cost_yuan": 898152.7038431932,
+  "total_cost_yuan": 13910066.833255906,
+  "g_kwh": 21536104.902933624,
+  "c_kwh": 6709706.972976918,
+  "d_kwh": 6040932.595848585,
+  "emergency_kwh": 239906.65010151273,
+  "dump_kwh": 3168047.6809401396,
+  "h1_cost_yuan": 5790204.336839369,
+  "h2_cost_yuan": 8119862.496416539
+}

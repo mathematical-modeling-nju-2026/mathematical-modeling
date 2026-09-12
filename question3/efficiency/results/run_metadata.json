@@ -1,0 +1,19 @@
+{
+  "source_sha256": {
+    "附件\\附件1.xlsx": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
+    "附件\\附件2.xlsx": "2e95fd446bfafa0d8c59577b5c2e2ea8b3f1def20dde54a3062556f4da9b4c72",
+    "附件\\附件3.xlsx": "8a61b06c52bd0d639a1cc37c61a7d9f5b75edcbca718f64c1bd3498ec9f9d843"
+  },
+  "python": "3.13.7",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "residual_window_days": 56,
+  "first_residual_day": "2025-01-08",
+  "history_load": "sw4/drift5",
+  "history_pv": "t7/drift28",
+  "initialization": "January battery idle at 6000 kWh; all reports start February 1 at 6000",
+  "end_condition": "48h end equals current day start; Dec 31 ends at 6000",
+  "settlement": "p*g0 + 1.5*p*max(q-g0,0) - 0.5*p*max(g0-q,0) + 5*p*emergency",
+  "execution": "Only next issue block is committed; each delivery slot adjusted at most once.",
+  "method": "Empirical binary scenario-tree LP; deterministic next-day tail; receding-horizon execution; heuristic approximation, no global stochastic optimality claim."
+}

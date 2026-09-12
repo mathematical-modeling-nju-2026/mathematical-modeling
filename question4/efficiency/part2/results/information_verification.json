@@ -1,0 +1,80 @@
+{
+  "analytical_price_net_dependence": [
+    {
+      "scenario_prices": [
+        2.0,
+        0.1
+      ],
+      "expected_cost": 18720.0,
+      "computed_cost": 18720.0,
+      "error": 0.0,
+      "pass_check": true
+    },
+    {
+      "scenario_prices": [
+        0.1,
+        2.0
+      ],
+      "expected_cost": 30240.0,
+      "computed_cost": 30240.0,
+      "error": 0.0,
+      "pass_check": true
+    }
+  ],
+  "constant_price_reduces_to_q2": {
+    "objective_difference": 0.0,
+    "pass_check": true
+  },
+  "future_perturbations": [
+    {
+      "day": 31,
+      "date": "2025-02-01",
+      "max_changes": {
+        "net_plan": 0.0,
+        "net_scenarios": 0.0,
+        "weights": 0.0,
+        "plan_price": 0.0,
+        "scenario_price": 0.0,
+        "indices": 0.0,
+        "decisions": 0.0
+      },
+      "forecaster_unchanged": true,
+      "pass_check": true
+    },
+    {
+      "day": 151,
+      "date": "2025-06-01",
+      "max_changes": {
+        "net_plan": 0.0,
+        "net_scenarios": 0.0,
+        "weights": 0.0,
+        "plan_price": 0.0,
+        "scenario_price": 0.0,
+        "indices": 0.0,
+        "decisions": 0.0
+      },
+      "forecaster_unchanged": true,
+      "pass_check": true
+    },
+    {
+      "day": 333,
+      "date": "2025-11-30",
+      "max_changes": {
+        "net_plan": 0.0,
+        "net_scenarios": 0.0,
+        "weights": 0.0,
+        "plan_price": 0.0,
+        "scenario_price": 0.0,
+        "indices": 0.0,
+        "decisions": 0.0
+      },
+      "forecaster_unchanged": true,
+      "pass_check": true
+    }
+  ],
+  "known_today_cannot_read_tomorrow": {
+    "max_decision_change": 0.0,
+    "pass_check": true
+  },
+  "pass_check": true
+}

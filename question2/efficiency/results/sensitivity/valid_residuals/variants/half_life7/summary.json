@@ -1,0 +1,18 @@
+{
+  "name": "half_life7",
+  "days": 334,
+  "initial_energy_kwh": 8315.124735378853,
+  "final_energy_kwh": 6000.0,
+  "first_residual_index": 7,
+  "seconds": 40.49177026748657,
+  "planned_cost_yuan": 13017236.352617584,
+  "emergency_cost_yuan": 947938.8419405326,
+  "total_cost_yuan": 13965175.194558118,
+  "g_kwh": 21545922.12684796,
+  "c_kwh": 6714249.727938079,
+  "d_kwh": 6045021.07531363,
+  "emergency_kwh": 252864.85045933287,
+  "dump_kwh": 3190368.8297161786,
+  "h1_cost_yuan": 5814995.0942180585,
+  "h2_cost_yuan": 8150180.100340057
+}

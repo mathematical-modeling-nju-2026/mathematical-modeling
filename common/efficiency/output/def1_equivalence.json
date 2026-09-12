@@ -1,0 +1,28 @@
+{
+  "question1": {
+    "npz_max_diff": 0.0,
+    "pass_check": true
+  },
+  "question2": {
+    "rows": 48096,
+    "def1_vs_def2_max_diff": 1782.1038534416311,
+    "differ_from_def2": true
+  },
+  "question3": {
+    "rows": 48096,
+    "def1_vs_def2_max_diff": 1828.1488067901055,
+    "differ_from_def2": true
+  },
+  "question4/part2": {
+    "rows": 48096,
+    "def1_vs_def2_max_diff": 5129.6931576010775,
+    "differ_from_def2": true
+  },
+  "question4/part3": {
+    "rows": 48096,
+    "def1_vs_def2_max_diff": 2648.797825638894,
+    "differ_from_def2": true
+  },
+  "note": "def1_side90 的结果目录就是 questionN/results 本身；已另行核验其与仓库原结果逐值相同（差异 0.00e+00），因此不再保存第二份副本。",
+  "pass_check": true
+}

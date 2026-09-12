@@ -1,0 +1,114 @@
+{
+  "efficiency_key": "def2_roundtrip90",
+  "efficiency_label": "定义二：放电量/充电量 = 90%（国标往返口径）",
+  "efficiency_note": "E_t = E_{t-1} + η·c_t − d_t/η, η=√0.9≈0.948683；往返 0.90",
+  "eta_charge": 0.9486832980505138,
+  "eta_discharge": 0.9486832980505138,
+  "eta_roundtrip": 0.9,
+  "checks": {
+    "q2_repriced": {
+      "errors": {
+        "periods": 48096,
+        "energy_recursion_max_error": 4.561684363579843e-12,
+        "continuity_max_error": 0.0,
+        "soc_min_kwh": 1200.0,
+        "soc_max_kwh": 10800.0,
+        "max_charge_kwh": 833.3333333333335,
+        "max_discharge_kwh": 833.3333333333333,
+        "min_flow_kwh": 0.0,
+        "simultaneous_periods": 0,
+        "emergency_max_error": 3.410605131648481e-13,
+        "cost_max_error": 4.547473508864641e-13
+      },
+      "checks": {
+        "energy_recursion_ok": true,
+        "continuity_ok": true,
+        "soc_bounds_ok": true,
+        "power_limits_ok": true,
+        "nonnegative_ok": true,
+        "no_simultaneous": true,
+        "emergency_ok": true,
+        "cost_ok": true
+      },
+      "pass_check": true
+    },
+    "mean_price": {
+      "errors": {
+        "periods": 48096,
+        "energy_recursion_max_error": 4.561684363579843e-12,
+        "continuity_max_error": 0.0,
+        "soc_min_kwh": 1200.0,
+        "soc_max_kwh": 10800.0,
+        "max_charge_kwh": 833.3333333333335,
+        "max_discharge_kwh": 833.3333333333334,
+        "min_flow_kwh": 0.0,
+        "simultaneous_periods": 0,
+        "emergency_max_error": 3.410605131648481e-13,
+        "cost_max_error": 6.821210263296962e-13
+      },
+      "checks": {
+        "energy_recursion_ok": true,
+        "continuity_ok": true,
+        "soc_bounds_ok": true,
+        "power_limits_ok": true,
+        "nonnegative_ok": true,
+        "no_simultaneous": true,
+        "emergency_ok": true,
+        "cost_ok": true
+      },
+      "pass_check": true
+    },
+    "joint_price": {
+      "errors": {
+        "periods": 48096,
+        "energy_recursion_max_error": 4.526157226791838e-12,
+        "continuity_max_error": 0.0,
+        "soc_min_kwh": 1200.0,
+        "soc_max_kwh": 10800.0,
+        "max_charge_kwh": 833.3333333333335,
+        "max_discharge_kwh": 833.3333333333334,
+        "min_flow_kwh": 0.0,
+        "simultaneous_periods": 0,
+        "emergency_max_error": 3.410605131648481e-13,
+        "cost_max_error": 4.547473508864641e-13
+      },
+      "checks": {
+        "energy_recursion_ok": true,
+        "continuity_ok": true,
+        "soc_bounds_ok": true,
+        "power_limits_ok": true,
+        "nonnegative_ok": true,
+        "no_simultaneous": true,
+        "emergency_ok": true,
+        "cost_ok": true
+      },
+      "pass_check": true
+    },
+    "known_today_price": {
+      "errors": {
+        "periods": 48096,
+        "energy_recursion_max_error": 4.547473508864641e-12,
+        "continuity_max_error": 0.0,
+        "soc_min_kwh": 1200.0,
+        "soc_max_kwh": 10800.0,
+        "max_charge_kwh": 833.3333333333335,
+        "max_discharge_kwh": 833.3333333333334,
+        "min_flow_kwh": 0.0,
+        "simultaneous_periods": 0,
+        "emergency_max_error": 3.410605131648481e-13,
+        "cost_max_error": 6.821210263296962e-13
+      },
+      "checks": {
+        "energy_recursion_ok": true,
+        "continuity_ok": true,
+        "soc_bounds_ok": true,
+        "power_limits_ok": true,
+        "nonnegative_ok": true,
+        "no_simultaneous": true,
+        "emergency_ok": true,
+        "cost_ok": true
+      },
+      "pass_check": true
+    }
+  }
+}

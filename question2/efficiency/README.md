@@ -1,58 +1,124 @@
-# 效率口径说明（问题 2–4）
+# 问题2：两种「90% 效率」口径的全年滚动优化
 
-## 现状
+## 1. 歧义来源
 
-用户要求先在**问题 1** 落地两种「90% 效率」口径的对照实现
-（见 `question1/efficiency/`），本目录为问题 2–4 预留的分类骨架，
-**当前尚未实现**，因为：
+题干（附录 1）只写「充放电效率为 90%」，未指明是**哪一侧**的效率。
+两种主流理解会给出**不同的最优调度与不同的费用**：
 
-1. 问题 1 已给出两口径的定量差异（全天购电费相差 1,325.45 元，3.77%）；
-2. 问题 2–4 是全年 334 天滚动优化，单次运行 2–5 分钟，
-   两口径 × 4 条流水线需额外约 30–40 分钟计算；
-3. 需先确认问题 1 的对照结论是否被接受，再决定是否推广。
-
-## 两种口径（与问题 1 一致）
-
-设 $E_t$ 为第 $t$ 段末储电量，$c_t$ 为充电量、$d_t$ 为放电量（均指设备外端）：
-
-| | 定义一（储能侧口径） | 定义二（国标往返口径） |
+| | def1_side90（储能/逆变器侧，仓库原口径） | def2_roundtrip90（GB/T 34131 系国标口径） |
 |---|---|---|
-| 递推式 | $E_t=E_{t-1}+0.9c_t-d_t/0.9$ | $E_t=E_{t-1}+\eta c_t-d_t/\eta$，$\eta=\sqrt{0.9}$ |
-| 单向效率 | $\eta_c=\eta_d=0.9$ | $\eta_c=\eta_d=0.948683$ |
-| 往返效率 | **0.81** | **0.90** |
-| 对应仓库结果 | 现有 `results/`（原口径） | 待生成 |
+| 表述 | 充电效率 90%、放电效率 90% | **放电量 / 充电量 = 90%** |
+| 数学式 | $E_t=E_{t-1}+0.9c_t-d_t/0.9$ | $E_t=E_{t-1}+\eta c_t-d_t/\eta,\ \eta=\sqrt{0.9}$ |
+| 参数 | $\eta_c=\eta_d=0.900000$ | $\eta_c=\eta_d=0.948683$ |
+| **往返效率** | $0.9\times0.9=\mathbf{0.81}$ | $\eta_c\eta_d=\mathbf{0.90}$ |
+| 物理含义 | 充入 1 kWh 电池内只增 0.9；取出 1 kWh 外部只得 0.9 | 充入 1 kWh 最终只能放出 0.9 kWh |
 
-## 待改造的代码位置
+> 采用**对称拆分** $\eta_c=\eta_d=\sqrt{0.9}$，使两侧损耗相同且往返恰为 0.90。
 
-各问的效率参数分散在以下文件，改造时需统一：
+## 2. 实现方式（不修改任何原始代码）
 
-| 流水线 | 文件 | 位置 | 现有实现 |
+原代码把效率写为**模块级全局常量**，且在函数体内读取，因此可在运行前
+**运行期覆盖**，无需复制或改动原文件：
+
+| 文件 | 位置 | 原值 | 覆盖方式 |
 |---|---|---|---|
-| 问题2 | `common/q2_base/run_1439.py` | 第 46 行 | `ETA_C = ETA_D = 0.90` |
-| 问题2 | `common/q2_base/run_1439.py` | 第 145、180 行 | 递推与效率耦合 |
-| 问题2 | `question2/code/verify_window.py` | 第 192 行 | 校验用 `0.9 * c + d / 0.9` |
-| 问题3 | `question3/code/q3_model.py` | 第 12 行 | `ETA = 0.9` |
-| 问题3 | `question3/code/q3_model.py` | 第 149、171、180–181 行 | 递推、互斥清理 |
-| 问题4-2 | `question4/part2/code/q42_model.py` | 复用 Q2 公共模型 | — |
-| 问题4-3 | `question4/part3/code/q3_model.py` | 第 12 行 | `ETA = 0.9` |
+| `common/q2_base/run_1439.py` | 第 46 行 | `ETA_C = ETA_D = 0.90` | 赋新值（LP 在第 145、180 行读取） |
 
-> 注意：`common/q2_base/run_1439.py` 中已有 `ETA_C` / `ETA_D` 两个变量
-> （当前都取 0.90），改为定义二只需把两者同时置为 $\sqrt{0.9}$，
-> 但**互斥清理逻辑**（`q3_model.py:180-181`）中含 `ETA**2`，需一并核对。
-
-## 建议的落地方式
-
-沿用问题 1 的模式：
-
-```
-question2/efficiency/{def1_side90,def2_roundtrip90}/results/
-question3/efficiency/{def1_side90,def2_roundtrip90}/results/
-question4/efficiency/{def1_side90,def2_roundtrip90}/{part2,part3}/results/
+```python
+# run_q2_eff.py 的核心逻辑
+rolling = load_module(Q2_CODE/"rolling_window.py", "rolling_window")
+apply_to_run1439(rolling.base, args.eff)      # ← 覆盖 ETA_C / ETA_D
+run_exp = load_module(Q2_CODE/"run_experiment.py", "run_experiment")
+run_exp.main()                                 # ← 复用全部原逻辑
 ```
 
-每条流水线通过环境变量或命令行参数选择口径，结果写入对应子目录，
-**不覆盖现有 `results/`**。
+覆盖率：`ETA_C`/`ETA_D` 覆盖后，LP 递推（145 行）与互斥清理（180 行）
+自动使用新效率；预测器与效率无关，故无需重载。
 
-## 参考
+## 3. 目录结构
 
-问题 1 的完整实现与对照结论见 `question1/efficiency/README.md`。
+```
+question2/
+├── code/                        原模型（未改动，def1 的真身）
+├── results/                     ← def1（往返 0.81）的结果，不另存副本
+└── efficiency/
+    ├── README.md                本说明
+    ├── run_log.txt              运行日志
+    ├── code/
+    │   ├── run_q2_eff.py        主驱动（--eff 选口径）
+    │   ├── backfill_q2_eff.py   补校验/发布/指定日期表
+    │   ├── rolling_window.py    指纹比对用副本（内容同 question2/code/）
+    │   └── run_experiment.py    同上
+    └── results/                 ← def2（往返 0.90）的结果
+```
+
+**def1 不需要副本**：它与 `question2/results/` 逐值相同
+（明细 48,096 行差异 `0.00e+00`），因此 `run_q2_eff.py --eff def1_side90`
+直接写回 `question2/results/`。路径统一由 `eta_common.results_dir()` 解析。
+
+`efficiency/results/` 与 `question2/results/` **同构**：`result2.xlsx`、
+`daily_summary.csv`、`schedule_detail.csv.gz`、`summary.json`、`comparison.csv`、
+`target_table*.csv`、`variants/*`、`sensitivity/valid_residuals/*`。
+
+**原有代码与 `question2/results/` 保持不变。**
+
+## 4. 复现方法
+
+```bash
+cd question2/efficiency/code
+
+python -X utf8 run_q2_eff.py --eff def1_side90        # 写回 question2/results/
+python -X utf8 run_q2_eff.py --eff def2_roundtrip90   # 写入 efficiency/results/
+
+# 补齐校验 JSON、发布文件与题目指定日期表
+python -X utf8 backfill_q2_eff.py --eff def2_roundtrip90
+```
+
+四问汇总对照统一用：`python common/efficiency/compare.py`
+
+单次运行约 **7 分钟**（主组 7 个候选 + 有效残差组 3 个候选，各 334 天）。
+加 `--skip-extended` 可跳过短窗口扩展组以省时。
+
+驱动脚本在每次运行后自动做**独立校验**（用实际 $\eta_c/\eta_d$ 复算 SOC 递推、
+能量平衡、结算、费用），结果写入 `efficiency_verification.json`。
+
+## 5. 结果对照
+
+见 `comparison.txt`。
+
+### 5.1 口径复现性校验（关键）
+
+| 口径 | 主组 56 天等权（元） | 有效残差 56 天等权（元） |
+|---|---:|---:|
+| **def1_side90** | **14,401,996.98** | **14,389,135.08** |
+| 仓库原结果 | 14,401,996.98 | 14,389,135.08 |
+| 是否一致 | ✓ 逐值一致 | ✓ 逐值一致 |
+
+def1 与仓库原有结果**完全一致**（明细 48,096 行差异 `0.00e+00`），
+证明运行期覆盖机制无副作用。
+
+### 5.2 两口径差异
+
+| 指标 | def1（往返 0.81） | def2（往返 0.90） | 差异 |
+|---|---:|---:|---:|
+| 有效残差 56 天等权总费用 | 14,389,135.08 | 13,910,066.83 | −479,068.25 (−3.33%) |
+
+> 完整数值见 `common/efficiency/output/comparison.md`。
+> 与问题 1 的规律一致：往返效率提高 → 损耗变小 → 费用下降。
+
+## 6. 校验
+
+两口径下均通过全部检查项：
+
+- 逐时段 SOC 递推（用实际 $\eta_c/\eta_d$ 复算，最大残差 ~1e-12）
+- 跨时段 SOC 连续性、初末状态（0:00 与年末均为 6000 kWh）
+- SOC ∈ [1200, 10800]，充放电 ≤ 833.33 kWh/段
+- 同一时段不同时充放电（违反时段数 = 0）
+- 逐段能量平衡、紧急购电、结算费用
+- 实际净负载与电价取自附件，独立复算总费用
+
+## 7. 与其他问的关系
+
+`common/q2_base/run_1439.py` 被**问题 2 与问题 4-2 共用**。
+本目录的覆盖仅在**本进程内生效**，不会影响其他问的运行；
+问题 4-2 的同口径结果见 `question4/efficiency/part2/`。

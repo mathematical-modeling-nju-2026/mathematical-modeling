@@ -1,0 +1,10 @@
+{
+  "efficiency_key": "def2_roundtrip90",
+  "efficiency_label": "定义二：放电量/充电量 = 90%（国标往返口径）",
+  "efficiency_note": "E_t = E_{t-1} + η·c_t − d_t/η, η=√0.9≈0.948683；往返 0.90",
+  "eta_charge": 0.9486832980505138,
+  "eta_discharge": 0.9486832980505138,
+  "eta_roundtrip": 0.9,
+  "total_cost_yuan": 14579714.64539453,
+  "emergency_kwh": 376154.04442840547
+}
