@@ -7,7 +7,7 @@
 
 效率口径
     def1_side90        ETA = 0.90      往返 0.81（仓库原口径）
-    def2_roundtrip90   ETA = √0.90     往返 0.90（国标口径）
+    def2_roundtrip90   ETA = √0.90     往返 0.90（敏感性口径）
 
     注：q3_model 用 `ETA**2` 表示往返效率清理同时充放电，
     对称拆分下 (√0.9)**2 = 0.9 恰好等于往返效率，故只需覆盖 ETA 一个量。
@@ -36,7 +36,15 @@ sys.path.insert(0, str(ETA_DIR))
 sys.path.insert(0, str(Q3_CODE))
 
 from eta_common import (apply_to_q3_model, check_charge_schedule,  # noqa: E402
-                        eff_metadata, get_eff, load_verify_with_eta, results_dir)
+                        eff_metadata as _base_eff_metadata, get_eff, load_verify_with_eta, results_dir)
+
+
+def eff_metadata(key):
+    """Do not present the round-trip interpretation as a standards requirement."""
+    meta = _base_eff_metadata(key)
+    if key == "def2_roundtrip90":
+        meta["efficiency_label"] = "敏感性定义：放电量/充电量 = 90%（对称拆分的往返效率口径）"
+    return meta
 
 
 def load_module(path, name):

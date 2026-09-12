@@ -828,7 +828,7 @@
   },
   "efficiency": {
     "efficiency_key": "def2_roundtrip90",
-    "efficiency_label": "定义二：放电量/充电量 = 90%（国标往返口径）",
+    "efficiency_label": "敏感性定义：放电量/充电量 = 90%（对称拆分的往返效率口径）",
     "efficiency_note": "E_t = E_{t-1} + η·c_t − d_t/η, η=√0.9≈0.948683；往返 0.90",
     "eta_charge": 0.9486832980505138,
     "eta_discharge": 0.9486832980505138,

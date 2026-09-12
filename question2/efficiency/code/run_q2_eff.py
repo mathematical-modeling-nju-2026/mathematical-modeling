@@ -7,7 +7,7 @@
 
 效率口径
     def1_side90        η_c = η_d = 0.90      往返 0.81（仓库原口径）
-    def2_roundtrip90   η_c = η_d = √0.90     往返 0.90（国标口径）
+    def2_roundtrip90   η_c = η_d = √0.90     往返 0.90（敏感性口径）
 
 用法
     python run_q2_eff.py --eff def1_side90
@@ -35,8 +35,16 @@ ETA_DIR = REPO / "common" / "efficiency"
 sys.path.insert(0, str(ETA_DIR))
 sys.path.insert(0, str(Q2_CODE))
 
-from eta_common import (apply_to_run1439, check_q2_schedule, eff_metadata,  # noqa: E402
+from eta_common import (apply_to_run1439, check_q2_schedule, eff_metadata as _base_eff_metadata,  # noqa: E402
                         get_eff, results_dir)
+
+
+def eff_metadata(key):
+    """Keep the alternative definition explicitly as sensitivity analysis."""
+    meta = _base_eff_metadata(key)
+    if key == "def2_roundtrip90":
+        meta["efficiency_label"] = "敏感性定义：放电量/充电量 = 90%（对称拆分的往返效率口径）"
+    return meta
 
 
 def load_module(path, name):

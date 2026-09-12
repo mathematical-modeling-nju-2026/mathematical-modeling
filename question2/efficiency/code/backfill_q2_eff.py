@@ -35,8 +35,15 @@ ETA_DIR = REPO / "common" / "efficiency"
 sys.path.insert(0, str(ETA_DIR))
 sys.path.insert(0, str(Q2_CODE))
 
-from eta_common import (eff_metadata, get_eff,  # noqa: E402
+from eta_common import (eff_metadata as _base_eff_metadata, get_eff,  # noqa: E402
                         load_verify_window_with_eta, results_dir)
+
+
+def eff_metadata(key):
+    meta = _base_eff_metadata(key)
+    if key == "def2_roundtrip90":
+        meta["efficiency_label"] = "敏感性定义：放电量/充电量 = 90%（对称拆分的往返效率口径）"
+    return meta
 
 
 def load_module(path, name):

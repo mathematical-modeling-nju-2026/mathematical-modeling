@@ -43,8 +43,16 @@ sys.path.insert(0, str(ETA_DIR))
 sys.path.insert(0, str(Q2_CODE))
 sys.path.insert(0, str(P2_CODE))
 
-from eta_common import apply_to_run1439, check_q2_schedule, eff_metadata  # noqa: E402
+from eta_common import apply_to_run1439, check_q2_schedule, eff_metadata as _base_eff_metadata  # noqa: E402
 from eta_common import get_eff, make_solve_horizon, results_dir  # noqa: E402
+
+
+def eff_metadata(key):
+    """Label the round-trip interpretation as a sensitivity, not a standard."""
+    meta = _base_eff_metadata(key)
+    if key == "def2_roundtrip90":
+        meta["efficiency_label"] = "敏感性定义：放电量/充电量 = 90%（对称拆分的往返效率口径）"
+    return meta
 
 
 def load_module(path, name):

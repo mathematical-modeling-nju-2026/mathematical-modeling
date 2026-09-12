@@ -38,9 +38,16 @@ for p in (ETA_DIR, Q2_CODE, P2_CODE):
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
 
-from eta_common import (apply_to_run1439, eff_metadata, get_eff,  # noqa: E402
+from eta_common import (apply_to_run1439, eff_metadata as _base_eff_metadata, get_eff,  # noqa: E402
                         load_verify_q42_with_eta, make_solve_horizon,
                         results_dir)
+
+
+def eff_metadata(key):
+    meta = _base_eff_metadata(key)
+    if key == "def2_roundtrip90":
+        meta["efficiency_label"] = "敏感性定义：放电量/充电量 = 90%（对称拆分的往返效率口径）"
+    return meta
 
 
 def load_module(path, name):

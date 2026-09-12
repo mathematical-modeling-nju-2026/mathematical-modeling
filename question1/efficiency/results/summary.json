@@ -1,6 +1,6 @@
 {
   "efficiency_key": "def2_roundtrip90",
-  "efficiency_description": "定义二：放电量/充电量 = 90%（国标往返口径），对称拆分 sqrt(0.9)≈0.948683",
+  "efficiency_description": "敏感性定义：将90%解释为往返效率，对称拆分 sqrt(0.9)≈0.948683",
   "eta_charge": 0.9486832980505138,
   "eta_discharge": 0.9486832980505138,
   "eta_roundtrip": 0.9,

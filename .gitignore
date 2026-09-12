@@ -11,3 +11,4 @@ _scratch/
 *.bak
 *.tmp
 ~$*
+question*/efficiency/*/results/*.xlsx
