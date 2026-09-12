@@ -43,7 +43,9 @@
 
 % ---------- 版式参数 ----------
 \linespread{1.28}                          % 行距
-\setlength{\parindent}{2em}                % 首行缩进
+% 首行缩进两个汉字宽（\ccwd = 当前中文字符宽），段落间距为 0
+\setlength{\parindent}{2\ccwd}
+\setlength{\parskip}{0pt}
 \captionsetup{font=small,labelsep=quad}
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
