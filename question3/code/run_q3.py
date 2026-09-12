@@ -16,6 +16,12 @@ from q3_data import HERE, T, load_data, label, intervals
 from q3_forecast import Forecaster
 from q3_model import solve, E_INIT
 
+# 附件5 result3.xlsx 模板（用于取原表头，保证导出与模板逐列一致）
+_ETA_DIR = Path(__file__).resolve().parents[2] / "common" / "efficiency"
+if str(_ETA_DIR) not in sys.path:
+    sys.path.insert(0, str(_ETA_DIR))
+from template_layout import TPL3 as TPL  # noqa: E402
+
 MODES = {
     'B_aligned': ('history', (0,)),
     'only_0': ('fusion', (0,)),
@@ -101,19 +107,26 @@ def export_excel(detail, days, path):
     import openpyxl
     from openpyxl.styles import Font, Alignment
     from openpyxl.comments import Comment
+    import sys as _sys
+    _sys.path.insert(0, str(Path(__file__).resolve().parents[2]
+                            / "common" / "efficiency"))
+    from template_layout import block_labels, circular, template_labels
     book = openpyxl.Workbook()
     book.remove(book.active)
-    headers = [label(t)+'-'+label(t+1) for t in range(T)]
+    # 模板表头（左端点，首格 0:10-0:20）+ 环形映射 out[i]=data[(i+1)%144]
+    headers = template_labels(TPL, '计划购电量')
+    blocks6 = block_labels(TPL, '充放电量')
     for name, col, cost in [('计划购电量','original_kwh','planned_cost_yuan'),
                             ('调整购电量','adjusted_kwh','adjustment_net_yuan')]:
         ws = book.create_sheet(name)
         ws.append(['日期\\时间']+headers+['全天购电量','全天购电费'])
-        ws['B1'].comment = Comment('原模板时段整体后移10分钟；本文件按附件数据区间末标签还原，第一段为00:00—00:10。', 'Q3')
         if col == 'adjusted_kwh':
             ws.cell(1,147).comment = Comment('此列为相对0点计划的净调整费用：1.5p×增购−0.5p×减购；表内购电量为调整后总量。', 'Q3')
         for date, group in detail.groupby('date',sort=False):
             row = days.loc[days.date == date].iloc[0]
-            ws.append([datetime.fromisoformat(date)]+group[col].tolist()+[group[col].sum(),float(row[cost])])
+            vals = circular(group[col].to_numpy(float))
+            ws.append([datetime.fromisoformat(date)]+[round(v,6) for v in vals]
+                      +[group[col].sum(),float(row[cost])])
         ws.freeze_panes='B2'
         ws.column_dimensions['A'].width=13
     ws=book.create_sheet('充放电量')
@@ -122,7 +135,7 @@ def export_excel(detail, days, path):
         for b in range(6):
             g=group.iloc[b*24:(b+1)*24]
             ws.append([datetime.fromisoformat(date) if b==0 else None,
-                       label(b*24)+'-'+label((b+1)*24),g.charge_kwh.sum(),g.discharge_kwh.sum(),
+                       blocks6[b],g.charge_kwh.sum(),g.discharge_kwh.sum(),
                        '0:00' if b==0 else ('24:00' if b==1 else None),
                        group.iloc[0].energy_before_kwh if b==0 else (group.iloc[-1].energy_after_kwh if b==1 else None)])
     ws=book.create_sheet('紧急购电量')

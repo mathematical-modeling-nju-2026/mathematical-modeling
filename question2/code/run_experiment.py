@@ -14,6 +14,13 @@ import numpy as np
 import pandas as pd
 from rolling_window import HERE, SOURCE, Inputs, BY_NAME, PRIMARY_NAMES, CANDIDATES, prequential_scores, choose_week
 
+# 附件5 模板的表头与「环形映射」规则（见 common/efficiency/template_layout.py）
+_ETA_DIR = Path(__file__).resolve().parents[2] / "common" / "efficiency"
+if str(_ETA_DIR) not in sys.path:
+    sys.path.insert(0, str(_ETA_DIR))
+from template_layout import (TPL2, block_labels, circular,  # noqa: E402
+                             template_labels)
+
 
 def label(slot):
     return '24:00' if slot == 144 else f'{slot//6:02d}:{slot%6*10:02d}'
@@ -80,18 +87,23 @@ def simulate(inputs, name, initial, scores=None, names=PRIMARY_NAMES, first_resi
 def export_workbook(detail, daily, path):
     import openpyxl
     from openpyxl.styles import Font
-    from openpyxl.comments import Comment
+    # 模板表头（左端点，首格 0:10-0:20、末格 0:00+1-0:10+1）+ 环形映射：
+    # 模板第 i 格 ← 内部时段 (i+1) % 144。依据官方问题一 make_result1.py。
+    from template_layout import template_labels, circular, block_labels, TPL2
+    tpl_labels = template_labels(TPL2, '计划购电量')
+    blocks6 = block_labels(TPL2, '充放电量')
     w=openpyxl.Workbook(); ws=w.active; ws.title='计划购电量'
-    ws.append(['日期\\时间']+[label(t)+'-'+label(t+1) for t in range(144)]+['全天购电量','全天购电费'])
-    ws['B1'].comment=Comment('附件功率按区间末时刻解释；修正原模板整体后移十分钟的时间标签。','Window experiment')
+    ws.append(['日期\\时间']+tpl_labels+['全天购电量','全天购电费'])
     for date,g in detail.groupby('date',sort=False):
-        ws.append([datetime.fromisoformat(date)]+g.g_kwh.tolist()+[g.g_kwh.sum(),g.planned_cost_yuan.sum()])
+        vals = circular(g.g_kwh.to_numpy(float))
+        ws.append([datetime.fromisoformat(date)]+[round(v,6) for v in vals]
+                  +[g.g_kwh.sum(),g.planned_cost_yuan.sum()])
     ws.freeze_panes='B2'
     ws=w.create_sheet('充放电量'); ws.append(['日期','时间段','充电量','放电量','时刻','储电量'])
     for date,g in detail.groupby('date',sort=False):
         for b in range(6):
             block=g.iloc[b*24:(b+1)*24]
-            ws.append([datetime.fromisoformat(date) if b==0 else None,label(b*24)+'-'+label((b+1)*24),
+            ws.append([datetime.fromisoformat(date) if b==0 else None,blocks6[b],
                        block.c_kwh.sum(),block.d_kwh.sum(),'0:00' if b==0 else ('24:00' if b==1 else None),
                        g.iloc[0].energy_before_kwh if b==0 else (g.iloc[-1].energy_after_kwh if b==1 else None)])
     ws=w.create_sheet('紧急购电量'); ws.append(['日期','购电时间段','购电量'])

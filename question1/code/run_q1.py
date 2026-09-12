@@ -143,30 +143,40 @@ def ETA_LOSS(sol):
 
 
 def export_xlsx(labels, sol, obj, path):
+    """按附件5 result1.xlsx 模板导出（表头复用模板 + 环形映射）。
+
+    模板标签为左端点且首格 0:10-0:20、末格 0:00+1-0:10+1，与内部时段
+    相差一格；故模板第 i 行 ← 内部时段 (i+1) % 144。
+    依据官方 CUMCM2026Problems/C题/问题一/make_result1.py。
+    """
     import openpyxl
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]
+                          / "common" / "efficiency"))
+    from template_layout import TPL1, block_labels, template_labels
+    tpl_labels = template_labels(TPL1, "计划购电量")
+    blocks6 = block_labels(TPL1, "充放电量")
+
     wb = openpyxl.Workbook()
 
     ws = wb.active
     ws.title = "计划购电量"
-    ws.append(["时间", "购电量(kWh)"])
-    for lab, v in zip(labels, sol["g"]):
-        ws.append([lab, round(float(v), 6)])
-    ws.append(["全天购电量", round(float(sol["g"].sum()), 6)])
-    ws.append(["全天购电费(元)", round(float(obj), 6)])
+    ws.append(["时间段", "购电量"])
+    for i, lab in enumerate(tpl_labels):
+        ws.append([lab, round(float(sol["g"][(i + 1) % 144]), 6)])
     ws.column_dimensions["A"].width = 16
     ws.column_dimensions["B"].width = 16
 
     ws2 = wb.create_sheet("充放电量")
-    ws2.append(["时间段", "充电量(kWh)", "放电量(kWh)"])
-    for b in TABLE2_BLOCKS:
-        t0, t1 = block_index(b)
-        ws2.append([b, round(float(sol["c"][t0 - 1:t1].sum()), 6),
-                    round(float(sol["d"][t0 - 1:t1].sum()), 6)])
-    ws2.append(["0:00储电量", E_INIT])
-    ws2.append(["24:00储电量", round(float(sol["E"][-1]), 6)])
-    ws2.column_dimensions["A"].width = 16
-    ws2.column_dimensions["B"].width = 16
-    ws2.column_dimensions["C"].width = 16
+    ws2.append(["时间段", "充电量", "放电量", "时刻", "储电量"])
+    for b in range(6):
+        ws2.append([blocks6[b],
+                    round(float(sol["c"][b * 24:(b + 1) * 24].sum()), 6),
+                    round(float(sol["d"][b * 24:(b + 1) * 24].sum()), 6),
+                    "0:00" if b == 0 else ("24:00" if b == 1 else None),
+                    E_INIT if b == 0 else
+                    (round(float(sol["E"][-1]), 6) if b == 1 else None)])
+    for col, wd in zip("ABCDE", (16, 16, 16, 10, 16)):
+        ws2.column_dimensions[col].width = wd
 
     wb.save(path)
 
