@@ -110,7 +110,12 @@ def build_lp(price, load, pv):
     lb[E], ub[E] = E_MIN, E_MAX
     ub[C] = CAP
     ub[D] = CAP
-    ub[W] = pv                            # 弃光不超过光伏出力
+    # 弃光 w 只设下界 0，不设上界（与问题二/三的松弛变量口径统一）。
+    # 说明：平衡为等式 g+V+d = L+c+w ⇒ w = g+d-c-(L-V)；
+    #   目标只惩罚 g，故若最优解出现 w > V（即净供给超过负载），
+    #   可令 g←g-δ、w←w-δ 使平衡不变而费用严格下降（p>0），与最优性矛盾。
+    #   ⇒ 最优解自动满足 w <= V，显式上界冗余。
+    ub[W] = np.inf
     lb[W] = 0.0
 
     return c_obj, A_eq.tocsr(), b_eq, list(zip(lb, ub))
@@ -173,7 +178,8 @@ def solve_milp(price, load, pv):
     lb[E], ub[E] = E_MIN, E_MAX
     ub[C] = CAP
     ub[D] = CAP
-    ub[W] = pv
+    # 同 build_lp：不给 w 设上界（最优解自动满足 w<=V，见该函数注释）
+    ub[W] = np.inf
     ub[Z] = 1.0
 
     integrality = np.zeros(n + T)

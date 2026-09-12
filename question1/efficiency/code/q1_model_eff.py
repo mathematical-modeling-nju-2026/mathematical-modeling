@@ -163,7 +163,9 @@ def build_lp(price, load, pv):
     lb[E], ub[E] = E_MIN, E_MAX
     ub[C] = CAP
     ub[D] = CAP
-    ub[W] = pv                            # 弃光不超过光伏出力
+    # 弃光 w 只设下界 0，不设上界（与问题二/三的松弛变量口径统一）。
+    # 平衡为等式，目标只惩罚 g，故最优解自动满足 w<=V，显式上界冗余。
+    ub[W] = np.inf
     lb[W] = 0.0
 
     return c_obj, A_eq.tocsr(), b_eq, list(zip(lb, ub))
@@ -227,7 +229,8 @@ def solve_milp(price, load, pv):
     lb[E], ub[E] = E_MIN, E_MAX
     ub[C] = CAP
     ub[D] = CAP
-    ub[W] = pv
+    # 同 build_lp：不给 w 设上界
+    ub[W] = np.inf
     ub[Z] = 1.0
 
     integrality = np.zeros(n + T)
