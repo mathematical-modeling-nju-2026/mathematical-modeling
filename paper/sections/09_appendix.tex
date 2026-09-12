@@ -87,7 +87,7 @@ Python   & 3.12 / 3.13 \\
 \end{tabular}
 \end{table}
 
-\noindent\textbf{复现步骤}（在仓库根目录执行）：
+\textbf{复现步骤}（在仓库根目录执行）：
 
 \begin{verbatim}
 python -m pip install -r requirements.txt
@@ -108,7 +108,7 @@ python -X utf8 question4/part2/code/run_q42.py --primary joint_price
 python -X utf8 question4/part3/code/run_q3.py --mode all --out reproduced
 \end{verbatim}
 
-\noindent\textbf{说明}：
+\textbf{说明}：
 \begin{itemize}[itemsep=2pt,topsep=3pt]
   \item 各脚本内部路径均相对于文件位置，从任意工作目录用脚本绝对路径启动均可。
   \item 问题二\textbf{无参数默认运行的是原始残差口径候选}，
@@ -233,7 +233,7 @@ Excel 反读          & 读回结果文件与内部数组一致 & 通过 \\
 \end{tabular}
 \end{table}
 
-\noindent\textbf{信息扰动测试的具体做法}（以问题三为例）：
+\textbf{信息扰动测试的具体做法}（以问题三为例）：
 在 2 月 1 日、6 月 21 日、12 月 21 日的四个发布时刻，
 \textbf{修改当天及未来的全部实际值与未发布预报}，重建预测、残差、融合权重、场景树与 LP，
 检查\textbf{当前的预测结果与控制量是否保持不变}。结果显示决策完全不变，

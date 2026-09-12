@@ -65,7 +65,7 @@ $w_s$ 为场景权重。每天在 48 h 窗口上求解如下两阶段随机规�
 &\text{（容量与功率）}\quad 1200\le E_t\le 10800,\quad 0\le c_t,d_t\le \frac{5000}{6},\quad g_t\ge0. \label{eq:q2-cap}
 \end{align}
 
-\noindent\textbf{模型解读：}
+\textbf{模型解读：}
 \begin{itemize}[itemsep=2pt,topsep=3pt]
   \item 约束 \eqref{eq:q2-floor} 是\textbf{不等式}而非等式：计划净供给不低于点预测即可，
         允许“多买”。这一点至关重要：它使计划量可以落在“80\% 分位”而非均值上，
@@ -112,7 +112,7 @@ N_{s,t}=\hat N_{d,t}+r_{s,t},\qquad r_{s,t}=N_{s,t}^{\text{hist}}-\hat N_{s,t}^{
 \end{equation}
 其中 $s$ 取最近 56 个已结束的历史日，\textbf{等权} $w_s=1/56$。
 
-\noindent\textbf{关键改进：剔除回退期残差。}
+\textbf{关键改进：剔除回退期残差。}
 负载内核依赖“同星期几”的历史，而 1 月 1--7 日不足一周，
 此时只能使用附件 1 的典型日曲线作\textbf{回退预测}。
 这类回退预测的误差口径与 1 月 8 日之后的正常预测\textbf{不一致}，
@@ -157,7 +157,7 @@ N_{s,t}=\hat N_{d,t}+r_{s,t},\qquad r_{s,t}=N_{s,t}^{\text{hist}}-\hat N_{s,t}^{
 \end{tabular}
 \end{table}
 
-\noindent\textbf{结论}：短窗口与指数加权\textbf{均无稳定收益}（多数反而变差），
+\textbf{结论}：短窗口与指数加权\textbf{均无稳定收益}（多数反而变差），
 而剔除回退残差带来 $12\,861.89$ 元的改善。
 其中 $28$ 天半衰期在统计期的改善主要来自 2 月（$-12\,638.73$ 元），
 3--12 月合计反而增加 $2\,021.86$ 元，说明它捕获的是\textbf{启动阶段效应}而非全年适应能力。
@@ -219,7 +219,7 @@ C=\sum_{d}\sum_t\bigl[p_tg_{d,t}+5p_te_{d,t}\bigr].
 \end{tabular}
 \end{table}
 
-\noindent 全年计划购电量 $22\,098\,240.82\kw$，紧急购电量 $246\,063.25\kw$。
+全年计划购电量 $22\,098\,240.82\kw$，紧急购电量 $246\,063.25\kw$。
 初始储电量 $8550\kw$（1 月预热后），年末回到 $6000\kw$。
 
 \begin{figure}[H]

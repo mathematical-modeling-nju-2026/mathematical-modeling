@@ -48,30 +48,30 @@ $E_t$ & 第 $t$ 段末储能电量（决策） & kWh \\
 
 约束条件包括五组：
 
-\noindent\textbf{(1) 功率平衡}（供给侧 $=$ 需求侧）：
+\textbf{(1) 功率平衡}（供给侧 $=$ 需求侧）：
 \begin{equation}
 g_t+V_t+d_t=L_t+c_t+w_t
 \label{eq:q1-balance}
 \end{equation}
 其中 $w_t$ 为弃光量，故外购电与光伏之和，加上电池放电，恰好满足负载与电池充电。
 
-\noindent\textbf{(2) 弃光限幅}：
+\textbf{(2) 弃光限幅}：
 \begin{equation}
 0\le w_t\le V_t
 \end{equation}
 
-\noindent\textbf{(3) 储能电量递推}（注意充电乘效率、放电除效率）：
+\textbf{(3) 储能电量递推}（注意充电乘效率、放电除效率）：
 \begin{equation}
 E_t=E_{t-1}+0.9\,c_t-\frac{d_t}{0.9},\qquad t=1,\dots,144
 \label{eq:q1-soc}
 \end{equation}
 
-\noindent\textbf{(4) 储能容量与功率约束}：
+\textbf{(4) 储能容量与功率约束}：
 \begin{equation}
 1200\le E_t\le 10800,\qquad 0\le c_t\le \frac{5000}{6},\qquad 0\le d_t\le \frac{5000}{6}
 \end{equation}
 
-\noindent\textbf{(5) 非负与循环条件}：
+\textbf{(5) 非负与循环条件}：
 \begin{equation}
 g_t\ge 0,\qquad E_0=E_{144}=6000
 \label{eq:q1-cycle}
@@ -107,11 +107,11 @@ g_t\ge 0,\qquad E_0=E_{144}=6000
 这与最优性矛盾。故最优解中必不存在“该时段有购电且同时充放电”的情形。
 \end{quote}
 
-\noindent\textbf{经济解释}：往返效率 $0.81<1$ 意味着“买 1 度电只有 0.81 度能存进电池再取出”。
+\textbf{经济解释}：往返效率 $0.81<1$ 意味着“买 1 度电只有 0.81 度能存进电池再取出”。
 当该时段仍在从外网购电时，把充放电的这部分对冲掉，等价于\textbf{少买一点电、同时少损耗一点}，
 而负载供应不受影响——因此必然更省钱。
 
-\noindent\textbf{验证}：本实例中 LP 最优解的 144 个时段\textbf{全部满足 $c_td_t=0$}，
+\textbf{验证}：本实例中 LP 最优解的 144 个时段\textbf{全部满足 $c_td_t=0$}，
 无需任何后处理，故 LP 松弛是紧的。求解 MILP 作为对照，两者目标值完全相同
 （$35\,126.95$ 元，差 $0.000000$），从数值上证实了上述证明。
 
@@ -131,7 +131,7 @@ g_t\ge 0,\qquad E_0=E_{144}=6000
 \end{tabular}
 \end{table}
 
-\noindent 经济性校验：充电加权均价 $0.4930$ 元/kWh，放电加权均价 $1.1376$ 元/kWh，
+经济性校验：充电加权均价 $0.4930$ 元/kWh，放电加权均价 $1.1376$ 元/kWh，
 比值 $2.31$，高于盈亏平衡点 $1/0.81=1.235$，故储能套利有正收益。
 
 \subsection{收益来源分解}
@@ -173,11 +173,11 @@ g_t\ge 0,\qquad E_0=E_{144}=6000
 \end{tabular}
 \end{table}
 
-\noindent\textbf{为何弃光为 0？}光伏总量 $55\,482.84\kw$ 全部被利用，
+\textbf{为何弃光为 0？}光伏总量 $55\,482.84\kw$ 全部被利用，
 其中一部分直接供给负载、一部分存入电池。这说明在本日的“光伏—负载—电价”组合下，
 电池容量足以吸收全部余电，储能的边际价值主要体现在套利而非消纳。
 
-\noindent\textbf{为何充放电发生在这些时段？}附件 1 的电价并非简单的“两段式”，
+\textbf{为何充放电发生在这些时段？}附件 1 的电价并非简单的“两段式”，
 而是呈现\textbf{三段特征}：
 
 \begin{table}[H]
