@@ -1,0 +1,230 @@
+﻿% ==================== 四、问题二 ====================
+\section{问题二：滚动随机日前调度}
+
+\subsection{问题分析：报童结构的识别}
+
+问题二在每天 $0$:00 制定当天的计划购电策略，而负载与光伏的实际值未知。
+题面给出两条关键计费规则：
+
+\begin{quote}
+\textit{"微网提供的电能不可低于小区负载，如果低于负载，需向外网紧急购电，
+其电价是交易时刻电价的 5 倍。除紧急购电费用外，其他时间段的购电费用均按计划购电量计算。"}
+\end{quote}
+
+第二条规则意味着：\textbf{计划购电量照付，用不完不退}。于是单时段决策呈现出典型的
+\textbf{报童模型}结构：计划量过高的代价是"多付了钱"，边际成本为电价 $p$；
+计划量过低的代价是"缺额须按 $5p$ 补救"，边际成本为 $4p$。最优计划量应满足临界分位数
+
+\begin{equation}
+F^*=\frac{c_u}{c_o+c_u}=\frac{4p}{p+4p}=\frac{4}{5}=0.80,
+\label{eq:newsvendor}
+\end{equation}
+
+其中 $c_o=p$ 为过量成本，$c_u=4p$ 为缺货成本。\textbf{即计划购电量应取净负载分布的 80\% 分位，
+而非期望值（50\% 分位）。}这一结论解释了为何"按点预测制定计划"会系统性低估购电量、
+进而产生大量昂贵的紧急购电。
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.95,every node/.style={font=\small}]
+  % 坐标轴
+  \draw[->] (0,0) -- (7.2,0) node[right]{计划量 $g$};
+  \draw[->] (0,0) -- (0,3.6) node[above]{成本};
+  % 过量成本线
+  \draw[thick,blue] (0,2.6) -- (3.4,0.9);
+  \node[blue] at (1.6,2.35) {$c_o=p$ （多买）};
+  % 缺货成本线
+  \draw[thick,red] (3.4,0.9) -- (6.8,3.3);
+  \node[red] at (5.5,2.9) {$c_u=4p$ （少买）};
+  % 最优点
+  \fill (3.4,0.9) circle (2.2pt);
+  \draw[dashed] (3.4,0.9) -- (3.4,0) node[below]{$F^*=0.80$};
+  \node at (3.4,0.35) {};
+\end{tikzpicture}
+\caption{报童结构示意：最优计划量位于 $80\%$ 分位，而非均值}
+\label{fig:newsvendor}
+\end{figure}
+
+\subsection{两阶段随机规划模型}
+
+设 $\hat N_t$ 为净负载点预测（kWh/段），$\{N_{s,t}\}_{s=1}^{S}$ 为历史残差构造的场景，
+$w_s$ 为场景权重。每天在 48 h 窗口上求解如下两阶段随机规划：
+
+\begin{equation}
+\min\ J_2=\underbrace{\sum_{t\in 48h} p_tg_t}_{\text{计划购电费}}
++\underbrace{5\sum_{s}w_s\sum_{t\in \text{当天}} p_t\,e_{s,t}}_{\text{期望紧急购电费}}
+\label{eq:q2-obj}
+\end{equation}
+
+约束为：
+
+\begin{align}
+&\text{（计划净供给下界）}\quad g_t+d_t-c_t\ \ge\ \hat N_t, \label{eq:q2-floor}\\
+&\text{（场景缺口兜底）}\quad g_t+d_t-c_t+e_{s,t}\ \ge\ N_{s,t},\qquad e_{s,t}\ge 0, \label{eq:q2-scen}\\
+&\text{（SOC 递推）}\quad E_t=E_{t-1}+0.9c_t-\frac{d_t}{0.9}, \label{eq:q2-soc}\\
+&\text{（容量与功率）}\quad 1200\le E_t\le 10800,\quad 0\le c_t,d_t\le \frac{5000}{6},\quad g_t\ge0. \label{eq:q2-cap}
+\end{align}
+
+\noindent\textbf{模型解读：}
+\begin{itemize}[itemsep=2pt,topsep=3pt]
+  \item 约束 \eqref{eq:q2-floor} 是\textbf{不等式}而非等式：计划净供给不低于点预测即可，
+        允许"多买"。这一点至关重要：它使计划量可以落在"80\% 分位"而非均值上，
+        与 \eqref{eq:newsvendor} 的报童结论一致。
+  \item 约束 \eqref{eq:q2-scen} 用场景 $s$ 的紧急购电 $e_{s,t}$ 兜底最坏情形，
+        其代价系数为 $5p_t$。第一阶段的 $g,c,d$ 对所有场景共享，
+        因此模型天然满足\textbf{非前视}要求。
+\end{itemize}
+
+\subsection{预测方法（严格因果）}
+\label{sec:q2-forecast}
+
+所有预测只使用决策日 $d$ 之前已实现的数据：
+
+\begin{table}[H]
+\centering
+\caption{问题二的预测内核}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+分量 & 方法 & 参数 \\
+\midrule
+负载 & 最近 $k$ 次同星期几的均值 $+$ 近 $m$ 天残差漂移 & $k=4,\ m=5$ \\
+光伏 & 近 $m$ 天均值 $+$ 近 $m'$ 天残差漂移 & $m=7,\ m'=28$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+以负载为例，点预测为
+\begin{equation}
+\hat L_{d,t}=\underbrace{\frac{1}{|\mathcal W_d|}\sum_{i\in\mathcal W_d}L_{i,t}}_{\text{同星期几均值}}
++\underbrace{\frac{1}{5}\sum_{i=d-5}^{d-1}\bigl(L_{i,t}-\hat L_{i,t}\bigr)}_{\text{残差漂移校正}},
+\qquad \mathcal W_d=\{d-7j: j=1,\dots,4,\ d-7j\ge0\}.
+\end{equation}
+
+加入漂移校正的原因：同星期几均值反映的是"典型水平"，
+而最近几天的系统性偏差（如天气趋势）可用近期残差均值捕捉，从而提高点预测精度。
+
+\subsection{场景构造与"有效残差"修正}
+\label{sec:q2-scen}
+
+场景采用\textbf{整日联合残差}（而非逐时段独立抽样），以保留日内时间相关性：
+\begin{equation}
+N_{s,t}=\hat N_{d,t}+r_{s,t},\qquad r_{s,t}=N_{s,t}^{\text{hist}}-\hat N_{s,t}^{\text{hist}},
+\end{equation}
+其中 $s$ 取最近 56 个已结束的历史日，\textbf{等权} $w_s=1/56$。
+
+\noindent\textbf{关键改进：剔除回退期残差。}
+负载内核依赖"同星期几"的历史，而 1 月 1--7 日不足一周，
+此时只能使用附件 1 的典型日曲线作\textbf{回退预测}。
+这类回退预测的误差口径与 1 月 8 日之后的正常预测\textbf{不一致}，
+若一并纳入场景会污染残差分布。
+
+为此，我们把场景历史的起点设为 $d\ge 7$（即 1 月 8 日）：
+
+\begin{table}[H]
+\centering
+\caption{有效残差的样本量增长}
+\begin{tabular}{@{}l c c@{}}
+\toprule
+日期 & 可用历史残差天数 & 说明 \\
+\midrule
+2 月 1 日 & 24 & 1 月 8--31 日 \\
+\vdots & \vdots & 逐日增加 \\
+3 月初起 & 56（上限） & 达到窗口上限后滚动 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{窗口与加权方案的对照实验（第二问）}
+\label{tab:q2-abl}
+\small
+\begin{tabular}{@{}l r r r@{}}
+\toprule
+方法 & {总费用（元）} & {较基线（元）} & {紧急电量（kWh）} \\
+\midrule
+56 天等权（含回退残差）      & 14401996.98 &        & 237775.35 \\
+56 天 / 半衰期 7 天          & 14444376.04 & $-42379.06$ & 258228.71 \\
+56 天 / 半衰期 14 天         & 14404271.57 & $-2274.59$  & 244460.92 \\
+56 天 / 半衰期 28 天         & 14391380.10 & $+10616.87$ & 237997.14 \\
+28 天等权                    & 14443538.21 & $-41541.23$ & 250845.99 \\
+42 天等权                    & 14407394.33 & $-5397.35$  & 241795.11 \\
+\midrule
+\textbf{56 天等权 + 有效残差} & \bfseries 14389135.08 & \bfseries $+12861.89$ & 246063.25 \\
+\midrule
+56 天 / 半衰期 28 天（有效残差） & 14390031.13 & $+896.04$ & 243038.84 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textbf{结论}：短窗口与指数加权\textbf{均无稳定收益}（多数反而变差），
+而剔除回退残差带来 $12\,861.89$ 元的改善。
+其中 $28$ 天半衰期在统计期的改善主要来自 2 月（$-12\,638.73$ 元），
+3--12 月合计反而增加 $2\,021.86$ 元，说明它捕获的是\textbf{启动阶段效应}而非全年适应能力。
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=0.9,every node/.style={font=\small}]
+  % 时间轴
+  \draw[->] (0,0) -- (12,0) node[right]{天数 $d$};
+  \foreach \x/\lab in {1.5/1, 3.5/7, 5.5/8, 8.5/56, 10.5/365} {
+     \draw (\x,0.08) -- (\x,-0.08) node[below]{\lab};
+  }
+  % 回退期
+  \fill[red!18] (0,0) rectangle (5.5,1.5);
+  \node[red!70!black] at (2.7,0.75) {回退期（剔除）};
+  % 有效残差期
+  \fill[green!18] (5.5,0) rectangle (11.5,1.5);
+  \node[green!45!black] at (8.6,0.75) {有效残差窗口（56 天滚动）};
+  \draw[dashed] (5.5,0) -- (5.5,1.5);
+\end{tikzpicture}
+\caption{有效残差的时间口径：剔除 1 月 1--7 日的回退预测残差}
+\label{fig:q2-residual}
+\end{figure}
+
+\subsection{滚动执行与终端条件}
+
+每天在 48 小时窗口上求解，但\textbf{只执行前 24 小时}（当天 144 段），
+次日重新求解。终端条件为\textbf{窗口末回到窗口起始电量}：
+\begin{equation}
+E_{288}=E_{\text{窗口起始}},
+\end{equation}
+而非每天日末回到日初。原因：滚动优化中终端条件代表"未来价值"，
+若要求每天回到日初，会人为禁止跨日套利，系统性低估储能价值。
+
+实际执行的紧急购电量为
+\begin{equation}
+e_{d,t}=\max\bigl\{N_{d,t}-g_{d,t}-d_{d,t}+c_{d,t},\ 0\bigr\},
+\end{equation}
+实际费用为
+\begin{equation}
+C=\sum_{d}\sum_t\bigl[p_tg_{d,t}+5p_te_{d,t}\bigr].
+\end{equation}
+
+\subsection{结果}
+
+\begin{table}[H]
+\centering
+\caption{问题二最终结果（2 月 1 日--12 月 31 日，334 天）}
+\label{tab:q2-final}
+\begin{tabular}{@{}l r@{}}
+\toprule
+项目 & {金额（元）} \\
+\midrule
+计划购电费   & 13462061.30 \\
+紧急购电费   & 927073.78 \\
+\midrule
+\textbf{总费用} & \bfseries 14389135.08 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent 全年计划购电量 $22\,098\,240.82\kw$，紧急购电量 $246\,063.25\kw$。
+初始储电量 $8550\kw$（1 月预热后），年末回到 $6000\kw$。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{q2_trend.pdf}
+\caption{问题二全年费用的滚动累积曲线与预测方法对照}
+\label{fig:q2-trend}
+\end{figure}

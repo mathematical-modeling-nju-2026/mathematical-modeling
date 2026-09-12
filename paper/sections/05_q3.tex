@@ -1,0 +1,421 @@
+﻿% ==================== 五、问题三 ====================
+\section{问题三：预报融合与场景树多时点调整}
+
+\subsection{问题分析}
+
+问题三在问题二基础上引入两项新要素：
+
+\begin{enumerate}[itemsep=3pt,topsep=3pt]
+  \item \textbf{多时点预报}：每天 $0$、$6$、$12$、$18$ 时各发布一次未来 24 h 的光伏整点预报，
+        后续时刻的预报可用于\textbf{调整}购电策略；
+  \item \textbf{调整计费}：调整不是免费的——
+        计划量高于调整量的部分按 $50\%$ 违约电价、调整量高于计划量的部分按 $1.5$ 倍电价。
+\end{enumerate}
+
+因此模型需要回答两个层次的问题：
+\textbf{(i) 如何在 0 点制定"预留调整余地"的计划？}
+\textbf{(ii) 如何在后续发布时刻利用新信息最优地修正计划？}
+
+\subsection{计费规则的统一化建模}
+\label{sec:q3-fee}
+
+设第 $t$ 段的 0 点原计划量为 $g_t^0$，最终调整后的购电量为 $q_t$。定义调增量与调减量
+
+\begin{equation}
+u_t=(q_t-g_t^0)_+,\qquad v_t=(g_t^0-q_t)_+,
+\end{equation}
+
+则 $q_t=g_t^0+u_t-v_t$。题面规则可统一写为
+
+\begin{equation}
+J=\sum_t\Bigl[\underbrace{p_tg_t^0}_{\text{原计划费}}
++\underbrace{1.5p_tu_t}_{\text{调增，1.5 倍}}
+-\underbrace{p_tv_t}_{\text{退还原价}}
++\underbrace{0.5p_tv_t}_{\text{违约费，50\%}}
++\underbrace{5p_te_t}_{\text{紧急购电}}\Bigr].
+\label{eq:q3-fee}
+\end{equation}
+
+即\textbf{净调整费为 $1.5p_tu_t-0.5p_tv_t$，它可以为负}。
+合并同类项得另一便于独立核验的等价式：
+
+\begin{equation}
+J=\sum_t\Bigl[p_t\min(g_t^0,q_t)+0.5p_tv_t+1.5p_tu_t+5p_te_t\Bigr].
+\label{eq:q3-fee2}
+\end{equation}
+
+\noindent\textbf{举例}：原计划 $100\kw$、实际取消 $20\kw$，电价 $1$ 元/kWh。
+原计划费 $100$ 元，退还 $20$ 元，付违约费 $10$ 元，最终 $90$ 元。
+
+\vspace{0.3em}
+\noindent\textbf{关于系数符号的必要性（重要）。}
+式 \eqref{eq:q3-fee} 中调减项的净系数为 $-0.5p_t$，
+即"调减 $1\kw$ 少付 $p$、但付 $0.5p$ 违约金，\textbf{净省 $0.5p$}"。
+若误把该项写成 $+0.5p_tv_t$，则任何调减都会\textbf{增加}成本，
+最优解将永不调整——题目"是否需要引入其他时刻的预报"便失去意义。
+因此 $-0.5p_t$ 是使模型具有经济含义的\textbf{必要条件}。
+
+\subsection{在线预报融合}
+
+\subsubsection{融合权重}
+
+设历史预测为 $H$、发布预报为 $F$、实际值为 $V$。只用最近 56 天内\textbf{已完全实现}的预报行，
+以最小二乘拟合权重：
+
+\begin{equation}
+\alpha=\operatorname{clip}_{[0,1]}\frac{\sum(F-H)(V-H)}{\sum(F-H)^2},
+\qquad \text{融合值}=\alpha F+(1-\alpha)H.
+\label{eq:q3-alpha}
+\end{equation}
+
+\noindent\textbf{式 \eqref{eq:q3-alpha} 的推导}：我们要求解
+$\min_{\alpha}\sum\bigl[V-(\alpha F+(1-\alpha)H)\bigr]^2$。
+令 $z=F-H$，则目标为 $\sum[(V-H)-\alpha z]^2$，对 $\alpha$ 求导置零即得
+$\alpha=\sum z(V-H)/\sum z^2$。
+
+\noindent\textbf{收缩偏差校正}：进一步叠加历史平均残差的收缩估计
+\begin{equation}
+\text{偏差}=\overline{(V-\text{融合})}\cdot\frac{n}{n+14},
+\end{equation}
+其中 $n$ 为有效样本数。系数 $n/(n+14)$ 用于抑制小样本下偏差估计的波动：
+样本充足时接近 $1$，样本稀少时被压缩向 $0$。
+
+\noindent\textbf{严格的非前视约束}（关键）：
+\begin{itemize}[itemsep=2pt,topsep=3pt]
+  \item 训练样本仅取\textbf{不晚于 $d-2$ 天发布}的预报行，
+        以确保跨午夜的未来 24 h 已经实现；
+  \item 每个发布时刻\textbf{分别}训练，不得利用当天后续发布的预报来估计当前权重；
+  \item 样本少于 7 条时退化为直接使用发布预报。
+\end{itemize}
+
+\subsubsection{发布预报的时间对齐}
+
+附件 3 的"预报 $k$ 小时"是\textbf{发布时刻后第 $k$ 个整点}的\textbf{瞬时}功率，
+而非第 $k$ 个小时区间的均值。故采用如下重建方式：
+
+\begin{enumerate}[itemsep=2pt,topsep=3pt]
+  \item 以 24 个整点为锚点，在 10 分钟网格上\textbf{线性插值}；
+  \item 发布瞬间的端点使用\textbf{已观测}的实际光伏功率（0 点用前一日末观测值）。
+\end{enumerate}
+
+\noindent 若把整点值当作"小时均值"作分段常数填充，会引入
+$1/2$ 小时量级的系统相位误差；本文的对齐方式经与实际光伏比对，
+平均绝对误差显著更低。
+
+\subsection{经验场景树}
+
+\subsubsection{场景构造}
+
+在第 $a$ 次发布时刻，场景净负载为
+
+\begin{equation}
+N_{s,t}=\hat N_t^{(a)}+\Bigl(N_{r_s,t}-\hat N_{r_s,t}^{(a)}\Bigr),
+\label{eq:q3-scen}
+\end{equation}
+
+即用历史日 $r_s$ 在\textbf{同一发布时刻}的残差去修正当前的发布预报。
+
+\subsubsection{信息分支（场景树）}
+
+仅用点预测场景会丢失一个重要信息：\textbf{不同历史日不仅能告诉我们"缺口可能多大"，
+还能告诉我们"预报会如何变化"}。为此把场景组织为树：
+
+\begin{enumerate}[itemsep=3pt,topsep=3pt]
+  \item 历史日 $r_s$ 除净负载残差外，还附带它在\textbf{后续发布时刻}的预报修订向量；
+  \item 把这些修订作为"未来可能观测到的信息"，用\textbf{二叉聚类}（按方差最大的维度二分）
+        组织成树；
+  \item \textbf{关键的非前视要求}：每个节点只能依据\textbf{届时新发布的预报修订}划分其子节点，
+        不得使用尚未实现的未来负载或实际光伏；
+  \item 节点概率 $\pi_n=$ 落入该节点的历史日数 $/$ 总样本数；
+  \item 树最多 4 层、15 个决策节点；\textbf{全部 56 条残差样本仍参与期望缺口成本}，
+        未把场景简化为少数均值曲线。
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[scale=1.0,every node/.style={font=\small},
+   nd/.style={circle,draw,fill=blue!8,minimum size=6.5mm,inner sep=0pt},
+   lf/.style={rectangle,draw,fill=green!10,minimum size=5mm,inner sep=2pt}]
+  \node[nd] (r) at (0,0) {$0$};
+  \node[nd] (a) at (2.2,1.3) {$1$};
+  \node[nd] (b) at (2.2,-1.3) {$2$};
+  \node[nd] (c) at (4.6,2.0) {$3$};
+  \node[nd] (d) at (4.6,0.7) {$4$};
+  \node[lf] (e) at (6.9,1.4) {$\vdots$};
+  \node[lf] (f) at (6.9,-0.4) {$\vdots$};
+  \draw (r)--(a) node[midway,above,sloped,font=\scriptsize]{$6$ 时修订};
+  \draw (r)--(b);
+  \draw (a)--(c) node[midway,above,sloped,font=\scriptsize]{$12$ 时修订};
+  \draw (a)--(d);
+  \draw (c)--(e) node[midway,above,sloped,font=\scriptsize]{$18$ 时};
+  \draw (d)--(f);
+  \node[font=\scriptsize,align=left] at (0,-2.3)
+    {节点内\textbf{共享} $q,c,d,E$；\\ 仅 $e_{s,t}$ 按场景不同};
+\end{tikzpicture}
+\caption{经验场景树结构（示意）：顺着"新发布的预报修订"逐层分支，节点内共享控制变量}
+\label{fig:q3-tree}
+\end{figure}
+
+\vspace{0.2em}
+\noindent\textbf{为何"节点内共享变量"能保证非前视？}
+因为控制变量 $q,c,d,E$ 是\textbf{同一个变量}跨越该节点内的所有场景，
+物理上不可能针对"已经知道是哪个场景"来分别决策——
+这在变量结构层面（而非仅通过额外约束）排除了前视。
+
+\subsection{场景树随机规划模型}
+
+以节点 $n$ 为单位，其概率为 $\pi_n$，控制变量为 $q_{n,t},c_{n,t},d_{n,t},E_{n,t}$：
+
+\begin{equation}
+\min\ J_3=\sum_tp_tg_t^0
++\sum_n\pi_n\sum_{t\in n}\bigl(1.5p_tu_{n,t}-0.5p_tv_{n,t}\bigr)
++\frac{1}{S}\sum_s\sum_t5p_te_{s,t}
++\underbrace{\text{次日前瞻成本}}_{\text{价值近似}}.
+\label{eq:q3-obj}
+\end{equation}
+
+约束：
+
+\begin{align}
+&\text{（调整关系）}\quad q_{n,t}=g_t^0+u_{n,t}-v_{n,t},\qquad q,u,v\ge 0, \label{eq:q3-adj}\\
+&\text{（节点需求）}\quad q_{n,t}+d_{n,t}-c_{n,t}+e_{s,t}\ \ge\ N_{s,t},\qquad e_{s,t}\ge0, \label{eq:q3-dem}\\
+&\text{（计划下界）}\quad q_{n,t}+d_{n,t}-c_{n,t}\ \ge\ \hat N_t, \label{eq:q3-floor}\\
+&\text{（SOC 与容量）}\quad E_{n,t}=E_{n,t-1}+0.9c_{n,t}-\frac{d_{n,t}}{0.9},\quad
+   1200\le E_{n,t}\le10800, \label{eq:q3-soc}\\
+&\text{（功率）}\quad 0\le c_{n,t},d_{n,t}\le\frac{5000}{6}, \label{eq:q3-pow}\\
+&\text{（父子衔接）}\quad E_{n,\text{首}}=E_{\text{父},\text{末}}. \label{eq:q3-link}
+\end{align}
+
+\subsection{跨日价值与贪心执行}
+
+\noindent\textbf{跨日前瞻}：每次优化至\textbf{次日 24 点}，把次日作为确定性价值近似，
+避免"只顾当天便宜电价而提前耗空电池"。
+不同未来节点使用其条件预报修订后的次日点预测。
+
+\noindent\textbf{终端目标}：一般日期前瞻终点回到\textbf{本日 0 点电量}；
+且 $6/12/18$ 点重算时该目标\textbf{保持不变}（不随当前电量漂移），
+否则会引入"越调整越保守"的路径依赖。
+
+\noindent\textbf{贪心执行}：只执行当前发布到下一允许更新前的控制量：
+
+\begin{center}
+\begin{tabular}{@{}c c@{}}
+\toprule
+决策时刻 & 本次执行区间 \\
+\midrule
+$0$:00  & $0$--$6$ 时 \\
+$6$:00  & $6$--$12$ 时 \\
+$12$:00 & $12$--$18$ 时 \\
+$18$:00 & $18$--$24$ 时 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\noindent\textbf{为何不把问题二的 $80\%$ 分位套用到问题三？}
+问题二的 $F^*=0.80$ 是在"储能固定、单期补救费为 $5$ 倍、无后续调整"条件下导出的。
+问题三中 0 点可从场景树\textbf{评估未来的调整机会}，
+故有效的风险水平随节点、时段而变，不应硬编码单一分位。
+
+\subsection{同时充放电的处理}
+
+LP 解可能出现同时充放电。取
+\begin{equation}
+\epsilon=\min\Bigl(c_{n,t},\ \frac{d_{n,t}}{0.81}\Bigr),\qquad
+c'=c-\epsilon,\qquad d'=d-0.81\epsilon,
+\end{equation}
+该变换\textbf{保持 SOC 完全不变}，使净供给增加 $0.19\epsilon$。
+在允许弃置的本模型中，计划费不变、紧急费不增加，故可取得满足互斥的最优解。
+程序对最终执行结果逐段检查互斥，不把未经验证的 LP 解直接作为调度方案。
+
+\subsection{结果与边际分析}
+
+\begin{table}[H]
+\centering
+\caption{问题三：更新频率对照（2 月 1 日--12 月 31 日）}
+\label{tab:q3-abl}
+\begin{tabular}{@{}l r r@{}}
+\toprule
+方案 & {总费用（元）} & {紧急购电量（kWh）} \\
+\midrule
+方案 B 框架同口径复算 & 14389892.50 & 246099.33 \\
+仅 0 点融合预报       & 14181445.03 & 218589.30 \\
+$0$、$6$ 点           & 14101371.47 & 186570.89 \\
+$0$、$6$、$12$ 点     & 14022358.10 & 175344.39 \\
+\textbf{$0$、$6$、$12$、$18$ 点（主方案）} & \bfseries 14022396.98 & 175369.95 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{问题三主方案费用分解}
+\label{tab:q3-fee}
+\begin{tabular}{@{}l r@{}}
+\toprule
+项目 & {金额（元）} \\
+\midrule
+原计划购电费      & 13345819.30 \\
+增购费（$1.5$ 倍）  & 89947.28 \\
+取消原费退款      & $-150170.13$ \\
+取消违约费（$50\%$）& 75085.07 \\
+净调整费（小计）    & 14862.22 \\
+紧急购电费（$5$ 倍）& 661715.46 \\
+\midrule
+\textbf{总费用} & \bfseries 14022396.98 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent 相对同口径方案 B，主方案\textbf{节省 $367\,495.52$ 元（$2.55\%$）}，
+紧急购电量\textbf{减少 $28.74\%$}。
+
+\begin{table}[H]
+\centering
+\caption{引入调整时刻的边际效益}
+\label{tab:q3-margin}
+\begin{tabular}{@{}l r l@{}}
+\toprule
+增量 & {节省（元）} & 解读 \\
+\midrule
+方案 B $\to$ 仅 $0$ 点融合预报 & 208447.47 & \textbf{融合预报本身}的价值最大 \\
+$\to$ 加入 $6$ 点              & 80073.56  & 首次调整，价值显著 \\
+$\to$ 加入 $12$ 点             & 79013.36  & 第二次调整，价值仍显著 \\
+$\to$ 加入 $18$ 点             & $-38.88$  & \textbf{几乎无额外收益} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textbf{结论}：$6$ 点与 $12$ 点各贡献约 $8$ 万元，收益随调整次数\textbf{显著边际递减}；
+$18$ 点更新在本年度回测中\textbf{无可观测收益}（$-38.88$ 元），
+可视为可选更新。该结论限于本数据与算法：$18$ 点仍可能通过次日预报影响跨日储能，
+且小型经验树在有限样本下重建，不保证费用随信息增加单调下降。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{q3_cost.pdf}
+\caption{问题三：各更新频率方案的费用与紧急购电量对照}
+\label{fig:q3-cost}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.85\textwidth]{q3_fusion.pdf}
+\caption{发布预报与历史预测的在线融合权重演化}
+\label{fig:q3-fusion}
+\end{figure}
+
+\subsection{敏感性分析与性能边界}
+\label{sec:q3-sens}
+
+为进一步考察主方案是否还有提升空间，我们做了如下互补分析。
+
+\subsubsection{完美预见下界}
+
+假设每天 $0$ 点即精确知道当天的实际净负载（消除全部预报误差），
+在同一套物理约束与计费规则下求解，得\textbf{下界 $1\,223.16$ 万元}（紧急购电费为 $0$）。
+与主方案 $1\,402.24$ 万元相比，差距为 \textbf{$179.08$ 万元}，
+\textbf{该缺口全部来自预报误差，而非建模策略}。
+
+\subsubsection{融合权重的饱和性检验}
+
+把"当前逐日自适应融合"与"用全期数据拟合出的最优静态线性组合"（oracle，
+含未来信息泄漏，理论上界）作比较：
+
+\begin{table}[H]
+\centering
+\caption{预报精度的横向比较（加权 MAE，单位 kW）}
+\begin{tabular}{@{}l r l@{}}
+\toprule
+预报来源 & {加权 MAE} & 说明 \\
+\midrule
+\textbf{本文自适应融合} & \bfseries 93.68 & 逐日滚动、无前视 \\
+样本内最优线性组合    & 95.08 & \textbf{含信息泄漏}的静态上界 \\
+附件 3 原始预报        & 120.18 & — \\
+纯历史统计            & 152.65 & — \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textbf{自适应融合的精度已优于"含泄漏的静态最优"}，
+说明权重估计已实质达到该模型族的精度上界，
+这也解释了为何后续所有"调权重"类改进均无效果。
+
+\subsubsection{参数扫描（30 余组）}
+
+\begin{table}[H]
+\centering
+\caption{优化尝试汇总（相对主方案 $1402.24$ 万元）}
+\label{tab:q3-scan}
+\small
+\begin{tabular}{@{}l r r l@{}}
+\toprule
+配置 & {总费用（万元）} & {$\Delta$（万元）} & 维度 \\
+\midrule
+场景缩放 $k=0.92$        & 1401.77 & $-0.47$ & 场景 \\
+首块 $1.0$ / 尾部 $0.9$   & 1401.78 & $-0.46$ & 场景 \\
+残差窗口 $W=84$          & 1401.98 & $-0.26$ & 窗口 \\
+收缩系数 $\alpha\le1.25,s=28$ & 1402.13 & $-0.11$ & 权重 \\
+\textbf{主方案}          & \bfseries 1402.24 & \bfseries $0.00$ & — \\
+权重上界 $1.25/1.5$      & 1402.24 & $0.00$ & 权重 \\
+兜底罚系数 $1.5/3.0$     & 1402.24 & $0.00$ & 约束 \\
+移除计划下界             & 1402.25 & $+0.01$ & 约束 \\
+窗口 $W=42$              & 1402.81 & $+0.57$ & 窗口 \\
+计划下界 $0.8\times$     & 1403.06 & $+0.82$ & 约束 \\
+含回退残差（$d\ge0$）     & 1405.22 & $+2.98$ & 数据口径 \\
+窗口 $W=28$              & 1407.55 & $+5.31$ & 窗口 \\
+计划下界 $0.5\times$     & 1414.39 & $+12.15$ & 约束 \\
+多源信息（加入上期发布）  & 1402.90 & $+0.66$ & 信息源 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent 可见：\textbf{仅"场景缩放系数 $k$"一个维度有正收益}（约 $0.47$ 万元，$0.03\%$），
+其余全部无效或变差。据此我们没有把 $k=0.92$ 写入正式结果——
+它是在同一年度数据上扫描得到的，存在过拟合风险，且收益量级可忽略。
+
+\subsubsection{两个反直觉发现}
+
+\begin{enumerate}[itemsep=3pt,topsep=3pt]
+  \item \textbf{弃置电量并非浪费。}
+        全年弃置 $267.66$ 万 kWh（占计划量约 $12\%$），看似存在大量浪费；
+        但\textbf{放松计划下界反而使总费用上升}（下界 $0.5\times$ 时 $+12.15$ 万元）。
+        原因是这些"多买的电"是"低价时段购电 $+$ 储能套利"策略的必要冗余，
+        强行削减会转而在高价时段触发紧急购电，得不偿失。
+  \item \textbf{增加信息源可能有害。}
+        理论上每次发布都覆盖未来 24 h，故"上一期发布"在决策时刻仍然有效，
+        是合法可用信息。但把它纳入融合后费用反而上升（$+0.66$ 万元）：
+        多次发布之间高度相关，额外信息源主要引入估计噪声而非新信息。
+\end{enumerate}
+
+\vspace{0.3em}
+\noindent\textbf{结论的适用范围}：以上分析只能说明"在已测试的模型族与同年度回测下未发现更优"，
+\textbf{不足以宣称全局最优}。若引入外部气象数据（辐照度、云量）或天气分型建模，
+预报精度仍有提升余地。
+
+\subsection{题目指定日期的结果}
+
+\begin{table}[H]
+\centering
+\caption{表 1、表 3\quad 指定日期的计划购电量与紧急购电量}
+\label{tab:q3-target}
+\small
+\begin{tabular}{@{}l r r r r@{}}
+\toprule
+日期 & {原计划费（元）} & {净调整费（元）} & {紧急电量（kWh）} & {总费用（元）} \\
+\midrule
+2025-03-20 & 39999.75 & $-94.14$   & 873.52 & 43286.36 \\
+2025-06-21 & 24123.60 & $-105.75$  & 342.74 & 25202.45 \\
+2025-09-23 & 43523.27 & $-155.36$  & 949.18 & 47566.49 \\
+2025-12-21 & 63209.93 & $-75.36$   & 607.81 & 65090.39 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent 四个指定日期的净调整费\textbf{均为负}，即调整机制在指定日期上均实现了"省违约金"的净收益。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{q3_dispatch.pdf}
+\caption{问题三：四个指定日期的购电与储能调度}
+\label{fig:q3-dispatch}
+\end{figure}

@@ -1,0 +1,260 @@
+﻿% ==================== 六、问题四 ====================
+\section{问题四：实时波动电价下的调度}
+
+\subsection{问题分析与总体思路}
+
+问题四指出外网电价也是\textbf{实时波动}的，要求在此条件下重算问题二（记为 4-2）
+与问题三（记为 4-3）。与前三问的关系如下：
+
+\begin{center}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+ & 电价 & 决策时点 \\
+\midrule
+问题二  & 每日固定（附件 1）    & 仅 $0$:00 \\
+\textbf{4-2} & \textbf{实时波动（附件 4）} & 仅 $0$:00 \\
+问题三  & 每日固定              & $0/6/12/18$ 时 \\
+\textbf{4-3} & \textbf{实时波动}      & $0/6/12/18$ 时 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+因此 4-2 是"问题二 $+$ 电价随机性"，4-3 是"问题三 $+$ 电价随机性"。
+两问均需解决一个新问题：\textbf{电价本身也未知，如何构造决策所需的场景？}
+
+\subsection{4-2：波动电价下的日前调度}
+
+\subsubsection{电价信息的假设（本问的关键判断）}
+
+题面说明电价实时波动，但\textbf{未明确每天 $0$:00 是否已知全天价格}。
+这个信息假设对结果影响很大，故我们保留两种情形并\textbf{分别完整求解}：
+
+\begin{table}[H]
+\centering
+\caption{4-2 的两种电价信息情形}
+\begin{tabular}{@{}l l l@{}}
+\toprule
+情形 & 假设 & 性质 \\
+\midrule
+\textbf{主模型} & 当天电价\textbf{未知}，只用此前日期预测 & 保守、符合"实时波动"的通常理解 \\
+对照         & 当天 144 段电价已于 $0$:00 公布 & 明确放宽信息限制 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent 主模型不把当天或未来的实际电价、负载、光伏作为制定当天计划的输入；
+附件 4 的实际电价仅用于\textbf{事后结算}。
+
+\subsubsection{电价预测器选择}
+
+只用 1 月 8--31 日的 24 个历史预测日，比较四种规则：
+
+\begin{enumerate}[itemsep=2pt,topsep=3pt]
+  \item 前一日曲线；
+  \item 近 7 日均值；
+  \item 近 7 日形状 $+$ 前一日平均水平；
+  \item 最近 4 次同星期几均值。
+\end{enumerate}
+
+以 1 月预测的 RMSE 选定，\textbf{2 月起固定方法不再更换}，避免用全年费用反向挑选参数。
+入选方法为\textbf{最近 4 次同星期几均值}：
+
+\begin{equation}
+\hat p_{d,t}=\frac{1}{|\mathcal W_d|}\sum_{i\in\mathcal W_d}p_{i,t},
+\qquad \mathcal W_d=\{d-7j:\ j=1,\dots,4,\ d-7j\ge0\}.
+\end{equation}
+
+\noindent 预测 $d+1$ 日时进一步要求所有样本日期 $i<d$，不得使用尚未发生的第 $d$ 日价格。
+
+\subsubsection{电价—净负载联合场景}
+
+\noindent\textbf{核心论证：期望的不可分解性。}
+当电价随机时，
+\begin{equation}
+\E\bigl[p_t(N_t-z_t)_+\bigr]\ \neq\ \E[p_t]\cdot\E\bigl[(N_t-z_t)_+\bigr].
+\label{eq:q4-nonsep}
+\end{equation}
+不等式成立的原因是：\textbf{高电价可能与缺电同时发生}
+（例如极端天气既推高需求又推高价格）。
+若按式 \eqref{eq:q4-nonsep} 右端建模（即"平均电价近似"），
+会系统性地\textbf{低估}缺电风险的实际代价。
+
+因此场景\textbf{取自同一历史日}的两种残差配对：
+
+\begin{equation}
+N_{s,t}=\hat N_{d,t}+r^N_{s,t},\qquad
+p_{s,t}=\max\bigl\{0.001,\ \hat p_{d,t}+r^p_{s,t}\bigr\},
+\label{eq:q4-scen}
+\end{equation}
+
+其中 $r^N_{s,t}=N_{s,t}-\hat N_{s,t}$、$r^p_{s,t}=p_{s,t}-\hat p_{s,t}$ 均由历史日 $s$ 产生。
+$0.001$ 元/kWh 是预先给定的正数下限，用于防止加性误差生成负电价，
+被截断的场景数逐日记录以便审查。
+
+\noindent 场景集为 $\mathcal H_d=\{\max(7,d-56),\dots,d-1\}$，等权 $\omega_s=1/|\mathcal H_d|$。
+
+\subsubsection{目标函数}
+
+当天计划 $g,c,d$ 在所有场景间共享，紧急购电 $u_{s,t}$ 可随场景变化：
+
+\begin{equation}
+\min\ J_{42}=\sum_{t=1}^{144}\overline p_{d,t}\,g_t
++5\sum_s\omega_s\sum_{t=1}^{144}p_{s,t}\,u_{s,t}
++\underbrace{\sum_{t=1}^{144}\hat p_{d+1|d,t}\,g_{144+t}}_{\text{次日前瞻价值（不进报表）}},
+\label{eq:q4-obj}
+\end{equation}
+
+其中 $\overline p_{d,t}=\sum_s\omega_s p_{s,t}$ 为场景平均电价，用于第一阶段购电费（计划量照付）。
+
+\noindent\textbf{风险覆盖的分位解释}：固定某段的 $c,d$，令 $z=g+d-c$，
+则其覆盖水平可用\textbf{电价加权分位}理解
+\begin{equation}
+\widetilde\omega_{s,t}=\frac{\omega_s p_{s,t}}{\overline p_{d,t}},\qquad
+z\approx Q^{\widetilde\omega}_{0.8}(N_{s,t}),
+\end{equation}
+即高电价的场景会获得更高权重，从而抬高所需的供给水平。
+但该式只是启发式解释，实际须与储能跨时段约束一并求解，不能逐段套用。
+
+\subsubsection{约束与对照模型}
+
+约束沿用问题二：计划下界 \eqref{eq:q2-floor}、场景兜底 \eqref{eq:q2-scen}、
+SOC 与容量功率 \eqref{eq:q2-soc}--\eqref{eq:q2-cap}，以及 48 h 窗口终端条件。
+另外设置\textbf{平均电价对照}：保留完全相同的净负载场景，
+但把所有 $p_{s,t}$ 替换为 $\overline p_{d,t}$，以检验"配对关系"的实际作用。
+
+\subsubsection{结果}
+
+\begin{table}[H]
+\centering
+\caption{4-2 结果对照（2 月 1 日--12 月 31 日）}
+\label{tab:q42}
+\begin{tabular}{@{}l r r r@{}}
+\toprule
+方案 & {总费用（元）} & {较 Q2 重结算（元）} & {节省比例} \\
+\midrule
+原 Q2 计划按附件 4 重结算 & 15184704.23 & — & — \\
+平均电价模型              & 15160921.45 & $-23782.79$ & $0.157\%$ \\
+\textbf{联合场景模型（主）} & \bfseries 15163043.89 & \bfseries $-21660.34$ & $0.143\%$ \\
+当日电价已知（对照）       & 15033043.18 & $-151661.05$ & $0.999\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textbf{诚实说明}：在同年回测中，平均电价近似\textbf{略优于}联合场景
+（差约 $2\,122$ 元）。我们不因此改用平均电价模型，理由有二：
+(i) 联合场景保留了正确的概率结构（式 \eqref{eq:q4-nonsep} 说明它的期望是准确的），
+(ii) 单一年度的 $2\,122$ 元差异不具统计显著性，而结构性正确性可跨年成立。
+这一现象在结果文件中如实保留。
+
+\noindent\textbf{"当日电价已知"的增益}：$151\,661.05$ 元（约 $1.0\%$），
+说明\textbf{电价预测误差}是本问剩余成本的主要来源之一。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{q42_prices.pdf}
+\caption{4-2：指定日期的实际电价曲线与预测电价}
+\label{fig:q42-prices}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{q42_cost.pdf}
+\caption{4-2：各方案费用对照}
+\label{fig:q42-cost}
+\end{figure}
+
+\subsection{4-3：波动电价 $+$ 多时点调整}
+
+\subsubsection{模型构造}
+
+4-3 在 4-2 的基础上叠加问题三的多时点调整机制：每天 $0$ 点定计划，
+$6/12/18$ 点用新发布的光伏预报与更新的电价预测重新优化尚未执行的调度。
+计费规则（调增 $1.5$ 倍、调减净成本 $-0.5$ 倍、紧急 $5$ 倍）与问题三完全一致，
+即沿用式 \eqref{eq:q3-fee}。
+
+\noindent\textbf{电价场景的处理}：每次发布时刻对未来电价采用
+\textbf{此前 7 天同一时段均值}，并与同一历史日的净负载残差\textbf{配对}构造价格场景
+（保留式 \eqref{eq:q4-scen} 的相关性结构）。次日采用历史价格预测。
+
+\noindent\textbf{场景树、融合与执行}：与问题三相同——使用经验场景树保证非前视，
+用在线融合整合历史预测与发布预报，只执行当前发布到下一更新前的控制量。
+
+\subsubsection{结果}
+
+\begin{table}[H]
+\centering
+\caption{4-3 主方案费用分解}
+\label{tab:q43}
+\begin{tabular}{@{}l r@{}}
+\toprule
+项目 & {金额（元）} \\
+\midrule
+原计划购电费       & 13457230.68 \\
+增购费（$1.5$ 倍）   & 152250.38 \\
+取消原费退款       & $-173200.59$ \\
+取消违约费（$50\%$） & 86600.30 \\
+净调整费（小计）     & 65650.08 \\
+紧急购电费（$5$ 倍） & 1538854.67 \\
+\midrule
+\textbf{总费用} & \bfseries 15061735.43 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{关键对比：波动电价放大了调整机制的价值}
+
+\begin{table}[H]
+\centering
+\caption{加入多时点调整机制的收益：固定电价 vs 波动电价}
+\label{tab:q4-compare}
+\begin{tabular}{@{}l r r r@{}}
+\toprule
+电价情形 & {仅 0 点决策（元）} & {$0/6/12/18$ 点多时点（元）} & {调整收益（元）} \\
+\midrule
+固定电价（附件 1）        & 14389135.08 & 14022396.98 & 366738.10 \\
+\textbf{波动电价（附件 4）} & 15163043.89 & 15061735.43 & \bfseries 101308.46 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent 需要说明：上表两行\textbf{口径并不对称}——固定电价一行的左侧是问题二的最终方案，
+右侧问题三除多时点调整外还额外引入了\textbf{在线预报融合}，
+因此 $366\,738$ 元中包含融合预报的贡献。
+
+为在\textbf{同等口径}下分离出"多时点调整"本身的边际价值，
+我们对固定电价情形单独做了"基础方案 $\to$ 仅增加 18 点更新"的增量实验
+（问题三 \S\ref{sec:q3-sens} 的边际分析），其量级为\textbf{约 $1.5$ 万元}；
+而在波动电价下，4-2 $\to$ 4-3 的增量达 \textbf{$10.13$ 万元}。
+
+\begin{table}[H]
+\centering
+\caption{"多时点调整"边际价值的同口径比较}
+\begin{tabular}{@{}l r l@{}}
+\toprule
+电价情形 & {调整机制边际价值（万元）} & 依据 \\
+\midrule
+固定电价   & 约 $1.5$  & 问题三：$12$ 点 $\to$ 增加 $18$ 点更新的增量 \\
+\textbf{波动电价} & \bfseries 约 $10.1$ & 4-2 $\to$ 4-3 的总增量 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textbf{核心洞察}：在波动电价下，多时点调整的边际价值比固定电价下\textbf{高约一个数量级}。
+原因在于电价波动引入了\textbf{第二个不确定性来源}：
+多时点更新不仅能修正光伏预报，还能修正\textbf{电价预期}——
+当新信息显示"傍晚电价将冲高"时，可及时调整购电与储能部署，
+这是固定电价下不存在的收益渠道。
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{q43_cost.pdf}
+\caption{4-3：各方案费用对照}
+\label{fig:q43-cost}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.9\textwidth]{q43_dispatch.pdf}
+\caption{4-3：指定日期的购电与储能调度（波动电价下）}
+\label{fig:q43-dispatch}
+\end{figure}
