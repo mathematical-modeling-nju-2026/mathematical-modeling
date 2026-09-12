@@ -1,21 +1,52 @@
-"""校验：efficiency/def1_side90 的结果与仓库原有 question1/results 是否逐时段一致。"""
+"""校验：当前工作区 question1/results（定义一，往返 0.81）是否仍与 git 已提交结果一致。
+
+目录重构后 def1 直接写回 question1/results（不另存副本），故本脚本改为
+「工作区现值 vs git HEAD 版本」的比对，用于确认重跑或代码修改后结果未变。
+
+用法（在 question1/efficiency/code 下）：
+    python -X utf8 verify_def1.py
+输出同时写入 question1/efficiency/verification_def1.txt（UTF-8 直写，
+避免 PowerShell 管道导致的不可逆双重编码损坏）。
+"""
+import io
 import pathlib
+import subprocess
 
 import numpy as np
 import pandas as pd
 
-REPO = pathlib.Path(r"d:\数学建模大赛\mathematical-modeling")
-OLD = REPO / "question1" / "results"
-NEW = REPO / "question1" / "efficiency" / "def1_side90" / "results"
+REPO = pathlib.Path(__file__).resolve().parents[3]
+RES = REPO / "question1" / "results"
 
-print("=" * 78)
-print("定义一（往返 0.81）与仓库原有结果的一致性校验")
-print("=" * 78)
+_lines = []
 
-# ---- solution.npz 逐时段比对 ----
-a = np.load(OLD / "solution.npz", allow_pickle=True)
-b = np.load(NEW / "solution.npz", allow_pickle=True)
-print(f"\n{'键':<12}{'最大绝对差':>18}")
+
+def out(s=""):
+    print(s)
+    _lines.append(s)
+
+
+out("=" * 78)
+out("定义一（往返 0.81）与 git 已提交结果的一致性校验")
+out("=" * 78)
+out(f"仓库：{REPO}")
+out(f"结果：{RES}")
+
+
+def _git_show(relpath):
+    r = subprocess.run(["git", "show", f"HEAD:{relpath}"],
+                       cwd=REPO, capture_output=True)
+    if r.returncode != 0:
+        raise SystemExit(
+            f"无法读取 HEAD:{relpath}\n{r.stderr.decode('utf-8', 'replace')}")
+    return r.stdout
+
+
+# ---- solution.npz：git HEAD vs 工作区 ----
+a = np.load(io.BytesIO(_git_show("question1/results/solution.npz")),
+            allow_pickle=True)
+b = np.load(RES / "solution.npz", allow_pickle=True)
+out(f"\n{'键':<12}{'最大绝对差':>18}")
 ok_all = True
 for k in ["price", "load", "pv", "g", "c", "d", "w", "E"]:
     if k not in a.files or k not in b.files:
@@ -23,36 +54,30 @@ for k in ["price", "load", "pv", "g", "c", "d", "w", "E"]:
     dmax = float(np.max(np.abs(a[k].astype(float) - b[k].astype(float))))
     ok = dmax < 1e-9
     ok_all &= ok
-    print(f"  {k:<10}{dmax:>18.3e}  {'✓' if ok else '✗'}")
+    out(f"  {k:<10}{dmax:>18.3e}  {'✓' if ok else '✗'}")
 for k in ["obj_lp", "obj_milp", "base_cost"]:
     va, vb = float(a[k]), float(b[k])
     ok = abs(va - vb) < 1e-6
     ok_all &= ok
-    print(f"  {k:<10}{abs(va-vb):>18.3e}  {'✓' if ok else '✗'}   ({va:,.2f} vs {vb:,.2f})")
+    out(f"  {k:<10}{abs(va-vb):>18.3e}  {'✓' if ok else '✗'}   ({va:,.2f} vs {vb:,.2f})")
 
-# ---- 明细 CSV 比对 ----
-da = pd.read_csv(OLD / "schedule_detail.csv")
-db = pd.read_csv(NEW / "schedule_detail.csv")
-print(f"\n  schedule_detail.csv  形状 {da.shape} vs {db.shape}")
+# ---- 明细 CSV 比对（git HEAD vs 工作区）----
+da = pd.read_csv(io.BytesIO(_git_show("question1/results/schedule_detail.csv")))
+db = pd.read_csv(RES / "schedule_detail.csv")
+out(f"\n  schedule_detail.csv  形状 {da.shape} vs {db.shape}")
 num_cols = [c for c in da.columns if da[c].dtype.kind in "fi"]
 worst = 0.0
 for c in num_cols:
     dm = float(np.max(np.abs(da[c] - db[c])))
     worst = max(worst, dm)
-print(f"  全部数值列最大差 = {worst:.3e}  {'✓ 完全一致' if worst < 1e-6 else '✗'}")
+out(f"  全部数值列最大差 = {worst:.3e}  "
+    f"{'✓ 完全一致' if worst < 1e-6 else '✗'}")
 
-# ---- 与 git 中原提交版本比对 ----
-import subprocess
-raw = subprocess.run(["git", "show", "HEAD:question1/results/solution.npz"],
-                     cwd=REPO, capture_output=True)
-if raw.returncode == 0:
-    import io
-    g = np.load(io.BytesIO(raw.stdout), allow_pickle=True)
-    gm = max(float(np.max(np.abs(g[k].astype(float) - b[k].astype(float))))
-             for k in ["g", "c", "d", "w", "E"])
-    print(f"\n  与 git HEAD 版本比对：最大差 = {gm:.3e}  "
-          f"{'✓ 与已提交结果一致' if gm < 1e-9 else '✗'}")
+out("\n" + "=" * 78)
+out(f"结论：{'✓ 工作区结果与 git HEAD 逐值一致' if ok_all and worst < 1e-6 else '✗ 存在差异'}")
+out("=" * 78)
 
-print("\n" + "=" * 78)
-print(f"结论：{'✓ 定义一精确复现仓库原有结果' if ok_all and worst < 1e-6 else '✗ 存在差异'}")
-print("=" * 78)
+# ---- 落盘（直写 UTF-8，避免 PowerShell 管道双重编码损坏）----
+dst = REPO / "question1" / "efficiency" / "verification_def1.txt"
+dst.write_text("\n".join(_lines) + "\n", encoding="utf-8")
+print(f"\n已写入 {dst}")

@@ -294,10 +294,16 @@ def verify(sol, price, load, pv, tol=1e-6):
     checks.append(("电量递推式自洽", np.max(np.abs(E_rec - E)) < 1e-6,
                    f"最大偏差 = {np.max(np.abs(E_rec - E)):.2e}"))
 
-    # 弃光不超过光伏出力
-    checks.append(("弃光量 ∈ [0, 光伏出力]",
-                   bool(w.min() >= -1e-9 and np.all(w <= pv + 1e-6)),
-                   f"弃光合计 = {w.sum():.2f} kWh"))
+    # 弃光量非负：模型约束（lb[W] = 0），属硬性可行性条件
+    checks.append(("弃光量非负", bool(w.min() >= -1e-9),
+                   f"w_min = {w.min():.2e}, 弃光合计 = {w.sum():.2f} kWh"))
+
+    # 弃光量未超光伏出力：本实例的数值观察，**不是**模型约束。
+    # 模型已不设 w <= V 的上界（见 build_lp 注释），最优解自动满足该式；
+    # 换一组数据时此项若失败，并不表示求解出错，详见结果说明。
+    checks.append(("弃光量未超光伏出力（实例观察，非模型约束）",
+                   bool(np.all(w <= pv + 1e-6)),
+                   f"max(w - V) = {float(np.max(w - pv)):.2e}"))
 
     checks.append(("购电量非负", bool(g.min() >= -1e-9), f"g_min = {g.min():.2e}"))
 
