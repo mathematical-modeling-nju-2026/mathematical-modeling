@@ -1,0 +1,33 @@
+{
+  "input_sha256": {
+    "question3/results/comparison.csv": "70b1b4587cf1c61c3e97e6f754c7763b5bf445d0fcaa24326d2b343c5917a9bb",
+    "question3/results/schedule_detail.csv": "b16c1fa2ebe313788da045b58a7ff2ac54e17bd2e5adc0eda685f32192ad0288",
+    "question3/results/forecast_diagnostics.csv": "7657af0bd04db99a7c5953d3b122d896ea63fb63b77270b52f269af6001ff9f5",
+    "question4/part3/results/comparison.csv": "8f54c47d3663b8a27998f2c6ab1a85e92e53a7844309e8dd3cc9603184876c9e",
+    "question4/part3/results/schedule_detail.csv": "41e7c6c3e6802fba8e75e7b55c0dc4373e3bab13c411fe208f94b8de2e7f9a20",
+    "question4/part3/results/forecast_diagnostics.csv": "7657af0bd04db99a7c5953d3b122d896ea63fb63b77270b52f269af6001ff9f5"
+  },
+  "figures": {
+    "q3_cost.pdf": {
+      "source": "question3/results/figures/cost_comparison.pdf",
+      "sha256": "54c3d013cd6f07322077597d4ae9e6ff9db94225df867d38edfc9e9525ec5079"
+    },
+    "q3_dispatch.pdf": {
+      "source": "question3/results/figures/target_dispatch.pdf",
+      "sha256": "cedcf6797cc7c13047e73de007133c275968e9c85a37dd73bb3570833684263e"
+    },
+    "q3_fusion.pdf": {
+      "source": "question3/results/figures/forecast_fusion.pdf",
+      "sha256": "7fb6b3576bb9ec8b969bee0d8ef07f8a853e1e1aad34ded84e14cb9f4c35a725"
+    },
+    "q43_cost.pdf": {
+      "source": "question4/part3/results/figures/cost_comparison.pdf",
+      "sha256": "e9cb4eb490c116db31f53226c48d99248bd66df44e41943b0cd535d7e38126ae"
+    },
+    "q43_dispatch.pdf": {
+      "source": "question4/part3/results/figures/target_dispatch.pdf",
+      "sha256": "b6e01387252c26be2afb44825329aa9f094d7a2b402501ad9bf763d732299338"
+    }
+  },
+  "note": "Q3/Q4-3 PV fusion diagnostics are shared; identical fusion curves are expected."
+}

@@ -18,6 +18,14 @@
 
 ## 编译方法
 
+第三问与4-3的图按各自保存的CSV重绘，并同步到本论文（从任意工作目录使用脚本路径运行）：
+
+```powershell
+python -X utf8 paper/refresh_q3_figures.py
+```
+
+此命令不重算优化，更新 `q3_cost.pdf`、`q3_dispatch.pdf`、`q3_fusion.pdf`、`q43_cost.pdf` 和 `q43_dispatch.pdf`；输入与图片SHA256记录在 `figs/q3_figure_sources.json`。费用和调度图分别使用固定电价、波动电价结果。两问共享同一光伏预测器与诊断数据，因此预报融合曲线相同是正常的，论文仅在第三问展示。更新图片后仍需按以下方式重新编译 `main.pdf`。
+
 在 `paper/` 目录下执行（**需跑两遍**以生成交叉引用与页码）：
 
 ```powershell

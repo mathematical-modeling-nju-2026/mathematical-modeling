@@ -1,12 +1,15 @@
 """Recreate publication plots from the saved, verified CSV files."""
-import json
+from pathlib import Path
 import numpy as np
 import pandas as pd
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
-from q3_data import HERE
+
+# Keep plotting bound to this question even if q3_data from another branch was
+# imported earlier in the same Python process.
+HERE = Path(__file__).resolve().parents[1] / 'results'
 
 
 def main():
@@ -28,7 +31,7 @@ def main():
                    c=['#9A9FA8','#80A7C6','#5596B4','#32748E','#E09D49'],zorder=3)
     for i,value in enumerate(comp.total_cost_yuan/1e4):
         axs[0].annotate(f'{value:.2f}',(i,value),xytext=(0,9),textcoords='offset points',ha='center')
-    axs[0].set(ylabel='购电总费用（万元）',title='相同初末电量下的费用比较')
+    axs[0].set(ylabel='购电总费用（万元）',title='第三问：固定电价下的费用比较')
     axs[0].set_ylim(comp.total_cost_yuan.min()/1e4-8,comp.total_cost_yuan.max()/1e4+10)
     axs[0].set_xlim(-.5,len(labels)-.5)
     axs[0].grid(axis='y',alpha=.2)
@@ -41,6 +44,7 @@ def main():
 
     detail=pd.read_csv(HERE/'schedule_detail.csv')
     fig,axs=plt.subplots(4,3,figsize=(13,10),sharex=True,layout='constrained')
+    fig.suptitle('第三问：固定电价下的购电与储能调度')
     for row,date in enumerate(('2025-03-20','2025-06-21','2025-09-23','2025-12-21')):
         g=detail[detail.date==date]; x=(g.slot.to_numpy()+1)/6
         a,b,c=axs[row]
