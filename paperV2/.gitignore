@@ -1,0 +1,19 @@
+# LaTeX 编译中间产物（保留 main.pdf）
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+
+# 临时文件
+_preview/
+pass*.log
