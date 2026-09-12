@@ -1,4 +1,10 @@
-# 论文编译说明
+# 论文材料
+
+当前供新稿使用的是 [独立图包](figure_package/README.md)：[图文预览PDF](figure_package/图文预览.pdf)、[浏览器预览](figure_package/图文预览.html)、[图注与正文描述](figure_package/图注与正文.md)。十张主图统一样式，均由各问保存结果重新组织生成。
+
+原 `main.tex`、`main.pdf`、`sections/` 和 `figs/` 保留作旧稿资料。下面是旧稿的编译说明；新图包的重绘与使用方法见上方入口。
+
+# 旧稿编译说明
 
 ## 环境要求
 
