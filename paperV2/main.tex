@@ -1,0 +1,48 @@
+% 编译方式：在本目录执行 xelatex main.tex 两次。
+\documentclass[UTF8,a4paper,zihao=-4,fontset=windows]{ctexart}
+\usepackage[left=20mm,right=20mm,top=22mm,bottom=22mm]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,longtable,array,graphicx,float,placeins}
+\usepackage{caption,hyperref}
+\hypersetup{hidelinks,pdftitle={考虑预测更新与电价不确定性的微网储能滚动调度}}
+\captionsetup{font=small,labelfont=bf}
+\setlength{\parindent}{2em}
+\linespread{1.16}
+\setlength{\emergencystretch}{2em}
+\renewcommand{\arraystretch}{1.18}
+\newcommand{\pos}[1]{\left[#1\right]_{+}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\fig}[1]{\input{figures/#1.tex}}
+\title{考虑预测更新与电价不确定性的微网储能滚动调度}
+\author{}
+\date{}
+\begin{document}
+\maketitle
+\vspace{-2.8em}
+\begin{abstract}
+针对含光伏、负载与储能设备的微网购电调度问题，建立从典型日确定性优化到历史场景日前决策、预报更新日内调整及波动电价扩展的模型体系。统一采用十分钟离散时段，以储电量递推、容量和功率限制描述储能，并在明确的信息与结算条件下比较实际购电费用。
+
+对于问题一，构建确定性线性规划，以混合整数模型及逐段约束检查作为对照。典型日购电费为35126.95元，较无储能基线节省12925.10元，降幅26.90\%。对于问题二，利用历史预测残差构造56天等权场景，在48小时前瞻窗口内优化日前购电和储能，逐日执行并结算紧急购电。2025年2—12月费用为14389135.08元；统一有效残差口径相对原方案减少12861.89元，改善集中于启动期。
+
+对于问题三，将发布预报与历史预测在线融合，通过经验场景树表达未来信息更新，并在0、6、12、18点滚动决策。主方案费用为14022396.98元，较同口径历史预测对照节省367495.52元；增加18点更新未表现出明确的额外收益。对于问题四，日前联合价格场景方案和四次更新扩展方案的实际费用分别为15163043.89元与15061735.43元。通过同价结算对照、费用分解和逐段差值，分析价格信息及调度变化；同时披露4-3现有优化目标与实际结算之间的附加项差异。
+
+结果表明，储能的经济作用取决于跨时段调节、预测误差与结算机制的共同作用，增加模型复杂度或更新次数并不保证本年度实际费用下降。进一步列示两种效率口径的已有费用对照，区分物理参数变化与主方案结果。本文结论限于已有历史回测，不将有限场景优化等同于全年真实随机控制的全局最优。
+
+\noindent\textbf{关键词：}微网储能；随机规划；滚动优化；预报融合；电价场景
+\end{abstract}
+\clearpage
+\input{sections/01_framework}
+\input{sections/02_question1}
+\input{sections/03_question2}
+\input{sections/04_question3}
+\input{sections/05_question4}
+\input{sections/06_validation}
+\input{sections/07_conclusion}
+\begin{thebibliography}{9}
+\bibitem{problem} 2026年高教社杯全国大学生数学建模竞赛. C题：微网与外部电网电力调控策略[题目及附录]. data/C题.pdf, 2026.
+\bibitem{models} 项目组. 四问主模型建模说明、程序及正式结果[内部研究材料]. question1—question4, 2026.
+\bibitem{figures} 项目组. 新论文图包：图注与正文、绘图数据及来源清单[内部研究材料]. paper/figure\_package, 2026.
+\bibitem{efficiency} 项目组. 储能效率口径的稳健性检验及说明[内部研究材料]. paper/extra, 2026.
+\end{thebibliography}
+\appendix
+\input{sections/08_appendix}
+\end{document}
