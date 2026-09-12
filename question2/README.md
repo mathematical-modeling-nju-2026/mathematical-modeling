@@ -12,6 +12,8 @@ python -X utf8 question2/code/run_experiment.py --first-residual 7 --only unifor
 
 原验证记录保留在结果目录；新路径及文件完整性检查由根目录 `tools/validate_layout.py` 单独执行。
 
+根目录 `results/run_metadata.json` 描述已经发布的推荐结果（`first_residual=7`）；`first_residual=0` 对照实验的原元数据保存在 `results/variants/run_metadata.json`，不要用它解释正式结果。
+
 
 ## 完整候选与发布流程（需要重新生成全套时）
 

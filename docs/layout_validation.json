@@ -1,20 +1,35 @@
 {
   "scope": "Relocation integrity, syntax, imports, input reading, existing result consistency; no optimization rerun.",
   "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]",
-  "original_results_overwritten": false,
   "integrity": {
     "total": 510,
-    "byte_identical": 476,
+    "byte_identical": 387,
     "missing": [],
     "edited_code_or_docs": [
       "question1/code/plot_q1.py",
       "question1/code/run_q1.py",
       "question1/结果说明.md",
       "common/q2_base/q2_data.py",
+      "archive/C_yang/ques1/plot_results.py",
+      "archive/C_yang/ques1/README.md",
+      "archive/C_yang/ques1/solve.py",
+      "archive/C_yang/ques1/verify.py",
+      "archive/C_yang/ques1/结果说明.md",
+      "archive/C_yang/ques2/forecast.py",
+      "archive/C_yang/ques2/optimization.py",
+      "archive/C_yang/ques2/plot_results.py",
+      "archive/C_yang/ques2/solve.py",
+      "archive/C_yang/ques2/verify.py",
+      "question3/code/plot_q3.py",
       "question3/code/q3_data.py",
+      "question3/code/q3_forecast.py",
+      "question3/code/q3_model.py",
       "question3/README.md",
+      "question3/code/run_q3.py",
+      "question3/code/verify_q3.py",
       "question3/建模说明.md",
       "question3/结果说明.md",
+      "question4/part2/code/check_information.py",
       "question4/part2/code/q42_model.py",
       "question4/part2/README.md",
       "question4/part2/code/report_q42.py",
@@ -23,13 +38,16 @@
       "question4/part2/建模说明.md",
       "question4/part2/结果说明.md",
       "common/q2_base/run_1439.py",
+      "question2/code/check_information.py",
       "question2/README.md",
       "question2/code/report_experiment.py",
       "question2/code/rolling_window.py",
+      "question2/code/run_experiment.py",
       "question2/code/verify_window.py",
       "question2/结果说明.md",
       "question4/part3/code/q3_data.py",
       "question4/part3/README.md",
+      "question4/part3/code/run_q3.py",
       "question4/part3/建模说明.md",
       "question4/part3/结果说明.md",
       "archive/smoke/question4/part3/结果说明.md",
@@ -42,12 +60,85 @@
       "question3/research/experiments/_verify_q2q3.py",
       "question3/research/experiments/_peer_lab/q3_data.py"
     ],
-    "changed_result_or_input_files": [],
+    "regenerated_or_edited_outputs": [
+      "question1/results/duals.npz",
+      "archive/C_yang/ques1/.gitignore",
+      "archive/C_yang/ques1/requirements.txt",
+      "archive/C_yang/ques2/.gitignore",
+      "archive/C_yang/ques2/requirements.txt",
+      "question3/results/comparison.csv",
+      "question3/requirements.txt",
+      "question3/results/result3.xlsx",
+      "question3/results/run_metadata.json",
+      "question3/results/summary.json",
+      "question3/results/verification.json",
+      "question3/results/comparisons/at_0_6/summary.json",
+      "question3/results/comparisons/at_0_6_12/result3.xlsx",
+      "question3/results/comparisons/at_0_6_12/summary.json",
+      "question3/results/comparisons/B_aligned/summary.json",
+      "question3/results/comparisons/only_0/summary.json",
+      "question4/part2/results/january_warmup.csv.gz",
+      "question4/part2/results/run_metadata.json",
+      "question4/part2/results/verification.json",
+      "question4/part2/results/variants/joint_price/result4-2.xlsx",
+      "question4/part2/results/variants/joint_price/schedule_detail.csv.gz",
+      "question4/part2/results/variants/known_today_price/result4-2.xlsx",
+      "question4/part2/results/variants/known_today_price/schedule_detail.csv.gz",
+      "question4/part2/results/variants/mean_price/result4-2.xlsx",
+      "question4/part2/results/variants/mean_price/schedule_detail.csv.gz",
+      "question4/part2/results/variants/q2_repriced/result4-2.xlsx",
+      "question4/part2/results/variants/q2_repriced/schedule_detail.csv.gz",
+      "question2/results/comparison.csv",
+      "question2/results/run_metadata.json",
+      "question2/results/verification.json",
+      "question2/results/variants/half_life14/daily_summary.csv",
+      "question2/results/variants/half_life14/result2.xlsx",
+      "question2/results/variants/half_life14/schedule_detail.csv.gz",
+      "question2/results/variants/half_life14/summary.json",
+      "question2/results/variants/half_life28/daily_summary.csv",
+      "question2/results/variants/half_life28/result2.xlsx",
+      "question2/results/variants/half_life28/schedule_detail.csv.gz",
+      "question2/results/variants/half_life28/summary.json",
+      "question2/results/variants/half_life7/daily_summary.csv",
+      "question2/results/variants/half_life7/result2.xlsx",
+      "question2/results/variants/half_life7/schedule_detail.csv.gz",
+      "question2/results/variants/half_life7/summary.json",
+      "question2/results/variants/online_primary/daily_summary.csv",
+      "question2/results/variants/online_primary/result2.xlsx",
+      "question2/results/variants/online_primary/schedule_detail.csv.gz",
+      "question2/results/variants/online_primary/summary.json",
+      "question2/results/variants/uniform56/result2.xlsx",
+      "question2/results/variants/uniform56/schedule_detail.csv.gz",
+      "question2/results/variants/uniform56/summary.json",
+      "question4/part3/results/comparison.csv",
+      "question4/part3/results/result4-3.xlsx",
+      "question4/part3/results/run_metadata.json",
+      "question4/part3/results/summary.json",
+      "question4/part3/results/verification.json",
+      "question4/part3/results/comparisons/at_0_6/daily_summary.csv",
+      "question4/part3/results/comparisons/at_0_6/schedule_detail.csv",
+      "question4/part3/results/comparisons/at_0_6/summary.json",
+      "question4/part3/results/comparisons/at_0_6/verification.json",
+      "question4/part3/results/comparisons/at_0_6_12/daily_summary.csv",
+      "question4/part3/results/comparisons/at_0_6_12/schedule_detail.csv",
+      "question4/part3/results/comparisons/at_0_6_12/summary.json",
+      "question4/part3/results/comparisons/at_0_6_12/verification.json",
+      "question4/part3/results/comparisons/B_aligned/daily_summary.csv",
+      "question4/part3/results/comparisons/B_aligned/schedule_detail.csv",
+      "question4/part3/results/comparisons/B_aligned/summary.json",
+      "question4/part3/results/comparisons/B_aligned/verification.json",
+      "question4/part3/results/comparisons/only_0/daily_summary.csv",
+      "question4/part3/results/comparisons/only_0/schedule_detail.csv",
+      "question4/part3/results/comparisons/only_0/summary.json",
+      "question4/part3/results/comparisons/only_0/verification.json"
+    ],
+    "changed_inputs": [],
     "pass_check": true
   },
+  "original_results_overwritten": true,
   "repository_scan": {
-    "python_files": 249,
-    "markdown_files": 62,
+    "python_files": 254,
+    "markdown_files": 70,
     "syntax_errors": [],
     "broken_links": [],
     "absolute_path_mentions": [
@@ -248,6 +339,42 @@
         "line": 408,
         "text": "# r'E:\\YZQ\\shiyan\\5.19\\XSDL',",
         "active": false
+      },
+      {
+        "file": "paper/make_q2_fig.py",
+        "line": 13,
+        "text": "ROOT = Path(r\"d:\\数学建模大赛\\mathematical-modeling\")",
+        "active": false
+      },
+      {
+        "file": "paper/README.md",
+        "line": 7,
+        "text": "- 本机参考配置：TeX Live 2026，安装于 `D:\\texlive\\2026`",
+        "active": false
+      },
+      {
+        "file": "paper/README.md",
+        "line": 13,
+        "text": "& \"D:\\texlive\\2026\\bin\\windows\\tlmgr.bat\" install `",
+        "active": false
+      },
+      {
+        "file": "paper/README.md",
+        "line": 24,
+        "text": "$bin = \"D:\\texlive\\2026\\bin\\windows\"",
+        "active": false
+      },
+      {
+        "file": "question1/efficiency/code/compare_eff.py",
+        "line": 8,
+        "text": "BASE = pathlib.Path(r\"d:\\数学建模大赛\\mathematical-modeling\\question1\\efficiency\")",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/verify_def1.py",
+        "line": 7,
+        "text": "REPO = pathlib.Path(r\"d:\\数学建模大赛\\mathematical-modeling\")",
+        "active": true
       }
     ],
     "old_directory_mentions": [
@@ -613,7 +740,7 @@
       },
       {
         "file": "docs/整理报告.md",
-        "line": 115,
+        "line": 117,
         "text": "没有将其他目录因“内容更多”提升为主方案。未采用的 `C_yang` 旧第一/二问、`CShen` 方案A/早期方案C/归因实验及另一条M2路线移入 `archive/`；冒烟产物、缓存和Excel临时文件也归档。第二问的窗口/加权对照、第四问的价格/更新频率对照是解释最终结果的证据，随本问保留在 `results/`；第三问全部优化探索保留在 `research/`。方案B基础模型属于正在使用的公共依赖，位于 `common/`，不能当成废弃方案删除。",
         "active": false
       },
@@ -1952,7 +2079,7 @@
       {
         "file": "docs/逐文件变更清单.md",
         "line": 255,
-        "text": "| `CShen/方案B_滚动窗口优化/run_metadata.json` | `question2/results/run_metadata.json` | 原字节保留，仅移动 |",
+        "text": "| `CShen/方案B_滚动窗口优化/run_metadata.json` | `question2/results/variants/run_metadata.json` | 保留 `first_residual=0` 对照实验元数据；增加范围标识 |",
         "active": false
       },
       {
@@ -1988,7 +2115,7 @@
       {
         "file": "docs/逐文件变更清单.md",
         "line": 261,
-        "text": "| `CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/run_metadata.json` | `question2/results/sensitivity/valid_residuals/run_metadata.json` | 原字节保留，仅移动 |",
+        "text": "| `CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/run_metadata.json` | `question2/results/sensitivity/valid_residuals/run_metadata.json` | 原字节保留；据此另生成根目录正式发布元数据 |",
         "active": false
       },
       {
@@ -3583,7 +3710,7 @@
       },
       {
         "file": "tools/validate_layout.py",
-        "line": 90,
+        "line": 95,
         "text": "if re.search(r'C_yang|CShen|方案B_滚动窗口优化|方案B_问题4_第三问重模拟',line):",
         "active": false
       }
@@ -7442,6 +7569,24 @@
         "active": false
       },
       {
+        "file": "paper/make_q2_fig.py",
+        "line": 54,
+        "call": "fig.savefig(OUT / 'q2_trend.pdf', dpi=150)",
+        "active": false
+      },
+      {
+        "file": "paper/make_q2_fig.py",
+        "line": 55,
+        "call": "fig.savefig(OUT / 'q2_trend.png', dpi=150)",
+        "active": false
+      },
+      {
+        "file": "paper/make_q2_fig.py",
+        "line": 20,
+        "call": "pd.read_csv(path, encoding='utf-8-sig')",
+        "active": false
+      },
+      {
         "file": "question1/code/plot_q1.py",
         "line": 33,
         "call": "np.load(HERE / 'solution.npz', allow_pickle=True)",
@@ -7469,6 +7614,90 @@
         "file": "question1/code/run_q1.py",
         "line": 176,
         "call": "open(path, 'w', newline='', encoding='utf-8-sig')",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/compare_eff.py",
+        "line": 74,
+        "call": "pd.read_csv(BASE / 'def1_side90' / 'results' / 'schedule_detail.csv')",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/compare_eff.py",
+        "line": 75,
+        "call": "pd.read_csv(BASE / 'def2_roundtrip90' / 'results' / 'schedule_detail.csv')",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/compare_eff.py",
+        "line": 118,
+        "call": "(BASE / 'comparison.txt').write_text(txt, encoding='utf-8')",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/compare_eff.py",
+        "line": 27,
+        "call": "(BASE / key / 'results' / 'summary.json').read_text(encoding='utf-8')",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/q1_model_eff.py",
+        "line": 87,
+        "call": "openpyxl.load_workbook(path, data_only=True)",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/run_q1_eff.py",
+        "line": 150,
+        "call": "np.savez(out / 'duals.npz', lam=lam)",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/run_q1_eff.py",
+        "line": 179,
+        "call": "np.savez(out / 'solution.npz', labels=np.array(labels), price=price, load=load, pv=pv, g=sol['g'], c=sol['c'], d=sol['d'], w=sol['w'], E=sol['E'], obj_lp=obj_lp, obj_milp=obj_milp, base_cost=base_cost)",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/run_q1_eff.py",
+        "line": 198,
+        "call": "(out / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding='utf-8')",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/run_q1_eff.py",
+        "line": 238,
+        "call": "open(path, 'w', newline='', encoding='utf-8-sig')",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/verify_def1.py",
+        "line": 16,
+        "call": "np.load(OLD / 'solution.npz', allow_pickle=True)",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/verify_def1.py",
+        "line": 17,
+        "call": "np.load(NEW / 'solution.npz', allow_pickle=True)",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/verify_def1.py",
+        "line": 34,
+        "call": "pd.read_csv(OLD / 'schedule_detail.csv')",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/verify_def1.py",
+        "line": 35,
+        "call": "pd.read_csv(NEW / 'schedule_detail.csv')",
+        "active": true
+      },
+      {
+        "file": "question1/efficiency/code/verify_def1.py",
+        "line": 50,
+        "call": "np.load(io.BytesIO(raw.stdout), allow_pickle=True)",
         "active": true
       },
       {
@@ -7503,43 +7732,49 @@
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 68,
+        "line": 85,
+        "call": "root_metadata_path.write_text(json.dumps(published_metadata, ensure_ascii=False, indent=2), encoding='utf-8')",
+        "active": true
+      },
+      {
+        "file": "question2/code/report_experiment.py",
+        "line": 98,
         "call": "(HERE / 'verification_all.json').write_text(json.dumps(bundle, ensure_ascii=False, indent=2), encoding='utf-8')",
         "active": true
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 72,
+        "line": 102,
         "call": "(HERE / 'source_fingerprints.json').write_text(json.dumps({str(p.relative_to(repo)): hashlib.sha256(p.read_bytes()).hexdigest() for p in dependencies}, ensure_ascii=False, indent=2), encoding='utf-8')",
         "active": true
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 81,
+        "line": 111,
         "call": "pd.DataFrame(monthly).to_csv(HERE / 'monthly_savings.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 86,
+        "line": 116,
         "call": "pd.read_csv(HERE / 'variants' / 'half_life28' / 'daily_summary.csv')",
         "active": true
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 129,
+        "line": 159,
         "call": "(HERE / '结果说明.md').write_text('\\n'.join(lines), encoding='utf-8')",
         "active": true
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 164,
+        "line": 194,
         "call": "fig.savefig(dest / 'window_comparison.png', dpi=320, bbox_inches='tight')",
         "active": true
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 165,
+        "line": 195,
         "call": "fig.savefig(dest / 'window_comparison.pdf', bbox_inches='tight')",
         "active": true
       },
@@ -7569,13 +7804,31 @@
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 76,
+        "line": 66,
+        "call": "root_metadata_path.read_text(encoding='utf-8')",
+        "active": true
+      },
+      {
+        "file": "question2/code/report_experiment.py",
+        "line": 68,
+        "call": "(HERE / 'variants' / 'run_metadata.json').write_text(json.dumps(root_metadata, ensure_ascii=False, indent=2), encoding='utf-8')",
+        "active": true
+      },
+      {
+        "file": "question2/code/report_experiment.py",
+        "line": 71,
+        "call": "(HERE / 'sensitivity' / 'valid_residuals' / 'run_metadata.json').read_text(encoding='utf-8')",
+        "active": true
+      },
+      {
+        "file": "question2/code/report_experiment.py",
+        "line": 106,
         "call": "pd.read_csv(HERE / r.relative_folder / 'daily_summary.csv')",
         "active": true
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 155,
+        "line": 185,
         "call": "pd.read_csv(folder / 'daily_summary.csv')",
         "active": true
       },
@@ -7587,25 +7840,25 @@
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 65,
+        "line": 94,
         "call": "(HERE / n).read_bytes()",
         "active": true
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 65,
+        "line": 94,
         "call": "(recommended / n).read_bytes()",
         "active": true
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 63,
+        "line": 92,
         "call": "(HERE / name).read_bytes()",
         "active": true
       },
       {
         "file": "question2/code/report_experiment.py",
-        "line": 72,
+        "line": 102,
         "call": "p.read_bytes()",
         "active": true
       },
@@ -7767,91 +8020,91 @@
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 158,
+        "line": 159,
         "call": "pd.DataFrame(rows1).to_csv(out / 'target_table1.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 159,
+        "line": 160,
         "call": "pd.DataFrame(rows2).to_csv(out / 'target_table2.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 160,
+        "line": 161,
         "call": "pd.DataFrame(rows3).to_csv(out / 'target_table3.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 161,
+        "line": 162,
         "call": "days[days.date.isin(targets)].to_csv(out / 'target_daily.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 166,
+        "line": 167,
         "call": "pd.read_csv(out / 'comparison.csv')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 222,
+        "line": 224,
         "call": "(out / '结果说明.md').write_text('\\n'.join(lines), encoding='utf-8')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 256,
+        "line": 258,
         "call": "pd.DataFrame(summaries).to_csv(out / 'comparison.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 257,
+        "line": 259,
         "call": "f.diagnostics(end=end).to_csv(out / 'forecast_diagnostics.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 266,
+        "line": 268,
         "call": "(out / 'run_metadata.json').write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding='utf-8')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 205,
+        "line": 207,
         "call": "pd.read_csv(out / 'target_daily.csv')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 241,
+        "line": 243,
         "call": "detail.to_csv(dest / 'schedule_detail.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 242,
+        "line": 244,
         "call": "days.to_csv(dest / 'daily_summary.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 243,
+        "line": 245,
         "call": "(dest / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding='utf-8')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 247,
+        "line": 249,
         "call": "(dest / 'verification.json').write_text(json.dumps(checks, ensure_ascii=False, indent=2), encoding='utf-8')",
         "active": true
       },
       {
         "file": "question3/code/run_q3.py",
-        "line": 255,
+        "line": 257,
         "call": "(out / 'scenario_trees.json').write_text(json.dumps(trees, ensure_ascii=False, indent=2), encoding='utf-8')",
         "active": true
       },
@@ -8541,91 +8794,91 @@
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 158,
+        "line": 159,
         "call": "pd.DataFrame(rows1).to_csv(out / 'target_table1.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 159,
+        "line": 160,
         "call": "pd.DataFrame(rows2).to_csv(out / 'target_table2.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 160,
+        "line": 161,
         "call": "pd.DataFrame(rows3).to_csv(out / 'target_table3.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 161,
+        "line": 162,
         "call": "days[days.date.isin(targets)].to_csv(out / 'target_daily.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 166,
+        "line": 167,
         "call": "pd.read_csv(out / 'comparison.csv')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 222,
+        "line": 224,
         "call": "(out / '结果说明.md').write_text('\\n'.join(lines), encoding='utf-8')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 256,
+        "line": 258,
         "call": "pd.DataFrame(summaries).to_csv(out / 'comparison.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 257,
+        "line": 259,
         "call": "f.diagnostics(end=end).to_csv(out / 'forecast_diagnostics.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 266,
+        "line": 268,
         "call": "(out / 'run_metadata.json').write_text(json.dumps(metadata, ensure_ascii=False, indent=2), encoding='utf-8')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 205,
+        "line": 207,
         "call": "pd.read_csv(out / 'target_daily.csv')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 241,
+        "line": 243,
         "call": "detail.to_csv(dest / 'schedule_detail.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 242,
+        "line": 244,
         "call": "days.to_csv(dest / 'daily_summary.csv', index=False, encoding='utf-8-sig')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 243,
+        "line": 245,
         "call": "(dest / 'summary.json').write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding='utf-8')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 247,
+        "line": 249,
         "call": "(dest / 'verification.json').write_text(json.dumps(checks, ensure_ascii=False, indent=2), encoding='utf-8')",
         "active": true
       },
       {
         "file": "question4/part3/code/run_q3.py",
-        "line": 255,
+        "line": 257,
         "call": "(out / 'scenario_trees.json').write_text(json.dumps(trees, ensure_ascii=False, indent=2), encoding='utf-8')",
         "active": true
       },
@@ -8661,13 +8914,13 @@
       },
       {
         "file": "tools/validate_layout.py",
-        "line": 150,
+        "line": 155,
         "call": "np.load(ROOT / 'question1/results/solution.npz', allow_pickle=True)",
         "active": false
       },
       {
         "file": "tools/validate_layout.py",
-        "line": 172,
+        "line": 186,
         "call": "(ROOT / 'docs/layout_validation.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')",
         "active": false
       },
@@ -8679,25 +8932,37 @@
       },
       {
         "file": "tools/validate_layout.py",
-        "line": 69,
+        "line": 74,
         "call": "p.read_text(encoding='utf-8-sig')",
         "active": false
       },
       {
         "file": "tools/validate_layout.py",
-        "line": 154,
+        "line": 159,
         "call": "pd.read_csv(out / 'daily_summary.csv')",
         "active": false
       },
       {
         "file": "tools/validate_layout.py",
-        "line": 153,
+        "line": 165,
+        "call": "(ROOT / 'question2/results/run_metadata.json').read_text(encoding='utf-8')",
+        "active": false
+      },
+      {
+        "file": "tools/validate_layout.py",
+        "line": 166,
+        "call": "(ROOT / 'question2/results/summary.json').read_text(encoding='utf-8')",
+        "active": false
+      },
+      {
+        "file": "tools/validate_layout.py",
+        "line": 158,
         "call": "(out / 'summary.json').read_text(encoding='utf-8')",
         "active": false
       },
       {
         "file": "tools/validate_layout.py",
-        "line": 163,
+        "line": 176,
         "call": "path.read_text(encoding='utf-8')",
         "active": false
       },
@@ -8799,6 +9064,12 @@
       "difference": 1.862645149230957e-09,
       "pass_check": true
     }
+  },
+  "question2_published_metadata": {
+    "first_residual_matches": true,
+    "variant_matches": true,
+    "candidate_matches": true,
+    "pass_check": true
   },
   "migrated_fingerprints": {
     "question2": true,

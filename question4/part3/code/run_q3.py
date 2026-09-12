@@ -7,6 +7,7 @@ from pathlib import Path
 from datetime import datetime, timedelta
 import argparse
 import json
+import os
 import platform
 import time
 import numpy as np
@@ -166,10 +167,11 @@ def write_report(out):
     comp=pd.read_csv(out/'comparison.csv')
     report_days=int(comp.iloc[0]['days'])
     last_date=(datetime(2025,2,1)+timedelta(days=report_days-1)).strftime('%Y年%m月%d日')
+    model_doc=Path(os.path.relpath(HERE.parent/'建模说明.md',out)).as_posix()
     names={'B_aligned':'方案B框架同口径复算','only_0':'仅使用0点融合预报',
            'at_0_6':'0、6点','at_0_6_12':'0、6、12点','all':'0、6、12、18点（主方案）'}
     lines=['# 第三问结果说明','',
-           f'结果期为2025年2月1日至{last_date}，共{report_days}天。采用在线预报融合、经验场景树LP和跨日滚动执行；详见 [建模说明.md](建模说明.md)。',
+           f'结果期为2025年2月1日至{last_date}，共{report_days}天。采用在线预报融合、经验场景树LP和跨日滚动执行；详见 [建模说明.md]({model_doc})。',
            '', '**费用口径**：取消部分退原费、另付50%违约费；费用按供电时段电价计算。原计划费、增购费、退款、违约费、紧急费分开记账。',
            '', '## 全年对照','',
            '| 方案 | 总费用（元） | 紧急购电量（kWh） |','|---|---:|---:|']

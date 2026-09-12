@@ -59,12 +59,43 @@ def main():
                    cost_difference_last_date=str(changed_dates.iloc[-1]) if len(changed_dates) else None,
                    weighted_window_conclusion='No robust improvement after controlling early fallback residuals.')
     (HERE/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+    # The root files above are the published first_residual=7 result. Preserve
+    # the first_residual=0 experiment metadata next to its variants, then make
+    # the root metadata describe the files users actually receive.
+    root_metadata_path=HERE/'run_metadata.json'
+    root_metadata=json.loads(root_metadata_path.read_text(encoding='utf-8'))
+    if root_metadata.get('first_residual')==0:
+        (HERE/'variants'/'run_metadata.json').write_text(
+            json.dumps(root_metadata,ensure_ascii=False,indent=2),encoding='utf-8')
+    experiment_metadata=json.loads(
+        (HERE/'sensitivity'/'valid_residuals'/'run_metadata.json').read_text(encoding='utf-8'))
+    candidate=next(c for c in experiment_metadata['candidates'] if c['name']==summary['name'])
+    published_metadata=dict(
+        metadata_scope='published_recommended_result',
+        published_variant=summary['recommended_variant'],
+        candidate=candidate,
+        first_residual=experiment_metadata['first_residual'],
+        initial_soc=summary['initial_energy_kwh'],
+        terminal_soc=summary['final_energy_kwh'],
+        horizon_days=experiment_metadata['horizon_days'],
+        source_file_at_run=experiment_metadata['source_file'],
+        source_sha256_at_run=experiment_metadata['source_sha256'],
+        inherited_forecaster=experiment_metadata['inherited_forecaster'],
+        python_at_run=experiment_metadata['python'])
+    root_metadata_path.write_text(
+        json.dumps(published_metadata,ensure_ascii=False,indent=2),encoding='utf-8')
+    bundle['published_metadata_matches_summary']=(
+        published_metadata['first_residual']==summary['first_residual_index']
+        and published_metadata['published_variant']==summary['recommended_variant']
+        and published_metadata['candidate']['name']==summary['name'])
     bundle['original_cost_reproduction_error']=old_gap
     bundle['published_file_hashes']={name:hashlib.sha256((HERE/name).read_bytes()).hexdigest()
                                      for name in ('result2.xlsx','daily_summary.csv','schedule_detail.csv.gz')}
     bundle['published_files_identical_to_verified_variant']=all((HERE/n).read_bytes()==(recommended/n).read_bytes() for n in bundle['published_file_hashes'])
-    bundle['pass']=bundle['published_files_identical_to_verified_variant'] and old_gap<=1e-6
-    if not bundle['pass']:raise RuntimeError('Published files differ from the verified variant')
+    bundle['pass']=(bundle['published_files_identical_to_verified_variant']
+                    and bundle['published_metadata_matches_summary'] and old_gap<=1e-6)
+    if not bundle['pass']:
+        raise RuntimeError('Published result files or metadata differ from the verified variant')
     (HERE/'verification_all.json').write_text(json.dumps(bundle,ensure_ascii=False,indent=2),encoding='utf-8')
     repo=SOURCE.parents[2]
     dependencies=[SOURCE,repo/'common'/'q2_base'/'q2_data.py']

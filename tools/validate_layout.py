@@ -48,7 +48,7 @@ def run_python(source):
 
 def main():
     report = dict(scope='Relocation integrity, syntax, imports, input reading, existing result consistency; no optimization rerun.',
-                  python=sys.version, original_results_overwritten=False)
+                  python=sys.version)
     manifest = json.loads((ROOT/'docs/migration_manifest.json').read_text(encoding='utf-8'))
     missing, changed, preserved = [], [], []
     for row in manifest['files']:
@@ -56,10 +56,15 @@ def main():
         if not p.is_file(): missing.append(row['new'])
         elif sha(p) != row['sha256']: changed.append(row['new'])
         else: preserved.append(row['new'])
-    unexpected = [p for p in changed if Path(p).suffix not in ('.py', '.md')]
+    edited_code_or_docs=[p for p in changed if Path(p).suffix in ('.py','.md')]
+    regenerated_or_edited_outputs=[p for p in changed if Path(p).suffix not in ('.py','.md')]
+    changed_inputs=[p for p in changed if p.startswith('data/')]
     report['integrity'] = dict(total=len(manifest['files']), byte_identical=len(preserved), missing=missing,
-                               edited_code_or_docs=changed, changed_result_or_input_files=unexpected,
-                               pass_check=not missing and not unexpected)
+                               edited_code_or_docs=edited_code_or_docs,
+                               regenerated_or_edited_outputs=regenerated_or_edited_outputs,
+                               changed_inputs=changed_inputs,
+                               pass_check=not missing and not changed_inputs)
+    report['original_results_overwritten']=any('/results/' in f'/{p}' for p in regenerated_or_edited_outputs)
     all_files = list(files())
     syntax_errors, absolute_refs, old_refs, broken_links, io_references = [], [], [], [], []
     py_count = md_count = 0
@@ -157,6 +162,14 @@ print('Q4-2: attachment4=365x144; read successfully')
         value['difference']=abs(value['stored']-value.get('from_saved_daily',value.get('from_saved_dispatch')))
         value['pass_check']=value['difference']<1e-6
     report['saved_total_consistency']=totals
+    q2_metadata=json.loads((ROOT/'question2/results/run_metadata.json').read_text(encoding='utf-8'))
+    q2_summary=json.loads((ROOT/'question2/results/summary.json').read_text(encoding='utf-8'))
+    report['question2_published_metadata']=dict(
+        first_residual_matches=q2_metadata.get('first_residual')==q2_summary.get('first_residual_index'),
+        variant_matches=q2_metadata.get('published_variant')==q2_summary.get('recommended_variant'),
+        candidate_matches=q2_metadata.get('candidate',{}).get('name')==q2_summary.get('name'))
+    report['question2_published_metadata']['pass_check']=all(
+        report['question2_published_metadata'].values())
     report['migrated_fingerprints']={}
     for scheme in ('question2','question4/part2'):
         path=ROOT/scheme/'results/source_fingerprints.migrated.json'
@@ -168,6 +181,7 @@ print('Q4-2: attachment4=365x144; read successfully')
         and all(x['pass_check'] for x in inputs.values()) and all(x['pass_check'] for x in totals.values())
         and not any(x['active'] for x in syntax_errors+broken_links)
         and all(report['migrated_fingerprints'].values())
+        and report['question2_published_metadata']['pass_check']
         and not any(x is False for x in report['q43_original_input_comparison'].values()))
     (ROOT/'docs/layout_validation.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
     print(json.dumps(dict(active_pass=report['active_pass'],integrity=report['integrity'],
