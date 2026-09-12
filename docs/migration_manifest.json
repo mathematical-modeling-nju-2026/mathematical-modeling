@@ -1,0 +1,2555 @@
+{
+  "base_commit": "0e5da8dba9e83ae83434fff6baf31696139e2f57",
+  "files": [
+    {
+      "old": "C_yang/q1/duals.npz",
+      "new": "question1/results/duals.npz",
+      "sha256": "ffbd66682df04c3f12424d5cf6cbca7cd670da1736d55ddaa5facdb171e282e4"
+    },
+    {
+      "old": "C_yang/q1/plot_q1.py",
+      "new": "question1/code/plot_q1.py",
+      "sha256": "f06ab973307ade98ae09390557c35fa8f9ca10ddfef1134d8bec900013a7d5f9"
+    },
+    {
+      "old": "C_yang/q1/q1_model.py",
+      "new": "question1/code/q1_model.py",
+      "sha256": "986fd429c6814cf59068795e3101311714741a47a8579ad17f24d043331113c4"
+    },
+    {
+      "old": "C_yang/q1/result1.xlsx",
+      "new": "question1/results/result1.xlsx",
+      "sha256": "eaf8352bdbe63e7c75272a7275a6e50ca1b7656d46cd37bb4e71549b445f1f75"
+    },
+    {
+      "old": "C_yang/q1/run_q1.py",
+      "new": "question1/code/run_q1.py",
+      "sha256": "5e43a688fcff22aa43dac5785099f720ddc6c2f33406c34372885a979096a9b2"
+    },
+    {
+      "old": "C_yang/q1/schedule_detail.csv",
+      "new": "question1/results/schedule_detail.csv",
+      "sha256": "b50a0496ca03f392785c0e77d8e74e98e532c84312e79a6a389cf0a1bf0813e4"
+    },
+    {
+      "old": "C_yang/q1/solution.npz",
+      "new": "question1/results/solution.npz",
+      "sha256": "851960429fc431fc018cc04418fbf5cc4dbc2c7de6f346eda77ee58f2351657c"
+    },
+    {
+      "old": "C_yang/q1/结果说明.md",
+      "new": "question1/结果说明.md",
+      "sha256": "b3b79e9b23dd293ba75ae70b67320c02d8eba4684d5bae47135e7fd9b2673b24"
+    },
+    {
+      "old": "C_yang/q1/figs/fig1_dispatch.pdf",
+      "new": "question1/results/figs/fig1_dispatch.pdf",
+      "sha256": "534b0a620ce91adca6643e21b94caf8fa1066395a36d6c135b7dc8c0262fd829"
+    },
+    {
+      "old": "C_yang/q1/figs/fig1_dispatch.png",
+      "new": "question1/results/figs/fig1_dispatch.png",
+      "sha256": "f560b51d36f1dc92ebfbedf3938ab0409bbd7314221ab85b0003f686e4cb008b"
+    },
+    {
+      "old": "C_yang/q1/figs/fig2_comparison.pdf",
+      "new": "question1/results/figs/fig2_comparison.pdf",
+      "sha256": "242334f43459407e732e13cab47bad945ece318983f4b7529166094098fad0f6"
+    },
+    {
+      "old": "C_yang/q1/figs/fig2_comparison.png",
+      "new": "question1/results/figs/fig2_comparison.png",
+      "sha256": "7a555cd875d78bedf228f54aab26d244fc9dc5d8b46e45de869a77016ba0e7ec"
+    },
+    {
+      "old": "C_yang/q2/daily_summary.csv",
+      "new": "archive/C_yang/q2/daily_summary.csv",
+      "sha256": "dbff3969833f6fbce60ef02d691566ee6af025529052215b1e5fd54da90ddc1a"
+    },
+    {
+      "old": "C_yang/q2/q2_data.py",
+      "new": "common/q2_base/q2_data.py",
+      "sha256": "4f677f3286b7d0b11e27fb0bc87297cf14d17ca584f76d9db7459db62f2ac8ec"
+    },
+    {
+      "old": "C_yang/q2/q2_export.py",
+      "new": "archive/C_yang/q2/q2_export.py",
+      "sha256": "91ea233a665b2dd4dc6b892cb239497ad2df82386a8d58469d083431b4e05c22"
+    },
+    {
+      "old": "C_yang/q2/q2_forecast.py",
+      "new": "archive/C_yang/q2/q2_forecast.py",
+      "sha256": "5c576f7978ecfcf12b0966dcb0e2e4df626b406de36915130e0f8a4a03d399e0"
+    },
+    {
+      "old": "C_yang/q2/q2_main.py",
+      "new": "archive/C_yang/q2/q2_main.py",
+      "sha256": "2c0e64a24cf1fad838524193c47f453e7982345440a975e638929be5f68c848c"
+    },
+    {
+      "old": "C_yang/q2/q2_model.py",
+      "new": "archive/C_yang/q2/q2_model.py",
+      "sha256": "7e150d4a8d52b34e61b201443cd1dfe3d1f6b70716ebc7d23140ea01fd837d8f"
+    },
+    {
+      "old": "C_yang/q2/q2_plot.py",
+      "new": "archive/C_yang/q2/q2_plot.py",
+      "sha256": "5d2530c61ec4d6707626ecd65d0c052a311457d800f978c84b8cdce8d0aca137"
+    },
+    {
+      "old": "C_yang/q2/q2_run.py",
+      "new": "archive/C_yang/q2/q2_run.py",
+      "sha256": "a3d811b40f6b777d3b2cc755bd7891544d30ef47a5cbaaa1f088a41f7e1ada8d"
+    },
+    {
+      "old": "C_yang/q2/q2_scenarios.py",
+      "new": "archive/C_yang/q2/q2_scenarios.py",
+      "sha256": "3c70aa60c7858649a488c461bfdf8911a5f5239686d0779224e4792fbecd5ee9"
+    },
+    {
+      "old": "C_yang/q2/q2_verify.py",
+      "new": "archive/C_yang/q2/q2_verify.py",
+      "sha256": "b245626d86275598cecae3b30687f8078529ac09098ae5ba5f22605888d6c35e"
+    },
+    {
+      "old": "C_yang/q2/report.txt",
+      "new": "archive/C_yang/q2/report.txt",
+      "sha256": "75d03a6f41f076726a6bd53049f855f5b95d5e892474f0357b63fe4332a8c36b"
+    },
+    {
+      "old": "C_yang/q2/result2.xlsx",
+      "new": "archive/C_yang/q2/result2.xlsx",
+      "sha256": "2fefb27d83f15f7cad16163d6ec2176b893c805cc407fffb70789112cd6f7da7"
+    },
+    {
+      "old": "C_yang/q2/schedule_detail.csv",
+      "new": "archive/C_yang/q2/schedule_detail.csv",
+      "sha256": "5a0546eeb67efdcb27bdb381121b2bc82a5df4eccdb2007283955847a895301a"
+    },
+    {
+      "old": "C_yang/q2/solution.npz",
+      "new": "archive/C_yang/q2/solution.npz",
+      "sha256": "8e4bcd4c209c0d623f4b2e76c46f98c9d6d4245c70c1f1c2f4100f9acfeb1dc2"
+    },
+    {
+      "old": "C_yang/q2/solution_deterministic.npz",
+      "new": "archive/C_yang/q2/solution_deterministic.npz",
+      "sha256": "6af5ae212da6a6bc183c1974ceea52757b39355fcbb6eb57fd0acb1db0051dff"
+    },
+    {
+      "old": "C_yang/q2/solution_perfect.npz",
+      "new": "archive/C_yang/q2/solution_perfect.npz",
+      "sha256": "a659cd28c842259afeff529ac7e4f20469283cb04b4ca84a3357c7727a4b2805"
+    },
+    {
+      "old": "C_yang/q2/summary.json",
+      "new": "archive/C_yang/q2/summary.json",
+      "sha256": "2a4f32c323ae855c7d8d28f45f7ed46a7dda7e230a4ea759a3458dcdb239fdd1"
+    },
+    {
+      "old": "C_yang/q2/结果说明.md",
+      "new": "archive/C_yang/q2/结果说明.md",
+      "sha256": "8d7ffac232248e830e2083a6f1d2445445340fb8def80caf6e72d5f7ae9bf579"
+    },
+    {
+      "old": "C_yang/q2/figs/fig1_forecast.pdf",
+      "new": "archive/C_yang/q2/figs/fig1_forecast.pdf",
+      "sha256": "cb9ec8b94ef1bef4344f181f06691856acef80d46f8fbf6920e92a327b9c960d"
+    },
+    {
+      "old": "C_yang/q2/figs/fig1_forecast.png",
+      "new": "archive/C_yang/q2/figs/fig1_forecast.png",
+      "sha256": "81a2420188b4e8b9180dad381bb4eb30ccd69fce5d61ecb0223ebd92903f4a3a"
+    },
+    {
+      "old": "C_yang/q2/figs/fig2_yearly.pdf",
+      "new": "archive/C_yang/q2/figs/fig2_yearly.pdf",
+      "sha256": "562aed90838a40d9938f93de91e41b049989433783e27a48166fbbb665e9b45c"
+    },
+    {
+      "old": "C_yang/q2/figs/fig2_yearly.png",
+      "new": "archive/C_yang/q2/figs/fig2_yearly.png",
+      "sha256": "bdbfe5b2b26eebbac5f6e0f3f7b7bf2ee3c0d89d5cb79b78f305dd410ecf6242"
+    },
+    {
+      "old": "C_yang/q2/figs/fig3_target_days.pdf",
+      "new": "archive/C_yang/q2/figs/fig3_target_days.pdf",
+      "sha256": "7af8e603f49d6f1392aff699d04b4d48d31727a7949453ddd51438a72dcd59fa"
+    },
+    {
+      "old": "C_yang/q2/figs/fig3_target_days.png",
+      "new": "archive/C_yang/q2/figs/fig3_target_days.png",
+      "sha256": "b3644544215b18907057f75f806b3913489bc4358441cf7ed763be5123f61375"
+    },
+    {
+      "old": "C_yang/q2/figs/fig4_decomposition.pdf",
+      "new": "archive/C_yang/q2/figs/fig4_decomposition.pdf",
+      "sha256": "8cc437e152dad96a3040efc211ef2d2854ecef3f48ef61b2386ad7befc169ba6"
+    },
+    {
+      "old": "C_yang/q2/figs/fig4_decomposition.png",
+      "new": "archive/C_yang/q2/figs/fig4_decomposition.png",
+      "sha256": "9370daf6c86fd41619b023c3297079fb229e7be6bf0f04e96dd6043b0f8743bc"
+    },
+    {
+      "old": "C_yang/q2/figs/fig5_storage.pdf",
+      "new": "archive/C_yang/q2/figs/fig5_storage.pdf",
+      "sha256": "ea59f927b87fd0d177e43f7b9ca84798deb6634f3160e1ac2595c8c55319bb45"
+    },
+    {
+      "old": "C_yang/q2/figs/fig5_storage.png",
+      "new": "archive/C_yang/q2/figs/fig5_storage.png",
+      "sha256": "53c198e574726544a4c039b5dfdd7721adaeeadbeb1ded81b84675883f8545df"
+    },
+    {
+      "old": "C_yang/ques1/.gitignore",
+      "new": "archive/C_yang/ques1/.gitignore",
+      "sha256": "c130ad2546100c0de1137ca4b4942146a9a4563dadea7499c9667cb602001c3e"
+    },
+    {
+      "old": "C_yang/ques1/dispatch_detail.csv",
+      "new": "archive/C_yang/ques1/dispatch_detail.csv",
+      "sha256": "5d3543aebe19e0e76eb15c82cab9a023b9b7cf202386e1b950d14e7079efaa2d"
+    },
+    {
+      "old": "C_yang/ques1/export_figure.py",
+      "new": "common/plotting/export_figure.py",
+      "sha256": "56751916cc9b293b136941d408a27970c00baa7583089b10585736424cbc4b92"
+    },
+    {
+      "old": "C_yang/ques1/paper_tables.md",
+      "new": "archive/C_yang/ques1/paper_tables.md",
+      "sha256": "f481d08d5da146e96227e2d3907cbc6d8dfe88fd60e1f3f732906fb4ccb68ee6"
+    },
+    {
+      "old": "C_yang/ques1/plot_results.py",
+      "new": "archive/C_yang/ques1/plot_results.py",
+      "sha256": "60fe8df358079e7a4279c37b798fdf7e55081c1274832a24913c0d45a10659a0"
+    },
+    {
+      "old": "C_yang/ques1/README.md",
+      "new": "archive/C_yang/ques1/README.md",
+      "sha256": "4b75a8a76769954f801525fbdb3118578263c9309f4593d21e11c61d6e9ab230"
+    },
+    {
+      "old": "C_yang/ques1/requirements.txt",
+      "new": "archive/C_yang/ques1/requirements.txt",
+      "sha256": "90c1255ffe8cf301852cbd5e68cf77801a074475a61323f472cb303883a25e40"
+    },
+    {
+      "old": "C_yang/ques1/result1.xlsx",
+      "new": "archive/C_yang/ques1/result1.xlsx",
+      "sha256": "fca3485af95b862f420f1cc136880a390b84f8caf5fa98cc3e07552db8c56ac1"
+    },
+    {
+      "old": "C_yang/ques1/setup_style.py",
+      "new": "common/plotting/setup_style.py",
+      "sha256": "026016fc72ab05a3eec50273d84e77073579df63b10b8ff5d4d01a9125f09fd1"
+    },
+    {
+      "old": "C_yang/ques1/solve.py",
+      "new": "archive/C_yang/ques1/solve.py",
+      "sha256": "7cd448873c6fc6af182b428c17234843763df9f6066cc2f3c7fc6906920edaaf"
+    },
+    {
+      "old": "C_yang/ques1/summary.json",
+      "new": "archive/C_yang/ques1/summary.json",
+      "sha256": "73228f11ab1173854f49d28df610a3b1243ae26c4a72407004854900ff33da6c"
+    },
+    {
+      "old": "C_yang/ques1/verification.json",
+      "new": "archive/C_yang/ques1/verification.json",
+      "sha256": "6453b67183bf56e6ee922e24e8f078d2047263db1ae98f060bae891b5237772a"
+    },
+    {
+      "old": "C_yang/ques1/verify.py",
+      "new": "archive/C_yang/ques1/verify.py",
+      "sha256": "c3afda50ce4bc0c49d02ff86b27ebd22a0f87e1b3c4ac13bd583a492579332e9"
+    },
+    {
+      "old": "C_yang/ques1/结果说明.md",
+      "new": "archive/C_yang/ques1/结果说明.md",
+      "sha256": "6d5bb406b51548f0d8a0aa3aa894ed82aab3af3a528ce7a5e99d0b70944044a7"
+    },
+    {
+      "old": "C_yang/ques1/.mplconfig/fontlist-v3.11.0.json",
+      "new": "archive/C_yang/ques1/.mplconfig/fontlist-v3.11.0.json",
+      "sha256": "02f096fe885d5683619e67543bad472516209f8932ff723afdf3c6bbceeca31b"
+    },
+    {
+      "old": "C_yang/ques1/figures/cost_comparison.pdf",
+      "new": "archive/C_yang/ques1/figures/cost_comparison.pdf",
+      "sha256": "456d5542da58f378d82ab8a8aee2cebe7190bd5f1d436ccc3b79f7a8b459a710"
+    },
+    {
+      "old": "C_yang/ques1/figures/cost_comparison.png",
+      "new": "archive/C_yang/ques1/figures/cost_comparison.png",
+      "sha256": "612c7fdfeeceaf484bafcc42b6d9cf8f6c5477283afcdddd79d5371fd8bc5f15"
+    },
+    {
+      "old": "C_yang/ques1/figures/dispatch_overview.pdf",
+      "new": "archive/C_yang/ques1/figures/dispatch_overview.pdf",
+      "sha256": "1ef1188f220bcb42ef543f82b306af9d4561952d7a2256855848f4579ebaf3bf"
+    },
+    {
+      "old": "C_yang/ques1/figures/dispatch_overview.png",
+      "new": "archive/C_yang/ques1/figures/dispatch_overview.png",
+      "sha256": "46e43bfc85883aa4f0e972f30e70a45492914ba9b4913f0710d5ebc00b344229"
+    },
+    {
+      "old": "C_yang/ques2/.gitignore",
+      "new": "archive/C_yang/ques2/.gitignore",
+      "sha256": "c130ad2546100c0de1137ca4b4942146a9a4563dadea7499c9667cb602001c3e"
+    },
+    {
+      "old": "C_yang/ques2/all_method_dispatch.npz",
+      "new": "archive/C_yang/ques2/all_method_dispatch.npz",
+      "sha256": "e84f9fa1a6d364dd033f74c8283236e415c2f9e7cb76a0368fc375fe731bf2b7"
+    },
+    {
+      "old": "C_yang/ques2/daily_summary.csv",
+      "new": "archive/C_yang/ques2/daily_summary.csv",
+      "sha256": "757589138f8e19543fcc0910c14f0b16a40c29e6c9df9756eb8c1ebdf317d699"
+    },
+    {
+      "old": "C_yang/ques2/data_audit.json",
+      "new": "archive/C_yang/ques2/data_audit.json",
+      "sha256": "755ecd40daf121750e756efc8b672f0d1ef041631ef4c3d670bbe6b0132e9ef2"
+    },
+    {
+      "old": "C_yang/ques2/dispatch_detail.csv",
+      "new": "archive/C_yang/ques2/dispatch_detail.csv",
+      "sha256": "5dd98455153ca59a560b23f03465aa4165ed8979508dabb4256d325602f3d117"
+    },
+    {
+      "old": "C_yang/ques2/emergency_intervals.csv",
+      "new": "archive/C_yang/ques2/emergency_intervals.csv",
+      "sha256": "20fd060dee926ff057c8b1a246098455c3ad91a70516a58696d52e6da84b650a"
+    },
+    {
+      "old": "C_yang/ques2/export_figure.py",
+      "new": "archive/C_yang/ques2/export_figure.py",
+      "sha256": "56751916cc9b293b136941d408a27970c00baa7583089b10585736424cbc4b92"
+    },
+    {
+      "old": "C_yang/ques2/forecast.py",
+      "new": "archive/C_yang/ques2/forecast.py",
+      "sha256": "8775a01a2d9d88acf4f32f3ebd8549b6b76bf2501c56e34cf23edcc240b1009f"
+    },
+    {
+      "old": "C_yang/ques2/forecast_validation.json",
+      "new": "archive/C_yang/ques2/forecast_validation.json",
+      "sha256": "8cc3308029ddcbcc6a785af33c2f6f55535af82395b39bfc4764e66254f1ae33"
+    },
+    {
+      "old": "C_yang/ques2/optimization.py",
+      "new": "archive/C_yang/ques2/optimization.py",
+      "sha256": "e847a00afb36130a5c821e3f33a5a953329aa96dce9e38b3429168268c4861c4"
+    },
+    {
+      "old": "C_yang/ques2/optimizer_log.csv",
+      "new": "archive/C_yang/ques2/optimizer_log.csv",
+      "sha256": "17f37d8ecad1d6c54573814c5419403adf1ba0291f43dc5dc436c1267f713c9c"
+    },
+    {
+      "old": "C_yang/ques2/paper_tables.md",
+      "new": "archive/C_yang/ques2/paper_tables.md",
+      "sha256": "15aa3ad65d5b48b9795bb668a76b653b2a6391994ae409ec979565db6267c90d"
+    },
+    {
+      "old": "C_yang/ques2/plot_results.py",
+      "new": "archive/C_yang/ques2/plot_results.py",
+      "sha256": "48257cf3011bd5126cf3f38f9c41dd049f80477128f3580c11c1d9f2b333bafa"
+    },
+    {
+      "old": "C_yang/ques2/requirements.txt",
+      "new": "archive/C_yang/ques2/requirements.txt",
+      "sha256": "90c1255ffe8cf301852cbd5e68cf77801a074475a61323f472cb303883a25e40"
+    },
+    {
+      "old": "C_yang/ques2/result2.xlsx",
+      "new": "archive/C_yang/ques2/result2.xlsx",
+      "sha256": "a9ccd70435e17547e3ca8fd2f2fb006fc47173fdd7e46e8eb06c33e19f22289c"
+    },
+    {
+      "old": "C_yang/ques2/setup_style.py",
+      "new": "archive/C_yang/ques2/setup_style.py",
+      "sha256": "026016fc72ab05a3eec50273d84e77073579df63b10b8ff5d4d01a9125f09fd1"
+    },
+    {
+      "old": "C_yang/ques2/solve.py",
+      "new": "archive/C_yang/ques2/solve.py",
+      "sha256": "95a08b81da9635e086e235939e39d0cfd246ab2b4382c1eccdf10b80b81a1cab"
+    },
+    {
+      "old": "C_yang/ques2/summary.json",
+      "new": "archive/C_yang/ques2/summary.json",
+      "sha256": "22ececdb70f0f7cde83637b728cefc06a1377c75a929930c1a538136bf66b16c"
+    },
+    {
+      "old": "C_yang/ques2/verification.json",
+      "new": "archive/C_yang/ques2/verification.json",
+      "sha256": "d0495e2b1a4ab67063bbff222db623d27175b93ab262b2335f5b8b8df8889757"
+    },
+    {
+      "old": "C_yang/ques2/verify.py",
+      "new": "archive/C_yang/ques2/verify.py",
+      "sha256": "c5ff25b24ba2c4362c38fbc21d6aefc3f6df39415ddab7cea52101823043fbb9"
+    },
+    {
+      "old": "C_yang/ques2/.mplconfig/fontlist-v3.11.0.json",
+      "new": "archive/C_yang/ques2/.mplconfig/fontlist-v3.11.0.json",
+      "sha256": "2ae1666867e540c68e035369ece6a87ae01d2bf9c5d98dc8c651fe2824bb08ac"
+    },
+    {
+      "old": "C_yang/ques2/figures/cost_comparison.pdf",
+      "new": "archive/C_yang/ques2/figures/cost_comparison.pdf",
+      "sha256": "5d44d38b348f4505865a3fb404e770f45992088c4b0a95644416e1c03e175df4"
+    },
+    {
+      "old": "C_yang/ques2/figures/cost_comparison.png",
+      "new": "archive/C_yang/ques2/figures/cost_comparison.png",
+      "sha256": "8d503764ae75ac2b14fd66d15ca89c954ee5099332ec75f1b7b924af3b42f4ea"
+    },
+    {
+      "old": "C_yang/ques2/figures/dispatch_selected_days.pdf",
+      "new": "archive/C_yang/ques2/figures/dispatch_selected_days.pdf",
+      "sha256": "6c14f737d9e0a5ac6bec39d1f68b39cc05e175191f3db7cf59d287477d5c2c80"
+    },
+    {
+      "old": "C_yang/ques2/figures/dispatch_selected_days.png",
+      "new": "archive/C_yang/ques2/figures/dispatch_selected_days.png",
+      "sha256": "1e052c75da66c1eb675330c58eeee7657849886f8dfc0e91f02d3e139dbb8e0f"
+    },
+    {
+      "old": "C_yang/ques3/comparison.csv",
+      "new": "question3/results/comparison.csv",
+      "sha256": "6794d8048aff38f0d08b82ddc868652d0fdc14177564516b53c644a5d2eb295b"
+    },
+    {
+      "old": "C_yang/ques3/daily_summary.csv",
+      "new": "question3/results/daily_summary.csv",
+      "sha256": "0f800a22c005c9579066b4696c172a0e450a175d13ea3140fd960892edb7d6b3"
+    },
+    {
+      "old": "C_yang/ques3/forecast_diagnostics.csv",
+      "new": "question3/results/forecast_diagnostics.csv",
+      "sha256": "7657af0bd04db99a7c5953d3b122d896ea63fb63b77270b52f269af6001ff9f5"
+    },
+    {
+      "old": "C_yang/ques3/plot_q3.py",
+      "new": "question3/code/plot_q3.py",
+      "sha256": "955085528ebbd4c655cec9dd9fc432400ad4589e9789f6a980a9c251d0bd757b"
+    },
+    {
+      "old": "C_yang/ques3/q3_data.py",
+      "new": "question3/code/q3_data.py",
+      "sha256": "d4d3810679156cb5599d265dfb4f102c4768d3f71d64eea0a69d70190a18edba"
+    },
+    {
+      "old": "C_yang/ques3/q3_forecast.py",
+      "new": "question3/code/q3_forecast.py",
+      "sha256": "8834a5248a7fbb0530f28fe1ac7f8e66fc1dba8b6da6220e29bd5108463a55e3"
+    },
+    {
+      "old": "C_yang/ques3/q3_model.py",
+      "new": "question3/code/q3_model.py",
+      "sha256": "baab65960067a999ec7447d50e64d3f063de7fcfda0b28729e2ac7d0c9614edd"
+    },
+    {
+      "old": "C_yang/ques3/README.md",
+      "new": "question3/README.md",
+      "sha256": "1f5f137bb8e8bc0e94222d2d74fbaf236c95777a02a690e48a03adcfaab0d24f"
+    },
+    {
+      "old": "C_yang/ques3/requirements.txt",
+      "new": "question3/requirements.txt",
+      "sha256": "dd031502040aa0334b22cdd8e25688e7d0c83257722255f326e1b4d0b8f9de2e"
+    },
+    {
+      "old": "C_yang/ques3/result3.xlsx",
+      "new": "question3/results/result3.xlsx",
+      "sha256": "9761b3eaa0e385ec916e9a643e88d4daa0d7d919f098b4d6f2151c7e00adc936"
+    },
+    {
+      "old": "C_yang/ques3/run_metadata.json",
+      "new": "question3/results/run_metadata.json",
+      "sha256": "7bdaf79ca68f23d0c5900b038894da4ce7130f4cbff20197bccfe87cab79de4c"
+    },
+    {
+      "old": "C_yang/ques3/run_q3.py",
+      "new": "question3/code/run_q3.py",
+      "sha256": "085ae764fe2aaa6e836d317438e939280ba66daac567a8695aa9e0dd689674cf"
+    },
+    {
+      "old": "C_yang/ques3/scenario_trees.json",
+      "new": "question3/results/scenario_trees.json",
+      "sha256": "286b188d45ee61bea67e5673297cab26067b5cceca1c5dbcd5827458d5498d04"
+    },
+    {
+      "old": "C_yang/ques3/schedule_detail.csv",
+      "new": "question3/results/schedule_detail.csv",
+      "sha256": "b16c1fa2ebe313788da045b58a7ff2ac54e17bd2e5adc0eda685f32192ad0288"
+    },
+    {
+      "old": "C_yang/ques3/summary.json",
+      "new": "question3/results/summary.json",
+      "sha256": "8529ec90f2742fd9f4c0d7228b6b60ffc61266068ef8e9e646487d4b336a1f0a"
+    },
+    {
+      "old": "C_yang/ques3/target_daily.csv",
+      "new": "question3/results/target_daily.csv",
+      "sha256": "e1fa148a063d51f7a1ffbaad8c3fdfe3ed20e77e97fd5c1d49f12b091d63dbc3"
+    },
+    {
+      "old": "C_yang/ques3/target_table1.csv",
+      "new": "question3/results/target_table1.csv",
+      "sha256": "b91a41b1c8e16f7642701c3e51196b234e7043b6c34a8c536a5f2592e2b679e0"
+    },
+    {
+      "old": "C_yang/ques3/target_table2.csv",
+      "new": "question3/results/target_table2.csv",
+      "sha256": "57314a9f487eedb18e8ec6a1201da38571784bc6328079549dfea7067e6fe171"
+    },
+    {
+      "old": "C_yang/ques3/target_table3.csv",
+      "new": "question3/results/target_table3.csv",
+      "sha256": "298e8994940f704109af1cde0777e8265fd981be9661413ca795758442115313"
+    },
+    {
+      "old": "C_yang/ques3/verification.json",
+      "new": "question3/results/verification.json",
+      "sha256": "dceed3a9b549527a756251adbf3948e1779e448f25013a3443ceaaff3602cba5"
+    },
+    {
+      "old": "C_yang/ques3/verify_q3.py",
+      "new": "question3/code/verify_q3.py",
+      "sha256": "46282f98f4de533d8488c395a3246de00ea14750581233bebbcde2eaec7abe10"
+    },
+    {
+      "old": "C_yang/ques3/建模说明.md",
+      "new": "question3/建模说明.md",
+      "sha256": "c06cd584d77358cbfb089a8610118014614559323e28f59421f8890a90177cd1"
+    },
+    {
+      "old": "C_yang/ques3/结果说明.md",
+      "new": "question3/结果说明.md",
+      "sha256": "ba0f80f64cebc2fb55cc796016b96b78a1665570cc7c059ba49ecb977a9e68dd"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/at_0_6/daily_summary.csv",
+      "new": "question3/results/comparisons/at_0_6/daily_summary.csv",
+      "sha256": "05be2241371f9cbbff03f2fa2bb40b0743da4096078f88978d1d6747ef5b5a1a"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/at_0_6/schedule_detail.csv",
+      "new": "question3/results/comparisons/at_0_6/schedule_detail.csv",
+      "sha256": "8fdb22b1deb89bd9b0f4a9ef6991ccb5c8d4817ae9f0e8a372929f5adcf5b34b"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/at_0_6/summary.json",
+      "new": "question3/results/comparisons/at_0_6/summary.json",
+      "sha256": "8df1b11f5477ba68143dd57be5218c54d9759cf5a20698cc5e68704a8d282fd8"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/at_0_6/verification.json",
+      "new": "question3/results/comparisons/at_0_6/verification.json",
+      "sha256": "1adf6ee6ced56f9cab7b0e7ba9e2e931d30f3b49e53476bec4ee4be0cf47551d"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/at_0_6_12/daily_summary.csv",
+      "new": "question3/results/comparisons/at_0_6_12/daily_summary.csv",
+      "sha256": "f78c7e3528f2aea3b84ba18c1ee84d546955df43e1c942069e4b94eb265c97f2"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/at_0_6_12/result3.xlsx",
+      "new": "question3/results/comparisons/at_0_6_12/result3.xlsx",
+      "sha256": "d97e2ff4c4ab6814c419a30e1bed205513ebb82212eb91eb60fbaaf1738d7d56"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/at_0_6_12/schedule_detail.csv",
+      "new": "question3/results/comparisons/at_0_6_12/schedule_detail.csv",
+      "sha256": "e2c0c51a2b772cb805a675b35c26255b4820ca8c78d68cc7c7c59a74ebb82f6c"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/at_0_6_12/summary.json",
+      "new": "question3/results/comparisons/at_0_6_12/summary.json",
+      "sha256": "fc15d22d804abc1dcb9bea5b675b4ad0dd8930cfab565f3131cf4800bc7c67bb"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/at_0_6_12/verification.json",
+      "new": "question3/results/comparisons/at_0_6_12/verification.json",
+      "sha256": "35fdd4f747c05ae9f5e619d98f077cf4f08458a680274e88cca6bcf9918ce82d"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/B_aligned/daily_summary.csv",
+      "new": "question3/results/comparisons/B_aligned/daily_summary.csv",
+      "sha256": "4f494e5e1a557baaf29a9d395270174c63eeb09df70759a71a84385c615de423"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/B_aligned/schedule_detail.csv",
+      "new": "question3/results/comparisons/B_aligned/schedule_detail.csv",
+      "sha256": "19a0b85b54786f33a8b8887e8cbd584b7bd001b88cd669cd8fee11a75437c838"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/B_aligned/summary.json",
+      "new": "question3/results/comparisons/B_aligned/summary.json",
+      "sha256": "cba5e34d577737e14521085f4339ed3145e87bcd8cd6b5b7da18279f69dcd939"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/B_aligned/verification.json",
+      "new": "question3/results/comparisons/B_aligned/verification.json",
+      "sha256": "afe48ce9270fe31cc7d97ada5774a8e9021625fa1f00dd0972c6ecab246a2c96"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/only_0/daily_summary.csv",
+      "new": "question3/results/comparisons/only_0/daily_summary.csv",
+      "sha256": "dda723ff8fc8c436df45cb129a6b08e2b63800e22215ebed9f8e7c3ece235c3b"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/only_0/schedule_detail.csv",
+      "new": "question3/results/comparisons/only_0/schedule_detail.csv",
+      "sha256": "15107fc3670c7f4e9292bf773f3224d6af0e0c935986fabc977ec59206c5d9aa"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/only_0/summary.json",
+      "new": "question3/results/comparisons/only_0/summary.json",
+      "sha256": "2c5e95a00def6f6a11fb5f44c3221864270b87eb33e941a7a13efe5b4af0f03e"
+    },
+    {
+      "old": "C_yang/ques3/comparisons/only_0/verification.json",
+      "new": "question3/results/comparisons/only_0/verification.json",
+      "sha256": "05c5e12c195c31e84f195b68efd53f67703aa5e5211a6ea905626f666450f127"
+    },
+    {
+      "old": "C_yang/ques3/figures/cost_comparison.pdf",
+      "new": "question3/results/figures/cost_comparison.pdf",
+      "sha256": "682c105f9897dc90f9ba4bd8b7bb320fab12fe703c813ecf1d039f054d4300b3"
+    },
+    {
+      "old": "C_yang/ques3/figures/cost_comparison.png",
+      "new": "question3/results/figures/cost_comparison.png",
+      "sha256": "0519076161d2b97b668118b3a8b426d0c15bf64890b51923713348896e0ac93b"
+    },
+    {
+      "old": "C_yang/ques3/figures/forecast_fusion.pdf",
+      "new": "question3/results/figures/forecast_fusion.pdf",
+      "sha256": "0dff21b112b0a496f8ea41c2bb8d0051539ade8141a24e476b3a55f8c3b7f5cd"
+    },
+    {
+      "old": "C_yang/ques3/figures/forecast_fusion.png",
+      "new": "question3/results/figures/forecast_fusion.png",
+      "sha256": "90de7be23db613f61bcb92617daba2dd0db60809159c9d2325926894de7aaeba"
+    },
+    {
+      "old": "C_yang/ques3/figures/target_dispatch.pdf",
+      "new": "question3/results/figures/target_dispatch.pdf",
+      "sha256": "e033d7b60caf13d6762f0a20bff0fef869548a316eae9869d96acecc8c56c00a"
+    },
+    {
+      "old": "C_yang/ques3/figures/target_dispatch.png",
+      "new": "question3/results/figures/target_dispatch.png",
+      "sha256": "89c3924cfe14406c4366dea8e1be57053b320f8253afe75db623489264193d54"
+    },
+    {
+      "old": "C_yang/ques4_2/check_information.py",
+      "new": "question4/part2/code/check_information.py",
+      "sha256": "e253e7cb60b684dd9ad9dc86a87c36fd7d264c90afe44a4e40f4c66cd3e90eee"
+    },
+    {
+      "old": "C_yang/ques4_2/comparison.csv",
+      "new": "question4/part2/results/comparison.csv",
+      "sha256": "803e1511cfb542899960162fc3532175f331cb2d4c4ffd96e0940b8301f9e400"
+    },
+    {
+      "old": "C_yang/ques4_2/daily_summary.csv",
+      "new": "question4/part2/results/daily_summary.csv",
+      "sha256": "2d2a3a64353fd6a443c887e6fcc1d2c7843395c3d6bd2aaedc2b0780b4d10585"
+    },
+    {
+      "old": "C_yang/ques4_2/forecast_archive.npz",
+      "new": "question4/part2/results/forecast_archive.npz",
+      "sha256": "6cd9a61fbd3245e602eec1dc2b5c6b046365d9232cf1e83f16fc2e558daaa07b"
+    },
+    {
+      "old": "C_yang/ques4_2/information_verification.json",
+      "new": "question4/part2/results/information_verification.json",
+      "sha256": "e5228ab65960cd6a0bdcee63735fd0d92cce20ec57febd3e8c60ee3557054fe8"
+    },
+    {
+      "old": "C_yang/ques4_2/january_summary.csv",
+      "new": "question4/part2/results/january_summary.csv",
+      "sha256": "0994cc98a79afeb1e5e006976de02433959dc9690e6211f4ce0f73243c4a56ba"
+    },
+    {
+      "old": "C_yang/ques4_2/january_warmup.csv.gz",
+      "new": "question4/part2/results/january_warmup.csv.gz",
+      "sha256": "7fc84af202f9436e243588f0d1ffc469aeaf070f3e2e46c9f979bfdab9aaba2d"
+    },
+    {
+      "old": "C_yang/ques4_2/monthly_comparison.csv",
+      "new": "question4/part2/results/monthly_comparison.csv",
+      "sha256": "ce0af61d6fe90b889466ea0c5da73282882bd9313df1c28b0a77f5a6f7daf0e8"
+    },
+    {
+      "old": "C_yang/ques4_2/price_data_summary.json",
+      "new": "question4/part2/results/price_data_summary.json",
+      "sha256": "02ad5e52d3c3d22d14b4187d13667e4b4ab9375bab208edf4958b476aa52a4e1"
+    },
+    {
+      "old": "C_yang/ques4_2/price_training_scores.csv",
+      "new": "question4/part2/results/price_training_scores.csv",
+      "sha256": "b65470ddd0f1ba655508fcedd38a60a610d5895af940db83b54a9f795559d270"
+    },
+    {
+      "old": "C_yang/ques4_2/publication_verification.json",
+      "new": "question4/part2/results/publication_verification.json",
+      "sha256": "7731427d09f98b9aeddc848d046a0e293e928d447432d36fca066567be165c8e"
+    },
+    {
+      "old": "C_yang/ques4_2/q42_model.py",
+      "new": "question4/part2/code/q42_model.py",
+      "sha256": "c3e9c8d9f5c7982824e8df8bf755de5759bb54fd663fc2f81e2722a58ee10a38"
+    },
+    {
+      "old": "C_yang/ques4_2/README.md",
+      "new": "question4/part2/README.md",
+      "sha256": "ffc7985be406c9a46b0a19358b32cc8f93fb207481004ae9d8aa736f2f56d48a"
+    },
+    {
+      "old": "C_yang/ques4_2/report_q42.py",
+      "new": "question4/part2/code/report_q42.py",
+      "sha256": "5bbaa8d9e969fa3458dbf7f04cd89b6fc84f5b283c5fed84119b6f5ff39a5fdf"
+    },
+    {
+      "old": "C_yang/ques4_2/result4-2.xlsx",
+      "new": "question4/part2/results/result4-2.xlsx",
+      "sha256": "4b8f8cb9ac21cd22db974dfb43a083dd233899ce8941fa96acc33591353ae5cd"
+    },
+    {
+      "old": "C_yang/ques4_2/run_metadata.json",
+      "new": "question4/part2/results/run_metadata.json",
+      "sha256": "de68393e61ea58496666424db7d82c561fdd4ee44f0371f8c8d6527c826de807"
+    },
+    {
+      "old": "C_yang/ques4_2/run_q42.py",
+      "new": "question4/part2/code/run_q42.py",
+      "sha256": "fcf1ac40ee41841e569ecac25661f6b328162f7d0809a8b720d895ab297d9a24"
+    },
+    {
+      "old": "C_yang/ques4_2/schedule_detail.csv.gz",
+      "new": "question4/part2/results/schedule_detail.csv.gz",
+      "sha256": "2530fc31316f89c43950de582f20e03bb0c3a154ea775531e093cd02d5d129c2"
+    },
+    {
+      "old": "C_yang/ques4_2/source_fingerprints.json",
+      "new": "question4/part2/results/source_fingerprints.json",
+      "sha256": "d72ba61090093a2be14530efa82cddde5df99620f4e54234acbb4f6ce84d1255"
+    },
+    {
+      "old": "C_yang/ques4_2/summary.json",
+      "new": "question4/part2/results/summary.json",
+      "sha256": "0be6085881b2bd34e5bcb17d61331b9d19e3b784c80b90325e27d0905bcd6b7a"
+    },
+    {
+      "old": "C_yang/ques4_2/verification.json",
+      "new": "question4/part2/results/verification.json",
+      "sha256": "b741a1e25401360925bc2cab72c84fe5704e029adad4ca12f7d82de800bf69ca"
+    },
+    {
+      "old": "C_yang/ques4_2/verify_q42.py",
+      "new": "question4/part2/code/verify_q42.py",
+      "sha256": "f75e8e8a8a323a19a747bd04ba2784d7cf274b483de36c293fa3469176c96dff"
+    },
+    {
+      "old": "C_yang/ques4_2/建模说明.md",
+      "new": "question4/part2/建模说明.md",
+      "sha256": "cf64a385c990e805e833da2419c386d530381e793b37b78f4ed33b91bae3bbfa"
+    },
+    {
+      "old": "C_yang/ques4_2/指定日期结果.md",
+      "new": "question4/part2/指定日期结果.md",
+      "sha256": "7e183f5ee065e4364ab407ede0a4493e8d0416a08cbed0ba187139803db8e382"
+    },
+    {
+      "old": "C_yang/ques4_2/结果说明.md",
+      "new": "question4/part2/结果说明.md",
+      "sha256": "32a172522037b1bde6141cba5a6502c3926834d1bd9af2874001b45635f8e3bd"
+    },
+    {
+      "old": "C_yang/ques4_2/figures/cost_comparison.pdf",
+      "new": "question4/part2/results/figures/cost_comparison.pdf",
+      "sha256": "9d231da822bc9307b76cd54385969a1e4edb6c43f2cbd63162364bbd187d2e32"
+    },
+    {
+      "old": "C_yang/ques4_2/figures/cost_comparison.png",
+      "new": "question4/part2/results/figures/cost_comparison.png",
+      "sha256": "74ec9537200c04a3e0e470aecc43031800eab428b3a8a7b2ced37cab0d08167b"
+    },
+    {
+      "old": "C_yang/ques4_2/figures/dispatch_0621.pdf",
+      "new": "question4/part2/results/figures/dispatch_0621.pdf",
+      "sha256": "4cf1579b5228c9a9df006df6d2aa6e2063ca7adc7c51c62dfda655e102c7a570"
+    },
+    {
+      "old": "C_yang/ques4_2/figures/dispatch_0621.png",
+      "new": "question4/part2/results/figures/dispatch_0621.png",
+      "sha256": "0bfedc619ac6ec0d01cbd68b1a986c1c9d0c0aa41d7d3ca0e11ca20acd21d024"
+    },
+    {
+      "old": "C_yang/ques4_2/figures/target_prices.pdf",
+      "new": "question4/part2/results/figures/target_prices.pdf",
+      "sha256": "335c362f75196851b3f42b9c97c4cefbf18672687000bab310cfee2133f618a7"
+    },
+    {
+      "old": "C_yang/ques4_2/figures/target_prices.png",
+      "new": "question4/part2/results/figures/target_prices.png",
+      "sha256": "a11cda13ba1c4aa5bb91f145c21cd6448035e52b18f0072e154cb3d387f2ffac"
+    },
+    {
+      "old": "C_yang/ques4_2/target_days/daily_summary.csv",
+      "new": "question4/part2/results/target_days/daily_summary.csv",
+      "sha256": "805c36194d1b37cc36f9b675508aa547f7cfb02922a9475474522b7476e17510"
+    },
+    {
+      "old": "C_yang/ques4_2/target_days/table1_grid.csv",
+      "new": "question4/part2/results/target_days/table1_grid.csv",
+      "sha256": "552165433ade298aab92bc67805e108def38d3d703610ca004254e61d85f4803"
+    },
+    {
+      "old": "C_yang/ques4_2/target_days/table2_storage.csv",
+      "new": "question4/part2/results/target_days/table2_storage.csv",
+      "sha256": "9d528c48b0f0487a7587237265beaa42f8575b894a6e3c5499f9f103ae836457"
+    },
+    {
+      "old": "C_yang/ques4_2/target_days/table3_emergency.csv",
+      "new": "question4/part2/results/target_days/table3_emergency.csv",
+      "sha256": "23876280c1b2867c322d74c6faae1e06a435a291dc66d6a267e84f5663bf8b9d"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/joint_price/daily_summary.csv",
+      "new": "question4/part2/results/variants/joint_price/daily_summary.csv",
+      "sha256": "2d2a3a64353fd6a443c887e6fcc1d2c7843395c3d6bd2aaedc2b0780b4d10585"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/joint_price/result4-2.xlsx",
+      "new": "question4/part2/results/variants/joint_price/result4-2.xlsx",
+      "sha256": "4b8f8cb9ac21cd22db974dfb43a083dd233899ce8941fa96acc33591353ae5cd"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/joint_price/schedule_detail.csv.gz",
+      "new": "question4/part2/results/variants/joint_price/schedule_detail.csv.gz",
+      "sha256": "2530fc31316f89c43950de582f20e03bb0c3a154ea775531e093cd02d5d129c2"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/joint_price/summary.json",
+      "new": "question4/part2/results/variants/joint_price/summary.json",
+      "sha256": "29cc32f4c6e8e422afaa389f897f99d40efd7339dd0d19562e72f6928842fbad"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/known_today_price/daily_summary.csv",
+      "new": "question4/part2/results/variants/known_today_price/daily_summary.csv",
+      "sha256": "40c717a490631cfca117a72a1d7e0470ec1e3d396f46545f11eadb35217d9597"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/known_today_price/result4-2.xlsx",
+      "new": "question4/part2/results/variants/known_today_price/result4-2.xlsx",
+      "sha256": "5bea2b690a6ddbbfe4e625a1487ec294cd206b0e3ecca4525e51e334d1499b82"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/known_today_price/schedule_detail.csv.gz",
+      "new": "question4/part2/results/variants/known_today_price/schedule_detail.csv.gz",
+      "sha256": "1fce6933ba635ab8bdb88644a7c5f7fecef1fab1164c05d33be544c4558978ba"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/known_today_price/summary.json",
+      "new": "question4/part2/results/variants/known_today_price/summary.json",
+      "sha256": "d324d1f690956dc50fa2f3d64edf8d51b89c5af2036ed262726132c73fcc8fc4"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/mean_price/daily_summary.csv",
+      "new": "question4/part2/results/variants/mean_price/daily_summary.csv",
+      "sha256": "948f1e0d07e17f7229de3b848d3d266adb042f35a4b13f7b4f90c338cf7b12fe"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/mean_price/result4-2.xlsx",
+      "new": "question4/part2/results/variants/mean_price/result4-2.xlsx",
+      "sha256": "a6fb803d20450484efcb7df793f313f55a9c8585b0f24fd4e78170b307d1fc2f"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/mean_price/schedule_detail.csv.gz",
+      "new": "question4/part2/results/variants/mean_price/schedule_detail.csv.gz",
+      "sha256": "7092f7fc43ad38e0e4eae4f47aa261e42bb135613f8cb4787738be58bd191cc3"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/mean_price/summary.json",
+      "new": "question4/part2/results/variants/mean_price/summary.json",
+      "sha256": "44ce24ee68d9ffabf8665869f6e4072a03cbcac4792a28ad3745f7e27ead6509"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/q2_repriced/daily_summary.csv",
+      "new": "question4/part2/results/variants/q2_repriced/daily_summary.csv",
+      "sha256": "4de5f9808aa2ca40b53ad45b2b89b5e1177513921631937be05e6af012746f0d"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/q2_repriced/result4-2.xlsx",
+      "new": "question4/part2/results/variants/q2_repriced/result4-2.xlsx",
+      "sha256": "7f6b8e75a2c8a4aec0e352938c1bd00991c64af5cc10302403af5899e6f78b6b"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/q2_repriced/schedule_detail.csv.gz",
+      "new": "question4/part2/results/variants/q2_repriced/schedule_detail.csv.gz",
+      "sha256": "cf20bae08ea55342e3db3202531830f0743bcc53bfd502f426b924b3b06ce2a4"
+    },
+    {
+      "old": "C_yang/ques4_2/variants/q2_repriced/summary.json",
+      "new": "question4/part2/results/variants/q2_repriced/summary.json",
+      "sha256": "8750967ff43b2419f3b56c477286e91e646765ba26635c3371dd5af69e741df4"
+    },
+    {
+      "old": "C_yang/raw/C题.pdf",
+      "new": "data/C题.pdf",
+      "sha256": "2c098f6ae9dd47ae965aebdec3b9facf3de6c173f999783c1012c08fc5fb9d2d"
+    },
+    {
+      "old": "C_yang/raw/附件/.~附件1.xlsx",
+      "new": "archive/temporary/.~附件1.xlsx",
+      "sha256": "200a3e912a251d417e4f9013ef37ad8c21c8b83b2a6ec03133a0843b704fd4b9"
+    },
+    {
+      "old": "C_yang/raw/附件/附件1.xlsx",
+      "new": "data/附件/附件1.xlsx",
+      "sha256": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377"
+    },
+    {
+      "old": "C_yang/raw/附件/附件2.xlsx",
+      "new": "data/附件/附件2.xlsx",
+      "sha256": "2e95fd446bfafa0d8c59577b5c2e2ea8b3f1def20dde54a3062556f4da9b4c72"
+    },
+    {
+      "old": "C_yang/raw/附件/附件3.xlsx",
+      "new": "data/附件/附件3.xlsx",
+      "sha256": "8a61b06c52bd0d639a1cc37c61a7d9f5b75edcbca718f64c1bd3498ec9f9d843"
+    },
+    {
+      "old": "C_yang/raw/附件/附件4.xlsx",
+      "new": "data/附件/附件4.xlsx",
+      "sha256": "20e9c93aeab5e8e21ae4dd15587f9e190f7408692504c1319598461cd654fe71"
+    },
+    {
+      "old": "C_yang/raw/附件/附件5/result1.xlsx",
+      "new": "data/附件/附件5/result1.xlsx",
+      "sha256": "28360e0974e7d6065394a8aba4e14a86773ae0036cc7d3ea1b211b515b03d688"
+    },
+    {
+      "old": "C_yang/raw/附件/附件5/result2.xlsx",
+      "new": "data/附件/附件5/result2.xlsx",
+      "sha256": "1c26494cfc6d754e0bd9bff7e13e1126a73d2d2da6c5336eb251d89b9a1a1a47"
+    },
+    {
+      "old": "C_yang/raw/附件/附件5/result3.xlsx",
+      "new": "data/附件/附件5/result3.xlsx",
+      "sha256": "c59da470cabd0be23f602c95c8aa9d11ec224a0cdac216b3e1f218e65d006bdc"
+    },
+    {
+      "old": "C_yang/raw/附件/附件5/result4-2.xlsx",
+      "new": "data/附件/附件5/result4-2.xlsx",
+      "sha256": "1c26494cfc6d754e0bd9bff7e13e1126a73d2d2da6c5336eb251d89b9a1a1a47"
+    },
+    {
+      "old": "C_yang/raw/附件/附件5/result4-3.xlsx",
+      "new": "data/附件/附件5/result4-3.xlsx",
+      "sha256": "c59da470cabd0be23f602c95c8aa9d11ec224a0cdac216b3e1f218e65d006bdc"
+    },
+    {
+      "old": "CShen/README.md",
+      "new": "archive/CShen/README.md",
+      "sha256": "6d52ecf2cc35c8a5d7409b7278b01a9dc03f1f5ba3d1355fc287cbc7118e90f0"
+    },
+    {
+      "old": "CShen/问题二_优化过程记录.md",
+      "new": "archive/CShen/问题二_优化过程记录.md",
+      "sha256": "6bba4db8e68ac7b92c5769b4c78b092d5591c31dcbf088aa1d14cef325e57a40"
+    },
+    {
+      "old": "CShen/attribution/experiment_inequality2.py",
+      "new": "archive/CShen/attribution/experiment_inequality2.py",
+      "sha256": "cc9eba439f5f9a2ccff24420a93d153ded381e4c1541ddec7a4d00604e810f89"
+    },
+    {
+      "old": "CShen/attribution/experiment_window.py",
+      "new": "archive/CShen/attribution/experiment_window.py",
+      "sha256": "62a51142eaba8472b58de9f94801f4849ac93aa76d4d1b1c6f198738505ffa10"
+    },
+    {
+      "old": "CShen/attribution/exp_cyang_cfg.py",
+      "new": "archive/CShen/attribution/exp_cyang_cfg.py",
+      "sha256": "628ba67c1923ff77e85ff272001ea7d40544115e59b9e663a8583e831d3e28e1"
+    },
+    {
+      "old": "CShen/方案A_1463万/paper_tables_final.md",
+      "new": "archive/CShen/方案A_1463万/paper_tables_final.md",
+      "sha256": "529c171ccec446ecdebba9c2f9610f81aa45fb69a99cfd4dcdd481dd9137e567"
+    },
+    {
+      "old": "CShen/方案A_1463万/result2.xlsx",
+      "new": "archive/CShen/方案A_1463万/result2.xlsx",
+      "sha256": "06e5507db6dd7991e9a109481d172e34834f398341bb43420dda3100cc4ee6b9"
+    },
+    {
+      "old": "CShen/方案A_1463万/run_final_q2.py",
+      "new": "archive/CShen/方案A_1463万/run_final_q2.py",
+      "sha256": "59b83476d4ae6930d8539037c04114bf942bba4f5a0ce05e2fce198e371d371f"
+    },
+    {
+      "old": "CShen/方案A_1463万/summary_final.json",
+      "new": "archive/CShen/方案A_1463万/summary_final.json",
+      "sha256": "dbb99ce26fe886d5ed460912cdfd727e93980293f343429417589d74af7fe578"
+    },
+    {
+      "old": "CShen/方案A_1463万/verification_final.json",
+      "new": "archive/CShen/方案A_1463万/verification_final.json",
+      "sha256": "b84b8f0a4c2046261124408f8d4b98963598928257de0f48add37d39f2cd2280"
+    },
+    {
+      "old": "CShen/方案A_1463万/问题二_建模分析说明.md",
+      "new": "archive/CShen/方案A_1463万/问题二_建模分析说明.md",
+      "sha256": "244c0134ca21e8a31ae54a4d423ed4dfe7609b3543147d0b2db66bd50bb2ca79"
+    },
+    {
+      "old": "CShen/方案B_1439万/daily_summary.csv",
+      "new": "common/q2_base/daily_summary.csv",
+      "sha256": "38ade4ddb16807a7176169b25c3640f4d7a7f6f6c49f0d0e5fca60177c997480"
+    },
+    {
+      "old": "CShen/方案B_1439万/make_figures_B.py",
+      "new": "common/q2_base/make_figures_B.py",
+      "sha256": "982b7d552ab7d886edc8e07fa2f3d6e2d9f4e3d9e6e90e8d7c4751334166553e"
+    },
+    {
+      "old": "CShen/方案B_1439万/result2.xlsx",
+      "new": "common/q2_base/result2.xlsx",
+      "sha256": "f6db6331142b43ffd4cd7f583d9085d9042ab255f1724dec8a2e9f901e87d7cb"
+    },
+    {
+      "old": "CShen/方案B_1439万/run_1439.py",
+      "new": "common/q2_base/run_1439.py",
+      "sha256": "3d7db74afe1334973d4461048153291cd041d1eb575d619bc4b30fb8edcb14e9"
+    },
+    {
+      "old": "CShen/方案B_1439万/schedule_detail.csv",
+      "new": "common/q2_base/schedule_detail.csv",
+      "sha256": "dcd3855c97b063991efd5a0a920efed89c00b151e0165c1014aba76306f375e8"
+    },
+    {
+      "old": "CShen/方案B_1439万/summary.json",
+      "new": "common/q2_base/summary.json",
+      "sha256": "f5722a74de48f8fa10a19c2b36fe0ae2a08adfa9be3f8914cef8b5281958722e"
+    },
+    {
+      "old": "CShen/方案B_1439万/verification.json",
+      "new": "common/q2_base/verification.json",
+      "sha256": "2a2ed8d0a1156d5453e3a0563cdec9113326a085c85b14d80166ab370c07a851"
+    },
+    {
+      "old": "CShen/方案B_1439万/问题分析与处理思路.md",
+      "new": "common/q2_base/问题分析与处理思路.md",
+      "sha256": "77d8349e4d03ac0e5f4aa259d7da9bf5085625baed72e6cad387cd4cac1dd05c"
+    },
+    {
+      "old": "CShen/方案B_1439万/figures/fig1_forecast_scenarios.png",
+      "new": "common/q2_base/figures/fig1_forecast_scenarios.png",
+      "sha256": "7b91a670cbc7f4be3c083ce8b95c90434b5554947218cdddb4b2946fa655bead"
+    },
+    {
+      "old": "CShen/方案B_1439万/figures/fig2_yearly.png",
+      "new": "common/q2_base/figures/fig2_yearly.png",
+      "sha256": "f6ff7111e79ace4c1d6e3d404354c7553d6080abe94a2147491369cbcd80477c"
+    },
+    {
+      "old": "CShen/方案B_1439万/figures/fig3_target_days.png",
+      "new": "common/q2_base/figures/fig3_target_days.png",
+      "sha256": "bf6e3861b384e7ce89a696a61b0701bb6db4dc374792ea636eb5f6c40a6f4a96"
+    },
+    {
+      "old": "CShen/方案B_1439万/figures/fig4_decomposition.png",
+      "new": "common/q2_base/figures/fig4_decomposition.png",
+      "sha256": "a3484d9d07b27e053dd9bb977dc974eb70c0bb9ef7b6f87c0e9df57635531862"
+    },
+    {
+      "old": "CShen/方案B_1439万/figures/fig5_storage_emergency.png",
+      "new": "common/q2_base/figures/fig5_storage_emergency.png",
+      "sha256": "5aa119ac1e751bb6d679b6d9ac7985ae31a6bdfc5df84acc72f3ba149db34b08"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/all_comparisons.csv",
+      "new": "question2/results/all_comparisons.csv",
+      "sha256": "713f571ad102be0eaa16235c9d8dec94614afe0736a3e8569ad0e079450b44a9"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/check_information.py",
+      "new": "question2/code/check_information.py",
+      "sha256": "fb573952ca92dd03145812b685485e8a8a4a3ea8d7d9717b18c91f49d73ee26d"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/common_january.json",
+      "new": "question2/results/common_january.json",
+      "sha256": "5f5505a1306301b9e5f7b3999594b04667368d3ad9b8b0e15ca55329f1047969"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/comparison.csv",
+      "new": "question2/results/comparison.csv",
+      "sha256": "1d4640a165f524e5c14128858a7800f2155700265a281f59b489a561e183ec05"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/daily_summary.csv",
+      "new": "question2/results/daily_summary.csv",
+      "sha256": "4a55ced8389efc76e379f0710f11925d5bfaecd7b169c7addb6861ba05d8cabb"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/information_verification.json",
+      "new": "question2/results/information_verification.json",
+      "sha256": "53008d056f45f55ef5771aa534c9a9934a5ef2f67a908b02e580e36172c2bcce"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/monthly_savings.csv",
+      "new": "question2/results/monthly_savings.csv",
+      "sha256": "d289e1869704ffdb44d2c54a0db734acccd92beab115d4e3461a7917ba60a5f9"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/prequential_quantiles.npz",
+      "new": "question2/results/prequential_quantiles.npz",
+      "sha256": "a991d3d98e63f570b41aeba516f3bdc24bec071e923061769a2dd98d790000b7"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/prequential_scores.csv",
+      "new": "question2/results/prequential_scores.csv",
+      "sha256": "7ea13c1115e94294be3b811e89996e4990b1b134413015a0bc7b0d68cf9f6ff8"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/README.md",
+      "new": "question2/README.md",
+      "sha256": "4bfeda0db974b5e6780a850f41199c6cd550b9e545a8d5b2c6d8b04a9af4d312"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/report_experiment.py",
+      "new": "question2/code/report_experiment.py",
+      "sha256": "aaa9a60728417b9fb274e582b0e8411a65ce2419f8c18ad50475bb3311f617c3"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/result2.xlsx",
+      "new": "question2/results/result2.xlsx",
+      "sha256": "91eabc5798783fba0e6fc7436fce49148937a254e88ac8c52d2b77f52b1eb64f"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/rolling_window.py",
+      "new": "question2/code/rolling_window.py",
+      "sha256": "f8954fc618f0f4131cc41fd4834cf640a84301afe8f9d45310f183b087c46a51"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/run_experiment.py",
+      "new": "question2/code/run_experiment.py",
+      "sha256": "2c274c0668e4a1e0e4d9de7b2d962f45935167d4563bf6e6d754787f8543b51b"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/run_metadata.json",
+      "new": "question2/results/run_metadata.json",
+      "sha256": "02759f406e27a2b9f431032ee49ece6a3135569a240f6955d2a09fe7dde314c1"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/schedule_detail.csv.gz",
+      "new": "question2/results/schedule_detail.csv.gz",
+      "sha256": "2cc478e86474cef1c3b91135ae5e1abd4d2d4c8e138b2c1d5d080f1047b4132a"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/source_fingerprints.json",
+      "new": "question2/results/source_fingerprints.json",
+      "sha256": "9efffaba143272997a30f4336a63de93d81933c2259e232813a2679e55d63ec7"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/summary.json",
+      "new": "question2/results/summary.json",
+      "sha256": "cf62fb2e3842f06292a4f43dd7a0ded2e2810e3741d541c2f747526ad5994c38"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/verification.json",
+      "new": "question2/results/verification.json",
+      "sha256": "f43f7b3ca95cd3b8860e6e25d363e4b03ef02c5e6b6f40e5fba713b891547c7a"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/verification_all.json",
+      "new": "question2/results/verification_all.json",
+      "sha256": "d8a2c0a48be75697b63abc4e86cc9b5092aebd4b134278c58f95d74a56ebbb8c"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/verify_window.py",
+      "new": "question2/code/verify_window.py",
+      "sha256": "27bac4b5c8d0eba0f5a061922f5969629a42910ce09fc591df958a6aa1993ede"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/结果说明.md",
+      "new": "question2/结果说明.md",
+      "sha256": "9e1e1f4e008cdf11a743bae632001e9d7bd2f28819cb2148f4f403f69ec8a5b6"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/common_january.json",
+      "new": "question2/results/extensions/short_windows/common_january.json",
+      "sha256": "5f5505a1306301b9e5f7b3999594b04667368d3ad9b8b0e15ca55329f1047969"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/comparison.csv",
+      "new": "question2/results/extensions/short_windows/comparison.csv",
+      "sha256": "b3d5b72f896539618696eeb6ec2258ebc0edd377ca73cb0d4a63c124670d015b"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/prequential_quantiles.npz",
+      "new": "question2/results/extensions/short_windows/prequential_quantiles.npz",
+      "sha256": "ea1ec1516eb3b8b4918e0361e95c44007891f23123370e26f47470b1ca0faa40"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/prequential_scores.csv",
+      "new": "question2/results/extensions/short_windows/prequential_scores.csv",
+      "sha256": "4a5d57226e6970e59d4fe8526e1885c760ceb62a6628807132d6d1f315178678"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/run_metadata.json",
+      "new": "question2/results/extensions/short_windows/run_metadata.json",
+      "sha256": "1dcb709e83ee5563a7cd3c8415593433d8e82ff2be5a18e4d1a18d4edee6222a"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/verification.json",
+      "new": "question2/results/extensions/short_windows/verification.json",
+      "sha256": "5a332f8eec3aca7e27b90eec22c49cd19045288a827c4ca7758b6e00790fa361"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/online_extended/daily_summary.csv",
+      "new": "question2/results/extensions/short_windows/variants/online_extended/daily_summary.csv",
+      "sha256": "ccb84e7832af969211ffa6b3f55976afb0ecc3517ed6b5863aee850b2c774565"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/online_extended/result2.xlsx",
+      "new": "question2/results/extensions/short_windows/variants/online_extended/result2.xlsx",
+      "sha256": "2be5b8ec1c35c63dc9fa1338ea23f7dd4784036de492f3ae5600a93ee287a5f8"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/online_extended/schedule_detail.csv.gz",
+      "new": "question2/results/extensions/short_windows/variants/online_extended/schedule_detail.csv.gz",
+      "sha256": "edf1d8b67308ad6a6975aa04fc059181c500bd9d146a757a90c7787cbdf820fe"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/online_extended/selection_log.json",
+      "new": "question2/results/extensions/short_windows/variants/online_extended/selection_log.json",
+      "sha256": "f2c319688001796675960c2bd433a3748e34b2802cd6eb9e3316131a83942fc7"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/online_extended/summary.json",
+      "new": "question2/results/extensions/short_windows/variants/online_extended/summary.json",
+      "sha256": "a514b525a8c050250e7817950f24f4a1cf00a10b6bb96bca5ddcaac40fbebcf5"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/uniform28/daily_summary.csv",
+      "new": "question2/results/extensions/short_windows/variants/uniform28/daily_summary.csv",
+      "sha256": "33244f3b74cfe60d46a23ec31f6cf8d60c35c0b282649521bf41cc9fabab9fb5"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/uniform28/result2.xlsx",
+      "new": "question2/results/extensions/short_windows/variants/uniform28/result2.xlsx",
+      "sha256": "ee7111ec2a1851560b261e002cba8f100e961de0c497a79c5706af2b5930838b"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/uniform28/schedule_detail.csv.gz",
+      "new": "question2/results/extensions/short_windows/variants/uniform28/schedule_detail.csv.gz",
+      "sha256": "c5a035655d231628e8e16d920128f6e4d58ec5a017c69b8df6c765d58854091a"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/uniform28/selection_log.json",
+      "new": "question2/results/extensions/short_windows/variants/uniform28/selection_log.json",
+      "sha256": "127c696b6e3a24636be410779f08ac0d9d73f1cc2f27380ad2749da23858f5e9"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/uniform28/summary.json",
+      "new": "question2/results/extensions/short_windows/variants/uniform28/summary.json",
+      "sha256": "737aee305c7ef04934658fbada0b5110e07217f24e5e410a1debf58cbf9cb676"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/uniform42/daily_summary.csv",
+      "new": "question2/results/extensions/short_windows/variants/uniform42/daily_summary.csv",
+      "sha256": "21e2e7076dfd592e5d9218c5336aeec3a6f80be19600e0029f9bb74576814c3f"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/uniform42/result2.xlsx",
+      "new": "question2/results/extensions/short_windows/variants/uniform42/result2.xlsx",
+      "sha256": "fcf4375afea6c22afd92e6884110e1efb61590df50a0f1691ef4ca33310e628b"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/uniform42/schedule_detail.csv.gz",
+      "new": "question2/results/extensions/short_windows/variants/uniform42/schedule_detail.csv.gz",
+      "sha256": "56df94e7c3b4b920fa3f9e6707597aa4bbb1a0e6bbac496fe05f31d861995b5f"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/uniform42/selection_log.json",
+      "new": "question2/results/extensions/short_windows/variants/uniform42/selection_log.json",
+      "sha256": "1bc5a9ffcd3212d19ac416b90cd8f01cdba6b87fc125ca825b17a860ad662e74"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/extensions/short_windows/variants/uniform42/summary.json",
+      "new": "question2/results/extensions/short_windows/variants/uniform42/summary.json",
+      "sha256": "8d1ea8ceded25f84e0d9fa698121363e37874d850ff00c2422f70a7a7ccf8421"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/figures/window_comparison.pdf",
+      "new": "question2/results/figures/window_comparison.pdf",
+      "sha256": "aad29154335b69b5b61bd3ae88b91ad5be8585b75d10e245a48ffeff4783379a"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/figures/window_comparison.png",
+      "new": "question2/results/figures/window_comparison.png",
+      "sha256": "c6eff1395f18e67e92ddea6f2a68f0d011f8d4caa3bb649b0fa3b1fd1765eead"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/common_january.json",
+      "new": "question2/results/sensitivity/valid_residuals/common_january.json",
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/comparison.csv",
+      "new": "question2/results/sensitivity/valid_residuals/comparison.csv",
+      "sha256": "b1a8c3e623127cf11d2a6751d8b64462ebd8eb11241f5cacdbea65ea2e8adc3f"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/prequential_quantiles.npz",
+      "new": "question2/results/sensitivity/valid_residuals/prequential_quantiles.npz",
+      "sha256": "2fffb1d10f43574b2d590c766245ff032fcfeca6445fc295f9ea4ab88f8d645a"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/prequential_scores.csv",
+      "new": "question2/results/sensitivity/valid_residuals/prequential_scores.csv",
+      "sha256": "4fc69918f1879b146ba149b691b10970307c913d66bb395bce3fd66da288e93b"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/run_metadata.json",
+      "new": "question2/results/sensitivity/valid_residuals/run_metadata.json",
+      "sha256": "5763c496123aff2aad9c99a2f6076cb9b22581f4e694cce9b433270ab536063d"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/verification.json",
+      "new": "question2/results/sensitivity/valid_residuals/verification.json",
+      "sha256": "ad4bef789e0633e2756f4bc741b0ad004d15f2d51efbc8b51939151374e426d5"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/half_life28/daily_summary.csv",
+      "new": "question2/results/sensitivity/valid_residuals/variants/half_life28/daily_summary.csv",
+      "sha256": "cc3192c446b572e982c399f8057b9145f2bbcc27f1270bc3792fa15a06ce9a72"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/half_life28/result2.xlsx",
+      "new": "question2/results/sensitivity/valid_residuals/variants/half_life28/result2.xlsx",
+      "sha256": "2cef77934269cd03b6056142286be066606071d1763276a8b470de72dd5faed0"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/half_life28/schedule_detail.csv.gz",
+      "new": "question2/results/sensitivity/valid_residuals/variants/half_life28/schedule_detail.csv.gz",
+      "sha256": "4c469747c6b37c3beb36c6fee80d8f9a7b0a39561ede5863bbace89e3cf8e075"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/half_life28/selection_log.json",
+      "new": "question2/results/sensitivity/valid_residuals/variants/half_life28/selection_log.json",
+      "sha256": "30458686c7b5c36f12cc40889ed46b7dcc7c0f57fc21aa991b3d44bc25a3a21e"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/half_life28/summary.json",
+      "new": "question2/results/sensitivity/valid_residuals/variants/half_life28/summary.json",
+      "sha256": "23c9ec811702b70198d77f1436da419c6af671344417b8da8b50580a60e5fd57"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/online_primary/daily_summary.csv",
+      "new": "question2/results/sensitivity/valid_residuals/variants/online_primary/daily_summary.csv",
+      "sha256": "958a68fa6636a1ea231f4820d7434eb845aedacbf201e926f03c70986ec2c9e4"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/online_primary/result2.xlsx",
+      "new": "question2/results/sensitivity/valid_residuals/variants/online_primary/result2.xlsx",
+      "sha256": "9e02d4f8058ee6637093cec3bda7cd1dd23fc77bc5cd4c080645fc041867cd8d"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/online_primary/schedule_detail.csv.gz",
+      "new": "question2/results/sensitivity/valid_residuals/variants/online_primary/schedule_detail.csv.gz",
+      "sha256": "aa0cea0142625dbe34463aea7ecc2aed1e8a768fe7bd0a65bf93833673f02be5"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/online_primary/selection_log.json",
+      "new": "question2/results/sensitivity/valid_residuals/variants/online_primary/selection_log.json",
+      "sha256": "b1ff00644d8619dde4d45c29236638d09084b0fde0d6efa644144a08db9b36e1"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/online_primary/summary.json",
+      "new": "question2/results/sensitivity/valid_residuals/variants/online_primary/summary.json",
+      "sha256": "06706488abdeefc8db7700bd818baae92a357264335e08512327a80c562b8130"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/uniform56/daily_summary.csv",
+      "new": "question2/results/sensitivity/valid_residuals/variants/uniform56/daily_summary.csv",
+      "sha256": "4a55ced8389efc76e379f0710f11925d5bfaecd7b169c7addb6861ba05d8cabb"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/uniform56/result2.xlsx",
+      "new": "question2/results/sensitivity/valid_residuals/variants/uniform56/result2.xlsx",
+      "sha256": "91eabc5798783fba0e6fc7436fce49148937a254e88ac8c52d2b77f52b1eb64f"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/uniform56/schedule_detail.csv.gz",
+      "new": "question2/results/sensitivity/valid_residuals/variants/uniform56/schedule_detail.csv.gz",
+      "sha256": "2cc478e86474cef1c3b91135ae5e1abd4d2d4c8e138b2c1d5d080f1047b4132a"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/uniform56/selection_log.json",
+      "new": "question2/results/sensitivity/valid_residuals/variants/uniform56/selection_log.json",
+      "sha256": "ddf9b09a93b1ab7f8906f1ca0f3d45fc4284468c6174fbcdb0442e9fc93d4c89"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/sensitivity/valid_residuals/variants/uniform56/summary.json",
+      "new": "question2/results/sensitivity/valid_residuals/variants/uniform56/summary.json",
+      "sha256": "c78290077c7e1e3136a79855763aa7c322d360412655d0c3dcf855a422948a82"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/common_january.json",
+      "new": "archive/smoke/question2/common_january.json",
+      "sha256": "5f5505a1306301b9e5f7b3999594b04667368d3ad9b8b0e15ca55329f1047969"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/comparison.csv",
+      "new": "archive/smoke/question2/comparison.csv",
+      "sha256": "0ea5330b896e1b10ac4d6785890de4da7550db612cbcb3293005248724ba05ac"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/prequential_quantiles.npz",
+      "new": "archive/smoke/question2/prequential_quantiles.npz",
+      "sha256": "a991d3d98e63f570b41aeba516f3bdc24bec071e923061769a2dd98d790000b7"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/prequential_scores.csv",
+      "new": "archive/smoke/question2/prequential_scores.csv",
+      "sha256": "7ea13c1115e94294be3b811e89996e4990b1b134413015a0bc7b0d68cf9f6ff8"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/run_metadata.json",
+      "new": "archive/smoke/question2/run_metadata.json",
+      "sha256": "02759f406e27a2b9f431032ee49ece6a3135569a240f6955d2a09fe7dde314c1"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life14/daily_summary.csv",
+      "new": "archive/smoke/question2/variants/half_life14/daily_summary.csv",
+      "sha256": "861b64e40ca0de4ecce324ea047a48247bab330f896f77969bcba11f70726cd5"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life14/result2.xlsx",
+      "new": "archive/smoke/question2/variants/half_life14/result2.xlsx",
+      "sha256": "df39b86d5cdac2e53d34fb112163d0e72e35de3be16367efc8b41ef98c34b2d8"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life14/schedule_detail.csv.gz",
+      "new": "archive/smoke/question2/variants/half_life14/schedule_detail.csv.gz",
+      "sha256": "fb68577137def4425803bae60b98789f0750ea5f08382839ca22a28fa0de8c07"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life14/selection_log.json",
+      "new": "archive/smoke/question2/variants/half_life14/selection_log.json",
+      "sha256": "e59b99ffcf5930b1e104a81c77ffd4ea637b49ac532dfb1fcb2c2db9f59bb7a7"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life14/summary.json",
+      "new": "archive/smoke/question2/variants/half_life14/summary.json",
+      "sha256": "b07abb47c5d652d8b223a6b2a126f0929a9ccccd9234a7e44313854cb746a028"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life28/daily_summary.csv",
+      "new": "archive/smoke/question2/variants/half_life28/daily_summary.csv",
+      "sha256": "5f2699f1e6d8543aeb4b628c4a65b64ccabe075362eba6ff529bb723ceb791a6"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life28/result2.xlsx",
+      "new": "archive/smoke/question2/variants/half_life28/result2.xlsx",
+      "sha256": "c3aa5b9658dc5959f201517672e385333d7323f0c1fa1db9d3cde1c4711cfb1f"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life28/schedule_detail.csv.gz",
+      "new": "archive/smoke/question2/variants/half_life28/schedule_detail.csv.gz",
+      "sha256": "48f084455174fa3a301e4b2de5cabce5a0aae730ea5eac77ed8efb4f7e707d20"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life28/selection_log.json",
+      "new": "archive/smoke/question2/variants/half_life28/selection_log.json",
+      "sha256": "8220e870a0151249d8b8aa95dfaac85e5214edefe1fddb0f2b2ddaccd21f1fad"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life28/summary.json",
+      "new": "archive/smoke/question2/variants/half_life28/summary.json",
+      "sha256": "8fb034b2dd1103984aa3752c3d0accb4db5392fc9d59ace99264bdf628dd662d"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life7/daily_summary.csv",
+      "new": "archive/smoke/question2/variants/half_life7/daily_summary.csv",
+      "sha256": "928ee8eb585948c2595064221068ff0620fa194ff204f6a090f8228bedc80564"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life7/result2.xlsx",
+      "new": "archive/smoke/question2/variants/half_life7/result2.xlsx",
+      "sha256": "7faee86068535edc2df58a8d182760f6059741251138680623b68ccca3db3407"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life7/schedule_detail.csv.gz",
+      "new": "archive/smoke/question2/variants/half_life7/schedule_detail.csv.gz",
+      "sha256": "201a8a1bd21c7b22fee58269f98e97705f444362417596de75b4d570b520caf0"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life7/selection_log.json",
+      "new": "archive/smoke/question2/variants/half_life7/selection_log.json",
+      "sha256": "e95820972c85b492ca88b500815dc37700fb72076cd65651ef5167cd1bff2c2a"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/half_life7/summary.json",
+      "new": "archive/smoke/question2/variants/half_life7/summary.json",
+      "sha256": "45354a94fc5b4ae9a67837ae9e7d35b027107dea686bebcf1d3ae189134075f6"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/online_primary/daily_summary.csv",
+      "new": "archive/smoke/question2/variants/online_primary/daily_summary.csv",
+      "sha256": "283333ac0d748623bceafc0e1ddbd5448c48e01a875777bf354693b495bcd084"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/online_primary/result2.xlsx",
+      "new": "archive/smoke/question2/variants/online_primary/result2.xlsx",
+      "sha256": "7faee86068535edc2df58a8d182760f6059741251138680623b68ccca3db3407"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/online_primary/schedule_detail.csv.gz",
+      "new": "archive/smoke/question2/variants/online_primary/schedule_detail.csv.gz",
+      "sha256": "201a8a1bd21c7b22fee58269f98e97705f444362417596de75b4d570b520caf0"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/online_primary/selection_log.json",
+      "new": "archive/smoke/question2/variants/online_primary/selection_log.json",
+      "sha256": "5a2ae0d84b11f42551f39af1221d30828e14cd3de87ea9cb46ce290db5dd324d"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/online_primary/summary.json",
+      "new": "archive/smoke/question2/variants/online_primary/summary.json",
+      "sha256": "a13fccd271517bd9355151453e4d3dade12323060d271447313ab33b8714edaa"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/uniform56/daily_summary.csv",
+      "new": "archive/smoke/question2/variants/uniform56/daily_summary.csv",
+      "sha256": "3681237bcafb6ee640db913ef42929b29a7a71447086c58bd0fef4b5f4b40138"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/uniform56/result2.xlsx",
+      "new": "archive/smoke/question2/variants/uniform56/result2.xlsx",
+      "sha256": "f5b3284c543f2c1b982d0faeceac3ae6682e0e8eb40839d934de149e9a623511"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/uniform56/schedule_detail.csv.gz",
+      "new": "archive/smoke/question2/variants/uniform56/schedule_detail.csv.gz",
+      "sha256": "41cee8370fd64cd3a57a7d49096ecd590dd841c0ad7578dd9947587388b0fc7a"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/uniform56/selection_log.json",
+      "new": "archive/smoke/question2/variants/uniform56/selection_log.json",
+      "sha256": "88840efc70f58743a7fd3668a3ff6670f1731c2195c175a018794f3b65bf77ee"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/smoke/variants/uniform56/summary.json",
+      "new": "archive/smoke/question2/variants/uniform56/summary.json",
+      "sha256": "d46c93b306cc923cf46bff78c5e5c599df1008646a93ad342e661c85ce0ea762"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life14/daily_summary.csv",
+      "new": "question2/results/variants/half_life14/daily_summary.csv",
+      "sha256": "83d7586dc414ef53ac7a090be02fdeeb9fe75e402de74ce075f3f89172e58376"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life14/result2.xlsx",
+      "new": "question2/results/variants/half_life14/result2.xlsx",
+      "sha256": "787c47a55bdca2a449641a225397c9bbe68c449291f42e21c26e72654e6dddc8"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life14/schedule_detail.csv.gz",
+      "new": "question2/results/variants/half_life14/schedule_detail.csv.gz",
+      "sha256": "1e032f47da3bf80cb27cbde6e583abdcffc61ae6f0f191ff0981cf13910b07cd"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life14/selection_log.json",
+      "new": "question2/results/variants/half_life14/selection_log.json",
+      "sha256": "8919ec921d682c9be07b24274a607464b74347cb74c53501ae8f1fd3f53bc821"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life14/summary.json",
+      "new": "question2/results/variants/half_life14/summary.json",
+      "sha256": "2a87e8b5e320ed5de930b703429740f03ba336df3e1f5356f26dc1cfeb23df37"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life28/daily_summary.csv",
+      "new": "question2/results/variants/half_life28/daily_summary.csv",
+      "sha256": "d794aa7aa78e6c1f0f34fbf4a23e9432398f73f0c05a493f311fcd4720b6b54c"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life28/result2.xlsx",
+      "new": "question2/results/variants/half_life28/result2.xlsx",
+      "sha256": "50501213b7f2095b3f3737675c55bde04fd7cbe0a2e04147db7b498cf4eec852"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life28/schedule_detail.csv.gz",
+      "new": "question2/results/variants/half_life28/schedule_detail.csv.gz",
+      "sha256": "8a74cd57c69c17c21dd20956c9b617155d244260e5f4ba4509c0ad22c8982ee9"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life28/selection_log.json",
+      "new": "question2/results/variants/half_life28/selection_log.json",
+      "sha256": "30458686c7b5c36f12cc40889ed46b7dcc7c0f57fc21aa991b3d44bc25a3a21e"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life28/summary.json",
+      "new": "question2/results/variants/half_life28/summary.json",
+      "sha256": "cec7830d4d325d92192baf1dce7ad375f1eec916ae9d841f392c463b28921c38"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life7/daily_summary.csv",
+      "new": "question2/results/variants/half_life7/daily_summary.csv",
+      "sha256": "58142406db2379918b5804d7b259b35386c4dbb25f0c0a05cc049c1790c36e2a"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life7/result2.xlsx",
+      "new": "question2/results/variants/half_life7/result2.xlsx",
+      "sha256": "2e05407ed4bc71838090a1f245fe506b8df7f7e899fbca6445bd89ebaa7cb042"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life7/schedule_detail.csv.gz",
+      "new": "question2/results/variants/half_life7/schedule_detail.csv.gz",
+      "sha256": "77d217a95e6ef31923bf6dbb00a2380064e03fd0a3cbb7e5d0c626fd3f3e6cb5"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life7/selection_log.json",
+      "new": "question2/results/variants/half_life7/selection_log.json",
+      "sha256": "e6d39e3a84d355238f052d6385c1fb1365c471faaec8ca224415318b66faceb7"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/half_life7/summary.json",
+      "new": "question2/results/variants/half_life7/summary.json",
+      "sha256": "ec3835892b50e71baebc9d039bcf28e7d7aa5a8c9e7ee8a64184bff5363d3bdb"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/online_primary/daily_summary.csv",
+      "new": "question2/results/variants/online_primary/daily_summary.csv",
+      "sha256": "7f1d352ce18c8b41b4a8f3192a54d8ad33d42704de595eec240c095f953967e3"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/online_primary/result2.xlsx",
+      "new": "question2/results/variants/online_primary/result2.xlsx",
+      "sha256": "7fd33934f24213cb99a596c866f571f66086b652487a5461ce6a0ea0454203f7"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/online_primary/schedule_detail.csv.gz",
+      "new": "question2/results/variants/online_primary/schedule_detail.csv.gz",
+      "sha256": "88fdf50d6fa7cd058e401cabaed8a01c45f9e9a0e0ee6dadf5eef6204b899c4f"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/online_primary/selection_log.json",
+      "new": "question2/results/variants/online_primary/selection_log.json",
+      "sha256": "f7a781ca3885f4edba44464f05c9ea19f907957f3302a1143db162ca48602da1"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/online_primary/summary.json",
+      "new": "question2/results/variants/online_primary/summary.json",
+      "sha256": "2319cecbd41b15a98e62e96cf82f003fe19eac29b511c1f1463509011a633669"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/uniform56/daily_summary.csv",
+      "new": "question2/results/variants/uniform56/daily_summary.csv",
+      "sha256": "d2f7f4c5cf45bbbb1d40924c7bccf9aac003b48d73207640e423e9b088f094ad"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/uniform56/result2.xlsx",
+      "new": "question2/results/variants/uniform56/result2.xlsx",
+      "sha256": "440da3cb4d2aae5c0cea877fb50b8032515a4edf081f930cdfe647ed764b3aca"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/uniform56/schedule_detail.csv.gz",
+      "new": "question2/results/variants/uniform56/schedule_detail.csv.gz",
+      "sha256": "3e2dfcd34d85b522528020c49a0df979a720196e377cafd12635f68fb9df80ab"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/uniform56/selection_log.json",
+      "new": "question2/results/variants/uniform56/selection_log.json",
+      "sha256": "ddf9b09a93b1ab7f8906f1ca0f3d45fc4284468c6174fbcdb0442e9fc93d4c89"
+    },
+    {
+      "old": "CShen/方案B_滚动窗口优化/variants/uniform56/summary.json",
+      "new": "question2/results/variants/uniform56/summary.json",
+      "sha256": "c9df6b383aa47affe2cd26f0a01824b97e5dd4c774a2c97696a0bb244244856c"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparison.csv",
+      "new": "question4/part3/results/comparison.csv",
+      "sha256": "480e23636ac70237c8729a744ecea27222109718005480dcbee09d8a1bddb3ee"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/daily_summary.csv",
+      "new": "question4/part3/results/daily_summary.csv",
+      "sha256": "9f818675b9a2447a31c06d98fe31cb72779ece0882ef77b539d573a50ccae363"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/forecast_diagnostics.csv",
+      "new": "question4/part3/results/forecast_diagnostics.csv",
+      "sha256": "7657af0bd04db99a7c5953d3b122d896ea63fb63b77270b52f269af6001ff9f5"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/plot_q3.py",
+      "new": "question4/part3/code/plot_q3.py",
+      "sha256": "a2bfb9fff096564a09379758f51349ec9926ad17ba3e81880ecb6b8bfb7ea072"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/q3_data.py",
+      "new": "question4/part3/code/q3_data.py",
+      "sha256": "78e8d1788d1cc8076db8eda2c06abf3b2b619a3e89bd5277a0c2e1aecd35e789"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/q3_forecast.py",
+      "new": "question4/part3/code/q3_forecast.py",
+      "sha256": "52cfd6f6d984c77ce8144239cf05d79897aab9697493564791dd802f103d6d43"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/q3_model.py",
+      "new": "question4/part3/code/q3_model.py",
+      "sha256": "a510852409768793f322676321a49b03c3e3de0858f356fceaca82b5fcb0885e"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/README.md",
+      "new": "question4/part3/README.md",
+      "sha256": "a4721c6b1a47355f63a71af41b9017d63a33f4e8f4a6d8330e2020c16d6d9bcf"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/requirements.txt",
+      "new": "question4/part3/requirements.txt",
+      "sha256": "c0780019c3fd473db28782fd954cc5f683e394719fa6ec17ebdcb8cc911db874"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/result3.xlsx",
+      "new": "question4/part3/results/result3.xlsx",
+      "sha256": "8d6205fd04ed8f68fd72d08882d919772a4e59ab41bb7aaaccda0fac3d6ce256"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/result4-3.xlsx",
+      "new": "question4/part3/results/result4-3.xlsx",
+      "sha256": "eb7566fcd6ac9436da70f94798251feea733d4873148074f98965449af3f887f"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/run.err",
+      "new": "question4/part3/results/run.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/run.log",
+      "new": "question4/part3/results/run.log",
+      "sha256": "78ea66efc400acaf2a87020fd05816dbc57915c7339c3a6079cb3c545f3b8caa"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/run_metadata.json",
+      "new": "question4/part3/results/run_metadata.json",
+      "sha256": "2d8ad3d014fe046e0f0379804930955798340d71dabca25bd0b265d3a662d876"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/run_q3.py",
+      "new": "question4/part3/code/run_q3.py",
+      "sha256": "3428e33a82ed8ee284f767ef1ddb839714b7ba36d1c955ce46f402347f8fad41"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/scenario_trees.json",
+      "new": "question4/part3/results/scenario_trees.json",
+      "sha256": "286b188d45ee61bea67e5673297cab26067b5cceca1c5dbcd5827458d5498d04"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/schedule_detail.csv",
+      "new": "question4/part3/results/schedule_detail.csv",
+      "sha256": "41e7c6c3e6802fba8e75e7b55c0dc4373e3bab13c411fe208f94b8de2e7f9a20"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/summary.json",
+      "new": "question4/part3/results/summary.json",
+      "sha256": "4c5c7294cc7a5e44af490f24b911225ad6989d366bc52d76a07158bf072634d6"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/target_daily.csv",
+      "new": "question4/part3/results/target_daily.csv",
+      "sha256": "6eff9e70070d040e4a37b6a48b0a47f84107c55a9539fe23a325859733512ea7"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/target_table1.csv",
+      "new": "question4/part3/results/target_table1.csv",
+      "sha256": "2318d3c097563b233076c3646e0df48103752e71dab2d5fc999d51d0085ddd34"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/target_table2.csv",
+      "new": "question4/part3/results/target_table2.csv",
+      "sha256": "41643ed88eaa9cf97955bfd35f6f5bca4b4fb4eea02f990b067c79721827ed31"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/target_table3.csv",
+      "new": "question4/part3/results/target_table3.csv",
+      "sha256": "212d9d8b19d0b0657c14a9e089865578919ffe7e123c5e90cbd159f85102190c"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/verification.json",
+      "new": "question4/part3/results/verification.json",
+      "sha256": "228b459c225d96560216ed449fec10822949e182b126f500d52a88697c9c4082"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/verify_q3.py",
+      "new": "question4/part3/code/verify_q3.py",
+      "sha256": "7f4978fd95661e6ccea62f50b3152a474c993219824b7800eae0304cc7b462a4"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/建模说明.md",
+      "new": "question4/part3/建模说明.md",
+      "sha256": "5d158b3fb156b403e4fd88cf111c2297c3ec220b700e73f057f4c60d0c85198c"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/第四问说明.md",
+      "new": "question4/part3/第四问说明.md",
+      "sha256": "10afedb4efd5b7907a8d92a07514c17d7f23ce0d05ba1e5bbf457a5c3b9e7e08"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/结果说明.md",
+      "new": "question4/part3/结果说明.md",
+      "sha256": "0d2803ca0a97ed1c2f075b8d92d32086594ae7bca8ae6a1ad2fea860271fcdd5"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/at_0_6/daily_summary.csv",
+      "new": "question4/part3/results/comparisons/at_0_6/daily_summary.csv",
+      "sha256": "05be2241371f9cbbff03f2fa2bb40b0743da4096078f88978d1d6747ef5b5a1a"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/at_0_6/schedule_detail.csv",
+      "new": "question4/part3/results/comparisons/at_0_6/schedule_detail.csv",
+      "sha256": "8fdb22b1deb89bd9b0f4a9ef6991ccb5c8d4817ae9f0e8a372929f5adcf5b34b"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/at_0_6/summary.json",
+      "new": "question4/part3/results/comparisons/at_0_6/summary.json",
+      "sha256": "8df1b11f5477ba68143dd57be5218c54d9759cf5a20698cc5e68704a8d282fd8"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/at_0_6/verification.json",
+      "new": "question4/part3/results/comparisons/at_0_6/verification.json",
+      "sha256": "1adf6ee6ced56f9cab7b0e7ba9e2e931d30f3b49e53476bec4ee4be0cf47551d"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/at_0_6_12/daily_summary.csv",
+      "new": "question4/part3/results/comparisons/at_0_6_12/daily_summary.csv",
+      "sha256": "f78c7e3528f2aea3b84ba18c1ee84d546955df43e1c942069e4b94eb265c97f2"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/at_0_6_12/result3.xlsx",
+      "new": "question4/part3/results/comparisons/at_0_6_12/result3.xlsx",
+      "sha256": "d97e2ff4c4ab6814c419a30e1bed205513ebb82212eb91eb60fbaaf1738d7d56"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/at_0_6_12/schedule_detail.csv",
+      "new": "question4/part3/results/comparisons/at_0_6_12/schedule_detail.csv",
+      "sha256": "e2c0c51a2b772cb805a675b35c26255b4820ca8c78d68cc7c7c59a74ebb82f6c"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/at_0_6_12/summary.json",
+      "new": "question4/part3/results/comparisons/at_0_6_12/summary.json",
+      "sha256": "fc15d22d804abc1dcb9bea5b675b4ad0dd8930cfab565f3131cf4800bc7c67bb"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/at_0_6_12/verification.json",
+      "new": "question4/part3/results/comparisons/at_0_6_12/verification.json",
+      "sha256": "35fdd4f747c05ae9f5e619d98f077cf4f08458a680274e88cca6bcf9918ce82d"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/B_aligned/daily_summary.csv",
+      "new": "question4/part3/results/comparisons/B_aligned/daily_summary.csv",
+      "sha256": "4f494e5e1a557baaf29a9d395270174c63eeb09df70759a71a84385c615de423"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/B_aligned/schedule_detail.csv",
+      "new": "question4/part3/results/comparisons/B_aligned/schedule_detail.csv",
+      "sha256": "19a0b85b54786f33a8b8887e8cbd584b7bd001b88cd669cd8fee11a75437c838"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/B_aligned/summary.json",
+      "new": "question4/part3/results/comparisons/B_aligned/summary.json",
+      "sha256": "cba5e34d577737e14521085f4339ed3145e87bcd8cd6b5b7da18279f69dcd939"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/B_aligned/verification.json",
+      "new": "question4/part3/results/comparisons/B_aligned/verification.json",
+      "sha256": "afe48ce9270fe31cc7d97ada5774a8e9021625fa1f00dd0972c6ecab246a2c96"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/only_0/daily_summary.csv",
+      "new": "question4/part3/results/comparisons/only_0/daily_summary.csv",
+      "sha256": "dda723ff8fc8c436df45cb129a6b08e2b63800e22215ebed9f8e7c3ece235c3b"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/only_0/schedule_detail.csv",
+      "new": "question4/part3/results/comparisons/only_0/schedule_detail.csv",
+      "sha256": "15107fc3670c7f4e9292bf773f3224d6af0e0c935986fabc977ec59206c5d9aa"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/only_0/summary.json",
+      "new": "question4/part3/results/comparisons/only_0/summary.json",
+      "sha256": "2c5e95a00def6f6a11fb5f44c3221864270b87eb33e941a7a13efe5b4af0f03e"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/comparisons/only_0/verification.json",
+      "new": "question4/part3/results/comparisons/only_0/verification.json",
+      "sha256": "05c5e12c195c31e84f195b68efd53f67703aa5e5211a6ea905626f666450f127"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/figures/cost_comparison.pdf",
+      "new": "question4/part3/results/figures/cost_comparison.pdf",
+      "sha256": "682c105f9897dc90f9ba4bd8b7bb320fab12fe703c813ecf1d039f054d4300b3"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/figures/cost_comparison.png",
+      "new": "question4/part3/results/figures/cost_comparison.png",
+      "sha256": "0519076161d2b97b668118b3a8b426d0c15bf64890b51923713348896e0ac93b"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/figures/forecast_fusion.pdf",
+      "new": "question4/part3/results/figures/forecast_fusion.pdf",
+      "sha256": "0dff21b112b0a496f8ea41c2bb8d0051539ade8141a24e476b3a55f8c3b7f5cd"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/figures/forecast_fusion.png",
+      "new": "question4/part3/results/figures/forecast_fusion.png",
+      "sha256": "90de7be23db613f61bcb92617daba2dd0db60809159c9d2325926894de7aaeba"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/figures/target_dispatch.pdf",
+      "new": "question4/part3/results/figures/target_dispatch.pdf",
+      "sha256": "e033d7b60caf13d6762f0a20bff0fef869548a316eae9869d96acecc8c56c00a"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/figures/target_dispatch.png",
+      "new": "question4/part3/results/figures/target_dispatch.png",
+      "sha256": "89c3924cfe14406c4366dea8e1be57053b320f8253afe75db623489264193d54"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/comparison.csv",
+      "new": "archive/smoke/question4/part3/comparison.csv",
+      "sha256": "16359c3b197c28a380bcaf4f3527fb0c28a74db99d98395709c0ea6ccb424f70"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/daily_summary.csv",
+      "new": "archive/smoke/question4/part3/daily_summary.csv",
+      "sha256": "f4cdd47ceebdf12dec753af94dd41698d14dd06f46e6b02af9b3877d250f5fbf"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/forecast_diagnostics.csv",
+      "new": "archive/smoke/question4/part3/forecast_diagnostics.csv",
+      "sha256": "a4a201fdc47594a4e6159d7402d7cf7015fa021b0421b89dd3855655d8a5ae6d"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/result4-3.xlsx",
+      "new": "archive/smoke/question4/part3/result4-3.xlsx",
+      "sha256": "f0bd15cb7af0de715280cf5751a3c4a5ac518bf3ee2d0758421121d21523af62"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/run_metadata.json",
+      "new": "archive/smoke/question4/part3/run_metadata.json",
+      "sha256": "2d8ad3d014fe046e0f0379804930955798340d71dabca25bd0b265d3a662d876"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/scenario_trees.json",
+      "new": "archive/smoke/question4/part3/scenario_trees.json",
+      "sha256": "afe64bd76eccdef4a41cd020049f2b1f3efdb640272849faf6bcef3dc19347ff"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/schedule_detail.csv",
+      "new": "archive/smoke/question4/part3/schedule_detail.csv",
+      "sha256": "ec39a9cf062aee33eb2bb405d58ce1b9ec6287176ab0b52236fc598fe5dc6988"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/summary.json",
+      "new": "archive/smoke/question4/part3/summary.json",
+      "sha256": "46bd485c232aa9f306db285e2d2c8e841dd7b358178afae253ee22dc99ef7186"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/target_daily.csv",
+      "new": "archive/smoke/question4/part3/target_daily.csv",
+      "sha256": "499a5d3c2d0b419c6023cff082d7b6431fff0dd1322dbf77754297b5f12ba205"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/target_table1.csv",
+      "new": "archive/smoke/question4/part3/target_table1.csv",
+      "sha256": "f01a374e9c81e3db89b3a42940c4d6a5447684986a1296e42bf13f196eed6295"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/target_table2.csv",
+      "new": "archive/smoke/question4/part3/target_table2.csv",
+      "sha256": "f01a374e9c81e3db89b3a42940c4d6a5447684986a1296e42bf13f196eed6295"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/target_table3.csv",
+      "new": "archive/smoke/question4/part3/target_table3.csv",
+      "sha256": "f01a374e9c81e3db89b3a42940c4d6a5447684986a1296e42bf13f196eed6295"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/verification.json",
+      "new": "archive/smoke/question4/part3/verification.json",
+      "sha256": "b1b05885a66ab4932cadb8e6f71a8b0b6dc15479f0cf83578e87bd69b7f8c6a8"
+    },
+    {
+      "old": "CShen/方案B_问题4_第三问重模拟/smoke/结果说明.md",
+      "new": "archive/smoke/question4/part3/结果说明.md",
+      "sha256": "41c63faf52c7a58d2027afb48ef355283a9c9c1e9378b9f8e4c263956541aec7"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/make_figures_q3.py",
+      "new": "archive/CShen/方案C_问题三_1432万/make_figures_q3.py",
+      "sha256": "49c6b1cd5469e775c4898b10e13df9339015dc466697495f50c4c87e4c564573"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/make_result3.py",
+      "new": "archive/CShen/方案C_问题三_1432万/make_result3.py",
+      "sha256": "3c8ba72350b67691ce54c1f1759f06de38fc8bd50b3e889a9dd7e545a284104d"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/make_tables_q3.py",
+      "new": "archive/CShen/方案C_问题三_1432万/make_tables_q3.py",
+      "sha256": "6a8b344661584d58c8be015854145086b080117627a5f716842999554c02d991"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/margin_q3.py",
+      "new": "archive/CShen/方案C_问题三_1432万/margin_q3.py",
+      "sha256": "f140ea91e22ea8fba7083043f884c67eba51a01c8849e4f87295b9e612a5aa7a"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/q3_data.py",
+      "new": "archive/CShen/方案C_问题三_1432万/q3_data.py",
+      "sha256": "c4d37a6fcbf32bd51e5673b2ed7be506cb282cc0100ac07aca3e82a591e5f0f4"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/q3_model.py",
+      "new": "archive/CShen/方案C_问题三_1432万/q3_model.py",
+      "sha256": "627ad5402b77f4c67bd4fdfd5bdbd4098d35f38ce1c1e2752c932c50a7580cbd"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/README.md",
+      "new": "archive/CShen/方案C_问题三_1432万/README.md",
+      "sha256": "b5537e3b427edb7cecbb7110208a9302284043a210e32204c2d9e2bd0245b3f8"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/result3.xlsx",
+      "new": "archive/CShen/方案C_问题三_1432万/result3.xlsx",
+      "sha256": "a8f8f04d6013c78be7bfd9f9d35e64f529013b3ca85e11a1abeff14da6a9b9f2"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/run_q3.py",
+      "new": "archive/CShen/方案C_问题三_1432万/run_q3.py",
+      "sha256": "44c380ecce56bb25a0eb7d7b24421dfcff614195554e805f28fd90a0328cc50e"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/single_stage_q3.py",
+      "new": "archive/CShen/方案C_问题三_1432万/single_stage_q3.py",
+      "sha256": "13ab382a4c1bcfbf22eccb24475efa512a4104dca894261545bc6e3a424e52b6"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/verify_q3.py",
+      "new": "archive/CShen/方案C_问题三_1432万/verify_q3.py",
+      "sha256": "882423d1764b7dfa3f4334dcd8ca9e85eab799735903c06da02291dd7ec18087"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/_q3_margin.json",
+      "new": "archive/CShen/方案C_问题三_1432万/_q3_margin.json",
+      "sha256": "fb15aec026df50af8fc13d40b85a94806e5e39584faa130313bd95e18bd2d0bb"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/_q3_single_stage.json",
+      "new": "archive/CShen/方案C_问题三_1432万/_q3_single_stage.json",
+      "sha256": "43f9e1835555b648d893fcf58cd1c4175ed73ff538b8f0aa8103cdf6c5cc04d5"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/_q3_summary.json",
+      "new": "archive/CShen/方案C_问题三_1432万/_q3_summary.json",
+      "sha256": "34d3a4847a8746923aae559cd93599f1848c198030b27b53fa7d9021c38adadc"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/_q3_verification.json",
+      "new": "archive/CShen/方案C_问题三_1432万/_q3_verification.json",
+      "sha256": "2dda15ae6c0a3c8c254f7235e7baacb4a0f2e79829126c04ef697b0b3afa30e6"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/表123_指定日期.md",
+      "new": "archive/CShen/方案C_问题三_1432万/表123_指定日期.md",
+      "sha256": "b419276e24f7dbac35b639bbf9057e65cd39a60c7b9da47bd371427938399b77"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/问题三_思路与程序说明.md",
+      "new": "archive/CShen/方案C_问题三_1432万/问题三_思路与程序说明.md",
+      "sha256": "e27a63d567810ddbe79632b5e62a0e020213dd9fd57850cdc07d990911bb9296"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/figures/fig1_典型日_计划与调整.png",
+      "new": "archive/CShen/方案C_问题三_1432万/figures/fig1_典型日_计划与调整.png",
+      "sha256": "aa9918284a76fef386c060b0b3ca2f866be2efbd44e904627d2ad21e6fb153b9"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/figures/fig2_储能SOC轨迹.png",
+      "new": "archive/CShen/方案C_问题三_1432万/figures/fig2_储能SOC轨迹.png",
+      "sha256": "676e9be7c3b497f0287ebcee6fe47bbcc2ccf9ca6b471303e1bec76200f6f73b"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/figures/fig3_每日费用构成.png",
+      "new": "archive/CShen/方案C_问题三_1432万/figures/fig3_每日费用构成.png",
+      "sha256": "31aca544fe7bb70756b97f41be6d4a9495b21942088d757a46d2dad6ed3884ab"
+    },
+    {
+      "old": "CShen/方案C_问题三_1432万/figures/fig4_调整电量结构.png",
+      "new": "archive/CShen/方案C_问题三_1432万/figures/fig4_调整电量结构.png",
+      "sha256": "7beb8132256f02007e77c7322020039a43f9c92fe89983749f7a10e1fc594a8b"
+    },
+    {
+      "old": "CShen/问题三_优化探索/README.md",
+      "new": "question3/research/README.md",
+      "sha256": "b0ca5efe98c9fa6a1c24b6acdd7e509bcf3d9360d32845b53e790ed89b2b9b99"
+    },
+    {
+      "old": "CShen/问题三_优化探索/问题三_优化分析报告.md",
+      "new": "question3/research/问题三_优化分析报告.md",
+      "sha256": "ef9d4e8961b349a531f8c6adfbb222ca78afe8426134ed6e17fe2e22ba3feae7"
+    },
+    {
+      "old": "CShen/问题三_优化探索/问题三_优化探索最终报告.md",
+      "new": "question3/research/问题三_优化探索最终报告.md",
+      "sha256": "fbcf7c0daf825c5cb1662dd327834b729fd72d1c1000fe7211eabd51c73da5ee"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_diag_adjust_peer.py",
+      "new": "question3/research/experiments/_diag_adjust_peer.py",
+      "sha256": "99924d5c2b997d940ce3184cdb0374a3d737b932b028626510ae43c5a1550502"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_diag_emg.py",
+      "new": "question3/research/experiments/_diag_emg.py",
+      "sha256": "933d0600c0a81f50deee3f8b310cd50cb4ce3e7b74d5be9f5fa85220adea5e45"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_diag_headroom.py",
+      "new": "question3/research/experiments/_diag_headroom.py",
+      "sha256": "39c6c9381a7068f1a122d267efdc8ac01ea354466de78c301627b47618c950fc"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_diag_peer.py",
+      "new": "question3/research/experiments/_diag_peer.py",
+      "sha256": "ade8462e2120b24588eb6707bf9e18ca333ce9765be9f5ea7f37993648263193"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_3src.log",
+      "new": "question3/research/experiments/_opt_3src.log",
+      "sha256": "e9992e16f825cae7192c10ca4b5b551b96375de9fc2cfbba9b6281827ea44e5f"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_3src.py",
+      "new": "question3/research/experiments/_opt_3src.py",
+      "sha256": "4d21708806da74c9b79454e070fd113e20a8cadb4a1f693396996a50478d9b3b"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_cfgA.log",
+      "new": "question3/research/experiments/_opt_cfgA.log",
+      "sha256": "50f9eef062f5f8e6fc4f562a2af986c7ec130e043faefc6eb7f68feb62ae2187"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_cfg_A.json",
+      "new": "question3/research/experiments/_opt_cfg_A.json",
+      "sha256": "52d1f8c660538fa674da8fe420602d8042d0cbea7461c55d6e29fce5b0c3398e"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_final.log",
+      "new": "question3/research/experiments/_opt_final.log",
+      "sha256": "b7427d5c383e1fef3a77b3ae9bde44c59abe6ad04a68a50bf817de2cb02d64eb"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_final.py",
+      "new": "question3/research/experiments/_opt_final.py",
+      "sha256": "8c034da15abfa9fc4af793bcd82f7147a1e550f432789a938f5a7cbaa1b5cf41"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_fine.log",
+      "new": "question3/research/experiments/_opt_fine.log",
+      "sha256": "9efa83515141677296c4700ef25c5ef67d11e9ed552c366edf972ce48076a6f1"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_fine.py",
+      "new": "question3/research/experiments/_opt_fine.py",
+      "sha256": "2eb3b1788e899de72825b33d0592d77fc52430eb873eb0b1c7fdcbce46586396"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_floor.json",
+      "new": "question3/research/experiments/_opt_floor.json",
+      "sha256": "e4306807eb57e21a2e5a8e79bbfb9412fd42b5cf47de17c9510e95dba6d25c99"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_floor.log",
+      "new": "question3/research/experiments/_opt_floor.log",
+      "sha256": "e6571947593167cd5e71b1484a3174ab6ffe8abde7a547b0fcd391a96fecabac"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_floor.py",
+      "new": "question3/research/experiments/_opt_floor.py",
+      "sha256": "fbdb9337920b2f020d6c0695a38be0e4c97d88211ab7939e3a0fcff1d2897a06"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_forecast.py",
+      "new": "question3/research/experiments/_opt_forecast.py",
+      "sha256": "929531fe6f945c45e30c5c1510a0dbe1379fc8593bf1076b336630e61e51f90a"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_k.py",
+      "new": "question3/research/experiments/_opt_k.py",
+      "sha256": "d8abf755e605f59c5c3ae2f1d9fd2c6286d6c10f256372b6f9ef17f8e87a99d2"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_k1.log",
+      "new": "question3/research/experiments/_opt_k1.log",
+      "sha256": "9cfc808ad8444ea87e0b7b7b6401bb450dadf9999bbd1029881a2323c090defd"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_kA.json",
+      "new": "question3/research/experiments/_opt_kA.json",
+      "sha256": "cf7489125b965b2cc227bdfb9d3ee5e688b4a839f80a14de439ad3ab9c4990b7"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_kA.log",
+      "new": "question3/research/experiments/_opt_kA.log",
+      "sha256": "58d276ae7c47054ef2cc568e994d0c38aad12ec7dcb112310464fc49f2a78a1e"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_kB.json",
+      "new": "question3/research/experiments/_opt_kB.json",
+      "sha256": "e974909ac85c3b663d609385b06c99ce5b9d23c92588c8a8467c701b172bab18"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_kB.log",
+      "new": "question3/research/experiments/_opt_kB.log",
+      "sha256": "60fb907b4df4ff20b6516f322a56d690f03e6a342c4b7a9aa0817d6ec30bb4ee"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_k_1.json",
+      "new": "question3/research/experiments/_opt_k_1.json",
+      "sha256": "5ac8f6001051bef7e814f32ba7cde11a51c5eb2f1a833830428395a9eb815086"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_k_fine.py",
+      "new": "question3/research/experiments/_opt_k_fine.py",
+      "sha256": "901d5cc66c90d5afe386f21fea25d8b33c114b458743ebdf02036d5c3d4c3608"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_multi.py",
+      "new": "question3/research/experiments/_opt_multi.py",
+      "sha256": "9b34fd3b030145224ae85fe427103e1c0715c3752ed10987dd48d5c2c9349477"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_multi2.log",
+      "new": "question3/research/experiments/_opt_multi2.log",
+      "sha256": "bfec0206894ce8278250a5b31a77ff349ce450ed4225e3675ece477491b75b1a"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_multi2.py",
+      "new": "question3/research/experiments/_opt_multi2.py",
+      "sha256": "a6e03e98beb5d517b8cd52a1466a7631dff95f4faccd2ea20b1118fae56f1ca5"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_multi2b.log",
+      "new": "question3/research/experiments/_opt_multi2b.log",
+      "sha256": "870438c20045a57ca57245771d11ae6224809a5ba36988ef9a30545b3a5c9065"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_nextday.py",
+      "new": "question3/research/experiments/_opt_nextday.py",
+      "sha256": "f446ca34a9e99fc38276d3f105a40a5f88bf76729ede532b6c86f2dd23d8c0f2"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_nowcast.json",
+      "new": "question3/research/experiments/_opt_nowcast.json",
+      "sha256": "bcaa545e1cad7459881a168cbd89403ad4f9296cc231f96b5f4c9555e47cff8a"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_nowcast.log",
+      "new": "question3/research/experiments/_opt_nowcast.log",
+      "sha256": "b998b4eeef86c39a9da6898d7bf4ca4d5b177e0e8d5d192e8c732f336f95e5f6"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_nowcast.py",
+      "new": "question3/research/experiments/_opt_nowcast.py",
+      "sha256": "e88a207f96f736dcf23b29b627f1d9e8ec736f7409a221a0c736de82a9e97b04"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_peer_cfg.py",
+      "new": "question3/research/experiments/_opt_peer_cfg.py",
+      "sha256": "884797bf289c108c01a311d16a7e7cbacc8783b16f35d4fc56dd16379ef0c074"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_q3tA.log",
+      "new": "question3/research/experiments/_opt_q3tA.log",
+      "sha256": "2630c7461b636a0059c6064420489e5a6774344e30da5e43e2fc195e77965dde"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_q3target.py",
+      "new": "question3/research/experiments/_opt_q3target.py",
+      "sha256": "6b4fca8965403835844da6e67db055353686842e0b0559b3a8fd2adaa2545b8d"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_q3target_A.json",
+      "new": "question3/research/experiments/_opt_q3target_A.json",
+      "sha256": "c82ea26b7cf238132bf499902f3cbe380ed3c3e914cd69a82bdaef72dfb8f4f4"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_q3target_B.json",
+      "new": "question3/research/experiments/_opt_q3target_B.json",
+      "sha256": "baa48c97e96753ae3c4866a5855b9a5d2ce8b83704aadcc0560e7ae0cead8741"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_q3tB.log",
+      "new": "question3/research/experiments/_opt_q3tB.log",
+      "sha256": "8729cc4762ee5c084dcc4872de610d3ba23869bdf825ac66965fde210c6defec"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_q3tC.log",
+      "new": "question3/research/experiments/_opt_q3tC.log",
+      "sha256": "a38b509c824456e7d9bbe488f84516237a66fa52079746f62e532196e05334d3"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_recourse.log",
+      "new": "question3/research/experiments/_opt_recourse.log",
+      "sha256": "6b1a58ea3f8d57091190f56a5d6526504e77ce57c93c9ab34690ce9c855bbb09"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_recourse.py",
+      "new": "question3/research/experiments/_opt_recourse.py",
+      "sha256": "cbb57893fbc4d669147cf23cf634f8cf14fd14fdba720271ee4b9e54a18a0a81"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_tail_fix.py",
+      "new": "question3/research/experiments/_opt_tail_fix.py",
+      "sha256": "dfbcaa98fc0b03ce6407b3b70e4c4d89356e7ea5cb59a8a7fce10d8e27a7b57a"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_tf1.log",
+      "new": "question3/research/experiments/_opt_tf1.log",
+      "sha256": "ec9dfc99378a4188c7d4fc5d1d6b50740a9e201c0dce4ec143a6d7ebc3f03348"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_win.py",
+      "new": "question3/research/experiments/_opt_win.py",
+      "sha256": "2663d8b6f725a585692d5a4b9507e243de28b3dc8e6bf18f98ea6dafb4c9143f"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_win1.log",
+      "new": "question3/research/experiments/_opt_win1.log",
+      "sha256": "2ef8d7c504094d5eea689fd9116a91b98edc4eb3838dbba624f5e58e0a6aa87b"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_win2.log",
+      "new": "question3/research/experiments/_opt_win2.log",
+      "sha256": "f5f48b97054a7126f7c1f9afd615df0b0758a4b73512c960714c8695faf14292"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_win_1.json",
+      "new": "question3/research/experiments/_opt_win_1.json",
+      "sha256": "438d10eb1a1d4393797fb29a8deff23ce32a0f72140c30832e1c086799437fc6"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_opt_win_2.json",
+      "new": "question3/research/experiments/_opt_win_2.json",
+      "sha256": "0baf427094b07fdfbdfe97876ddc673de67c48b56628afea7badf3fdfba20701"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_perfect.log",
+      "new": "question3/research/experiments/_perfect.log",
+      "sha256": "c13b699e77856f01e5b88fbce24562fa875c92d516c5c92c8f244131f0f5df9c"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_perfect_bound.py",
+      "new": "question3/research/experiments/_perfect_bound.py",
+      "sha256": "1e66a94112e38e93840053ebb6355fcdbc4c6f7cad432f581d8345de792773a2"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_q2toq3.py",
+      "new": "question3/research/experiments/_q2toq3.py",
+      "sha256": "5a30fcd5bd318e1ca6639f211067da93c72084f23f2c46c6675dced18e7d4620"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_q2toq3_2.log",
+      "new": "question3/research/experiments/_q2toq3_2.log",
+      "sha256": "50aa24f0cdab435fded4099de2e1291a43feabbaaebf2d0ab695728873dae731"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_q3_perfect_bound.json",
+      "new": "question3/research/experiments/_q3_perfect_bound.json",
+      "sha256": "a95714b2dae6357e9138a1eecd2a62111bddae54949603aa683f1bdb20d06b54"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_verify_lag.py",
+      "new": "question3/research/experiments/_verify_lag.py",
+      "sha256": "1376d53314ca0d9ceaa4c2cd963e4363e75386e1a04d5210fb06ae579a22a155"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_verify_q2q3.py",
+      "new": "question3/research/experiments/_verify_q2q3.py",
+      "sha256": "08c5390a55ca910addc5c79738d14f4d94f9ce2e3340c176b35e17c2647200f9"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_peer_lab/q3_data.py",
+      "new": "question3/research/experiments/_peer_lab/q3_data.py",
+      "sha256": "1bb2016ed03081497baeb8af2b2529c8a88c5338cd1eca5dd9e8ce78e9c50081"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_peer_lab/q3_forecast.py",
+      "new": "question3/research/experiments/_peer_lab/q3_forecast.py",
+      "sha256": "0742903c40b80ff35d6624e2cb84b56f3996c126e00e482ebe72e38fe1a6decb"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_peer_lab/q3_model.py",
+      "new": "question3/research/experiments/_peer_lab/q3_model.py",
+      "sha256": "700a8c2a7838856fe737c07f870fbda381b8e34818b9e816886a478f47706293"
+    },
+    {
+      "old": "CShen/问题三_优化探索/experiments/_peer_lab/run_q3.py",
+      "new": "question3/research/experiments/_peer_lab/run_q3.py",
+      "sha256": "efe1cccc3b1efb964bc6884a6e7a1ccf84d193787b49288126cf8140303e7434"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/data_used.md",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/data_used.md",
+      "sha256": "9ca0b52eeaf45ddfae45802566a0341314d37da318d4a2b26145729989eaa2b6"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/notes_for_paper.md",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/notes_for_paper.md",
+      "sha256": "d7fc659b16a6e97ee843a9a3d0faa5de23e7bf50f154cb30b06098cc79dfda6d"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/rerun_stderr.log",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/rerun_stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/rerun_stdout.log",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/rerun_stdout.log",
+      "sha256": "ce18a6526fc1398f5720db232066d83cc402832e75c4bbf6e684bea2d8f042ac"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/run_log.md",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/run_log.md",
+      "sha256": "d7e018a98f396b3f5d44d3ae203cde197bc9b7a05ad18871283d80e7b156242e"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/summary_M2_E01_v1_滚动随机日前调度.md",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/summary_M2_E01_v1_滚动随机日前调度.md",
+      "sha256": "d7fc659b16a6e97ee843a9a3d0faa5de23e7bf50f154cb30b06098cc79dfda6d"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/summary_metrics.json",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/summary_metrics.json",
+      "sha256": "010e918b0ae5b8290da3af017e90c34c4d8908fa7e2adad36e917f6dc6f7a940"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/validation_M2_E01_v1.json",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/validation_M2_E01_v1.json",
+      "sha256": "4d70eee9ee497b2bcd41ca232a3dd7704623f12ee3bbb842ae614be918fcd3da"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/论文写作提纲.md",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/论文写作提纲.md",
+      "sha256": "304e119b51dbc19a84d8bdf5a15dbfc520a600e18247de3bde4b0fa066bd6de4"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/result2_充放电量完整.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/result2_充放电量完整.csv",
+      "sha256": "57ef54982e15497f7cae86ad29348b077100875aceb1b13956543e41fbf383c9"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/result2_全时段回测审计明细.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/result2_全时段回测审计明细.csv",
+      "sha256": "5e2a7bcfd00a25a2c68b1ecde41ffe7fdf18ea270af08b4c7e494d793d39cd7a"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/result2_指定日期明细.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/result2_指定日期明细.csv",
+      "sha256": "8d53c215b7874f3527aedc161399cd126c1cc59c30b2c572e5e40608c23ae35f"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/result2_紧急购电量汇总.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/result2_紧急购电量汇总.csv",
+      "sha256": "2b3684ccffc771526109a6d34bd12334bf19d3b93de8488c6a8e4285087d2aca"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/result2_计划购电量完整.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/result2_计划购电量完整.csv",
+      "sha256": "07a83f4bb475130a2da7a0389da5e97869eebebe3e8d0dfbd9014f05b48a46e4"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/主模型逐日结算.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/主模型逐日结算.csv",
+      "sha256": "ef29a46816f0e87a2376a9582daf258f4d32cab4f4626545acae22a717d37d23"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/周期性假设对照.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/周期性假设对照.csv",
+      "sha256": "567dd04fac420da5a58edb39e3fa917a2436184b9de6e70efffa4b8aa2fe97bc"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/季度表现.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/季度表现.csv",
+      "sha256": "64e7b45a0fcfb342df8fd6eadb14faae01c33561876e27d91abb8eac5a8254e4"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/模型实际结算成本对比.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/模型实际结算成本对比.csv",
+      "sha256": "b1c9112ff64213ba2b73586db7e13fb9babeb2051b826d8453711e825d2cd85e"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/窗口长度预测对照.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/窗口长度预测对照.csv",
+      "sha256": "af82125c48e47954fd6fce8fc2be5d8943189ccabc14a276374d95df33aba140"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/表1_指定日期计划购电.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/表1_指定日期计划购电.csv",
+      "sha256": "62d9b6df0a5d900dccfe6aacee95bb91c7039c9378f4b8837f24946997388d07"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/表2_指定日期充放电.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/表2_指定日期充放电.csv",
+      "sha256": "8ae175e41b32d42300e08a99f467198448114a73c03eae34c6036efcbada3f23"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/chart_data/表3_指定日期紧急购电.csv",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/chart_data/表3_指定日期紧急购电.csv",
+      "sha256": "3517ff0ef29e67a05209920d81336f3b6f72345cb0abe5c46d83cd2c4ac55ec5"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/code/M2_E01_v1_rolling_stochastic_lp.py",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/code/M2_E01_v1_rolling_stochastic_lp.py",
+      "sha256": "3f0db41e8f77950efab8f96fde25d62c1bf00971c7348b0b76b2de99461d04c4"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/figures/fig_M2_E01_v1_储能轨迹.png",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/figures/fig_M2_E01_v1_储能轨迹.png",
+      "sha256": "95996367e626bf64107309aa6704aaab502738f9893223b7afef53c7cfb79ddd"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/figures/fig_M2_E01_v1_季度紧急购电量.png",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/figures/fig_M2_E01_v1_季度紧急购电量.png",
+      "sha256": "7b4773d8dd65393d716c90b7aa9f89fc53f23fc87d26aaa49336d6150c4b6ff4"
+    },
+    {
+      "old": "M2_E01_v1_滚动随机日前调度/figures/fig_M2_E01_v1_逐日成本对比.png",
+      "new": "archive/M2_E01_v1_滚动随机日前调度/figures/fig_M2_E01_v1_逐日成本对比.png",
+      "sha256": "6622e8c4561249cffd090777e1f58719c45fe6f183aebf681c9aef9767057b47"
+    }
+  ]
+}

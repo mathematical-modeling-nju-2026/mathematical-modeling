@@ -1,0 +1,99 @@
+{
+  "question1/code/run_q1.py": [
+    "parents[1]",
+    "ROOT / \"raw\"",
+    "OUT = Path(__file__).parent"
+  ],
+  "question1/code/plot_q1.py": [
+    "SKILL = Path.home() / \".claude\" / \"skills\" / \"cumcm-plotting\" / \"scripts\"",
+    "HERE = Path(__file__).parent"
+  ],
+  "common/q2_base/run_1439.py": [
+    "CY = REPO / \"C_yang\" / \"q2\"",
+    "OPT_V3 = REPO.parent / \"math-modeling-skill\" / \"output\" / \"c2026_q2\" / \"opt_v3\"\n",
+    "本仓库 C_yang/q2/ 的 q2_data.py（数据层）",
+    "本机 math-modeling-skill/output/c2026_q2/opt_v3/ 的 forecaster（预测器）"
+  ],
+  "common/q2_base/q2_data.py": [
+    "parents[1]",
+    "ROOT / \"raw\""
+  ],
+  "question2/code/rolling_window.py": [
+    "SOURCE = HERE.parent / '方案B_1439万' / 'run_1439.py'"
+  ],
+  "question2/code/verify_window.py": [
+    "HERE.parents[1] / \"C_yang\" / \"raw\""
+  ],
+  "question2/code/report_experiment.py": [
+    "repo/'C_yang'/'q2'/'q2_data.py'",
+    "repo/'C_yang'/'raw'/'附件'"
+  ],
+  "question3/code/q3_data.py": [
+    "HERE = Path(__file__).resolve().parent",
+    "RAW = HERE.parent / \"raw\""
+  ],
+  "question4/part2/code/q42_model.py": [
+    "REPO = HERE.parents[1]",
+    "BASE_DIR = REPO / 'CShen' / '方案B_滚动窗口优化'",
+    "RAW = HERE.parent / 'raw' / '附件'",
+    "str(BASE_DIR)"
+  ],
+  "question4/part2/code/verify_q42.py": [
+    "REPO = HERE.parents[1]",
+    "RAW = HERE.parent/'raw'/'附件'",
+    "REPO/'CShen'/'方案B_滚动窗口优化'",
+    "fingerprints = json.loads((HERE/'source_fingerprints.json').read_text(encoding='utf-8'))"
+  ],
+  "question4/part2/code/report_q42.py": [
+    "Path.home()/'.agents'/'skills'/'cumcm-plotting'/'scripts'"
+  ],
+  "question4/part2/code/run_q42.py": [
+    "BASE_DIR/'rolling_window.py'",
+    "BASE_DIR/'run_experiment.py'",
+    "REPO/'CShen'/'方案B_1439万'/'run_1439.py'",
+    "REPO/'C_yang'/'q2'/'q2_data.py'",
+    "HERE/'source_fingerprints.json'"
+  ],
+  "question4/part3/code/q3_data.py": [
+    "HERE = Path(__file__).resolve().parent",
+    "HERE.parents[1] / \"CUMCM2026Problems\" / \"C题\" / \"附件\"",
+    "(1, 2, 3)):",
+    "附件1.xlsx、附件2.xlsx、附件3.xlsx；"
+  ],
+  "question3/research/experiments/_diag_adjust_peer.py": [
+    "探索脚本的数据/主程序/早期模块路径"
+  ],
+  "question3/research/experiments/_diag_emg.py": [
+    "探索脚本的数据/主程序/早期模块路径"
+  ],
+  "question3/research/experiments/_diag_peer.py": [
+    "探索脚本的数据/主程序/早期模块路径"
+  ],
+  "question3/research/experiments/_opt_forecast.py": [
+    "探索脚本的数据/主程序/早期模块路径"
+  ],
+  "question3/research/experiments/_perfect_bound.py": [
+    "探索脚本的数据/主程序/早期模块路径"
+  ],
+  "question3/research/experiments/_verify_q2q3.py": [
+    "探索脚本的数据/主程序/早期模块路径"
+  ],
+  "question3/research/experiments/_peer_lab/q3_data.py": [
+    "探索脚本的数据/主程序/早期模块路径"
+  ],
+  "archive/CShen/方案C_问题三_1432万/q3_data.py": [
+    "Path(r\"d:\\数学建模大赛\\CUMCM2026Problems\\C题\\附件\")"
+  ],
+  "question3/结果说明.md": [
+    "Markdown 本地文件/图片链接"
+  ],
+  "question4/part2/结果说明.md": [
+    "Markdown 本地文件/图片链接"
+  ],
+  "question2/结果说明.md": [
+    "Markdown 本地文件/图片链接"
+  ],
+  "question4/part3/结果说明.md": [
+    "Markdown 本地文件/图片链接"
+  ]
+}
