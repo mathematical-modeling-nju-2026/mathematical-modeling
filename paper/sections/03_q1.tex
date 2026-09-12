@@ -16,28 +16,11 @@
 
 \subsection{符号说明}
 
-\begin{table}[H]
-\centering
-\caption{问题一符号说明}
-\small
-\begin{tabular}{@{}c l l@{}}
-\toprule
-符号 & 含义 & 单位 \\
-\midrule
-$T$ & 时段数（$=144$） & — \\
-$\Delta t$ & 每段时长（$=1/6$） & h \\
-$p_t$ & 第 $t$ 段电价 & 元/kWh \\
-$L_t$ & 第 $t$ 段负载电量 & kWh \\
-$V_t$ & 第 $t$ 段光伏发电量 & kWh \\
-$g_t$ & 第 $t$ 段外网购电量（决策） & kWh \\
-$c_t,\,d_t$ & 第 $t$ 段充电量、放电量（决策） & kWh \\
-$w_t$ & 第 $t$ 段弃光量（决策） & kWh \\
-$E_t$ & 第 $t$ 段末储能电量（决策） & kWh \\
-\bottomrule
-\end{tabular}
-\end{table}
+本问使用的全部符号已在 \S\ref{sec:notation} 表 \ref{tab:notation} 统一说明，此处不再重复。
+下面直接给出模型。
 
 \subsection{模型建立}
+\label{sec:q1-model}
 
 以全天购电费用最小为目标：
 
@@ -55,10 +38,17 @@ g_t+V_t+d_t=L_t+c_t+w_t
 \end{equation}
 其中 $w_t$ 为弃光量，故外购电与光伏之和，加上电池放电，恰好满足负载与电池充电。
 
-\textbf{(2) 弃光限幅}：
+\textbf{(2) 弃光非负}：
 \begin{equation}
-0\le w_t\le V_t
+w_t\ge 0
 \end{equation}
+弃光量只设非负约束，\textbf{不显式添加} $w_t\le V_t$ 的上界。由等式平衡
+$w_t=g_t+d_t-c_t-(L_t-V_t)$；目标只惩罚购电量，若最优解出现 $w_t>V_t$
+（即净供给超过负载），令 $g_t\leftarrow g_t-\delta$、$w_t\leftarrow w_t-\delta$
+可保持平衡不变而费用严格下降（对任意 $p_t>0$），与最优性矛盾。
+因此最优解自动满足 $w_t\le V_t$，该上界冗余；省略它与第二、三问对松弛变量的
+口径保持一致。本节末的约束核验同时报告“弃光非负”（属模型约束）与
+“弃光未超光伏出力”（属本实例的数值观察，本实例弃光量为零）。
 
 \textbf{(3) 储能电量递推}（注意充电乘效率、放电除效率）：
 \begin{equation}
@@ -222,18 +212,39 @@ g_t\ge 0,\qquad E_0=E_{144}=6000
 $\lambda_t=p_t$ 时该段购电为正。对偶量可用来识别“哪些时段的容量瓶颈最值钱”，
 具体数值已保存于结果文件的 \texttt{duals.npz} 中。
 
-\begin{figure}[H]
+\begin{figure}[htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{q1_dispatch.pdf}
-\caption{问题一典型日优化调度结果（购电量、充放电量与储能电量轨迹）}
+\includegraphics[width=0.95\textwidth]{01_q1_dispatch.pdf}
+\caption{典型日确定性调度结果。四个面板共享时间轴，依次展示电价、供需与购电功率、
+储能充放电功率及储电量；水平虚线为 1200 与 10800 kWh 的储电量边界，
+浅色背景仅辅助定位早晚时段。}
 \label{fig:q1-dispatch}
 \end{figure}
 
+储电量始终位于规定区间内，且日初、日末均为 6000 kWh，
+因此该收益并非通过消耗日初库存获得。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{02_q1_savings.pdf}
+\caption{储能调度相对无储能基线的购电差异与费用桥接。左图为优化购电功率
+减去无储能购电功率；右图按同一时段电价分别累计少购所减少的费用和增购所增加的费用。}
+\label{fig:q1-savings}
+\end{figure}
+
+图 \ref{fig:q1-savings} 给出了节省的账面来源：储能使部分时段少购电，
+对应费用减少 $19\,111.64$ 元；同时在另一些时段增购电，对应费用增加 $6\,186.54$ 元。
+两者抵消后净节省 $12\,925.10$ 元，降幅为 $26.90\%$。
+这一分解是逐时段购电费差额的恒等核算，图 \ref{fig:q1-gain} 的
+$4037.75$ 元与 $8887.35$ 元则是按能量来源的另一组恒等分解，
+两种口径各自自洽，不互相替代，也不把同一节省重复归因为独立效应。
+
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.8\textwidth]{q1_comparison.pdf}
-\caption{问题一优化调度与无储能基线的购电费对比}
-\label{fig:q1-comparison}
+\includegraphics[width=0.95\textwidth]{q1_comparison.pdf}
+\caption{问题一收益来源分解：弃光消除项与净套利项之和恒等于总节省
+（式 \eqref{eq:q1-decomp}）}
+\label{fig:q1-gain}
 \end{figure}
 
 \subsection{题目指定表格}

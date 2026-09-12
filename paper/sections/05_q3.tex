@@ -58,6 +58,7 @@ J=\sum_t\Bigl[p_t\min(g_t^0,q_t)+0.5p_tv_t+1.5p_tu_t+5p_te_t\Bigr].
 \subsection{在线预报融合}
 
 \subsubsection{融合权重}
+\label{sec:q3-fusion}
 
 设历史预测为 $H$、发布预报为 $F$、实际值为 $V$。只用最近 56 天内\textbf{已完全实现}的预报行，
 以最小二乘拟合权重：
@@ -68,10 +69,19 @@ J=\sum_t\Bigl[p_t\min(g_t^0,q_t)+0.5p_tv_t+1.5p_tu_t+5p_te_t\Bigr].
 \label{eq:q3-alpha}
 \end{equation}
 
-\textbf{式 \eqref{eq:q3-alpha} 的推导}：我们要求解
+\textbf{式 \eqref{eq:q3-alpha} 的推导}：以融合值与实际值的平方误差为目标
 $\min_{\alpha}\sum\bigl[V-(\alpha F+(1-\alpha)H)\bigr]^2$。
-令 $z=F-H$，则目标为 $\sum[(V-H)-\alpha z]^2$，对 $\alpha$ 求导置零即得
-$\alpha=\sum z(V-H)/\sum z^2$。
+记 $z=F-H$，则中括号内为 $(V-H)-\alpha z$，目标化为
+$f(\alpha)=\sum\bigl[(V-H)-\alpha z\bigr]^2$。
+对 $\alpha$ 求导并置零：
+\begin{equation}
+\frac{\mathrm{d}f}{\mathrm{d}\alpha}
+=-2\sum z\bigl[(V-H)-\alpha z\bigr]=0
+\ \Longrightarrow\ \alpha=\frac{\sum z\,(V-H)}{\sum z^2}.\label{eq:q3-alpha-deriv}
+\end{equation}
+又因二阶导 $\mathrm{d}^2f/\mathrm{d}\alpha^2=2\sum z^2>0$，
+该驻点即全局极小点；再叠加 $[0,1]$ 截断以避免外推。
+几何上，$\alpha$ 是 $V-H$ 在 $F-H$ 上的投影系数。
 
 \textbf{收缩偏差校正}：进一步叠加历史平均残差的收缩估计
 \begin{equation}
@@ -79,14 +89,6 @@ $\alpha=\sum z(V-H)/\sum z^2$。
 \end{equation}
 其中 $n$ 为有效样本数。系数 $n/(n+14)$ 用于抑制小样本下偏差估计的波动：
 样本充足时接近 $1$，样本稀少时被压缩向 $0$。
-
-\textbf{严格的非前视约束}（关键）：
-\begin{itemize}[itemsep=2pt,topsep=3pt]
-  \item 训练样本仅取\textbf{不晚于 $d-2$ 天发布}的预报行，
-        以确保跨午夜的未来 24 h 已经实现；
-  \item 每个发布时刻\textbf{分别}训练，不得利用当天后续发布的预报来估计当前权重；
-  \item 样本少于 7 条时退化为直接使用发布预报。
-\end{itemize}
 
 \subsubsection{发布预报的时间对齐}
 
@@ -98,11 +100,63 @@ $\alpha=\sum z(V-H)/\sum z^2$。
   \item 发布瞬间的端点使用\textbf{已观测}的实际光伏功率（0 点用前一日末观测值）。
 \end{enumerate}
 
-若把整点值当作“小时均值”作分段常数填充，会引入
-$1/2$ 小时量级的系统相位误差；本文的对齐方式经与实际光伏比对，
-平均绝对误差显著更低。
+\noindent\textbf{为何不能把整点值当作“小时均值”。} 设真实光伏功率为正弦形的日间过程，
+其峰谷差为 $A$、周期 $T_0=24$ h。若把第 $k$ 个整点的值 $v(k)$ 当作区间
+$[k,k+1)$ 的均值作分段常数填充，相当于用左端点值代替中点值，
+引入的按时段均值计的系统偏差为
+\begin{equation}
+\overline{\varepsilon}=\frac{1}{T_0}\int_0^{T_0}\bigl[v(k)-v(t)\bigr]\,\mathrm{d}t\ \sim\ \frac{1}{2}\cdot\frac{\mathrm{d}v}{\mathrm{d}t}\cdot 1\ \text{h},
+\label{eq:q3-phase}
+\end{equation}
+即在梯度最大处（日出、日落）偏差最大，量级为\textbf{半小时}的光伏变化量，
+故称 “$1/2$ 小时量级的系统相位误差”。线性插值则以相邻两整点为端点，
+把该项偏差从 $O(\Delta)$ 降到 $O(\Delta^2)$，且在每个整点上无偏。
+
+\noindent\textbf{实证核对。} 以附件 2 的实际光伏为基准，用两种方式重建同一预报行的
+144 段并逐段比较（除去最后一天以避开跨年缺口），结果见表 \ref{tab:q3-align}。
+
+\begin{table}[H]
+\centering
+\caption{两种整点重建方式的全年逐段 MAE（kW，365 天平均）}
+\label{tab:q3-align}
+\begin{tabular}{@{}l r r r@{}}
+\toprule
+发布时间 & 分段常数填充 & \textbf{线性插值（本文）} & 降幅 \\
+\midrule
+$0$ 点  & 440.64 & \textbf{225.99} & $-48.7\%$ \\
+$6$ 点  & 405.15 & \textbf{167.39} & $-58.7\%$ \\
+$12$ 点 & 453.61 & \textbf{238.10} & $-47.5\%$ \\
+$18$ 点 & 488.43 & \textbf{292.97} & $-40.0\%$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent 线性插值在四个发布时间上把逐段 MAE 降低 $40.0\%$--$58.7\%$，
+与式 \eqref{eq:q3-phase} 的机理一致：分段常数填充在日出、日落的高梯度处偏差最大，
+而线性插值恰在这些位置把误差从 $O(\Delta)$ 降到 $O(\Delta^2)$。
+这说明\textbf{时间对齐方式本身是预报误差的一个可测量来源}，而非实现细节。
+需要说明的是，表 \ref{tab:q3-align} 度量的是“给定整点预报下的重建误差”，
+而图 \ref{fig:q3-fusion} 展示的是融合后的综合预报精度，两者口径不同、不可直接相减。
 
 \subsection{经验场景树}
+
+\subsubsection{信息限制：非前视约束（本问的建模前提）}
+\label{sec:q3-nonanticip}
+
+在写法上，本小节先说本问\textbf{必须满足的信息约束}，再给模型，
+因为该约束决定了模型可以取什么形式。问题二已要求“预测只能用历史数据”，
+本问把它\textbf{进一步强化}到“场景树的节点划分也只能依据届时已发布的信息”，
+原因是本问新增了多个决策时点，若不限制就可能在 6 点“提前知道” 12 点才会发布的信息。
+具体为三条：
+\begin{itemize}[itemsep=2pt,topsep=3pt]
+  \item 训练样本仅取\textbf{不晚于 $d-2$ 天发布}的预报行，
+        以确保跨午夜的未来 24 h 已经实现；
+  \item 每个发布时刻\textbf{分别}训练，不得利用当天后续发布的预报来估计当前权重；
+  \item 样本少于 7 条时退化为直接使用发布预报。
+\end{itemize}
+
+\noindent 上述约束在模型中的实现方式是“节点内共享变量”，
+见 \S\ref{sec:q3-tree}；它比额外添加约束更稳健，因为物理上不可能针对已知场景分别决策。
 
 \subsubsection{场景构造}
 
@@ -116,6 +170,7 @@ N_{s,t}=\hat N_t^{(a)}+\Bigl(N_{r_s,t}-\hat N_{r_s,t}^{(a)}\Bigr),
 即用历史日 $r_s$ 在\textbf{同一发布时刻}的残差去修正当前的发布预报。
 
 \subsubsection{信息分支（场景树）}
+\label{sec:q3-tree}
 
 仅用点预测场景会丢失一个重要信息：\textbf{不同历史日不仅能告诉我们“缺口可能多大”，
 还能告诉我们“预报会如何变化”}。为此把场景组织为树：
@@ -192,10 +247,6 @@ N_{s,t}=\hat N_t^{(a)}+\Bigl(N_{r_s,t}-\hat N_{r_s,t}^{(a)}\Bigr),
 避免“只顾当天便宜电价而提前耗空电池”。
 不同未来节点使用其条件预报修订后的次日点预测。
 
-\textbf{终端目标}：一般日期前瞻终点回到\textbf{本日 0 点电量}；
-且 $6/12/18$ 点重算时该目标\textbf{保持不变}（不随当前电量漂移），
-否则会引入“越调整越保守”的路径依赖。
-
 \textbf{贪心执行}：只执行当前发布到下一允许更新前的控制量：
 
 \begin{center}
@@ -211,10 +262,13 @@ $18$:00 & $18$--$24$ 时 \\
 \end{tabular}
 \end{center}
 
-\textbf{为何不把问题二的 $80\%$ 分位套用到问题三？}
-问题二的 $F^*=0.80$ 是在“储能固定、单期补救费为 $5$ 倍、无后续调整”条件下导出的。
-问题三中 0 点可从场景树\textbf{评估未来的调整机会}，
-故有效的风险水平随节点、时段而变，不应硬编码单一分位。
+\noindent\textbf{为何不把问题二的 $80\%$ 分位直接套用到本问。}
+这一疑问应在建模之前回答，因为它决定了本问不应假设一个固定分位。
+问题二的 $F^*=0.80$ 是在“储能固定、单期补救费为 $5$ 倍、无后续调整”
+这三个条件下导出的单期临界分位；而问题三中 0 点可以从场景树
+\textbf{评估未来的调整机会}，即今天的“少买”可以在 6/12/18 点以 $1.5$ 倍价补上，
+故有效的风险水平随节点、时段而变，
+不应硬编码单一分位。这正是不用报童模型而用场景树多阶段模型的原因。
 
 \subsection{同时充放电的处理}
 
@@ -290,6 +344,51 @@ $18$ 点更新在本年度回测中\textbf{无可观测收益}（$-38.88$ 元）
 可视为可选更新。该结论限于本数据与算法：$18$ 点仍可能通过次日预报影响跨日储能，
 且小型经验树在有限样本下重建，不保证费用随信息增加单调下降。
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{04_q3_information_value.pdf}
+\caption{固定电价情形下的逐级费用节省与紧急购电量。费用节省以本问同口径
+历史预测对照为起点，依次引入 0 点融合预报和 6、12、18 点调整；
+右图按相同顺序比较紧急购电量。}
+\label{fig:q3-info-value}
+\end{figure}
+
+图 \ref{fig:q3-info-value} 把“信息更新的价值”与“更新次数的增加”分开呈现：
+仅引入 0 点融合预报即节省 $208\,447.47$ 元；
+随后增加 6 点与 12 点更新各节省约 $8$ 万元；增加 18 点后费用反而上升 $38.88$ 元。
+这说明\textbf{预报融合本身的价值最大，而更新次数存在明显边际递减}。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{05_q3_forecast_fusion.pdf}
+\caption{发布后六小时光伏预测误差及融合权重。(a)(b) 分别比较日间和夜间的
+历史预测、发布预报及在线融合 MAE，两面板纵轴尺度不同；
+(c) 展示各发布时间对应的发布预报权重。}
+\label{fig:q3-fusion}
+\end{figure}
+
+6--12 时段的 MAE 由历史预测的 $309.24$ kW 降至融合预测的 $169.41$ kW，
+12--18 时段由 $288.99$ kW 降至 $133.68$ kW。夜间绝对误差较小，单独绘制以保留其变化尺度。
+融合权重随历史已成熟样本更新，并包含偏差校正，因此融合输出不只是当期两条预报的
+固定加权平均。\textbf{MAE 改善本身不等同于等比例的费用下降}，
+经济效果须结合图 \ref{fig:q3-info-value} 的更新频率对照判断。
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{06_q3_rolling_adjustment.pdf}
+\caption{四个指定日的日内计划修正与储能状态。左列为最终执行购电相对 0 点原计划的
+功率差，正值为增购、负值为减购；右列为储电量，底部橙色短线标记紧急购电
+大于数值容差的时段。竖虚线表示 6、12、18 点发布时刻。}
+\label{fig:q3-adjust}
+\end{figure}
+
+日内更新后的购电修正相对原计划较小，直接叠加两条绝对购电曲线容易掩盖变化；
+以原计划为零基准后，可清楚识别各执行区间内的增购与减购。
+储电量按跨日滚动过程衔接，指定日的首末电量不要求逐日相等。
+紧急购电标记只表示发生时间，不表示缺口大小，
+也不能据其与储能状态的相邻关系断言单一原因。原曲线图
+（\texttt{q3\_cost.pdf}、\texttt{q3\_dispatch.pdf}）保留作补充展示。
+
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.85\textwidth]{q3_cost.pdf}
@@ -297,12 +396,7 @@ $18$ 点更新在本年度回测中\textbf{无可观测收益}（$-38.88$ 元）
 \label{fig:q3-cost}
 \end{figure}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.85\textwidth]{q3_fusion.pdf}
-\caption{发布预报与历史预测的在线融合权重演化}
-\label{fig:q3-fusion}
-\end{figure}
+\FloatBarrier
 
 \subsection{敏感性分析与性能边界}
 \label{sec:q3-sens}
