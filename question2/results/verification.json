@@ -59,7 +59,7 @@
           "storage_soc_max_error": 1.8189894035458565e-12,
           "emergency_interval_energy_max_error": 2.7284841053187847e-12
         },
-        "workbook": "E:\\math_model\\mathematical-modeling\\CShen\\方案B_滚动窗口优化\\variants\\half_life14\\result2.xlsx"
+        "workbook": "D:\\数学建模大赛\\mathematical-modeling\\question2\\results\\variants\\half_life14\\result2.xlsx"
       },
       "pass": true
     },
@@ -120,7 +120,7 @@
           "storage_soc_max_error": 1.8189894035458565e-12,
           "emergency_interval_energy_max_error": 1.8189894035458565e-12
         },
-        "workbook": "E:\\math_model\\mathematical-modeling\\CShen\\方案B_滚动窗口优化\\variants\\half_life28\\result2.xlsx"
+        "workbook": "D:\\数学建模大赛\\mathematical-modeling\\question2\\results\\variants\\half_life28\\result2.xlsx"
       },
       "pass": true
     },
@@ -181,7 +181,7 @@
           "storage_soc_max_error": 1.8189894035458565e-12,
           "emergency_interval_energy_max_error": 5.4569682106375694e-12
         },
-        "workbook": "E:\\math_model\\mathematical-modeling\\CShen\\方案B_滚动窗口优化\\variants\\half_life7\\result2.xlsx"
+        "workbook": "D:\\数学建模大赛\\mathematical-modeling\\question2\\results\\variants\\half_life7\\result2.xlsx"
       },
       "pass": true
     },
@@ -242,7 +242,7 @@
           "storage_soc_max_error": 1.8189894035458565e-12,
           "emergency_interval_energy_max_error": 1.8189894035458565e-12
         },
-        "workbook": "E:\\math_model\\mathematical-modeling\\CShen\\方案B_滚动窗口优化\\variants\\online_primary\\result2.xlsx"
+        "workbook": "D:\\数学建模大赛\\mathematical-modeling\\question2\\results\\variants\\online_primary\\result2.xlsx"
       },
       "pass": true
     },
@@ -303,7 +303,7 @@
           "storage_soc_max_error": 1.8189894035458565e-12,
           "emergency_interval_energy_max_error": 1.8189894035458565e-12
         },
-        "workbook": "E:\\math_model\\mathematical-modeling\\CShen\\方案B_滚动窗口优化\\variants\\uniform56\\result2.xlsx"
+        "workbook": "D:\\数学建模大赛\\mathematical-modeling\\question2\\results\\variants\\uniform56\\result2.xlsx"
       },
       "pass": true
     }

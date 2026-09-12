@@ -8,61 +8,38 @@
 
 \begin{table}[H]
 \centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
 \caption{支撑材料文件列表}
 \label{tab:appendix-files}
-\small
 \begin{tabularx}{\textwidth}{@{}l X c@{}}
 \toprule
 路径 & 说明 & 对应问题 \\
 \midrule
 \multicolumn{3}{@{}l}{\textbf{一、源程序（按问题组织）}} \\
 \midrule
-\texttt{question1/code/q1\_model.py}    & 数据读取、LP/MILP 建模、约束核验、对偶量计算 & 问题一 \\
-\texttt{question1/code/run\_q1.py}      & 主流程，导出 Excel/CSV/NPZ & 问题一 \\
-\texttt{question1/code/plot\_q1.py}     & 调度图与收益图绘制 & 问题一 \\
+\texttt{question1/code/}  & \texttt{q1\_model.py} 数据读取与 LP/MILP 建模、约束核验、对偶量；\texttt{run\_q1.py} 主流程与导出；\texttt{plot\_q1.py} 绘图 & 问题一 \\
 \midrule
-\texttt{question2/code/rolling\_window.py}   & 公共输入、有效残差构造、候选窗口与权重 & 问题二 \\
-\texttt{question2/code/run\_experiment.py}   & 统一预热、滚动执行、导出各候选 & 问题二 \\
-\texttt{question2/code/verify\_window.py}    & 物理量与 Excel 反读核验 & 问题二 \\
-\texttt{question2/code/check\_information.py} & 未来信息扰动检查（非前视验证）& 问题二 \\
-\texttt{question2/code/report\_experiment.py} & 读全套对照并发布推荐结果、绘图 & 问题二 \\
+\texttt{question2/code/}  & \texttt{rolling\_window.py} 有效残差与候选窗口；\texttt{run\_experiment.py} 滚动执行；\texttt{verify\_window.py}、\texttt{check\_information.py} 核验；\texttt{report\_experiment.py} 汇总发布 & 问题二 \\
 \midrule
-\texttt{question3/code/q3\_data.py}      & 读共享附件、校验输入、记录数据指纹 & 问题三 \\
-\texttt{question3/code/q3\_forecast.py}  & 历史预测、发布预报融合、场景构造 & 问题三 \\
-\texttt{question3/code/q3\_model.py}     & 场景树、非前视共享变量、LP 与储能约束 & 问题三 \\
-\texttt{question3/code/run\_q3.py}       & 滚动执行、分项结算、Excel 与 CSV 导出 & 问题三 \\
-\texttt{question3/code/verify\_q3.py}    & 物理与费用复核、信息扰动、Excel 反读 & 问题三 \\
-\texttt{question3/code/plot\_q3.py}      & 已保存结果绘图 & 问题三 \\
+\texttt{question3/code/}  & \texttt{q3\_data.py} 输入校验；\texttt{q3\_forecast.py} 预报融合；\texttt{q3\_model.py} 场景树 LP；\texttt{run\_q3.py} 滚动执行；\texttt{verify\_q3.py} 核验；\texttt{plot\_q3.py} 绘图 & 问题三 \\
 \midrule
-\texttt{question4/part2/code/q42\_model.py}  & 电价预测、价格—净负载场景、LP & 问题四-2 \\
-\texttt{question4/part2/code/run\_q42.py}    & 主流程与候选对照 & 问题四-2 \\
-\texttt{question4/part2/code/report\_q42.py} & 汇总发布、指定日期表与图片 & 问题四-2 \\
-\texttt{question4/part2/code/verify\_q42.py} & 核验（含解析小例、信息扰动）& 问题四-2 \\
+\texttt{question4/part2/code/} & \texttt{q42\_model.py} 电价预测与联合场景；\texttt{run\_q42.py} 主流程；\texttt{report\_q42.py} 汇总；\texttt{verify\_q42.py} 核验 & 问题四-2 \\
 \midrule
-\texttt{question4/part3/code/}               & 4-3 在问题三代码基础上增加电价场景与结算 & 问题四-3 \\
+\texttt{question4/part3/code/} & 在问题三代码基础上增加实时电价场景与结算 & 问题四-3 \\
 \midrule
-\texttt{common/q2\_base/run\_1439.py}    & 第二问与 4-2 共用的基础 LP 与历史基准 & 二 / 四-2 \\
-\texttt{common/q2\_base/q2\_data.py}     & 共用数据读取层 & 二 / 四-2 \\
-\texttt{common/plotting/}                & 统一绘图样式与导出函数 & 全部 \\
+\texttt{common/}          & \texttt{q2\_base/} 第二问与 4-2 共用的基础 LP 与数据层；\texttt{plotting/} 统一绘图样式 & 二 / 四 \\
 \midrule
 \multicolumn{3}{@{}l}{\textbf{二、中间结果与图表}} \\
 \midrule
-\texttt{question*/results/*.xlsx}        & 各问正式结果文件（题目要求格式）& 全部 \\
-\texttt{question*/results/*summary.json} & 汇总指标 & 全部 \\
-\texttt{question*/results/*detail*.csv}  & 逐时段调度明细（较大中间结果）& 全部 \\
-\texttt{question*/results/figures/}      & 论文插图源文件（PDF 矢量图）& 全部 \\
-\texttt{question2/results/variants/}     & 各候选窗口方案的完整对照结果 & 问题二 \\
-\texttt{question3/research/}             & 问题三敏感性分析与参数扫描的完整记录 & 问题三 \\
+\texttt{question*/results/} & \texttt{*.xlsx} 正式结果（题目要求格式）、\texttt{*summary.json} 汇总指标、\texttt{*detail*.csv} 逐时段明细、\texttt{figures/} 插图源文件 & 全部 \\
+\texttt{question2/results/variants/} & 各候选窗口方案的完整对照结果 & 问题二 \\
+\texttt{question3/research/} & 问题三敏感性分析与参数扫描的完整记录 & 问题三 \\
 \midrule
-\multicolumn{3}{@{}l}{\textbf{三、数据}} \\
+\multicolumn{3}{@{}l}{\textbf{三、数据与其他}} \\
 \midrule
-\texttt{data/附件1--4.xlsx}              & 竞赛提供的原始数据 & 全部 \\
-\texttt{data/附件5/}                     & 结果文件模板 & 全部 \\
-\midrule
-\multicolumn{3}{@{}l}{\textbf{四、其他}} \\
-\midrule
-\texttt{docs/}                           & 整理报告、迁移清单、核验记录 & — \\
-\texttt{requirements.txt}                & Python 依赖清单 & 全部 \\
+\texttt{data/}            & \texttt{附件1--4.xlsx} 原始数据；\texttt{附件5/} 结果文件模板 & 全部 \\
+\texttt{docs/}、\texttt{requirements.txt} & 整理报告、迁移清单、核验记录；Python 依赖清单 & — \\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -72,19 +49,20 @@
 
 \begin{table}[H]
 \centering
+\small
 \caption{软件环境}
-\begin{tabular}{@{}l l@{}}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
 \toprule
 项目 & 版本 / 说明 \\
 \midrule
 操作系统 & Windows \\
 Python   & 3.12 / 3.13 \\
-数值计算 & \texttt{numpy}、\texttt{scipy}（HiGHS 线性规划求解器）\\
-数据处理 & \texttt{pandas}、\texttt{openpyxl}（Excel 读写）\\
+数值计算 & \texttt{numpy}、\texttt{scipy}（HiGHS 求解器）\\
+数据处理 & \texttt{pandas}、\texttt{openpyxl}\\
 绘图     & \texttt{matplotlib} \\
 论文排版 & XeLaTeX $+$ \texttt{ctex}（中文支持）\\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
 \textbf{复现步骤}（在仓库根目录执行）：
@@ -105,7 +83,7 @@ python -X utf8 question3/code/run_q3.py --mode all --out reproduced
 
 # 问题四
 python -X utf8 question4/part2/code/run_q42.py --primary joint_price
-python -X utf8 question4/part3/code/run_q3.py --mode all --out reproduced
+python -X utf8 question4/part3/code/run_q3.py --mode all --out out
 \end{verbatim}
 
 \textbf{说明}：
@@ -152,10 +130,11 @@ for s in range(S):                    # 期望紧急购电费
 for k in range(K):
     A_ub_row([G+k,-1], [D+k,-1], [C+k,1], b=-N_plan[k])
 
-# 场景缺口兜底: g_t + d_t - c_t + e_{s,t} >= N_scen[s,t]
+# 场景缺口兜底: g_t + d_t - c_t + e_s,t >= N_scen[s,t]
 for s in range(S):
     for t in range(T):
-        A_ub_row([G+t,-1], [D+t,-1], [C+t,1], [EE+s*T+t,-1], b=-N_scen[s,t])
+        A_ub_row([G+t,-1], [D+t,-1], [C+t,1],
+                 [EE+s*T+t,-1], b=-N_scen[s,t])
 \end{verbatim}
 
 \subsection*{A.3.3 问题三：调整计费与场景树}
@@ -190,7 +169,8 @@ V = actual[np.array(past)][:, idx]                 # 实际值
 delta = F - H
 alpha = np.clip((delta * (V - H)).sum() / (delta**2).sum(), 0, 1)
 # 收缩偏差校正: n/(n+14)
-bias = (V - (alpha*F + (1-alpha)*H)).mean() * len(past) / (len(past) + 14)
+bias = (V - (alpha*F + (1-alpha)*H)).mean() \
+       * len(past) / (len(past) + 14)
 fused = np.maximum(alpha * F_now + (1 - alpha) * H_now + bias, 0)
 \end{verbatim}
 
@@ -199,10 +179,13 @@ fused = np.maximum(alpha * F_now + (1 - alpha) * H_now + bias, 0)
 \begin{verbatim}
 # 场景取自同一历史日的两种残差配对（保留相关性）
 for s, r in enumerate(history_days):
-    N_scen[s, :] = N_hat + (N[r]  - N_hat_hist[r])           # 净负载残差
-    p_scen[s, :] = np.maximum(0.001, p_hat + (p[r] - p_hat_hist[r]))  # 电价残差
+    # 净负载残差
+    N_scen[s, :] = N_hat + (N[r] - N_hat_hist[r])
+    # 电价残差
+    p_scen[s, :] = np.maximum(0.001, p_hat + (p[r] - p_hat_hist[r]))
 
-# 目标: 计划费按场景平均电价, 紧急费按场景电价（期望不可分解）
+# 目标: 计划费按场景平均电价, 紧急费按场景电价
+# （期望不可分解）
 c_obj[G] = p_mean                                   # sum_s w_s p_{s,t}
 for s in range(S):
     c_obj[EE + s*T : EE + (s+1)*T] = 5 * w[s] * p_scen[s, :]

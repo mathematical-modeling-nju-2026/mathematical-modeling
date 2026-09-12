@@ -3,7 +3,7 @@
   "duplicate_date_slots": 0,
   "energy_min_kwh": 1200.0,
   "energy_max_kwh": 10800.0,
-  "energy_recursion_max_error": 1.0231815394945443e-12,
+  "energy_recursion_max_error": 4.547473508864641e-12,
   "chronological_continuity_max_error": 0.0,
   "initial_energy_kwh": 6000.0,
   "final_energy_kwh": 6000.0,
@@ -11,15 +11,15 @@
   "max_discharge_kwh": 833.3333333333334,
   "min_flow_kwh": 0.0,
   "simultaneous_periods": 0,
-  "energy_balance_max_error": 1.2612133559741778e-13,
-  "emergency_max_error": 1.1368683772161603e-13,
-  "settlement_per_slot_max_error": 6.821210263296962e-13,
-  "daily_sum_max_error": 1.4551915228366852e-11,
+  "energy_balance_max_error": 3.410605131648481e-13,
+  "emergency_max_error": 3.481659405224491e-13,
+  "settlement_per_slot_max_error": 1.3642420526593924e-12,
+  "daily_sum_max_error": 2.9103830456733704e-11,
   "cost_recomputed_yuan": 14022396.98089594,
   "altered_past_periods": 0,
   "midnight_block_plan_max_error": 0.0,
   "lp_eq_max": 3.637978807091713e-12,
-  "lp_ineq_max": 2.2737367544323206e-13,
+  "lp_ineq_max": 2.273736754432321e-13,
   "alternative_no_refund_cost_same_schedule_yuan": 14172567.112562101,
   "pass": true,
   "information_boundary": {
@@ -113,11 +113,11 @@
     "pass_check": true
   },
   "workbook": {
-    "max_roundtrip_error": 1.7462298274040222e-10,
+    "max_roundtrip_error": 5.4569682106375694e-12,
     "pass_check": true
   },
   "alternative_workbook": {
-    "max_roundtrip_error": 1.7462298274040222e-10,
+    "max_roundtrip_error": 2.9103830456733704e-11,
     "pass_check": true
   }
 }

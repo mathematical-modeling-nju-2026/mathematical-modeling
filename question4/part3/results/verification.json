@@ -115,5 +115,9 @@
   "workbook": {
     "max_roundtrip_error": 5.4569682106375694e-12,
     "pass_check": true
+  },
+  "alternative_workbook": {
+    "max_roundtrip_error": 5.4569682106375694e-12,
+    "pass_check": true
   }
 }

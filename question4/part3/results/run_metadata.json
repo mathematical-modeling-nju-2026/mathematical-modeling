@@ -5,8 +5,8 @@
     "附件3.xlsx": "8a61b06c52bd0d639a1cc37c61a7d9f5b75edcbca718f64c1bd3498ec9f9d843",
     "附件4.xlsx": "20e9c93aeab5e8e21ae4dd15587f9e190f7408692504c1319598461cd654fe71"
   },
-  "python": "3.12.14",
-  "numpy": "2.3.5",
+  "python": "3.13.7",
+  "numpy": "2.5.3",
   "scipy": "1.18.1",
   "residual_window_days": 56,
   "first_residual_day": "2025-01-08",

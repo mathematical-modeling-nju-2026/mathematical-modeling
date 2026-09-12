@@ -136,25 +136,41 @@ g_t\ge 0,\qquad E_0=E_{144}=6000
 
 \subsection{收益来源分解}
 
-把优化结果与无储能基线逐项对比，可把 $12\,925.10$ 元的节省分解为两部分：
+把优化结果与无储能基线逐项对比，可把 $12\,925.10$ 元的节省\textbf{严格分解}为两部分。
+由逐时段功率平衡 $g_t=L_t+c_t-d_t-V_t+w_t$，
+基线取 $c=d=0$ 且\ $w_t=\max(V_t-L_t,0)$，可得\textbf{严格恒等式}
+
+\begin{equation}
+\sum_t p_t\max(L_t-V_t,0)-\sum_t p_tg_t
+=\sum_t p_t\max(V_t-L_t,0)+\sum_t p_td_t-\sum_t p_tc_t.
+\label{eq:q1-decomp}
+\end{equation}
+
+即“总节省 $=$ 弃光消除 $+$ 净套利”，左端为基线购电费与优化购电费之差，
+右端两项分别对应\textbf{被吸收的光伏余电价值}与\textbf{储能低买高卖的净收益}。
+两者的经济含义见下表，\textbf{各项之和恒等于总节省，无重复、无遗漏}。
 
 \begin{table}[H]
 \centering
-\caption{问题一收益来源分解}
+\small
+\caption{问题一收益来源分解（严格恒等式 \eqref{eq:q1-decomp}）}
 \label{tab:q1-gain}
-\begin{tabular}{@{}l r r l@{}}
+\begin{tabularx}{\textwidth}{@{}l r r X@{}}
 \toprule
 收益来源 & {金额（元）} & {占基线} & 说明 \\
 \midrule
-光伏余电消纳 & 6727.28 & 14.00\% & 基线中被弃掉的 $6247.96\kw$ 被电池吸收 \\
-峰谷价差套利 & 6197.82 & 12.90\% & 低价购电存入、高价放出 \\
+光伏余电消纳 & 4037.75 & 8.40\% & 基线中被弃掉的 $6247.96\kw$ 全部被电池吸收 \\
+峰谷价差套利 & 8887.35 & 18.50\% & 低价购电存入、高价放出，已扣除充电成本 \\
 \midrule
 \textbf{合计} & \bfseries 12925.10 & \bfseries 26.90\% & \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \end{table}
 
-可见两来源\textbf{几乎各占一半}，说明储能在本实例中同时承担了“消纳”与“套利”两种职能。
+可见\textbf{套利是主要来源（约 69\%），消纳次之（约 31\%）}。
+这是因为本例中光伏余电仅 $6247.96\kw$（占光伏总量 $11.3\%$），
+而峰谷价差最高达 $1.40/0.37\approx 3.8$ 倍，远超往返效率盈亏平衡点 $1/0.81=1.235$，
+故储能的边际价值主要体现在跨时段搬移电量而非吸收余电。
 
 \subsection{电量平衡与调度解释}
 

@@ -1,9 +1,10 @@
 {
-  "source_file": "E:\\math_model\\mathematical-modeling\\CShen\\方案B_1439万\\run_1439.py",
-  "source_sha256": "3d7db74afe1334973d4461048153291cd041d1eb575d619bc4b30fb8edcb14e9",
+  "source_file": "D:\\数学建模大赛\\mathematical-modeling\\common\\q2_base\\run_1439.py",
+  "source_sha256": "5699939d872517450d26b7ac4c2e39520d546273996cea22bfb4ec714aab9792",
   "first_residual": 0,
   "initial_soc": 8550.0,
-  "terminal_soc": 6000.0,
+  "year_end_terminal_soc": 6000.0,
+  "year_end_executed": true,
   "horizon_days": 2,
   "candidates": [
     {
@@ -27,8 +28,8 @@
       "half_life": 28
     }
   ],
-  "online_rule": "Every 7 days, select minimum mean 0.8-pinball loss over previous 28 completed days; min14 valid days; uniform56 tie/fallback.",
+  "online_rule": "Every 7 days, select minimum mean 0.8-pinball loss over previous 28 completed days; min14 valid days; fixed-priority ties, uniform56 fallback.",
   "fixed_parameter_comparison": "Exploratory retrospective comparison, not an untouched out-of-sample winner claim.",
   "inherited_forecaster": "Original sw4/drift5 + t7/drift28 without changes, including early attachment1 fallback and negative PV predictions.",
-  "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]"
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]"
 }

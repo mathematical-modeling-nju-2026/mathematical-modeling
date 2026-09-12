@@ -90,7 +90,7 @@
           "storage_soc_max_error": 1.8189894035458565e-12,
           "emergency_interval_energy_max_error": 5.4569682106375694e-12
         },
-        "workbook": "E:\\math_model\\mathematical-modeling\\C_yang\\ques4_2\\variants\\joint_price\\result4-2.xlsx"
+        "workbook": "D:\\数学建模大赛\\mathematical-modeling\\question4\\part2\\results\\variants\\joint_price\\result4-2.xlsx"
       },
       "summary_total_error": 0.0,
       "pass_check": true
@@ -147,7 +147,7 @@
           "storage_soc_max_error": 9.094947017729282e-13,
           "emergency_interval_energy_max_error": 7.275957614183426e-12
         },
-        "workbook": "E:\\math_model\\mathematical-modeling\\C_yang\\ques4_2\\variants\\known_today_price\\result4-2.xlsx"
+        "workbook": "D:\\数学建模大赛\\mathematical-modeling\\question4\\part2\\results\\variants\\known_today_price\\result4-2.xlsx"
       },
       "summary_total_error": 1.862645149230957e-09,
       "pass_check": true
@@ -204,7 +204,7 @@
           "storage_soc_max_error": 1.8189894035458565e-12,
           "emergency_interval_energy_max_error": 1.8189894035458565e-12
         },
-        "workbook": "E:\\math_model\\mathematical-modeling\\C_yang\\ques4_2\\variants\\mean_price\\result4-2.xlsx"
+        "workbook": "D:\\数学建模大赛\\mathematical-modeling\\question4\\part2\\results\\variants\\mean_price\\result4-2.xlsx"
       },
       "summary_total_error": 1.862645149230957e-09,
       "pass_check": true
@@ -260,7 +260,7 @@
           "storage_soc_max_error": 9.094947017729282e-13,
           "emergency_interval_energy_max_error": 1.8189894035458565e-12
         },
-        "workbook": "E:\\math_model\\mathematical-modeling\\C_yang\\ques4_2\\variants\\q2_repriced\\result4-2.xlsx"
+        "workbook": "D:\\数学建模大赛\\mathematical-modeling\\question4\\part2\\results\\variants\\q2_repriced\\result4-2.xlsx"
       },
       "summary_total_error": 0.0,
       "pass_check": true

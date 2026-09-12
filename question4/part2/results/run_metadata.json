@@ -1,6 +1,6 @@
 {
   "primary_variant": "joint_price",
-  "q2_source": "CShen\\方案B_滚动窗口优化",
+  "q2_source": "question2\\results",
   "report_period": [
     "2025-02-01",
     "2025-12-31"
@@ -23,5 +23,5 @@
   "settlement": "Actual attachment 4 price times planned kWh + 5 times actual price times emergency kWh.",
   "second_day": "Point net-load forecast and historical price forecast only; no second-day scenarios.",
   "primary_selection": "Determined by the price-information assumption, not by retrospective annual cost ranking.",
-  "python": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]"
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]"
 }
