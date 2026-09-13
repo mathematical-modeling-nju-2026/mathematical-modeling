@@ -62,20 +62,45 @@
 \begin{table}[H]
 \centering
 \small
-\caption{软件环境}
-\begin{tabularx}{\textwidth}{@{}l X@{}}
+\caption{软件环境与 Python 依赖库}
+\label{tab:appendix-env-libs}
+\begin{tabularx}{\textwidth}{@{}l l X@{}}
 \toprule
-项目 & 版本 / 说明 \\
+类别 & 版本 & 用途 \\
 \midrule
-操作系统 & Windows \\
-Python   & 3.12 / 3.13 \\
-数值计算 & \texttt{numpy}、\texttt{scipy}（HiGHS 求解器）\\
-数据处理 & \texttt{pandas}、\texttt{openpyxl}\\
-绘图     & \texttt{matplotlib} \\
-论文排版 & XeLaTeX $+$ \texttt{ctex}（中文支持）\\
+操作系统 & Windows & 开发与运行平台 \\
+Python   & 3.13（兼容 3.12） & 解释器；源码按 UTF-8 读写 \\
+\midrule
+\multicolumn{3}{@{}l}{\textbf{Python 第三方库}（清单见 \texttt{Q4/part3/requirements.txt}）} \\
+\midrule
+\texttt{numpy}    & $\ge$1.26 & 数组运算、线性代数、随机数 \\
+\texttt{scipy}    & $\ge$1.11 & \texttt{scipy.optimize.linprog}/\texttt{milp}（HiGHS 求解 LP 与 MILP）、\texttt{scipy.sparse} 构造稀疏约束矩阵 \\
+\texttt{pandas}   & $\ge$2.1  & 逐时段明细表、按日汇总与结果导出 \\
+\texttt{openpyxl} & $\ge$3.1  & 按附件5 模板读写 \texttt{result*.xlsx}（含样式与批注） \\
+\midrule
+\multicolumn{3}{@{}l}{\textbf{论文排版}} \\
+\midrule
+XeLaTeX $+$ \texttt{ctex} & TeX Live 2026 & 论文编译（中文支持） \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+\textbf{依赖安装}（若评委环境未安装上述库，请先执行；离线环境可先在有网机器
+执行 \texttt{pip download} 再拷贝安装）：
+
+\begin{verbatim}
+python -m pip install -r Q4/part3/requirements.txt
+
+# 或直接指定（与本文实测版本一致）
+python -m pip install "numpy>=2.5" "scipy>=1.18" "pandas>=3.0" "openpyxl>=3.1"
+\end{verbatim}
+
+\textbf{依赖自检}（可选，确认各库可正常导入）：
+
+\begin{verbatim}
+python -c "import numpy,scipy,pandas,openpyxl; \
+print(numpy.__version__,scipy.__version__,pandas.__version__,openpyxl.__version__)"
+\end{verbatim}
 
 \textbf{复现步骤}（在 \texttt{final\_version/支撑材料/} 目录下执行；
 已按下列顺序\emph{实测通过}，各脚本均写入本问 \texttt{results/} 根目录）：
@@ -103,6 +128,7 @@ python -X utf8 Q2/code/make_target_tables.py     # 题目要求的表1/表2/表3
 
 # 问题三（四次更新主方案）
 python -X utf8 Q3/code/run_q3.py --mode all
+python -X utf8 Q3/code/run_q3.py --mode at_0_6_12   # 0/6/12 点对照
 python -X utf8 Q3/code/verify_q3.py              # 独立核验
 
 # 问题四-2（依赖问题二已发布的结果作为同口径基准）
@@ -113,6 +139,7 @@ python -X utf8 Q4/part2/code/report_q42.py       # 发布主方案到 results/ �
 
 # 问题四-3
 python -X utf8 Q4/part3/code/run_q3.py --mode all
+python -X utf8 Q4/part3/code/run_q3.py --mode at_0_6_12   # 0/6/12 点对照
 python -X utf8 Q4/part3/code/verify_q3.py        # 独立核验
 \end{verbatim}
 

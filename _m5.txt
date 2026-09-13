@@ -1,0 +1,40 @@
+fix(repro): 修复 xlsx 表头规则不统一、Q4-3 冗余文件，附录补充依赖库
+
+按队友反馈逐条核对并修复（详见 docs/复现性修复记录.md）。
+
+修复内容：
+1. 19 个变体/对照 result*.xlsx 仍是旧「位置保持」表头规则，与 12 个
+   交付表的「环形（附件5模板）」不一致
+   - 成因：提交 47fe830 给 export_workbook/export_excel 加了环形映射，
+     但只重建主目录 xlsx，未重跑变体子目录
+   - 处理：重跑生成命令（变体 xlsx 自动重建）；另对两个 at_0_6_12
+     对照目录执行 --mode at_0_6_12 显式生成
+   - 结果：29 个环形 / 0 个位置保持
+
+2. Q4-2 元数据指向已删除的 question2/ 目录
+   - run_metadata.json 的 q2_source、source_fingerprints.migrated.json
+     的指纹路径，重跑后修正为 Q2\results
+
+3. Q4-3 冗余文件与说明文字
+   - 删除 Q4/part3/results/result3.xlsx（Q4-3 只应产出 result4-3.xlsx）
+   - 删除 Q4/part3/results/comparisons/at_0_6_12/result3.xlsx
+   - 删除运行日志 run.err、run.log
+   - 修正 run_q3.py 结果说明中的文件名 result3.xlsx -> result4-3.xlsx
+
+4. 附录补充 Python 依赖库说明（防止评委环境未安装导致报错）
+   - requirements.txt 去掉 matplotlib（绘图代码已移出支撑材料），
+     仅保留 numpy/scipy/pandas/openpyxl 并注明用途
+   - 附录 B 新增「软件环境与 Python 依赖库」表（逐库说明版本与用途）
+     + 依赖安装命令 + 依赖自检命令
+   - 附录 B 复现步骤补充 --mode at_0_6_12 对照生成步骤
+
+5. 内部工作记录移出交付目录
+   - final_version/支撑材料/复现性修复记录.md -> docs/复现性修复记录.md
+     （final_version 是最终提交内容，不放内部记录）
+
+隔离环境全链路实测：19 步全部 exit=0；费用与原提交逐位一致
+（Q2 1438.9135 / Q3 1402.2397 / Q4-2 1516.3044 / Q4-3 1506.1735 万元）；
+全部核验（verify_window 11 变体、verify_q42 4 方案、verify_q3 ×2）PASS。
+
+验证：附录引用的 26 个源程序与支撑材料 26 个 .py 双向无差异；
+仓库副本与支撑材料逐字一致；编译 137 页，0 错误。

@@ -216,7 +216,7 @@ def write_report(out):
             delta=a.total_cost_yuan-idx.loc['at_0_6_12'].total_cost_yuan
             lines += ['',f'加入18点更新后，全年费用变化为 **{delta:+,.2f}元**。此差值很小，数据未显示18点更新有明确的额外经济收益。建议重点保留6点和12点调整；18点可以作为可选更新。',
                       '', '该结论限于本数据和算法：18点仍可能通过次日预报影响跨日储能，不能断言其永远无用。小型经验树重新聚类、滚动重算、有限样本和真实误差会使回测费用并非严格随信息增多而下降。',
-                      '', '主结果 [result3.xlsx](result3.xlsx) 保留预设的四次更新方案；[0、6、12点结果](comparisons/at_0_6_12/result3.xlsx) 单独提供。上述更新频率比较属于本年度数据上的方案分析。']
+                      '', '主结果 [result4-3.xlsx](result4-3.xlsx) 保留预设的四次更新方案；[0、6、12点结果](comparisons/at_0_6_12/result4-3.xlsx) 单独提供。上述更新频率比较属于本年度数据上的方案分析。']
     if (out/'target_daily.csv').exists():
         target=pd.read_csv(out/'target_daily.csv')
         lines += ['','## 题目指定日期','',

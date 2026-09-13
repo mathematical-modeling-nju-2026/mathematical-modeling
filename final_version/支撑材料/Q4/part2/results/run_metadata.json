@@ -1,6 +1,6 @@
 {
   "primary_variant": "joint_price",
-  "q2_source": "question2\\results",
+  "q2_source": "Q2\\results",
   "report_period": [
     "2025-02-01",
     "2025-12-31"
