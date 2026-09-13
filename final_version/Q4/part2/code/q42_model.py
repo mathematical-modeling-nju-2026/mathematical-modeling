@@ -16,7 +16,7 @@ from scipy.sparse import coo_matrix
 
 HERE = Path(__file__).resolve().parents[1] / "results"
 REPO = HERE.parents[2]
-BASE_DIR = REPO / 'question2' / 'results'
+BASE_DIR = REPO / 'Q2' / 'results'
 RAW = REPO / 'data' / '附件'
 sys.path.insert(0, str(BASE_DIR.parent / "code"))
 from rolling_window import Inputs as Q2Inputs, BY_NAME, base  # noqa: E402

@@ -9,9 +9,9 @@
 指定 10 分钟时段：10:00-10:10、12:00-12:10、14:00-14:10、16:00-16:10、18:00-18:10、20:00-20:10
 指定 4 小时时段：0:00-4:00、4:00-8:00、8:00-12:00、12:00-16:00、16:00-20:00、20:00-24:00
 
-输入：question2/results/schedule_detail.csv.gz
-输出：question2/results/target_table1.csv / target_table2.csv / target_table3.csv
-      question2/results/target_daily.csv
+输入：Q2/results/schedule_detail.csv.gz
+输出：Q2/results/target_table1.csv / target_table2.csv / target_table3.csv
+      Q2/results/target_daily.csv
 """
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ import pathlib
 import pandas as pd
 
 REPO = pathlib.Path(__file__).resolve().parents[2]
-RES = REPO / "question2" / "results"
+RES = REPO / "Q2" / "results"
 DETAIL = RES / "schedule_detail.csv.gz"
 
 TARGETS = ["2025-03-20", "2025-06-21", "2025-09-23", "2025-12-21"]

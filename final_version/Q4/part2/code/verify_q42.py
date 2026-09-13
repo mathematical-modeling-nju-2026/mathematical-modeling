@@ -16,7 +16,7 @@ import pandas as pd
 HERE = Path(__file__).resolve().parents[1] / "results"
 REPO = HERE.parents[2]
 RAW = REPO/'data'/'附件'
-sys.path.insert(0, str(REPO/'question2'/'code'))
+sys.path.insert(0, str(REPO/'Q2'/'code'))
 from verify_window import check_workbook  # independent Excel parser, no model imports
 
 
