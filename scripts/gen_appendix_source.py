@@ -66,6 +66,65 @@ def tex_escape_title(s):
     return s.replace('_', r'\_')
 
 
+# verbatim 环境的折行宽度（按显示列数）。
+# 正文本宽 16.06cm（四边 2.5cm 边距），\footnotesize 等宽字体约 6pt/字符，
+# 每行约可容纳 76 列；中文在等宽字体中占 2 列，故必须按显示列数而非
+# 字符数计算，否则含中文的行仍会溢出。取 72 留出安全余量。
+MAX_COLS = 70
+# 续行缩进（列），表示该行由上一行折行而来，便于读者还原原始代码。
+CONT_INDENT = 2
+
+
+def _width(s):
+    """字符串的显示列数：东亚宽字符（中文、全角标点）算 2，其余算 1。"""
+    import unicodedata
+    return sum(2 if unicodedata.east_asian_width(ch) in ('W', 'F') else 1
+               for ch in s)
+
+
+def wrap_line(line, width=MAX_COLS):
+    """把超长源码行按显示列数折成多行。
+
+    策略：在不超过 width 的范围内找最靠右的断点。候选断点包括
+    ASCII 分隔符（逗号/空格/括号/等号）与中文字符之间——后者必须支持，
+    因为源码里的中文提示串很长且没有 ASCII 分隔符。
+    """
+    if _width(line.expandtabs(4)) <= width:
+        return [line]
+
+    out, rest, first = [], line, True
+    while _width(rest) > width:
+        limit = width if first else width - CONT_INDENT
+        lo = max(int(limit * 0.55), 1)
+
+        # 逐列累计，找出所有 <= limit 的断点位置
+        best = -1
+        w = 0
+        for k, ch in enumerate(rest, 1):
+            w += 2 if _is_wide(ch) else 1
+            if w > limit:
+                break
+            prev_wide = k >= 2 and _is_wide(rest[k - 2])
+            if ch in ', )]}=':
+                best = k                        # ASCII 分隔符：优先
+            elif _is_wide(ch) or prev_wide:
+                best = max(best, k)             # 中文边界：次选
+            if w >= lo and best < 0:
+                best = k
+        if best <= 0:
+            best = 1
+        out.append(rest[:best].rstrip())
+        rest = ' ' * CONT_INDENT + rest[best:].lstrip()
+        first = False
+    out.append(rest)
+    return out
+
+
+def _is_wide(ch):
+    import unicodedata
+    return bool(ch) and unicodedata.east_asian_width(ch) in ('W', 'F')
+
+
 lines = []
 lines.append('% ==================== 附录：完整可运行源程序 ====================')
 lines.append('% 按 format2026 第五条要求，附录包含建模所用到的完整、可运行的源程序。')
@@ -101,11 +160,15 @@ for title, files in GROUPS:
         if not src.exists():
             print(f'[警告] 文件不存在: final_version/支撑材料/{rel}')
             continue
-        # 编译时以 paper/ 为工作目录，故前缀 ../final_version/支撑材料/
-        rel_to_paper = '../final_version/支撑材料/' + rel
         name = src.name
         lines.append(r'\subsubsection*{%s}' % tex_escape_title(name))
-        lines.append(r'\verbatiminput{%s}' % rel_to_paper)
+        # 直接内联源码并按 MAX_COLS 折行。原 \verbatiminput 会把超长行
+        # （本仓库最长 256 字符、22% 的行超 72 字符）直接甩出页面右侧，
+        # 实测 56/137 页越界、最远溢出 36.8cm。折行后不再越界。
+        lines.append(r'\begin{verbatim}')
+        for raw in src.read_text(encoding='utf-8').splitlines():
+            lines.extend(wrap_line(raw))
+        lines.append(r'\end{verbatim}')
         lines.append('')
         count += 1
 

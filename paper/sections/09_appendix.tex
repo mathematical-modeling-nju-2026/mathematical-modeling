@@ -119,8 +119,10 @@ python -X utf8 Q2/code/run_experiment.py --first-residual 7 --initial 8550 \
        --only uniform56 half_life28 online_primary \
        --out sensitivity/valid_residuals
 python -X utf8 Q2/code/verify_window.py
-python -X utf8 Q2/code/verify_window.py --root Q2/results/extensions/short_windows
-python -X utf8 Q2/code/verify_window.py --root Q2/results/sensitivity/valid_residuals
+python -X utf8 Q2/code/verify_window.py \
+       --root Q2/results/extensions/short_windows
+python -X utf8 Q2/code/verify_window.py \
+       --root Q2/results/sensitivity/valid_residuals
 python -X utf8 Q2/code/check_information.py
 python -X utf8 Q2/code/report_experiment.py      # 发布推荐结果到 results/ 根
 python -X utf8 Q2/code/make_target_tables.py     # 题目要求的表1/表2/表3
