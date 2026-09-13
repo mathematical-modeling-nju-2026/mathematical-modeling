@@ -113,7 +113,7 @@
     "pass_check": true
   },
   "workbook": {
-    "max_roundtrip_error": 5.4569682106375694e-12,
+    "max_roundtrip_error": 1.2586620869114995e-05,
     "pass_check": true
   },
   "alternative_workbook": {

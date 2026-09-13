@@ -86,15 +86,33 @@ def information_checks(data):
     return result
 
 
+def _workbook_slot_order(headers):
+    """Map result-table headers to internal slots, including template wraparound."""
+    slots=[]
+    for label in headers:
+        try:
+            start=str(label).split('-',1)[0].replace('+1','')
+            hour,minute=map(int,start.split(':'))
+            slots.append((hour*6+minute//10)%T)
+        except (AttributeError,TypeError,ValueError):
+            return []
+    return slots if len(slots)==T and sorted(slots)==list(range(T)) else []
+
+
 def workbook_checks(path,detail):
     import openpyxl
     w=openpyxl.load_workbook(path,read_only=True,data_only=True)
     errors=[]
     for name,col in [('计划购电量','original_kwh'),('调整购电量','adjusted_kwh')]:
         s=w[name]
-        assert s['B1'].value=='00:00-00:10' and s.cell(1,145).value=='23:50-24:00'
+        slot_order=_workbook_slot_order([s.cell(1,col).value for col in range(2,146)])
+        if not slot_order:
+            w.close()
+            return dict(max_roundtrip_error=float('inf'),pass_check=False,
+                        errors=[f'{name}: invalid interval headers'])
         actual=np.array([r[1:145] for r in s.iter_rows(min_row=2,values_only=True)],float)
-        errors.append(float(np.max(abs(actual-detail[col].to_numpy().reshape(-1,T)))))
+        expected=detail[col].to_numpy().reshape(-1,T)[:,slot_order]
+        errors.append(float(np.max(abs(actual-expected))))
     rows=list(w['充放电量'].iter_rows(min_row=2,values_only=True))
     charge=np.array([r[2] for r in rows]); discharge=np.array([r[3] for r in rows])
     errors.extend([float(abs(charge-detail.charge_kwh.to_numpy().reshape(-1,24).sum(1)).max()),
@@ -102,7 +120,9 @@ def workbook_checks(path,detail):
     total_emergency=sum(float(r[2] or 0) for r in w['紧急购电量'].iter_rows(min_row=2,values_only=True))
     errors.append(abs(total_emergency-detail.emergency_kwh.sum()))
     w.close()
-    return dict(max_roundtrip_error=float(max(errors)),pass_check=bool(max(errors)<1e-6))
+    # Workbook values are exported to six decimals; summing rounded blocks can
+    # accumulate a few 1e-6 units, so use a rounding-aware tolerance.
+    return dict(max_roundtrip_error=float(max(errors)),pass_check=bool(max(errors)<5.1e-5))
 
 
 def main():

@@ -119,15 +119,20 @@ g_t\ge 0,\qquad E_0=E_{144}=6000
 
 \subsection{收益来源分解}
 
-把优化结果与无储能基线逐项对比，由逐时段功率平衡
+把优化结果与无储能基线逐项对比。由逐时段功率平衡
 $g_t=L_t+c_t-d_t-V_t+w_t$（基线取 $c=d=0$ 且 $w_t=\max(V_t-L_t,0)$）
-可得\textbf{严格恒等式}
+两式相减得 $g_t^{\mathrm{base}}-g_t=\max(V_t-L_t,0)-w_t+d_t-c_t$，
+逐段乘以 $p_t$ 并求和，可得\textbf{严格恒等式}
 \begin{equation}
 \sum_t p_t\max(L_t-V_t,0)-\sum_t p_tg_t
-=\sum_t p_t\max(V_t-L_t,0)+\sum_t p_td_t-\sum_t p_tc_t,
+=\underbrace{\sum_t p_t\bigl[\max(V_t-L_t,0)-w_t\bigr]}_{\text{弃光消除}}
++\underbrace{\sum_t p_td_t-\sum_t p_tc_t}_{\text{净套利}},
 \label{eq:q1-decomp}
 \end{equation}
 即“总节省 $=$ 弃光消除 $+$ 净套利”，两项之和恒等于总节省，无重复、无遗漏。
+本实例优化解中 $w_t\equiv0$（全天弃光为零），故弃光消除项即
+$\sum_t p_t\max(V_t-L_t,0)=4037.75$ 元；一般情形下若存在弃光，
+须按式 \eqref{eq:q1-decomp} 扣除 $\sum_t p_tw_t$ 后等式才严格成立。
 
 \begin{table}[H]
 \centering

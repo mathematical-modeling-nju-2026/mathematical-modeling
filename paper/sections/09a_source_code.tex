@@ -5,11 +5,20 @@
 \section{建模源程序（完整可运行）}
 \label{sec:appendix-source}
 
-以下按问题列出建模用到的全部源程序，代码与支撑材料 \texttt{support.zip} 中
-同名文件\textbf{逐字一致}；运行环境与复现命令见 \S\ref{sec:appendix-env}。
+以下按问题列出\textbf{生成论文全部数值结果}所需源程序，
+代码与支撑材料 \texttt{support.zip} 中同名文件\textbf{逐字一致}；
+运行环境与复现命令见 \S\ref{sec:appendix-env}。
 全部程序使用 Python 语言与 \texttt{numpy}/\texttt{scipy}（HiGHS 求解器），
 Excel 读写使用 \texttt{openpyxl}；未使用 SPSS 等需手工交互的软件，
 故无交互命令需要单独记录。
+
+\textbf{收录边界}：本文的图表由独立的配图脚本从上述程序保存的结果文件
+（\texttt{*.npz}/\texttt{*.csv}）重建，属于表达层，
+不参与任何数值计算，也不影响任何结果；
+按“仅收录与建模结果直接相关的源程序”的原则，
+各问 \texttt{plot\_*.py}、\texttt{common/plotting/}、
+\texttt{paper/figure\_package/} 等绘图代码未列入本附录，
+其完整文件已随支撑材料一并提交。
 
 \begingroup
 \footnotesize
@@ -23,9 +32,6 @@ Excel 读写使用 \texttt{openpyxl}；未使用 SPSS 等需手工交互的软�
 
 \subsubsection*{run\_q1.py}
 \verbatiminput{../question1/code/run_q1.py}
-
-\subsubsection*{plot\_q1.py}
-\verbatiminput{../question1/code/plot_q1.py}
 
 \subsection{问题二：滚动随机日前调度}
 
@@ -64,9 +70,6 @@ Excel 读写使用 \texttt{openpyxl}；未使用 SPSS 等需手工交互的软�
 \subsubsection*{verify\_q3.py}
 \verbatiminput{../question3/code/verify_q3.py}
 
-\subsubsection*{plot\_q3.py}
-\verbatiminput{../question3/code/plot_q3.py}
-
 \subsection{问题四-2：波动电价下的日前调度}
 
 \subsubsection*{q42\_model.py}
@@ -101,9 +104,6 @@ Excel 读写使用 \texttt{openpyxl}；未使用 SPSS 等需手工交互的软�
 \subsubsection*{verify\_q3.py}
 \verbatiminput{../question4/part3/code/verify_q3.py}
 
-\subsubsection*{plot\_q3.py}
-\verbatiminput{../question4/part3/code/plot_q3.py}
-
 \subsection{公共模块：第二问基础数据与 LP（q2\_base）}
 
 \subsubsection*{q2\_data.py}
@@ -112,45 +112,9 @@ Excel 读写使用 \texttt{openpyxl}；未使用 SPSS 等需手工交互的软�
 \subsubsection*{run\_1439.py}
 \verbatiminput{../common/q2_base/run_1439.py}
 
-\subsubsection*{make\_figures\_B.py}
-\verbatiminput{../common/q2_base/make_figures_B.py}
-
 \subsection{公共模块：附件5结果模板表头（主程序依赖）}
 
 \subsubsection*{template\_layout.py}
 \verbatiminput{../common/efficiency/template_layout.py}
-
-\subsection{公共模块：绘图（plotting）}
-
-\subsubsection*{export\_figure.py}
-\verbatiminput{../common/plotting/export_figure.py}
-
-\subsubsection*{setup\_style.py}
-\verbatiminput{../common/plotting/setup_style.py}
-
-\subsection{论文配图生成}
-
-\subsubsection*{build\_figures.py}
-\verbatiminput{../paper/figure_package/build_figures.py}
-
-\subsubsection*{verify\_package.py}
-\verbatiminput{../paper/figure_package/verify_package.py}
-
-\subsection{问题一参考实现（题目提供的工作目录）}
-
-\subsubsection*{solve\_q1.py}
-\verbatiminput{../CUMCM2026Problems/C题/问题一/solve_q1.py}
-
-\subsubsection*{verify\_q1.py}
-\verbatiminput{../CUMCM2026Problems/C题/问题一/verify_q1.py}
-
-\subsubsection*{make\_result1.py}
-\verbatiminput{../CUMCM2026Problems/C题/问题一/make_result1.py}
-
-\subsubsection*{make\_figures.py}
-\verbatiminput{../CUMCM2026Problems/C题/问题一/make_figures.py}
-
-\subsubsection*{diagnose\_surplus.py}
-\verbatiminput{../CUMCM2026Problems/C题/问题一/diagnose_surplus.py}
 
 \endgroup
