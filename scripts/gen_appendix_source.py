@@ -6,13 +6,14 @@
 —— 中的源码文件，因此附录与支撑材料同名文件**逐字一致**是结构性保证，
 不需要任何人工同步。
 
-收录边界：
-  · 收录建模相关的全部源程序（数据读取、建模、求解、核验、汇总）；
-  · 不收录绘图/配图代码（各问 plot_*.py、common/plotting/）——
-    它们属于表达层，只从已保存的结果文件重建图表，不参与数值计算；
-  · 不含各问 efficiency/ 下的「效率口径对照」代码（敏感性分析专用，
-    非主模型）；但保留 common/efficiency/template_layout.py —— 它是主程序
-    读取附件5 结果模板表头所必需的公共依赖。
+收录范围：支撑材料中的**全部源程序**（数据读取、建模、求解、核验、
+结果表生成与汇总）。绘图代码不参与数值计算，已从支撑材料中移除；
+各问 efficiency/ 下的「效率口径对照」代码为敏感性分析专用，不在支撑材料内；
+common/efficiency/template_layout.py 保留，因它是主程序读取附件5
+结果模板表头所必需的公共依赖。
+
+GROUPS 中列出的路径必须与 final_version/支撑材料/ 的实际内容一一对应：
+若文件缺失会打印警告，若新增源程序而此处未列出，请同步更新。
 """
 import pathlib
 import sys
@@ -77,12 +78,9 @@ lines.append('全部程序使用 Python 语言与 \\texttt{numpy}/\\texttt{scipy
 lines.append('Excel 读写使用 \\texttt{openpyxl}；未使用 SPSS 等需手工交互的软件，')
 lines.append('故无交互命令需要单独记录。')
 lines.append('')
-lines.append('\\textbf{收录边界}：本文的图表由配图脚本从上述程序保存的结果文件')
-lines.append('（\\texttt{*.npz}/\\texttt{*.csv}）重建，属于表达层，')
-lines.append('不参与任何数值计算，也不影响任何结果；')
-lines.append('按“仅收录与建模结果直接相关的源程序”的原则，')
-lines.append('\\texttt{plot\\_*.py} 与 \\texttt{common/plotting/} 未列入本附录，')
-lines.append('其完整文件已随支撑材料一并提交。')
+lines.append('\\textbf{收录范围}：以上为支撑材料中\\textbf{全部源程序}，')
+lines.append('即生成论文全部数值结果与结果表所需的代码；')
+lines.append('绘图代码已从支撑材料中移除，故本附录与支撑材料文件清单完全一致。')
 lines.append('')
 lines.append(r'\begingroup')
 lines.append(r'\footnotesize')

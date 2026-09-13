@@ -156,45 +156,9 @@ def main():
               '这里检验的是继承方案B参数后的滚动执行与窗口规则。原预测参数当初如何选择仍依赖其研发记录；本次未来扰动检查不能证明原参数选择没有使用过测试年信息。此次结果也不证明56天对其他年份最优。',
               '', '截断日依据预测器可用性确定，但推荐方案的费用改善来自同一年度回测，尚未经过另一个年份的独立验证。',
               '', '原方案中光伏点预测可能为负、1月预热使用附件1回退等其他口径保持不变，未把这些独立问题混入本次收益。次日仍只用点预测，未延长前瞻，也未开放日内重新调度。',
-              '', '![费用差异与收益发生时间](figures/window_comparison.png)','']
+              '']
     (HERE/'结果说明.md').write_text('\n'.join(lines),encoding='utf-8')
-    make_plot(df,baseline,base_days)
     print(json.dumps(summary,ensure_ascii=False,indent=2))
-
-
-def make_plot(df,baseline,base_days):
-    import matplotlib
-    matplotlib.use('Agg')
-    import matplotlib.pyplot as plt
-    from matplotlib import font_manager
-    fonts={f.name for f in font_manager.fontManager.ttflist}
-    family=next((n for n in ['Microsoft YaHei','SimHei','Noto Sans CJK SC'] if n in fonts),'DejaVu Sans')
-    plt.rcParams.update({'font.family':family,'axes.unicode_minus':False,'font.size':10,'pdf.fonttype':42,
-                         'axes.spines.top':False,'axes.spines.right':False})
-    plot=df[df.group!='排除回退残差'].copy()
-    fig,axes=plt.subplots(1,2,figsize=(12.5,4.5),layout='constrained')
-    vals=plot.saving_vs_original_yuan/1e4
-    bars=axes[0].barh([LABELS[n] for n in plot.name],vals,color=['#3B8595' if v>=0 else '#D99951' for v in vals])
-    axes[0].bar_label(bars,fmt='%+.2f',padding=4,fontsize=8)
-    axes[0].axvline(0,color='#777777',lw=.8)
-    axes[0].set(xlabel='较原方案节省（万元；负数为变差）',title='加权程度过高会增加费用',xlim=(min(vals)-.8,max(vals)+.8))
-    axes[0].invert_yaxis()
-    for folder,name,color in [
-        (HERE/'variants'/'half_life28','28天半衰期','#3B8595'),
-        (HERE/'variants'/'online_primary','四候选每周选择','#D99951'),
-        (HERE/'sensitivity'/'valid_residuals'/'variants'/'uniform56','仅排除回退残差','#56764A')]:
-        d=pd.read_csv(folder/'daily_summary.csv')
-        savings=(base_days.total_cost_yuan-d.total_cost_yuan).cumsum()/1e4
-        axes[1].plot(pd.to_datetime(d.date),savings,label=name,color=color,lw=1.5)
-    axes[1].axhline(0,color='#777777',lw=.8)
-    axes[1].set(ylabel='累计节省（万元）',title='收益主要来自年初样本处理')
-    axes[1].tick_params(axis='x',labelrotation=25)
-    axes[1].legend(loc='lower right',fontsize=8)
-    for ax in axes:ax.grid(axis='x',alpha=.15)
-    dest=HERE/'figures';dest.mkdir(exist_ok=True)
-    fig.savefig(dest/'window_comparison.png',dpi=320,bbox_inches='tight')
-    fig.savefig(dest/'window_comparison.pdf',bbox_inches='tight')
-    plt.close(fig)
 
 
 if __name__=='__main__':main()

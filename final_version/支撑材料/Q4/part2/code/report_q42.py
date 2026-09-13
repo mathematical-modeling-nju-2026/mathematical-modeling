@@ -78,90 +78,6 @@ def target_tables(detail, daily, primary):
     (HERE/'指定日期结果.md').write_text('\n'.join(lines), encoding='utf-8')
 
 
-def plots(comparison, monthly, primary_detail, baseline_detail):
-    import matplotlib
-    matplotlib.use('Agg')
-    import matplotlib.pyplot as plt
-    from matplotlib import font_manager
-    style_path = HERE.parents[2]/'common'/'plotting'
-    if (style_path/'setup_style.py').exists():
-        sys.path.insert(0, str(style_path))
-        from setup_style import setup_style
-        setup_style(journal='general', lang='zh', use_sciplots=False)
-    else:
-        fonts = {f.name for f in font_manager.fontManager.ttflist}
-        chosen = next((n for n in ('Microsoft YaHei','SimHei','Noto Sans CJK SC') if n in fonts), 'DejaVu Sans')
-        plt.rcParams.update({'font.family':chosen, 'axes.unicode_minus':False, 'pdf.fonttype':42})
-    plt.rcParams.update({'font.size':10, 'axes.spines.right':False, 'axes.spines.top':False})
-    dest = HERE/'figures'; dest.mkdir(exist_ok=True)
-
-    def save(fig, name):
-        fig.savefig(dest/(name+'.png'), dpi=320, bbox_inches='tight')
-        fig.savefig(dest/(name+'.pdf'), bbox_inches='tight')
-        plt.close(fig)
-
-    fig, axes = plt.subplots(1,2,figsize=(12,4.6),layout='constrained')
-    names = comparison.name.tolist()
-    x = np.arange(len(names))
-    totals = comparison.total_cost_yuan.to_numpy()/1e4
-    planned = comparison.planned_cost_yuan.to_numpy()/1e4
-    bars = axes[0].bar(x, planned, color=[COLORS[n] for n in names])
-    axes[0].bar(x, totals-planned, bottom=planned, color=[COLORS[n] for n in names], alpha=.4, hatch='//')
-    for i,value in enumerate(totals):
-        axes[0].text(i,value+10,f'{value:.2f}',ha='center',va='bottom',fontsize=9)
-    axes[0].set_xticks(x, ['原Q2\n重新结算','均价\n预测','联合\n场景','当日价格\n已知'])
-    axes[0].set(ylabel='2—12月费用（万元）',title='同一实际电价下的费用',ylim=(0,max(totals)*1.25))
-    from matplotlib.patches import Patch
-    axes[0].legend(handles=[Patch(facecolor='#777777',label='计划费'),Patch(facecolor='#CCCCCC',hatch='//',label='紧急费')],loc='upper left',ncol=2,fontsize=8)
-    for name in ('mean_price','joint_price'):
-        sub = monthly.loc[monthly.name == name]
-        axes[1].plot(sub.month,sub.saving_yuan/1e4,marker='o',ms=4,lw=1.4,
-                     color=COLORS[name],label=LABELS[name])
-    axes[1].axhline(0,lw=.8,color='#888888')
-    axes[1].set(xlabel='月份',ylabel='较原Q2重新结算节省（万元）',title='历史预测方案的月度改善',xticks=range(2,13))
-    axes[1].legend(fontsize=8,loc='best')
-    axes[1].grid(alpha=.18)
-    save(fig,'cost_comparison')
-
-    fig, axes = plt.subplots(2,2,figsize=(11,6),layout='constrained',sharex=True,sharey=True)
-    for ax,date in zip(axes.ravel(), TARGET_DATES):
-        part = primary_detail.loc[primary_detail.date == date]
-        h = (part.slot.to_numpy()+.5)/6
-        ax.plot(h,part.price_yuan_per_kwh,color='#444444',lw=1.2,label='实际结算电价')
-        ax.plot(h,part.price_point_forecast,color='#277A8A',ls='--',lw=1.2,label='历史点预测')
-        ax.plot(h,part.objective_price_yuan_per_kwh,color='#C48436',ls=':',lw=1.3,label='优化采用的均价')
-        ax.set(title=date,xlim=(0,24),xticks=range(0,25,4),xlabel='时刻（小时）',ylabel='电价（元/kWh）')
-        ax.grid(alpha=.16)
-    handles, labels = axes[0,0].get_legend_handles_labels()
-    fig.legend(handles,labels,loc='outside upper center',ncol=3,fontsize=9)
-    save(fig,'target_prices')
-
-    day = '2025-06-21'
-    part = primary_detail.loc[primary_detail.date == day]
-    old = baseline_detail.loc[baseline_detail.date == day]
-    h = (part.slot.to_numpy()+.5)/6
-    fig, axes = plt.subplots(4,1,figsize=(10,8),layout='constrained',sharex=True)
-    fig.suptitle('2025-06-21：波动电价下的调度')
-    axes[0].plot(h,part.price_yuan_per_kwh,color='#444444',label='实际价格')
-    axes[0].plot(h,part.objective_price_yuan_per_kwh,color='#277A8A',ls='--',label='优化均价')
-    axes[0].set(ylabel='电价\n（元/kWh）')
-    axes[0].legend(loc='lower left',bbox_to_anchor=(0,1.01),ncol=2,fontsize=8,frameon=False)
-    axes[1].step(h,old.g_kwh*6,where='mid',color='#999999',lw=1,label='原Q2计划')
-    axes[1].step(h,part.g_kwh*6,where='mid',color='#277A8A',lw=1.2,label='本问主计划')
-    axes[1].set(ylabel='购电功率\n（kW）')
-    axes[1].legend(loc='lower left',bbox_to_anchor=(0,1.01),ncol=2,fontsize=8,frameon=False)
-    axes[2].fill_between(h,part.c_kwh*6,step='mid',color='#277A8A',alpha=.65,label='充电')
-    axes[2].fill_between(h,-part.d_kwh*6,step='mid',color='#C48436',alpha=.65,label='放电（负号表示方向）')
-    axes[2].set(ylabel='充放电功率\n（kW）')
-    axes[2].legend(loc='lower left',bbox_to_anchor=(0,1.01),ncol=2,fontsize=8,frameon=False)
-    axes[3].plot(np.arange(145)/6,np.r_[part.energy_before_kwh.iloc[0],part.energy_after_kwh],color='#7960A1',lw=1.5)
-    axes[3].axhline(1200,color='#999999',ls='--',lw=.8)
-    axes[3].axhline(10800,color='#999999',ls='--',lw=.8)
-    axes[3].set(ylabel='电池储电量\n（kWh）',xlabel='时刻（小时）',ylim=(500,11500),xticks=range(0,25,2),xlim=(0,24))
-    for ax in axes: ax.grid(alpha=.15)
-    save(fig,'dispatch_0621')
-
-
 def main():
     verification = json.loads((HERE/'verification.json').read_text(encoding='utf-8'))
     information = json.loads((HERE/'information_verification.json').read_text(encoding='utf-8'))
@@ -245,13 +161,8 @@ def main():
         '- 固定电价退化例与原Q2目标值之差为0；两组价格—净负载配对解析例费用18,720元、30,240元，均与LP一致。',
         '- 对2月1日、6月1日、11月30日同时改动当天及未来价格、负载、光伏，历史预测主模型的当前预测、场景和控制量变化均为0。',
         '- 当日电价已知方案中，改变次日及以后实际价格，当前决策不变。源Q2代码、输出及原附件指纹未变。',
-        '', '## 6. 图表','',
-        '![费用与月度收益](figures/cost_comparison.png)','',
-        '![四个指定日期的电价](figures/target_prices.png)','',
-        '![6月21日调度](figures/dispatch_0621.png)','',
         '建模公式、信息口径、为什么仍可用LP以及分位数解释见 [建模说明.md](建模说明.md)。']
     (HERE/'结果说明.md').write_text('\n'.join(lines),encoding='utf-8')
-    plots(comparison, monthly, detail, baseline_detail)
     files = ('result4-2.xlsx','daily_summary.csv','schedule_detail.csv.gz')
     publication = dict(primary_variant=primary, physical_verification_passed=verification['pass_check'],
         information_verification_passed=information['pass_check'],
