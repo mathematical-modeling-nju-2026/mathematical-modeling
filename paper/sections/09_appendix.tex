@@ -31,7 +31,7 @@
 \midrule
 \texttt{Q4/part3/code/} & 问题三代码的实时电价扩展（含 \texttt{requirements.txt} 依赖清单） & 四-3 \\
 \midrule
-\texttt{common/} & \texttt{q2\_base/}（基础 LP 与数据层）、\texttt{efficiency/}（附件5 模板表头，主程序读模板所必需） & 全部 \\
+\texttt{common/} & \texttt{q2\_base/}（基础 LP 与数据层，含 \texttt{summary.json} 原目录基线基准，供发布前复核复现精度）、\texttt{efficiency/}（附件5 模板表头，主程序读模板所必需） & 全部 \\
 \midrule
 \multicolumn{3}{@{}l}{\textbf{二、结果与图表}} \\
 \midrule
@@ -77,7 +77,8 @@ Python   & 3.12 / 3.13 \\
 \end{tabularx}
 \end{table}
 
-\textbf{复现步骤}（在 \texttt{final\_version/支撑材料/} 目录下执行）：
+\textbf{复现步骤}（在 \texttt{final\_version/支撑材料/} 目录下执行；
+已按下列顺序\emph{实测通过}，各脚本均写入本问 \texttt{results/} 根目录）：
 
 \begin{verbatim}
 python -m pip install -r Q4/part3/requirements.txt
@@ -85,28 +86,52 @@ python -m pip install -r Q4/part3/requirements.txt
 # 问题一
 python -X utf8 Q1/q1_code/run_q1.py
 
-# 问题二（推荐方案：有效残差 + 56 天等权）
-python -X utf8 Q2/code/run_experiment.py \
-       --first-residual 7 --only uniform56 --out recommended_only
+# 问题二：三个实验口径 -> 独立核验 -> 发布推荐结果 -> 题目要求表
+python -X utf8 Q2/code/run_experiment.py
+python -X utf8 Q2/code/run_experiment.py --extended \
+       --only uniform28 uniform42 online_extended \
+       --out extensions/short_windows
+python -X utf8 Q2/code/run_experiment.py --first-residual 7 --initial 8550 \
+       --only uniform56 half_life28 online_primary \
+       --out sensitivity/valid_residuals
+python -X utf8 Q2/code/verify_window.py
+python -X utf8 Q2/code/verify_window.py --root Q2/results/extensions/short_windows
+python -X utf8 Q2/code/verify_window.py --root Q2/results/sensitivity/valid_residuals
+python -X utf8 Q2/code/check_information.py
+python -X utf8 Q2/code/report_experiment.py      # 发布推荐结果到 results/ 根
 python -X utf8 Q2/code/make_target_tables.py     # 题目要求的表1/表2/表3
 
 # 问题三（四次更新主方案）
-python -X utf8 Q3/code/run_q3.py --mode all --out reproduced
+python -X utf8 Q3/code/run_q3.py --mode all
 python -X utf8 Q3/code/verify_q3.py              # 独立核验
 
-# 问题四
+# 问题四-2（依赖问题二已发布的结果作为同口径基准）
 python -X utf8 Q4/part2/code/run_q42.py --primary joint_price
-python -X utf8 Q4/part3/code/run_q3.py --mode all --out out
+python -X utf8 Q4/part2/code/verify_q42.py
+python -X utf8 Q4/part2/code/check_information.py
+python -X utf8 Q4/part2/code/report_q42.py       # 发布主方案到 results/ 根
+
+# 问题四-3
+python -X utf8 Q4/part3/code/run_q3.py --mode all
 python -X utf8 Q4/part3/code/verify_q3.py        # 独立核验
 \end{verbatim}
 
 \textbf{说明}：
 \begin{itemize}[itemsep=2pt,topsep=3pt]
   \item 各脚本内部路径均相对于文件位置，从任意工作目录用脚本绝对路径启动均可。
+  \item \textbf{不要给 \texttt{run\_q3.py} / \texttt{run\_q42.py} 传 \texttt{--out}}：
+        这两个脚本默认写入本问 \texttt{results/} 根目录，一旦指定 \texttt{--out}
+        就会写入子目录，导致后续核验脚本找不到结果。
+  \item 问题二的 \texttt{--out} 是\emph{实验分组}用途（\texttt{extensions/}、
+        \texttt{sensitivity/}），必须与 \texttt{report\_experiment.py} 配合，
+        由后者把推荐方案发布到 \texttt{Q2/results/} 根；只跑第一个命令
+        而不跑 \texttt{report\_experiment.py}，后续脚本会找不到
+        \texttt{schedule\_detail.csv.gz}。
   \item 问题二\textbf{无参数默认运行的是原始残差口径候选}，
-        不是最终推荐方案，须按上述命令显式指定 \texttt{--first-residual 7}。
-  \item 问题四-2 会读取 \texttt{Q2/results/} 下的 Q2 结果作为同口径基准，
-        因此需先运行问题二。
+        不是最终推荐方案，推荐方案由 \texttt{sensitivity/valid\_residuals} 与
+        \texttt{report\_experiment.py} 共同确定。
+  \item 各问的 \texttt{verify\_*.py} / \texttt{check\_information.py} 是
+        \textbf{发布前置门槛}：核验不通过时后续 \texttt{report\_*.py} 会拒绝执行。
   \item 运行主程序会覆盖同名结果文件；论文使用的现有结果应先备份。
 \end{itemize}
 

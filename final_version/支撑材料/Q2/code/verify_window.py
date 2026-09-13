@@ -50,6 +50,41 @@ def _interval(value: Any) -> tuple[int, int]:
     return _minutes(parts[0]), _minutes(parts[1])
 
 
+def _interval_slot_order(headers: Any) -> list[int]:
+    """把附件5 模板的时段表头映射为内部 slot 顺序，含环形回绕。
+
+    模板的第 i 格标签为「区间末标签」(i+1)%144 - (i+2)%144，
+    例如第 1 格是 0:10-0:20（对应内部 slot 1），最后 1 格是
+    0:00-0:10+1（对应内部 slot 0）。因此不能直接按位置比对，
+    必须按标签解析出真实 slot 后再取值。
+
+    注意：官方模板自身写法不统一，个别标签的分钟位不足两位
+    （如 7:0-7:10 表示 07:00-07:10），故解析时按整数读取分。
+
+    返回长度为 144 的 slot 序列（第 i 格应填入 slot_order[i] 的值）；
+    若表头无法解析为 144 个互不重复的时段则返回空列表。
+    """
+    slots: list[int] = []
+    for label in headers:
+        try:
+            parts = re.split(r"[-–—~～]", str(label).strip())
+            if len(parts) != 2:
+                return []
+            start = parts[0].strip().replace("+1", "")
+            match = re.fullmatch(r"(\d{1,2}):(\d{1,2})(?::00)?", start)
+            if not match:
+                return []
+            hour, minute = int(match[1]), int(match[2])
+            if minute >= 60:
+                return []
+            slots.append(((hour * 60 + minute) // 10) % T)
+        except (AttributeError, TypeError, ValueError):
+            return []
+    if len(slots) != T or sorted(slots) != list(range(T)):
+        return []
+    return slots
+
+
 def _max_abs(values: Any) -> float:
     arr = np.asarray(values, dtype=float)
     return float(np.max(np.abs(arr))) if arr.size else 0.0
@@ -301,14 +336,22 @@ def check_workbook(path: str | Path, detail: pd.DataFrame) -> dict[str, Any]:
         plan = list(wb[required[0]].iter_rows(values_only=True))
         if len(plan) != len(days) + 1 or len(plan[0]) != T + 3:
             errors.append("plan_table_dimensions")
-        expected_labels = [f"{_time_label(t)}-{_time_label(t + 1)}" for t in range(T)]
-        if list(plan[0][1:T + 1]) != expected_labels:
+        # 附件5 模板表头是环形回绕的（第 1 格为 0:10-0:20，最后 1 格为
+        # 0:00-0:10+1），必须按标签解析出真实 slot，不能直接按位置比对。
+        slot_order = _interval_slot_order(plan[0][1:T + 1])
+        if not slot_order:
             errors.append("plan_interval_headers")
         for row, (day, group) in zip(plan[1:], days):
             if _date(row[0]) != day:
                 errors.append(f"plan_date:{day}")
-            for value, expected in zip(row[1:T + 1], group["g_kwh"]):
-                numeric("plan_slot_energy_max_error", value, expected)
+            if slot_order:
+                expected_energy = group["g_kwh"].to_numpy()
+                for position, value in enumerate(row[1:T + 1]):
+                    numeric("plan_slot_energy_max_error", value,
+                            expected_energy[slot_order[position]])
+            else:
+                for value, expected in zip(row[1:T + 1], group["g_kwh"]):
+                    numeric("plan_slot_energy_max_error", value, expected)
             numeric("plan_daily_energy_max_error", row[T + 1], group["g_kwh"].sum())
             numeric("plan_daily_cost_max_error", row[T + 2],
                     (group["g_kwh"] * group["price_yuan_per_kwh"]).sum(), 0.0051)
