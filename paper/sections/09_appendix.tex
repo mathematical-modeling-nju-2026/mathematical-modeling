@@ -3,52 +3,52 @@
 \renewcommand{\thesection}{附录 \Alph{section}}
 \section{支撑材料文件列表}
 
-本次提交的支撑材料为文件夹 \texttt{final\_version/}（压缩为单个文件提交），
-其内容与下表的对应关系如下。
+本次提交包含两部分：论文正文（\texttt{论文.pdf}）与支撑材料文件夹
+\texttt{final\_version/支撑材料/}（压缩为单个文件提交）。
+下表给出支撑材料的目录结构与内容说明。
 所有源程序均为完整、可直接运行版本，运行环境见 \S\ref{sec:appendix-env}。
 
 \begin{table}[H]
 \centering
 \footnotesize
-\setlength{\tabcolsep}{4pt}
-\caption{支撑材料文件列表（\texttt{final\_version/} 目录结构）}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.15}
+\caption{支撑材料目录结构（\texttt{final\_version/支撑材料/}）}
 \label{tab:appendix-files}
-\begin{tabularx}{\textwidth}{@{}l X c@{}}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.55cm} X c@{}}
 \toprule
-路径 & 说明 & 对应问题 \\
+路径 & 内容 & 问题 \\
 \midrule
 \multicolumn{3}{@{}l}{\textbf{一、源程序}} \\
 \midrule
-\texttt{Q1/q1\_code/}      & \texttt{q1\_model.py} 数据读取与 LP/MILP 建模、约束核验、对偶量；\texttt{run\_q1.py} 主流程与导出；\texttt{plot\_q1.py} 绘图 & 问题一 \\
+\texttt{Q1/q1\_code/} & \texttt{q1\_model}（LP/MILP 建模与核验）、\texttt{run\_q1}（主流程）、\texttt{plot\_q1}（绘图） & 一 \\
 \midrule
-\texttt{Q2/code/}          & \texttt{rolling\_window.py} 有效残差与候选窗口；\texttt{run\_experiment.py} 滚动执行；\texttt{verify\_window.py}、\texttt{check\_information.py} 核验；\texttt{report\_experiment.py} 汇总发布；\texttt{make\_target\_tables.py} 题目要求表 & 问题二 \\
+\texttt{Q2/code/} & \texttt{rolling\_window}（残差与窗口）、\texttt{run\_experiment}（滚动执行）、\texttt{verify\_window}、\texttt{check\_information}（核验）、\texttt{report\_experiment}（汇总）、\texttt{make\_target\_tables}（题目要求表） & 二 \\
 \midrule
-\texttt{Q3/code/}          & \texttt{q3\_data.py} 输入校验；\texttt{q3\_forecast.py} 预报融合；\texttt{q3\_model.py} 场景树 LP；\texttt{run\_q3.py} 滚动执行；\texttt{verify\_q3.py} 核验；\texttt{plot\_q3.py} 绘图 & 问题三 \\
+\texttt{Q3/code/} & \texttt{q3\_data}（校验）、\texttt{q3\_forecast}（预报融合）、\texttt{q3\_model}（场景树 LP）、\texttt{run\_q3}（滚动执行）、\texttt{verify\_q3}（核验）、\texttt{plot\_q3}（绘图） & 三 \\
 \midrule
-\texttt{Q4/part2/code/}    & \texttt{q42\_model.py} 电价预测与联合场景；\texttt{run\_q42.py} 主流程；\texttt{report\_q42.py} 汇总；\texttt{verify\_q42.py}、\texttt{check\_information.py} 核验 & 问题四-2 \\
+\texttt{Q4/part2/code/} & \texttt{q42\_model}（电价预测与联合场景）、\texttt{run\_q42}、\texttt{report\_q42}、\texttt{verify\_q42}、\texttt{check\_information} & 四-2 \\
 \midrule
-\texttt{Q4/part3/code/}    & 在问题三代码基础上增加实时电价场景与结算；\texttt{requirements.txt} 依赖清单 & 问题四-3 \\
+\texttt{Q4/part3/code/} & 问题三代码的实时电价扩展（含 \texttt{requirements.txt} 依赖清单） & 四-3 \\
 \midrule
-\texttt{common/q2\_base/}  & 第二问与 4-2 共用的基础 LP 与数据层（\texttt{q2\_data.py}、\texttt{run\_1439.py}） & 二 / 四 \\
-\texttt{common/efficiency/} & \texttt{template\_layout.py} 附件5 结果模板表头（主程序读取模板所必需） & 一 / 二 / 三 / 四 \\
-\texttt{common/plotting/}  & \texttt{setup\_style.py}、\texttt{export\_figure.py} 统一绘图样式与导出 & 全部 \\
+\texttt{common/} & \texttt{q2\_base/}（基础 LP 与数据层）、\texttt{efficiency/}（附件5 模板表头）、\texttt{plotting/}（绘图样式与导出） & 全部 \\
 \midrule
 \multicolumn{3}{@{}l}{\textbf{二、结果与图表}} \\
 \midrule
-\texttt{Q1..Q4/*/results/} & \texttt{result*.xlsx} 正式结果（题目要求格式）、\texttt{summary.json} 汇总指标、\texttt{schedule\_detail.csv} 逐时段明细、\texttt{verification.json} 核验记录、\texttt{figures/} 插图源文件 & 全部 \\
-\texttt{Q2/results/variants/}、\texttt{Q2/results/extensions/}、\texttt{Q2/results/sensitivity/} & 各候选窗口方案、短窗口扩展与敏感性分析的完整对照结果 & 问题二 \\
-\texttt{Q3/results/comparisons/} & 四种发布时点方案（\texttt{B\_aligned}、\texttt{only\_0}、\texttt{at\_0\_6}、\texttt{at\_0\_6\_12}）的完整结果 & 问题三 \\
-\texttt{Q4/part2/results/}、\texttt{Q4/part3/results/} & 各电价场景方案与指定日的完整结果 & 问题四 \\
+\texttt{Q1..Q4/\(\ast\)/results/} & \texttt{result\(\ast\).xlsx} 正式结果、\texttt{summary.json} 汇总、\texttt{schedule\_detail.csv} 逐时段明细、\texttt{verification.json} 核验记录、\texttt{figures/} 插图源文件 & 全部 \\
+\texttt{Q2/results/} 子目录 & \texttt{variants/}、\texttt{extensions/}、\texttt{sensitivity/}：各候选窗口、短窗口扩展与敏感性分析对照 & 二 \\
+\texttt{Q3/results/} \texttt{comparisons/} & 四种发布时点方案（\texttt{B\_aligned}、\texttt{only\_0}、\texttt{at\_0\_6}、\texttt{at\_0\_6\_12}）结果 & 三 \\
+\texttt{Q4/.../results/} & 各电价场景方案与指定日结果 & 四 \\
 \midrule
 \multicolumn{3}{@{}l}{\textbf{三、数据}} \\
 \midrule
-\texttt{data/附件/}        & \texttt{附件1--4.xlsx} 原始数据；\texttt{附件5/} 结果文件模板（\texttt{result1.xlsx} 等 5 个） & 全部 \\
+\texttt{data/附件/} & \texttt{附件1--4.xlsx} 原始数据；\texttt{附件5/} 结果文件模板 & 全部 \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
-\textbf{说明}：\texttt{final\_version/} 为自包含目录，解压后无需任何外部文件
-即可按 \S\ref{sec:appendix-env} 的命令复现全部结果；
+\textbf{说明}：\texttt{final\_version/支撑材料/} 为自包含目录，解压后无需任何
+外部文件即可按 \S\ref{sec:appendix-env} 的命令复现全部结果；
 附录 \S\ref{sec:appendix-source} 的源程序\textbf{直接取自该目录}，
 与所提交文件逐字一致。
 
@@ -73,7 +73,7 @@ Python   & 3.12 / 3.13 \\
 \end{tabularx}
 \end{table}
 
-\textbf{复现步骤}（在 \texttt{final\_version/} 目录下执行）：
+\textbf{复现步骤}（在 \texttt{final\_version/支撑材料/} 目录下执行）：
 
 \begin{verbatim}
 python -m pip install -r Q4/part3/requirements.txt

@@ -2,8 +2,8 @@
 
 输出 paper/sections/09a_source_code.tex。
 
-重要：本脚本直接引用 `final_version/` —— 即最终提交的支撑材料文件夹 ——
-中的源码文件，因此附录与支撑材料同名文件**逐字一致**是结构性保证，
+重要：本脚本直接引用 `final_version/支撑材料/` —— 即最终提交的支撑材料文件夹
+—— 中的源码文件，因此附录与支撑材料同名文件**逐字一致**是结构性保证，
 不需要任何人工同步。
 
 收录边界：
@@ -21,9 +21,9 @@ sys.stdout.reconfigure(encoding='utf-8')
 
 REPO = pathlib.Path(__file__).resolve().parents[1]  # mathematical-modeling
 PAPER = REPO / 'paper'
-FV = REPO / 'final_version'                          # 支撑材料文件夹
+FV = REPO / 'final_version' / '支撑材料'             # 支撑材料文件夹
 
-# (组标题, [相对 final_version 的路径, ...])
+# (组标题, [相对 FV 的路径, ...])
 GROUPS = [
     ('问题一：确定性调度', [
         'Q1/q1_code/q1_model.py', 'Q1/q1_code/run_q1.py',
@@ -65,12 +65,12 @@ lines = []
 lines.append('% ==================== 附录：完整可运行源程序 ====================')
 lines.append('% 按 format2026 第五条要求，附录包含建模所用到的完整、可运行的源程序。')
 lines.append('% 本文件由 scripts/gen_appendix_source.py 自动生成，勿手改。')
-lines.append('% 源码直接取自支撑材料文件夹 final_version/，故与所提交文件逐字一致。')
+lines.append('% 源码直接取自支撑材料文件夹 final_version/支撑材料/，故与所提交文件逐字一致。')
 lines.append(r'\section{建模源程序（完整可运行）}')
 lines.append(r'\label{sec:appendix-source}')
 lines.append('')
 lines.append('以下按问题列出\\textbf{生成论文全部数值结果}所需源程序。')
-lines.append('这些代码\\textbf{直接取自支撑材料文件夹 \\texttt{final\\_version/}}，')
+lines.append('这些代码\\textbf{直接取自支撑材料文件夹 \\texttt{final\\_version/\\allowbreak 支撑材料/}}，')
 lines.append('因此与所提交文件\\textbf{逐字一致}；')
 lines.append('运行环境与复现命令见 \\S\\ref{sec:appendix-env}。')
 lines.append('全部程序使用 Python 语言与 \\texttt{numpy}/\\texttt{scipy}（HiGHS 求解器），')
@@ -97,10 +97,10 @@ for title, files in GROUPS:
     for rel in files:
         src = FV / rel
         if not src.exists():
-            print(f'[警告] 文件不存在: final_version/{rel}')
+            print(f'[警告] 文件不存在: final_version/支撑材料/{rel}')
             continue
-        # 编译时以 paper/ 为工作目录，故前缀 ../final_version/
-        rel_to_paper = '../final_version/' + rel
+        # 编译时以 paper/ 为工作目录，故前缀 ../final_version/支撑材料/
+        rel_to_paper = '../final_version/支撑材料/' + rel
         name = src.name
         lines.append(r'\subsubsection*{%s}' % tex_escape_title(name))
         lines.append(r'\verbatiminput{%s}' % rel_to_paper)
@@ -112,5 +112,5 @@ lines.append(r'\endgroup')
 out = PAPER / 'sections' / '09a_source_code.tex'
 out.write_text('\n'.join(lines), encoding='utf-8')
 print(f'已生成 {out}')
-print(f'  引用 final_version/ 下 {count} 个源程序文件')
+print(f'  引用 final_version/支撑材料/ 下 {count} 个源程序文件')
 print('  与支撑材料逐字一致（同一文件）')

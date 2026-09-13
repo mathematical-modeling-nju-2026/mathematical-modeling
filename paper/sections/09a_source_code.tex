@@ -1,12 +1,12 @@
 % ==================== 附录：完整可运行源程序 ====================
 % 按 format2026 第五条要求，附录包含建模所用到的完整、可运行的源程序。
 % 本文件由 scripts/gen_appendix_source.py 自动生成，勿手改。
-% 源码直接取自支撑材料文件夹 final_version/，故与所提交文件逐字一致。
+% 源码直接取自支撑材料文件夹 final_version/支撑材料/，故与所提交文件逐字一致。
 \section{建模源程序（完整可运行）}
 \label{sec:appendix-source}
 
 以下按问题列出\textbf{生成论文全部数值结果}所需源程序。
-这些代码\textbf{直接取自支撑材料文件夹 \texttt{final\_version/}}，
+这些代码\textbf{直接取自支撑材料文件夹 \texttt{final\_version/\allowbreak 支撑材料/}}，
 因此与所提交文件\textbf{逐字一致}；
 运行环境与复现命令见 \S\ref{sec:appendix-env}。
 全部程序使用 Python 语言与 \texttt{numpy}/\texttt{scipy}（HiGHS 求解器），
@@ -28,93 +28,93 @@ Excel 读写使用 \texttt{openpyxl}；未使用 SPSS 等需手工交互的软�
 \subsection{问题一：确定性调度}
 
 \subsubsection*{q1\_model.py}
-\verbatiminput{../final_version/Q1/q1_code/q1_model.py}
+\verbatiminput{../final_version/支撑材料/Q1/q1_code/q1_model.py}
 
 \subsubsection*{run\_q1.py}
-\verbatiminput{../final_version/Q1/q1_code/run_q1.py}
+\verbatiminput{../final_version/支撑材料/Q1/q1_code/run_q1.py}
 
 \subsection{问题二：滚动随机日前调度}
 
 \subsubsection*{rolling\_window.py}
-\verbatiminput{../final_version/Q2/code/rolling_window.py}
+\verbatiminput{../final_version/支撑材料/Q2/code/rolling_window.py}
 
 \subsubsection*{run\_experiment.py}
-\verbatiminput{../final_version/Q2/code/run_experiment.py}
+\verbatiminput{../final_version/支撑材料/Q2/code/run_experiment.py}
 
 \subsubsection*{verify\_window.py}
-\verbatiminput{../final_version/Q2/code/verify_window.py}
+\verbatiminput{../final_version/支撑材料/Q2/code/verify_window.py}
 
 \subsubsection*{check\_information.py}
-\verbatiminput{../final_version/Q2/code/check_information.py}
+\verbatiminput{../final_version/支撑材料/Q2/code/check_information.py}
 
 \subsubsection*{report\_experiment.py}
-\verbatiminput{../final_version/Q2/code/report_experiment.py}
+\verbatiminput{../final_version/支撑材料/Q2/code/report_experiment.py}
 
 \subsubsection*{make\_target\_tables.py}
-\verbatiminput{../final_version/Q2/code/make_target_tables.py}
+\verbatiminput{../final_version/支撑材料/Q2/code/make_target_tables.py}
 
 \subsection{问题三：预报融合与场景树多时点调整}
 
 \subsubsection*{q3\_data.py}
-\verbatiminput{../final_version/Q3/code/q3_data.py}
+\verbatiminput{../final_version/支撑材料/Q3/code/q3_data.py}
 
 \subsubsection*{q3\_forecast.py}
-\verbatiminput{../final_version/Q3/code/q3_forecast.py}
+\verbatiminput{../final_version/支撑材料/Q3/code/q3_forecast.py}
 
 \subsubsection*{q3\_model.py}
-\verbatiminput{../final_version/Q3/code/q3_model.py}
+\verbatiminput{../final_version/支撑材料/Q3/code/q3_model.py}
 
 \subsubsection*{run\_q3.py}
-\verbatiminput{../final_version/Q3/code/run_q3.py}
+\verbatiminput{../final_version/支撑材料/Q3/code/run_q3.py}
 
 \subsubsection*{verify\_q3.py}
-\verbatiminput{../final_version/Q3/code/verify_q3.py}
+\verbatiminput{../final_version/支撑材料/Q3/code/verify_q3.py}
 
 \subsection{问题四-2：波动电价下的日前调度}
 
 \subsubsection*{q42\_model.py}
-\verbatiminput{../final_version/Q4/part2/code/q42_model.py}
+\verbatiminput{../final_version/支撑材料/Q4/part2/code/q42_model.py}
 
 \subsubsection*{run\_q42.py}
-\verbatiminput{../final_version/Q4/part2/code/run_q42.py}
+\verbatiminput{../final_version/支撑材料/Q4/part2/code/run_q42.py}
 
 \subsubsection*{verify\_q42.py}
-\verbatiminput{../final_version/Q4/part2/code/verify_q42.py}
+\verbatiminput{../final_version/支撑材料/Q4/part2/code/verify_q42.py}
 
 \subsubsection*{check\_information.py}
-\verbatiminput{../final_version/Q4/part2/code/check_information.py}
+\verbatiminput{../final_version/支撑材料/Q4/part2/code/check_information.py}
 
 \subsubsection*{report\_q42.py}
-\verbatiminput{../final_version/Q4/part2/code/report_q42.py}
+\verbatiminput{../final_version/支撑材料/Q4/part2/code/report_q42.py}
 
 \subsection{问题四-3：波动电价下的多时点调整}
 
 \subsubsection*{q3\_data.py}
-\verbatiminput{../final_version/Q4/part3/code/q3_data.py}
+\verbatiminput{../final_version/支撑材料/Q4/part3/code/q3_data.py}
 
 \subsubsection*{q3\_forecast.py}
-\verbatiminput{../final_version/Q4/part3/code/q3_forecast.py}
+\verbatiminput{../final_version/支撑材料/Q4/part3/code/q3_forecast.py}
 
 \subsubsection*{q3\_model.py}
-\verbatiminput{../final_version/Q4/part3/code/q3_model.py}
+\verbatiminput{../final_version/支撑材料/Q4/part3/code/q3_model.py}
 
 \subsubsection*{run\_q3.py}
-\verbatiminput{../final_version/Q4/part3/code/run_q3.py}
+\verbatiminput{../final_version/支撑材料/Q4/part3/code/run_q3.py}
 
 \subsubsection*{verify\_q3.py}
-\verbatiminput{../final_version/Q4/part3/code/verify_q3.py}
+\verbatiminput{../final_version/支撑材料/Q4/part3/code/verify_q3.py}
 
 \subsection{公共模块：第二问基础数据与 LP（q2\_base）}
 
 \subsubsection*{q2\_data.py}
-\verbatiminput{../final_version/common/q2_base/q2_data.py}
+\verbatiminput{../final_version/支撑材料/common/q2_base/q2_data.py}
 
 \subsubsection*{run\_1439.py}
-\verbatiminput{../final_version/common/q2_base/run_1439.py}
+\verbatiminput{../final_version/支撑材料/common/q2_base/run_1439.py}
 
 \subsection{公共模块：附件5结果模板表头（主程序依赖）}
 
 \subsubsection*{template\_layout.py}
-\verbatiminput{../final_version/common/efficiency/template_layout.py}
+\verbatiminput{../final_version/支撑材料/common/efficiency/template_layout.py}
 
 \endgroup
