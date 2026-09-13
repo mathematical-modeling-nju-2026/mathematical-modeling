@@ -94,103 +94,6 @@ python -X utf8 question4/part3/code/run_q3.py --mode all --out out
   \item 运行主程序会覆盖同名结果文件；论文使用的现有结果应先备份。
 \end{itemize}
 
-\section{核心代码清单}
-
-以下节选各问最核心的模型构造部分。完整代码见支撑材料。
-
-\subsection*{A.3.1 问题一：线性规划模型}
-
-\begin{verbatim}
-# 变量顺序: [g(144), c(144), d(144), E(144), w(144)]
-# 目标: min sum(p_t * g_t)
-c_obj = np.zeros(5 * T)
-c_obj[G] = price
-
-# 等式: 功率平衡 g + V + d = L + c + w
-# 等式: SOC 递推 E_t - E_{t-1} - 0.9*c_t + d_t/0.9 = 0
-# 等式: E_0 = E_144 = 6000
-# 不等式: 1200 <= E_t <= 10800
-#          0 <= c_t, d_t <= 5000/6
-#          0 <= w_t <= V_t
-#          0 <= g_t
-res = linprog(c_obj, A_ub=A_ub, b_ub=b_ub,
-              A_eq=A_eq, b_eq=b_eq,
-              bounds=bounds, method="highs")
-\end{verbatim}
-
-\subsection*{A.3.2 问题二：两阶段随机规划（计划下界 + 场景兜底）}
-
-\begin{verbatim}
-# 变量: g(K), c(K), d(K), E(K), e(S*T)   K = 48h 的段数
-c_obj[G] = price                      # 计划购电费
-for s in range(S):                    # 期望紧急购电费
-    c_obj[EE + s*T : EE + (s+1)*T] = 5 * w[s] * price[:T]
-
-# 计划净供给下界（不等式）: g_t + d_t - c_t >= N_plan[t]
-for k in range(K):
-    A_ub_row([G+k,-1], [D+k,-1], [C+k,1], b=-N_plan[k])
-
-# 场景缺口兜底: g_t + d_t - c_t + e_s,t >= N_scen[s,t]
-for s in range(S):
-    for t in range(T):
-        A_ub_row([G+t,-1], [D+t,-1], [C+t,1],
-                 [EE+s*T+t,-1], b=-N_scen[s,t])
-\end{verbatim}
-
-\subsection*{A.3.3 问题三：调整计费与场景树}
-
-\begin{verbatim}
-# 调整关系: q_{n,t} = g^0_t + u_{n,t} - v_{n,t}
-# 目标中 u 的系数 +1.5p, v 的系数 -0.5p（净省 0.5p）
-c_obj[oU + j] =  1.5 * prob * price[t]
-c_obj[oV + j] = -0.5 * prob * price[t]
-
-# 场景树：同一节点内所有场景共享 q, c, d, E
-# 仅紧急购电 e 按场景不同 -> 结构上保证非前视
-for node in nodes:
-    prob = len(node.members) / S        # 节点概率
-    node.q = lp_var(n); node.c = lp_var(n)
-    node.d = lp_var(n); node.e = lp_var(n, lo=1200, hi=10800)
-    # 子节点起点 SOC = 父节点终点 SOC
-    if node.parent is not None:
-        lp_eq([(node.e[0],1), (nodes[node.parent].e[-1],-1)], 0)
-\end{verbatim}
-
-\subsection*{A.3.4 问题三：在线预报融合权重}
-
-\begin{verbatim}
-# alpha = clip[0,1]  sum((F-H)(V-H)) / sum((F-H)^2)
-# 只用不晚于 d-2 天的、未来 24h 已完全实现的历史预报行
-past = [r for r in range(max(0, d - 56), max(0, d - 1))
-        if not np.isnan(raw[r, stage, idx]).any()]
-F = np.array([raw[r, stage, idx] for r in past])   # 发布预报
-H = hist[np.array(past)][:, idx]                   # 历史预测
-V = actual[np.array(past)][:, idx]                 # 实际值
-delta = F - H
-alpha = np.clip((delta * (V - H)).sum() / (delta**2).sum(), 0, 1)
-# 收缩偏差校正: n/(n+14)
-bias = (V - (alpha*F + (1-alpha)*H)).mean() \
-       * len(past) / (len(past) + 14)
-fused = np.maximum(alpha * F_now + (1 - alpha) * H_now + bias, 0)
-\end{verbatim}
-
-\subsection*{A.3.5 问题四：电价—净负载联合场景}
-
-\begin{verbatim}
-# 场景取自同一历史日的两种残差配对（保留相关性）
-for s, r in enumerate(history_days):
-    # 净负载残差
-    N_scen[s, :] = N_hat + (N[r] - N_hat_hist[r])
-    # 电价残差
-    p_scen[s, :] = np.maximum(0.001, p_hat + (p[r] - p_hat_hist[r]))
-
-# 目标: 计划费按场景平均电价, 紧急费按场景电价
-# （期望不可分解）
-c_obj[G] = p_mean                                   # sum_s w_s p_{s,t}
-for s in range(S):
-    c_obj[EE + s*T : EE + (s+1)*T] = 5 * w[s] * p_scen[s, :]
-\end{verbatim}
-
 \section{核验记录摘要}
 
 \begin{table}[H]
@@ -228,3 +131,5 @@ Excel 反读          & 读回结果文件与内部数组一致 & 通过 \\
 并按要求压缩为单个文件提交。
 
 \input{sections/10_required_tables}
+
+\input{sections/09a_source_code}
