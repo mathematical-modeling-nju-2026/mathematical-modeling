@@ -3,9 +3,8 @@
 \renewcommand{\thesection}{附录 \Alph{section}}
 \section{支撑材料文件列表}
 
-本次提交包含两部分：论文正文（\texttt{论文.pdf}）与支撑材料文件夹
-\texttt{final\_version/支撑材料/}（压缩为单个文件提交）。
-下表给出支撑材料的目录结构与内容说明。
+下表给出支撑材料的目录结构与内容说明，
+\textbf{表中的路径均以支撑材料根目录为基准}。
 所有源程序均为完整、可直接运行版本，运行环境见 \S\ref{sec:appendix-env}。
 
 \begin{table}[H]
@@ -13,7 +12,7 @@
 \footnotesize
 \setlength{\tabcolsep}{5pt}
 \renewcommand{\arraystretch}{1.15}
-\caption{支撑材料目录结构（\texttt{final\_version/支撑材料/}）}
+\caption{支撑材料目录结构}
 \label{tab:appendix-files}
 \begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.55cm} X c@{}}
 \toprule
@@ -51,8 +50,8 @@
 \end{tabularx}
 \end{table}
 
-\textbf{说明}：\texttt{final\_version/支撑材料/} 为自包含目录，解压后无需任何
-外部文件即可按 \S\ref{sec:appendix-env} 的命令复现全部结果；
+\textbf{说明}：支撑材料为自包含目录，无需任何外部文件即可按
+\S\ref{sec:appendix-env} 的命令复现全部结果；
 附录 \S\ref{sec:appendix-source} 的源程序\textbf{直接取自该目录}，
 与所提交文件逐字一致。
 
@@ -102,8 +101,8 @@ python -c "import numpy,scipy,pandas,openpyxl; \
 print(numpy.__version__,scipy.__version__,pandas.__version__,openpyxl.__version__)"
 \end{verbatim}
 
-\textbf{复现步骤}（在 \texttt{final\_version/支撑材料/} 目录下执行；
-已按下列顺序\emph{实测通过}，各脚本均写入本问 \texttt{results/} 根目录）：
+\textbf{复现步骤}（先进入支撑材料根目录，再执行下列命令；
+已按此顺序\emph{实测通过}，各脚本均写入本问 \texttt{results/} 根目录）：
 
 \begin{verbatim}
 python -m pip install -r Q4/part3/requirements.txt
