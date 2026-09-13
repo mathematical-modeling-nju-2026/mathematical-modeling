@@ -1,0 +1,26 @@
+{
+  "planned_cost_yuan": 13448411.645705795,
+  "increase_cost_yuan": 153112.85484377283,
+  "cancellation_refund_yuan": 173189.02431494842,
+  "breach_cost_yuan": 86594.51215747421,
+  "adjustment_net_yuan": 66518.34268629862,
+  "emergency_cost_yuan": 1553680.4838779105,
+  "total_cost_yuan": 15068610.472270004,
+  "original_kwh": 20974721.96018451,
+  "adjusted_kwh": 20849154.19061321,
+  "increase_kwh": 150029.74685124768,
+  "decrease_kwh": 275597.5164225523,
+  "emergency_kwh": 387077.17101710034,
+  "dump_kwh": 2026238.7729267236,
+  "mode": "at_0_6_12",
+  "source": "fusion",
+  "update_hours": [
+    0,
+    6,
+    12
+  ],
+  "days": 334,
+  "initial_energy_kwh": 6000.0,
+  "final_energy_kwh": 6000.0,
+  "seconds": 112.16468930244446
+}

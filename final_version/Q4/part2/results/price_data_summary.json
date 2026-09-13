@@ -1,0 +1,14 @@
+{
+  "selected_forecaster": "weekday4",
+  "selection_completed": "2025-01-31",
+  "shape": [
+    365,
+    144
+  ],
+  "min": 0.0076,
+  "max": 1.7936,
+  "mean": 0.7661976046423136,
+  "missing": 0,
+  "report_rmse": 0.06962868336971649,
+  "report_mae": 0.048864582293745844
+}

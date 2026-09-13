@@ -1,0 +1,18 @@
+{
+  "name": "uniform42",
+  "days": 334,
+  "initial_energy_kwh": 8550.0,
+  "final_energy_kwh": 6000.0,
+  "first_residual_index": 0,
+  "seconds": 26.187678813934326,
+  "planned_cost_yuan": 13495066.672733836,
+  "emergency_cost_yuan": 912327.6561954364,
+  "total_cost_yuan": 14407394.328929273,
+  "g_kwh": 22152980.459383473,
+  "c_kwh": 6898239.836577864,
+  "d_kwh": 5589869.267628072,
+  "emergency_kwh": 241795.11443692932,
+  "dump_kwh": 3147215.5099039413,
+  "h1_cost_yuan": 6009295.746167048,
+  "h2_cost_yuan": 8398098.582762225
+}

@@ -1,0 +1,123 @@
+{
+  "periods": 48096,
+  "duplicate_date_slots": 0,
+  "energy_min_kwh": 1200.0,
+  "energy_max_kwh": 10800.0,
+  "energy_recursion_max_error": 4.547473508864641e-12,
+  "chronological_continuity_max_error": 0.0,
+  "initial_energy_kwh": 6000.0,
+  "final_energy_kwh": 6000.0,
+  "max_charge_kwh": 833.3333333333334,
+  "max_discharge_kwh": 833.3333333870304,
+  "min_flow_kwh": -0.0,
+  "simultaneous_periods": 0,
+  "energy_balance_max_error": 3.410605131648481e-13,
+  "emergency_max_error": 3.446132268436486e-13,
+  "settlement_per_slot_max_error": 1.8189894035458565e-12,
+  "daily_sum_max_error": 2.9103830456733704e-11,
+  "cost_recomputed_yuan": 15061735.42918777,
+  "altered_past_periods": 0,
+  "midnight_block_plan_max_error": 0.0,
+  "lp_eq_max": 2.7284841053187847e-12,
+  "lp_ineq_max": 9.72395355347544e-08,
+  "alternative_no_refund_cost_same_schedule_yuan": 15234936.019320153,
+  "pass": true,
+  "information_boundary": {
+    "future_perturbation_tests": [
+      {
+        "day": 31,
+        "issue_hour": 0,
+        "prediction_max_change": 0.0,
+        "decision_max_change": 0.0,
+        "pass_check": true
+      },
+      {
+        "day": 31,
+        "issue_hour": 6,
+        "prediction_max_change": 0.0,
+        "decision_max_change": 0.0,
+        "pass_check": true
+      },
+      {
+        "day": 31,
+        "issue_hour": 12,
+        "prediction_max_change": 0.0,
+        "decision_max_change": 0.0,
+        "pass_check": true
+      },
+      {
+        "day": 31,
+        "issue_hour": 18,
+        "prediction_max_change": 0.0,
+        "decision_max_change": 0.0,
+        "pass_check": true
+      },
+      {
+        "day": 171,
+        "issue_hour": 0,
+        "prediction_max_change": 0.0,
+        "decision_max_change": 0.0,
+        "pass_check": true
+      },
+      {
+        "day": 171,
+        "issue_hour": 6,
+        "prediction_max_change": 0.0,
+        "decision_max_change": 0.0,
+        "pass_check": true
+      },
+      {
+        "day": 171,
+        "issue_hour": 12,
+        "prediction_max_change": 0.0,
+        "decision_max_change": 0.0,
+        "pass_check": true
+      },
+      {
+        "day": 171,
+        "issue_hour": 18,
+        "prediction_max_change": 0.0,
+        "decision_max_change": 0.0,
+        "pass_check": true
+      },
+      {
+        "day": 354,
+        "issue_hour": 0,
+        "prediction_max_change": 0.0,
+        "decision_max_change": 0.0,
+        "pass_check": true
+      },
+      {
+        "day": 354,
+        "issue_hour": 6,
+        "prediction_max_change": 0.0,
+        "decision_max_change": 0.0,
+        "pass_check": true
+      },
+      {
+        "day": 354,
+        "issue_hour": 12,
+        "prediction_max_change": 0.0,
+        "decision_max_change": 0.0,
+        "pass_check": true
+      },
+      {
+        "day": 354,
+        "issue_hour": 18,
+        "prediction_max_change": 0.0,
+        "decision_max_change": 0.0,
+        "pass_check": true
+      }
+    ],
+    "no_update_identity_max_error": 0.0,
+    "pass_check": true
+  },
+  "workbook": {
+    "max_roundtrip_error": 5.4569682106375694e-12,
+    "pass_check": true
+  },
+  "alternative_workbook": {
+    "max_roundtrip_error": 5.4569682106375694e-12,
+    "pass_check": true
+  }
+}

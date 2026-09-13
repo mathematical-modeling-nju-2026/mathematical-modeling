@@ -1,0 +1,17 @@
+{
+  "metadata_scope": "published_recommended_result",
+  "published_variant": "sensitivity/valid_residuals/variants/uniform56",
+  "candidate": {
+    "name": "uniform56",
+    "window": 56,
+    "half_life": null
+  },
+  "first_residual": 7,
+  "initial_soc": 8550.0,
+  "terminal_soc": 6000.0,
+  "horizon_days": 2,
+  "source_file_at_run": "E:\\math_model\\mathematical-modeling\\CShen\\方案B_1439万\\run_1439.py",
+  "source_sha256_at_run": "3d7db74afe1334973d4461048153291cd041d1eb575d619bc4b30fb8edcb14e9",
+  "inherited_forecaster": "Original sw4/drift5 + t7/drift28 without changes, including early attachment1 fallback and negative PV predictions.",
+  "python_at_run": "3.11.6 (tags/v3.11.6:8b6ee5b, Oct  2 2023, 14:57:12) [MSC v.1935 64 bit (AMD64)]"
+}

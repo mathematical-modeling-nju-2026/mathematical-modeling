@@ -1,0 +1,27 @@
+{
+  "primary_variant": "joint_price",
+  "q2_source": "question2\\results",
+  "report_period": [
+    "2025-02-01",
+    "2025-12-31"
+  ],
+  "days": 334,
+  "first_residual_index": 7,
+  "scenario_window": 56,
+  "scenario_weights": "equal",
+  "horizon_days": 2,
+  "price_forecaster": "weekday4",
+  "price_training_period": [
+    "2025-01-08",
+    "2025-01-31"
+  ],
+  "price_floor": 0.001,
+  "initial_energy_kwh": 8550.0,
+  "year_end_energy_kwh": 6000.0,
+  "january_policy": "Common unchanged Q2 policy, from January 1 SOC 6000; repriced but excluded from report costs.",
+  "price_information": "Default: only days strictly before decision date. Known-today sensitivity explicitly relaxes this for prices only.",
+  "settlement": "Actual attachment 4 price times planned kWh + 5 times actual price times emergency kWh.",
+  "second_day": "Point net-load forecast and historical price forecast only; no second-day scenarios.",
+  "primary_selection": "Determined by the price-information assumption, not by retrospective annual cost ranking.",
+  "python": "3.13.7 (tags/v3.13.7:bcee1c3, Aug 14 2025, 14:15:11) [MSC v.1944 64 bit (AMD64)]"
+}
