@@ -3,48 +3,54 @@
 \renewcommand{\thesection}{附录 \Alph{section}}
 \section{支撑材料文件列表}
 
-本次提交的支撑材料压缩包（\texttt{support.zip}）包含以下文件。
+本次提交的支撑材料为文件夹 \texttt{final\_version/}（压缩为单个文件提交），
+其内容与下表的对应关系如下。
 所有源程序均为完整、可直接运行版本，运行环境见 \S\ref{sec:appendix-env}。
 
 \begin{table}[H]
 \centering
 \footnotesize
 \setlength{\tabcolsep}{4pt}
-\caption{支撑材料文件列表}
+\caption{支撑材料文件列表（\texttt{final\_version/} 目录结构）}
 \label{tab:appendix-files}
 \begin{tabularx}{\textwidth}{@{}l X c@{}}
 \toprule
 路径 & 说明 & 对应问题 \\
 \midrule
-\multicolumn{3}{@{}l}{\textbf{一、源程序（按问题组织）}} \\
+\multicolumn{3}{@{}l}{\textbf{一、源程序}} \\
 \midrule
-\texttt{question1/code/}  & \texttt{q1\_model.py} 数据读取与 LP/MILP 建模、约束核验、对偶量；\texttt{run\_q1.py} 主流程与导出 & 问题一 \\
+\texttt{Q1/q1\_code/}      & \texttt{q1\_model.py} 数据读取与 LP/MILP 建模、约束核验、对偶量；\texttt{run\_q1.py} 主流程与导出；\texttt{plot\_q1.py} 绘图 & 问题一 \\
 \midrule
-\texttt{question2/code/}  & \texttt{rolling\_window.py} 有效残差与候选窗口；\texttt{run\_experiment.py} 滚动执行；\texttt{verify\_window.py}、\texttt{check\_information.py} 核验；\texttt{report\_experiment.py} 汇总发布 & 问题二 \\
+\texttt{Q2/code/}          & \texttt{rolling\_window.py} 有效残差与候选窗口；\texttt{run\_experiment.py} 滚动执行；\texttt{verify\_window.py}、\texttt{check\_information.py} 核验；\texttt{report\_experiment.py} 汇总发布；\texttt{make\_target\_tables.py} 题目要求表 & 问题二 \\
 \midrule
-\texttt{question3/code/}  & \texttt{q3\_data.py} 输入校验；\texttt{q3\_forecast.py} 预报融合；\texttt{q3\_model.py} 场景树 LP；\texttt{run\_q3.py} 滚动执行；\texttt{verify\_q3.py} 核验 & 问题三 \\
+\texttt{Q3/code/}          & \texttt{q3\_data.py} 输入校验；\texttt{q3\_forecast.py} 预报融合；\texttt{q3\_model.py} 场景树 LP；\texttt{run\_q3.py} 滚动执行；\texttt{verify\_q3.py} 核验；\texttt{plot\_q3.py} 绘图 & 问题三 \\
 \midrule
-\texttt{question4/part2/code/} & \texttt{q42\_model.py} 电价预测与联合场景；\texttt{run\_q42.py} 主流程；\texttt{report\_q42.py} 汇总；\texttt{verify\_q42.py} 核验 & 问题四-2 \\
+\texttt{Q4/part2/code/}    & \texttt{q42\_model.py} 电价预测与联合场景；\texttt{run\_q42.py} 主流程；\texttt{report\_q42.py} 汇总；\texttt{verify\_q42.py}、\texttt{check\_information.py} 核验 & 问题四-2 \\
 \midrule
-\texttt{question4/part3/code/} & 在问题三代码基础上增加实时电价场景与结算 & 问题四-3 \\
+\texttt{Q4/part3/code/}    & 在问题三代码基础上增加实时电价场景与结算；\texttt{requirements.txt} 依赖清单 & 问题四-3 \\
 \midrule
-\texttt{common/}          & \texttt{q2\_base/} 第二问与 4-2 共用的基础 LP 与数据层；\texttt{efficiency/} 结果模板表头 & 二 / 四 \\
+\texttt{common/q2\_base/}  & 第二问与 4-2 共用的基础 LP 与数据层（\texttt{q2\_data.py}、\texttt{run\_1439.py}） & 二 / 四 \\
+\texttt{common/efficiency/} & \texttt{template\_layout.py} 附件5 结果模板表头（主程序读取模板所必需） & 一 / 二 / 三 / 四 \\
+\texttt{common/plotting/}  & \texttt{setup\_style.py}、\texttt{export\_figure.py} 统一绘图样式与导出 & 全部 \\
 \midrule
-\texttt{question*/code/plot\_*.py}、\texttt{common/plotting/}、\texttt{paper/figure\_package/} & \textbf{绘图代码}：从上述程序保存的结果文件重建论文图表，不参与数值计算，故未列入附录 \S\ref{sec:appendix-source} & 全部 \\
+\multicolumn{3}{@{}l}{\textbf{二、结果与图表}} \\
 \midrule
-\multicolumn{3}{@{}l}{\textbf{二、中间结果与图表}} \\
+\texttt{Q1..Q4/*/results/} & \texttt{result*.xlsx} 正式结果（题目要求格式）、\texttt{summary.json} 汇总指标、\texttt{schedule\_detail.csv} 逐时段明细、\texttt{verification.json} 核验记录、\texttt{figures/} 插图源文件 & 全部 \\
+\texttt{Q2/results/variants/}、\texttt{Q2/results/extensions/}、\texttt{Q2/results/sensitivity/} & 各候选窗口方案、短窗口扩展与敏感性分析的完整对照结果 & 问题二 \\
+\texttt{Q3/results/comparisons/} & 四种发布时点方案（\texttt{B\_aligned}、\texttt{only\_0}、\texttt{at\_0\_6}、\texttt{at\_0\_6\_12}）的完整结果 & 问题三 \\
+\texttt{Q4/part2/results/}、\texttt{Q4/part3/results/} & 各电价场景方案与指定日的完整结果 & 问题四 \\
 \midrule
-\texttt{question*/results/} & \texttt{*.xlsx} 正式结果（题目要求格式）、\texttt{*summary.json} 汇总指标、\texttt{*detail*.csv} 逐时段明细、\texttt{figures/} 插图源文件 & 全部 \\
-\texttt{question2/results/variants/} & 各候选窗口方案的完整对照结果 & 问题二 \\
-\texttt{question3/research/} & 问题三敏感性分析与参数扫描的完整记录 & 问题三 \\
+\multicolumn{3}{@{}l}{\textbf{三、数据}} \\
 \midrule
-\multicolumn{3}{@{}l}{\textbf{三、数据与其他}} \\
-\midrule
-\texttt{data/}            & \texttt{附件1--4.xlsx} 原始数据；\texttt{附件5/} 结果文件模板 & 全部 \\
-\texttt{docs/}、\texttt{requirements.txt} & 整理报告、迁移清单、核验记录；Python 依赖清单 & — \\
+\texttt{data/附件/}        & \texttt{附件1--4.xlsx} 原始数据；\texttt{附件5/} 结果文件模板（\texttt{result1.xlsx} 等 5 个） & 全部 \\
 \bottomrule
 \end{tabularx}
 \end{table}
+
+\textbf{说明}：\texttt{final\_version/} 为自包含目录，解压后无需任何外部文件
+即可按 \S\ref{sec:appendix-env} 的命令复现全部结果；
+附录 \S\ref{sec:appendix-source} 的源程序\textbf{直接取自该目录}，
+与所提交文件逐字一致。
 
 \section{运行环境与复现方法}
 \label{sec:appendix-env}
@@ -67,25 +73,27 @@ Python   & 3.12 / 3.13 \\
 \end{tabularx}
 \end{table}
 
-\textbf{复现步骤}（在仓库根目录执行）：
+\textbf{复现步骤}（在 \texttt{final\_version/} 目录下执行）：
 
 \begin{verbatim}
-python -m pip install -r requirements.txt
+python -m pip install -r Q4/part3/requirements.txt
 
 # 问题一
-python -X utf8 question1/code/run_q1.py
-python -X utf8 question1/code/plot_q1.py
+python -X utf8 Q1/q1_code/run_q1.py
 
 # 问题二（推荐方案：有效残差 + 56 天等权）
-python -X utf8 question2/code/run_experiment.py \
+python -X utf8 Q2/code/run_experiment.py \
        --first-residual 7 --only uniform56 --out recommended_only
+python -X utf8 Q2/code/make_target_tables.py     # 题目要求的表1/表2/表3
 
 # 问题三（四次更新主方案）
-python -X utf8 question3/code/run_q3.py --mode all --out reproduced
+python -X utf8 Q3/code/run_q3.py --mode all --out reproduced
+python -X utf8 Q3/code/verify_q3.py              # 独立核验
 
 # 问题四
-python -X utf8 question4/part2/code/run_q42.py --primary joint_price
-python -X utf8 question4/part3/code/run_q3.py --mode all --out out
+python -X utf8 Q4/part2/code/run_q42.py --primary joint_price
+python -X utf8 Q4/part3/code/run_q3.py --mode all --out out
+python -X utf8 Q4/part3/code/verify_q3.py        # 独立核验
 \end{verbatim}
 
 \textbf{说明}：
@@ -93,6 +101,8 @@ python -X utf8 question4/part3/code/run_q3.py --mode all --out out
   \item 各脚本内部路径均相对于文件位置，从任意工作目录用脚本绝对路径启动均可。
   \item 问题二\textbf{无参数默认运行的是原始残差口径候选}，
         不是最终推荐方案，须按上述命令显式指定 \texttt{--first-residual 7}。
+  \item 问题四-2 会读取 \texttt{Q2/results/} 下的 Q2 结果作为同口径基准，
+        因此需先运行问题二。
   \item 运行主程序会覆盖同名结果文件；论文使用的现有结果应先备份。
 \end{itemize}
 
@@ -126,11 +136,6 @@ Excel 反读          & 读回结果文件与内部数组一致 & 通过 \\
 \textbf{修改当天及未来的全部实际值与未发布预报}，重建预测、残差、融合权重、场景树与 LP，
 检查\textbf{当前的预测结果与控制量是否保持不变}。结果显示决策完全不变，
 证明程序未使用任何未来信息。
-
-\section{无支撑材料的说明}
-
-本论文\textbf{有}支撑材料。所有源程序、中间结果与数据均已列于附录 A，
-并按要求压缩为单个文件提交。
 
 \input{sections/10_required_tables}
 
